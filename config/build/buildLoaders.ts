@@ -34,7 +34,20 @@ export default function buildLoaders (options: BuildOptions): webpack.RuleSetRul
       },
       'sass-loader',
     ],
+  }
 
+  const babelLoader = {
+    test: /\.(?:js|jsx|ts|tsx)$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: [
+          ['@babel/preset-env', { targets: 'defaults' }],
+        ],
+        plugins: ['i18next-extract', { nsSeparator: '~', locales: ['uk', 'en'] }],
+      }
+    }
   }
 
   const tsLoader = {
@@ -43,5 +56,5 @@ export default function buildLoaders (options: BuildOptions): webpack.RuleSetRul
     exclude: /node_modules/,
   }
 
-  return [fileLoader, svgLoader, cssLoaders, tsLoader]
+  return [fileLoader, svgLoader, babelLoader, tsLoader, cssLoaders]
 };
