@@ -9,11 +9,21 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
-      "*": ["./src/*"]
+      "*": [
+        "./src/*"
+      ]
     }
   },
+  "include": [
+    "config/**/*.ts",
+    "*.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".eslintrc.js"
+  ],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
