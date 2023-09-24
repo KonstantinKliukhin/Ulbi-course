@@ -5,7 +5,8 @@ module.exports = {
   },
   extends: [
     'standard-with-typescript',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
+    'plugin:i18next/recommended'
   ],
   ignorePatterns: ['eslintrc.js'],
   overrides: [
@@ -24,7 +25,8 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    'react'
+    'react',
+    'i18next',
   ],
   rules: {
     '@typescript-eslint/prefer-nullish-coalescing': 'off',
@@ -36,6 +38,7 @@ module.exports = {
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
+    'i18next/no-literal-string': [2, { markupOnly: true }]
   },
   settings: {
     react: {
