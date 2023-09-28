@@ -1,6 +1,10 @@
 type Mods = Record<string, any>
 
-export function classNames (cls: string, mods?: Mods, additional?: Array<string | undefined | null>): string {
+export function classNames (
+  cls: string,
+  mods?: Mods,
+  additional?: Array<string | undefined | null>
+): string {
   return [
     cls,
     ...Object.entries(mods || {})

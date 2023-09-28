@@ -1,5 +1,8 @@
 {
   "test": "test example",
   "translation": "Translation",
-  "language": "English"
+  "language": "English",
+  "not_found_page": "Page Not Found",
+  "page_error": "Something went wrong",
+  "reload_page": "Reload page"
 }

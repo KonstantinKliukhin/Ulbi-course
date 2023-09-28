@@ -39,7 +39,9 @@ module.exports = {
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
-    'i18next/no-literal-string': [2, { markupOnly: true }]
+    'n/handle-callback-err': 'off',
+    'i18next/no-literal-string': [2, { markupOnly: true }],
+    'max-len': ['error', { code: 90, ignoreComments: true, ignoreStrings: true }],
   },
   settings: {
     react: {

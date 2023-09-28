@@ -20,7 +20,9 @@ export const Navbar: FC<NavbarProps> = props => {
                 >
           Home
         </AppLink>
-        <AppLink to={RoutePath[AppRoutes.ABOUT]} theme={AppLinkTheme.SECONDARY}>About</AppLink>
+        <AppLink to={RoutePath[AppRoutes.ABOUT]} theme={AppLinkTheme.SECONDARY}>
+          About
+        </AppLink>
       </div>
     </div>
   )
