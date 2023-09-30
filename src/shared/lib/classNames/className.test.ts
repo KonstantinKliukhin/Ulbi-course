@@ -1,4 +1,4 @@
-import { classNames } from './classNames'
+import { classNames } from 'shared/lib/classNames/classNames'
 
 describe('classNames', () => {
   test('if only main class provided should return it', () => {
