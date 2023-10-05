@@ -26,6 +26,8 @@ jobs:
         run: npm run lint:style
       - name: unit tests
         run: npm run test:unit
-      - name: ui snapshot tests
-        run: npm run test:ui
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 
