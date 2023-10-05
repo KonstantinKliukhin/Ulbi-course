@@ -1,9 +1,9 @@
-import { type FC } from 'react'
-import { AppRoutes, RoutePath } from 'shared/config'
-import cls from './Navbar.module.scss'
-import { classNames } from 'shared/lib'
-import { AppLink } from 'shared/ui'
-import { AppLinkTheme } from 'shared/ui/AppLink/AppLink'
+import { type FC } from 'react';
+import { AppRoutes, RoutePath } from 'shared/config';
+import cls from './Navbar.module.scss';
+import { classNames } from 'shared/lib';
+import { AppLink } from 'shared/ui';
+import { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 
 interface NavbarProps {
   className?: string
@@ -11,7 +11,7 @@ interface NavbarProps {
 
 export const Navbar: FC<NavbarProps> = props => {
   return (
-    <div className={classNames(cls.navbar, {}, [props.className])}>
+    <div className={classNames(cls.navbar, {}, [props.className,])}>
       <div className={cls.links}>
         <AppLink
           to={RoutePath[AppRoutes.MAIN]}
@@ -25,5 +25,5 @@ export const Navbar: FC<NavbarProps> = props => {
         </AppLink>
       </div>
     </div>
-  )
-}
+  );
+};

@@ -1,5 +1,5 @@
-import { type FC } from 'react'
-import cls from './Loader.module.scss'
+import { type FC } from 'react';
+import cls from './Loader.module.scss';
 
 export const Loader: FC = () => {
   return (
@@ -9,5 +9,5 @@ export const Loader: FC = () => {
       <div></div>
       <div></div>
     </div>
-  )
-}
+  );
+};

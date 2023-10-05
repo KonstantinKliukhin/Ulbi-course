@@ -1,19 +1,19 @@
-import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '../lib/ThemeContext'
-import { type FC, type PropsWithChildren, useEffect, useMemo, useState } from 'react'
+import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '../lib/ThemeContext';
+import { type FC, type PropsWithChildren, useEffect, useMemo, useState } from 'react';
 
-const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || Theme.LIGHT
+const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || Theme.LIGHT;
 export const ThemeProvider: FC<PropsWithChildren> = props => {
-  const [theme, setTheme] = useState<Theme>(defaultTheme)
+  const [theme, setTheme,] = useState<Theme>(defaultTheme);
 
   useEffect(() => {
-    if (!theme) return
-    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme)
-  }, [theme])
+    if (!theme) return;
+    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme);
+  }, [theme,]);
 
   const themeProps = useMemo(() => ({
     theme,
     setTheme,
-  }), [theme])
+  }), [theme,]);
 
   return (
     <ThemeContext.Provider
@@ -21,5 +21,5 @@ export const ThemeProvider: FC<PropsWithChildren> = props => {
         >
       {props.children}
     </ThemeContext.Provider>
-  )
-}
+  );
+};

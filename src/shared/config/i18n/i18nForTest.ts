@@ -1,5 +1,5 @@
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
 void i18n
   .use(initReactI18next)
@@ -7,7 +7,7 @@ void i18n
     lng: 'en',
     fallbackLng: 'en',
 
-    ns: ['translationsNS'],
+    ns: ['translationsNS',],
     defaultNS: 'translationsNS',
 
     debug: true,
@@ -16,7 +16,7 @@ void i18n
       escapeValue: false, // not needed for react!!
     },
 
-    resources: { en: { translationsNS: {} } },
-  })
+    resources: { en: { translationsNS: {}, }, },
+  });
 
-export default i18n
+export default i18n;
