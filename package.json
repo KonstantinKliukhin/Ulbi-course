@@ -14,7 +14,7 @@
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook",
-    "test:ui": "npx chromatic --project-token=chpt_2c07134b88336c0",
+    "test:ui": "npx chromatic --project-token=chpt_2c07134b88336c0 --build-script-name storybook:build",
     "test:ui:ok": "npx chromatic --project-token=chpt_2c07134b88336c0 --auto-accept-changes"
   },
   "keywords": [],
