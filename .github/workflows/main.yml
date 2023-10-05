@@ -24,4 +24,6 @@ jobs:
         run: npm run lint:style
       - name: unit tests
         run: npm run test:unit
+      - name: ui snapshot tests
+        run: npm run test:ui
 
