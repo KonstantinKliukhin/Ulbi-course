@@ -2,6 +2,7 @@
   "test": "Тестовий приклад",
   "translation": "Переклад",
   "language": "Українська",
+  "language_short": "Укр",
   "main_page": "Головна Сторінка",
   "not_found_page": "Сторінка не знайдена",
   "page_error": "Щось пішло не так",

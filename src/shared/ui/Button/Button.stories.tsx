@@ -1,6 +1,6 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
-import { Button, ThemeButton } from './Button';
+import { Button, ButtonSize, ButtonTheme } from './Button';
 
 export default {
   title: 'shared/Button',
@@ -10,13 +10,25 @@ export default {
 type ButtonStory = StoryObj<typeof Button>;
 
 export const Clear: ButtonStory = {
-  args: { theme: ThemeButton.CLEAR, children: 'Button', },
+  args: { theme: ButtonTheme.CLEAR, children: 'Button', },
 };
 
-export const Native: ButtonStory = {
-  args: { theme: ThemeButton.NATIVE, children: 'Button', },
+export const Background: ButtonStory = {
+  args: { theme: ButtonTheme.BACKGROUND, children: 'Button', },
+};
+
+export const BackgroundInverted: ButtonStory = {
+  args: { theme: ButtonTheme.BACKGROUND_INVERTED, children: 'Button', },
 };
 
 export const Outline: ButtonStory = {
-  args: { theme: ThemeButton.OUTLINE, children: 'Button', },
+  args: { theme: ButtonTheme.OUTLINE, children: 'Button', },
+};
+
+export const Square: ButtonStory = {
+  args: { theme: ButtonTheme.BACKGROUND_INVERTED, children: '>', square: true, },
+};
+
+export const Round: ButtonStory = {
+  args: { theme: ButtonTheme.BACKGROUND_INVERTED, rounded: true, children: '>', square: true, size: ButtonSize.XL, },
 };

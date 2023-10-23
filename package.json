@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.tsx",
   "scripts": {
-    "start": "webpack serve --env port=3000 mode=development",
+    "start": "webpack serve --env port=3001 mode=development",
     "build:prod": "webpack --env port=3000 mode=production",
     "build:dev": "webpack --env port=3000 mode=development",
     "lint:ts": "eslint \"**/*.{ts,tsx} \"",

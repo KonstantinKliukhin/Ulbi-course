@@ -3,7 +3,7 @@ import cls from './ThemeSwitcher.module.scss';
 import { classNames } from 'shared/lib';
 import { Theme, useTheme } from 'app/providers/ThemeProvider';
 import { Button } from 'shared/ui';
-import { ThemeButton } from 'shared/ui/Button/Button';
+import { ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import MoonIcon from '../../../../public/assets/icons/moon.svg';
 import SunIcon from '../../../../public/assets/icons/sun.svg';
 
@@ -30,7 +30,10 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = props => {
 
   return (
     <Button
-      theme={ThemeButton.CLEAR}
+      theme={ButtonTheme.CLEAR}
+      rounded
+      square
+      size={ButtonSize.L}
       className={classNames(cls.ThemeSwitcher, {}, [props.className,])}
       onClick={toggleTheme}
         >

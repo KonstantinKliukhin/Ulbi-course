@@ -3,7 +3,7 @@ import cls from './PageError.module.scss';
 import { classNames } from 'shared/lib';
 import { Button } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
-import { ThemeButton } from 'shared/ui/Button/Button';
+import { ButtonTheme } from 'shared/ui/Button/Button';
 
 interface PageErrorProps {
   className?: string
@@ -19,7 +19,7 @@ export const PageError: FC<PageErrorProps> = props => {
   return (
     <div className={classNames(cls.PageError, {}, [props.className,])}>
       <p>{t('page_error')}</p>
-      <Button onClick={reloadPage} theme={ThemeButton.NATIVE}>
+      <Button onClick={reloadPage} theme={ButtonTheme.CLEAR}>
         {t('reload_page')}
       </Button>
     </div>
