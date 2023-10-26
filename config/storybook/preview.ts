@@ -32,12 +32,12 @@ const preview: Preview = {
     theme: {
       name: 'Theme',
       description: 'Global theme for components',
-      defaultValue: 'light',
+      defaultValue: Theme.LIGHT,
       toolbar: {
         icon: 'circlehollow',
         items: [
-          { value: 'light', icon: 'circlehollow', title: 'light', },
-          { value: 'dark', icon: 'circle', title: 'dark', },
+          { value: Theme.LIGHT, icon: 'circlehollow', title: 'light', },
+          { value: Theme.DARK, icon: 'circle', title: 'dark', },
         ],
         showName: true,
       },

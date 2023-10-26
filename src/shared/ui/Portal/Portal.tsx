@@ -1,4 +1,4 @@
-import { type FC, type PropsWithChildren, useEffect, useRef } from 'react';
+import { type FC, type PropsWithChildren } from 'react';
 import { createPortal } from 'react-dom';
 
 interface PortalProps extends PropsWithChildren {
@@ -6,13 +6,5 @@ interface PortalProps extends PropsWithChildren {
 }
 
 export const Portal: FC<PortalProps> = props => {
-  const elementRef = useRef<Element | null>(null);
-
-  useEffect(() => {
-    elementRef.current = props.element ?? document.querySelector('.app');
-  }, [props.element,]);
-
-  if (!elementRef.current) return <>{props.children}</>;
-
-  return createPortal(props.children, elementRef.current);
+  return createPortal(props.children, props.element ?? document.body);
 };

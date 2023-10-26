@@ -2,6 +2,7 @@ import { type FC, type PropsWithChildren, useCallback, useEffect, useState } fro
 import cls from './Modal.module.scss';
 import { classNames, stopPropagation } from 'shared/lib';
 import { Portal } from 'shared/ui';
+import { useTheme } from 'app/providers/ThemeProvider';
 
 interface ModalProps extends PropsWithChildren {
   className?: string
@@ -12,7 +13,7 @@ interface ModalProps extends PropsWithChildren {
 
 export const Modal: FC<ModalProps> = props => {
   const { onClose, open, contentClassName, } = props;
-
+  const { theme, } = useTheme();
   const [closing, setClosing,] = useState<boolean>(false);
 
   const handleClose = useCallback(() => {
@@ -44,7 +45,7 @@ export const Modal: FC<ModalProps> = props => {
         className={classNames(
           cls.Modal,
           { [cls.open]: props.open, [cls.closing]: closing, },
-          [props.className,]
+          [props.className, theme,]
         )}>
         <div className={cls.overlay} onClick={props.onClose}>
           <div
