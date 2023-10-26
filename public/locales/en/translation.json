@@ -7,5 +7,6 @@
   "page_error": "Something went wrong",
   "reload_page": "Reload page",
   "nav_home": "Home",
-  "nav_about": "About Site"
+  "nav_about": "About Site",
+  "login": "Login"
 }

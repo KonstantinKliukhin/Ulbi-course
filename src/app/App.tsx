@@ -1,5 +1,4 @@
 import { RouterProvider } from 'react-router-dom';
-import './styles/index.scss';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { classNames } from 'shared/lib';
 import { AppRouter } from 'app/providers/router';

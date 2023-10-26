@@ -13,6 +13,10 @@ export const Clear: ButtonStory = {
   args: { theme: ButtonTheme.CLEAR, children: 'Button', },
 };
 
+export const ClearInverted: ButtonStory = {
+  args: { theme: ButtonTheme.CLEAR_INVERTED, children: 'Button', },
+};
+
 export const Background: ButtonStory = {
   args: { theme: ButtonTheme.BACKGROUND, children: 'Button', },
 };

@@ -4,7 +4,13 @@ module.exports = {
     es2021: true,
     jest: true,
   },
-  extends: ['standard-with-typescript', 'plugin:react/recommended', 'plugin:i18next/recommended', 'plugin:storybook/recommended',],
+  extends: [
+    'standard-with-typescript',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:i18next/recommended',
+    'plugin:storybook/recommended',
+  ],
   ignorePatterns: ['eslintrc.js',],
   overrides: [
     {
@@ -30,6 +36,7 @@ module.exports = {
   plugins: [
     'react',
     'i18next',
+    'react-hooks',
   ],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
@@ -41,10 +48,12 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'n/handle-callback-err': 'off',
     'import/no-unresolved': 'off',
-    'max-len': ['error', { code: 100, ignoreComments: true, ignoreStrings: true, ignoreRegExpLiterals: true, },],
+    'max-len': ['error', { code: 110, ignoreComments: true, ignoreStrings: true, ignoreRegExpLiterals: true, },],
     'i18next/no-literal-string': [2, { markupOnly: true, },],
     'react/jsx-indent-props': [2, 2,],
     'react/jsx-indent': [2, 2,],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     '@typescript-eslint/semi': ['error', 'always',],
     'comma-dangle': ['error', {
       arrays: 'always',
