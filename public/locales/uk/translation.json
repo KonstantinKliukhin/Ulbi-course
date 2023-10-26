@@ -9,5 +9,7 @@
   "reload_page": "Оновити сторінку",
   "nav_home": "Головна",
   "nav_about": "Про Сайт",
-  "login": "Увійти"
+  "login": "Увійти",
+  "increment": "Збільшити",
+  "decrement": "Зменьшити"
 }

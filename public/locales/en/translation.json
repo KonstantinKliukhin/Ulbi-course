@@ -8,5 +8,7 @@
   "reload_page": "Reload page",
   "nav_home": "Home",
   "nav_about": "About Site",
-  "login": "Login"
+  "login": "Login",
+  "increment": "increment",
+  "decrement": "decrement"
 }

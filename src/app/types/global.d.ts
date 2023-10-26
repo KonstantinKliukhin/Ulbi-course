@@ -1,3 +1,9 @@
+// eslint-disable-next-line @typescript-eslint/naming-convention
+declare const __IS_DEV__: boolean;
+
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+type StateSchema = import('../providers/StoreProvider').StateSchema;
+
 declare module '*.scss' {
     type IClassName = Record<string, string>;
 
@@ -20,6 +26,3 @@ declare module '*.jpg' {
   const content: string;
   export default content;
 }
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-declare const __IS_DEV__: boolean;

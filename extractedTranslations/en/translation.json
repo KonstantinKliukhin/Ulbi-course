@@ -1,5 +1,7 @@
 {
   "about_site": "",
+  "decrement": "decrement",
+  "increment": "increment",
   "language": "",
   "language_short": "",
   "login": "",
