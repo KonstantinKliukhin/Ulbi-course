@@ -8,6 +8,7 @@ export const ThemeProvider: FC<PropsWithChildren> = props => {
   useEffect(() => {
     if (!theme) return;
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme);
+    document.body.className = theme;
   }, [theme,]);
 
   const themeProps = useMemo(() => ({

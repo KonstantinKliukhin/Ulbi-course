@@ -25,6 +25,9 @@
     ".eslintrc.js",
     "./config/jest/**/*"
   ],
+  "exclude": [
+    "./jsonServer/*.js"
+  ],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
