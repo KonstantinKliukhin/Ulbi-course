@@ -8,7 +8,7 @@ interface InputProps extends HtmlInputProps {
   onChange?: (value: string) => void
 }
 
-const INPUT_FONT_WIDTH = 7.2;
+const INPUT_FONT_WIDTH = 9.4;
 
 export const Input: FC<InputProps> = memo(function Input (props) {
   const {
@@ -34,6 +34,7 @@ export const Input: FC<InputProps> = memo(function Input (props) {
     onChange?.(e.target.value);
   };
 
+  console.log('caretPosition: ', caretPosition);
   const onSelect = (e: any) => {
     setCaretPosition(e.target.selectionStart || 0);
   };
