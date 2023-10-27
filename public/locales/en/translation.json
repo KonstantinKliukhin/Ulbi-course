@@ -10,5 +10,7 @@
   "nav_about": "About Site",
   "login": "Login",
   "increment": "increment",
-  "decrement": "decrement"
+  "decrement": "decrement",
+  "user_name": "Username",
+  "password": "Password"
 }

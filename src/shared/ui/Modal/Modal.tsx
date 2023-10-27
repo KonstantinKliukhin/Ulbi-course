@@ -8,12 +8,13 @@ interface ModalProps extends PropsWithChildren {
   contentClassName?: string
   open: boolean
   onClose: () => void
+  lazy?: boolean
 }
 
 export const Modal: FC<ModalProps> = props => {
-  const { onClose, open, contentClassName, } = props;
+  const { onClose, open, contentClassName, lazy, } = props;
   const [closing, setClosing,] = useState<boolean>(false);
-
+  const [syntheticMounted, setSyntheticMounted,] = useState(false);
   const handleClose = useCallback(() => {
     setClosing(true);
 
@@ -23,11 +24,17 @@ export const Modal: FC<ModalProps> = props => {
     }, 200);
   }, [onClose,]);
 
+  useEffect(function syntheticMount () {
+    if (open) {
+      setSyntheticMounted(true);
+    }
+  }, [open,]);
+
   const closeHandler = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape') handleClose();
   }, [handleClose,]);
 
-  useEffect(() => {
+  useEffect(function closeOnEscapeHandler () {
     if (open) {
       window.addEventListener('keydown', closeHandler);
     }
@@ -36,6 +43,8 @@ export const Modal: FC<ModalProps> = props => {
       window.removeEventListener('keydown', closeHandler);
     };
   }, [closeHandler, open,]);
+
+  if (lazy && !syntheticMounted) return null;
 
   return (
     <Portal>

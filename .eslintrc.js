@@ -48,6 +48,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'n/handle-callback-err': 'off',
     'import/no-unresolved': 'off',
+    'react/prop-types': 'off',
     'max-len': ['error', { code: 110, ignoreComments: true, ignoreStrings: true, ignoreRegExpLiterals: true, },],
     'i18next/no-literal-string': [2, { markupOnly: true, },],
     'react/jsx-indent-props': [2, 2,],

@@ -5,10 +5,13 @@
   "language": "",
   "language_short": "",
   "login": "",
+  "login_btn": "",
   "main_page": "",
   "nav_about": "",
   "nav_home": "",
   "not_found_page": "",
   "page_error": "",
-  "reload_page": ""
+  "password": "",
+  "reload_page": "",
+  "user_name": ""
 }
