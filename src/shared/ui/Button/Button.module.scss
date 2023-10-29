@@ -16,7 +16,6 @@
     height: var(--font-line-l);
     font-size: var(--font-l);
     padding: 0;
-
   }
 
   &.sizeXL {
@@ -74,4 +73,10 @@
 .sizeXL {
   padding: 10px 38px;
   font-size: var(--font-xl);
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
 }

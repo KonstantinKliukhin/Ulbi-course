@@ -53,12 +53,13 @@ export const Modal: FC<ModalProps> = props => {
           cls.Modal,
           { [cls.open]: props.open, [cls.closing]: closing, },
           [props.className,]
-        )}>
+        )}
+      >
         <div className={cls.overlay} onClick={props.onClose}>
           <div
             className={classNames(cls.content, {}, [contentClassName,])}
             onClick={stopPropagation()}
-                    >
+          >
             {props.children}
           </div>
         </div>

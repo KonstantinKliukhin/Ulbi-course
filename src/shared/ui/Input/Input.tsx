@@ -1,5 +1,6 @@
 import { type ChangeEvent, type FC, type InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
 import cls from './Input.module.scss';
+import { classNames } from 'shared/lib';
 
 type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'>;
 
@@ -34,13 +35,12 @@ export const Input: FC<InputProps> = memo(function Input (props) {
     onChange?.(e.target.value);
   };
 
-  console.log('caretPosition: ', caretPosition);
   const onSelect = (e: any) => {
     setCaretPosition(e.target.selectionStart || 0);
   };
 
   return (
-    <div className={cls.InputWrapper}>
+    <div className={classNames(cls.InputWrapper, {}, [props.className,])}>
       {placeholder
         ? (<div>{`${placeholder} >`}</div>)
         : null
@@ -53,7 +53,8 @@ export const Input: FC<InputProps> = memo(function Input (props) {
           onChange={onChangeHandler}
           className={cls.input}
           onSelect={onSelect}
-                />
+          value={value}
+        />
         <span style={{ left: caretPosition * INPUT_FONT_WIDTH, }} className={cls.caret}/>
       </div>
     </div>

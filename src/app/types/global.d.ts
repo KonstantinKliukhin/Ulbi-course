@@ -3,6 +3,8 @@ declare const __IS_DEV__: boolean;
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 type StateSchema = import('../providers/StoreProvider').StateSchema;
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+type AppDispatch = import('../providers/StoreProvider').AppDispatch;
 
 declare module '*.scss' {
     type IClassName = Record<string, string>;

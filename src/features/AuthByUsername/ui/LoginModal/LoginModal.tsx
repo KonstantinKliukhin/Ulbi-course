@@ -12,7 +12,7 @@ export const LoginModal: FC<LoginModalProps> = props => {
       lazy
       open={props.open}
       onClose={props.onClose}
-        >
+    >
       <LoginForm/>
     </Modal>
   );

@@ -36,7 +36,7 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = props => {
       size={ButtonSize.L}
       className={classNames(cls.ThemeSwitcher, {}, [props.className,])}
       onClick={toggleTheme}
-        >
+    >
       {THEME_CONTENT_MAP[theme].icon}
     </Button>
   );

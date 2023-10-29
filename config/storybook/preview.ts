@@ -4,6 +4,10 @@ import { ThemeDecorator } from 'shared/config/storybook/themeDecorator/themeDeco
 import { Theme } from 'app/providers/ThemeProvider';
 import { RouterDecorator } from 'shared/config/storybook/routerDecorator/routerDecorator';
 import { I18nDecorator } from 'shared/config/storybook/i18nDecorator/i18nDecorator';
+import { GlobalStoreDecorator } from 'shared/config/storybook/globalStoreDecorator/globalStoreDecorator';
+import {
+  OptionalDecoratorsDecorator
+} from 'shared/config/storybook/OptionalDecoratorsDecorator/OptionalDecoratorsDecorator';
 
 const preview: Preview = {
   parameters: {
@@ -15,7 +19,14 @@ const preview: Preview = {
       },
     },
   },
-  decorators: [I18nDecorator, StyleDecorator, RouterDecorator, ThemeDecorator(Theme.LIGHT),],
+  decorators: [
+    OptionalDecoratorsDecorator,
+    GlobalStoreDecorator,
+    I18nDecorator,
+    StyleDecorator,
+    RouterDecorator,
+    ThemeDecorator(Theme.LIGHT),
+  ],
   globalTypes: {
     locale: {
       name: 'Locale',

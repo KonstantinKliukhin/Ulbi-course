@@ -28,7 +28,7 @@ export const Sidebar: FC<SidebarProps> = props => {
         { [cls.collapsed]: collapsed, },
         [props.className,]
       )}
-        >
+    >
       <Button
         data-testid="sidebar-toggle"
         onClick={onToggle}
@@ -37,7 +37,7 @@ export const Sidebar: FC<SidebarProps> = props => {
         size={ButtonSize.L}
         square
         rounded
-            >
+      >
         {collapsed ? '>' : '<'}
       </Button>
 
@@ -46,12 +46,12 @@ export const Sidebar: FC<SidebarProps> = props => {
         onClick={() => {
           setCollapsed(true);
         }}
-            >
+      >
         <AppLink
           to={RoutePath[AppRoutes.MAIN]}
           theme={AppLinkTheme.SECONDARY}
           className={cls.mainLink}
-                >
+        >
           <HomeSVG/>
           {collapsed ? null : t('nav_home')}
         </AppLink>
@@ -59,7 +59,7 @@ export const Sidebar: FC<SidebarProps> = props => {
           className={cls.mainLink}
           to={RoutePath[AppRoutes.ABOUT]}
           theme={AppLinkTheme.SECONDARY}
-                >
+        >
           <InfoSVG/>
           {collapsed ? null : t('nav_about')}
         </AppLink>

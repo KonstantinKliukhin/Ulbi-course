@@ -12,5 +12,10 @@
   "increment": "increment",
   "decrement": "decrement",
   "user_name": "Username",
-  "password": "Password"
+  "password": "Password",
+  "no_data_provided_from_server": "No data provided from server. Please reload the page and try again",
+  "unknown_error": "Unknown error occurred. Please reload the page and try again",
+  "login_invalid_credentials": "Provided invalid username or password",
+  "login_form_title": "Authorization Form",
+  "logout": "Logout"
 }
