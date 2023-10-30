@@ -1,6 +1,6 @@
-import { type ComponentProps, type FC } from 'react';
-import { Modal } from 'shared/ui';
-import { LoginForm } from '../LoginForm/LoginForm';
+import { type ComponentProps, type FC, Suspense } from 'react';
+import { Loader, Modal } from 'shared/ui';
+import { AsyncLoginForm as LoginForm } from '../LoginForm/AsyncLoginForm';
 
 interface LoginModalProps extends Pick<ComponentProps<typeof Modal>, 'onClose' | 'open'> {
   className?: string
@@ -13,7 +13,9 @@ export const LoginModal: FC<LoginModalProps> = props => {
       open={props.open}
       onClose={props.onClose}
     >
-      <LoginForm/>
+      <Suspense fallback={<Loader/>}>
+        <LoginForm/>
+      </Suspense>
     </Modal>
   );
 };

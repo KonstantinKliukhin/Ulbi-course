@@ -12,6 +12,7 @@
     "allowSyntheticDefaultImports": true,
     "strictNullChecks": true,
     "baseUrl": ".",
+    "resolveJsonModule": true,
     "paths": {
       "*": [
         "./src/*"

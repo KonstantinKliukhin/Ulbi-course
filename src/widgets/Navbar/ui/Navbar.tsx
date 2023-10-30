@@ -37,7 +37,7 @@ export const Navbar: FC<NavbarProps> = props => {
       <Button theme={ButtonTheme.CLEAR_INVERTED} className={cls.links} onClick={loginModal.enable}>
         {t('login')}
       </Button>
-      <LoginModal open={loginModal.boolState} onClose={loginModal.disable}/>
+      {loginModal.boolState ? <LoginModal open={loginModal.boolState} onClose={loginModal.disable}/> : null}
     </div>
   );
 };

@@ -26,7 +26,7 @@ export default function buildLoaders (options: BuildOptions): webpack.RuleSetRul
         presets: [
           ['@babel/preset-env', { targets: 'defaults', },],
         ],
-        plugins: [['i18next-extract', { nsSeparator: '~', locales: ['uk', 'en',], },],],
+        // plugins: [['i18next-extract', { nsSeparator: '~', locales: ['uk', 'en',], },],],
       },
     },
   };

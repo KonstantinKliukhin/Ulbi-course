@@ -1,6 +1,6 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
-import { LoginForm } from './LoginForm';
+import LoginForm from './LoginForm';
 import { StoreDecorator } from 'shared/config/storybook/storeDecorator/storeDecorator';
 
 export default {
@@ -18,6 +18,7 @@ export const Error: LoginFormStory = {
       username: 'Invalid name',
       password: 'Invalid password',
       error: 'Some login error',
+      isLoading: false,
     },
   }),],
 };
@@ -28,6 +29,7 @@ export const Loading: LoginFormStory = {
       username: 'Invalid name',
       password: 'Invalid password',
       isLoading: true,
+      error: null,
     },
   }),],
 };

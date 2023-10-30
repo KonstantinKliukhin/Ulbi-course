@@ -44,6 +44,7 @@ module.exports = {
     '@typescript-eslint/prefer-nullish-coalescing': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
+    '@typescript-eslint/no-dynamic-delete': 'warn',
     '@typescript-eslint/comma-dangle': 'off',
     'react/react-in-jsx-scope': 'off',
     'n/handle-callback-err': 'off',
