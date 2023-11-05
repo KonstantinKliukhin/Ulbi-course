@@ -14,7 +14,14 @@
     }
   ],
   "profile": {
-    "name": "typicode"
+    "firstname": "Kostya",
+    "lastname": "Kliukhin",
+    "age": 20,
+    "currency": "UAH",
+    "country": "Ukraine",
+    "city": "Kharkiv",
+    "username": "admin",
+    "avatar": "https://lh3.googleusercontent.com/ogw/AKPQZvxGTudASTnW9-8rRFrQ_3MDYQiPFuZBOWaAvq9B=s32-c-mo"
   },
   "users": [
     {

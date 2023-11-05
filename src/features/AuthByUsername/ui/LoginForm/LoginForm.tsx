@@ -14,9 +14,11 @@ import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLo
 
 interface LoginFormProps {
   className?: string
+  onSuccess: () => void
 }
 
 const LoginForm: FC<LoginFormProps> = props => {
+  const { onSuccess, } = props;
   const dispatch = useAppDispatch();
   const username = useAppSelector(getLoginUsername);
   const password = useAppSelector(getLoginPassword);
@@ -33,9 +35,13 @@ const LoginForm: FC<LoginFormProps> = props => {
     dispatch(loginActions.setPassword(value));
   }, [dispatch,]);
 
-  const handleSubmit = useCallback(() => {
-    void dispatch(loginByUsername({ username, password, }));
-  }, [username, password, dispatch,]);
+  const handleSubmit = useCallback(async () => {
+    const result = await dispatch(loginByUsername({ username, password, }));
+
+    const isSuccess = result.meta.requestStatus === 'fulfilled';
+
+    if (isSuccess) onSuccess();
+  }, [username, password, dispatch, onSuccess,]);
 
   return (
     <div className={classNames(cls.LoginForm, {}, [props.className,])}>

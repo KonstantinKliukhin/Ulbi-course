@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { memo } from 'react';
 // import cls from './LanguageSwitcher.module.scss';
 import { classNames } from 'shared/lib';
 import { Button } from 'shared/ui';
@@ -10,7 +10,7 @@ interface LanguageSwitcherProps {
   short?: boolean
 }
 
-export const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
+export const LanguageSwitcher = memo<LanguageSwitcherProps>(function LanguageSwitcher (props) {
   const { t, i18n, } = useTranslation();
 
   const toggleLanguage = (): void => {
@@ -26,4 +26,4 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
       {props.short ? t('language_short') : t('language')}
     </Button>
   );
-};
+});

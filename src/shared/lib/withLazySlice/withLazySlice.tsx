@@ -10,7 +10,7 @@ const getRemoveSliceAction = (sliceKey: keyof StateSchema) => ({ type: `@@DESTRO
 interface WithLazySliceOptions<Key extends keyof StateSchema> {
   name: Key
   reducer: Reducer<NonNullable<StateSchema[Key]>>
-  removeAfterMount?: boolean
+  removeOnUnmount?: boolean
   onlyIfSliceReady?: boolean
 }
 
@@ -20,7 +20,7 @@ export const withLazySlice = <Key extends keyof StateSchema, Props>
     name,
     reducer,
     onlyIfSliceReady,
-    removeAfterMount,
+    removeOnUnmount = false,
   } = options;
   const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
 
@@ -34,12 +34,13 @@ export const withLazySlice = <Key extends keyof StateSchema, Props>
       dispatch(getInitSliceAction(name));
 
       return () => {
-        if (removeAfterMount) return;
-        store.reducerManager.remove(name);
-        dispatch(getRemoveSliceAction(name));
+        if (removeOnUnmount) {
+          store.reducerManager.remove(name);
+          dispatch(getRemoveSliceAction(name));
+        }
       };
-      // eslint-disable-next-line
-        }, []);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     if (!isReady && onlyIfSliceReady) return null;
 

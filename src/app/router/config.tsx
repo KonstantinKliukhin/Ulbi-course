@@ -6,6 +6,7 @@ import { AboutPage } from 'pages/AboutPage';
 import { RootLayout } from 'app/RootLayout';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { PageLoader } from 'widgets/PageLoader';
+import { ProfilePage } from 'pages/ProfilePage';
 
 export const AppRouter = createBrowserRouter([
   {
@@ -27,6 +28,14 @@ export const AppRouter = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader/>}>
             <AboutPage/>
+          </Suspense>
+        ),
+      },
+      {
+        path: RoutePath[AppRoutes.PROFILE],
+        element: (
+          <Suspense fallback={<PageLoader/>}>
+            <ProfilePage/>
           </Suspense>
         ),
       },

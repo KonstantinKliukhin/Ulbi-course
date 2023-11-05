@@ -6,6 +6,8 @@ type StateSchema = import('../providers/StoreProvider').StateSchema;
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 type AppDispatch = import('../providers/StoreProvider').AppDispatch;
 
+declare type Url = string;
+
 declare module '*.scss' {
     type IClassName = Record<string, string>;
 

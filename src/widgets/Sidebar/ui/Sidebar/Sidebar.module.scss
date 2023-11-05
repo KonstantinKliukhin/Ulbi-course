@@ -39,20 +39,4 @@
   flex-direction: column;
   text-align: center;
   row-gap: 10px;
-
-  .mainLink {
-    display: flex;
-    column-gap: 10px;
-    align-items: center;
-
-    svg {
-      width: 24px;
-      height: 24px;
-
-      path {
-        stroke: var(--inverted-primary-color);
-        fill: var(--inverted-primary-color);
-      }
-    }
-  }
 }

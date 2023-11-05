@@ -1,4 +1,4 @@
-import { type ChangeEvent, type FC, type InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
+import { type ChangeEvent, type InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
 import cls from './Input.module.scss';
 import { classNames } from 'shared/lib';
 
@@ -11,7 +11,7 @@ interface InputProps extends HtmlInputProps {
 
 const INPUT_FONT_WIDTH = 9.4;
 
-export const Input: FC<InputProps> = memo(function Input (props) {
+export const Input = memo<InputProps>(function Input (props) {
   const {
     value,
     onChange,

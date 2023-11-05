@@ -1,0 +1,12 @@
+
+.SidebarItem {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--inverted-primary-color);
+  }
+}

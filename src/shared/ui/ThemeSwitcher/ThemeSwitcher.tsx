@@ -1,4 +1,4 @@
-import { type FC, type ReactNode } from 'react';
+import { memo, type ReactNode } from 'react';
 import cls from './ThemeSwitcher.module.scss';
 import { classNames } from 'shared/lib';
 import { Theme, useTheme } from 'app/providers/ThemeProvider';
@@ -25,7 +25,7 @@ const THEME_CONTENT_MAP: Record<Theme, ThemeSwitcherContent> = {
   },
 };
 
-export const ThemeSwitcher: FC<ThemeSwitcherProps> = props => {
+export const ThemeSwitcher = memo<ThemeSwitcherProps>(function ThemeSwitcher (props) {
   const { theme, toggleTheme, } = useTheme();
 
   return (
@@ -40,4 +40,4 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = props => {
       {THEME_CONTENT_MAP[theme].icon}
     </Button>
   );
-};
+});

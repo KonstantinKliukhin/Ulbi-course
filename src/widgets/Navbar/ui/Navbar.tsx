@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { memo } from 'react';
 import cls from './Navbar.module.scss';
 import { classNames, useAppSelector, useBoolState } from 'shared/lib';
 import { Button } from 'shared/ui';
@@ -11,7 +11,7 @@ interface NavbarProps {
   className?: string
 }
 
-export const Navbar: FC<NavbarProps> = props => {
+export const Navbar = memo<NavbarProps>(function Navbar (props) {
   const userAuthData = useAppSelector(getUserAuthData);
   const isAuthenticated = Boolean(userAuthData);
   const logout = useLogout();
@@ -40,4 +40,4 @@ export const Navbar: FC<NavbarProps> = props => {
       {loginModal.boolState ? <LoginModal open={loginModal.boolState} onClose={loginModal.disable}/> : null}
     </div>
   );
-};
+});
