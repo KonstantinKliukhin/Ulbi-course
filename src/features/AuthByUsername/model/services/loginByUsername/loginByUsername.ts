@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 import { type User, userActions } from 'entities/User';
 import { LoginError } from 'features/AuthByUsername/model/types/loginError';
 import { USER_LOCALSTORAGE_KEY } from 'shared/constants';
@@ -9,12 +9,16 @@ interface LoginByUsernameProps {
   password: string
 }
 
+interface LoginByUsernameExtra extends ThunkDefaultArg {
+  rejectValue: string
+}
+
 export const loginByUsername =
-    createAsyncThunk<User | undefined, LoginByUsernameProps, { rejectValue: string }>(
+    createAsyncThunk<User | undefined, LoginByUsernameProps, LoginByUsernameExtra>(
       'login/loginByUsername',
       async (authData, thunkAPI) => {
         try {
-          const response = await axios.post<User>('http://localhost:8000/login', authData);
+          const response = await thunkAPI.extra.api.post<User>('/login', authData);
 
           if (!response.data) {
             throw new Error(LoginError.NO_DATA_PROVIDED_FROM_SERVER);

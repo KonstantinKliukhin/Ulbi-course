@@ -18,5 +18,6 @@
   "unknown_error": "Unknown error occurred. Please reload the page and try again",
   "login_invalid_credentials": "Provided invalid username or password",
   "login_form_title": "Authorization Form",
-  "logout": "Logout"
+  "logout": "Logout",
+  "edit": "edit"
 }

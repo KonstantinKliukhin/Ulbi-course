@@ -1,1 +1,1 @@
-export { AppRouter } from './config';
+export { createAppRouter } from './config';

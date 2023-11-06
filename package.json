@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.tsx",
   "scripts": {
-    "start": "concurrently \"webpack serve --env port=3001 mode=development\" \"npm run start:server\"",
+    "start": "concurrently \"webpack serve --env port=3001 mode=development apiUrl=http://localhost:8000\" \"npm run start:server\"",
     "start:server": "node ./jsonServer/index.js",
     "build:prod": "webpack --env port=3000 mode=production",
     "build:dev": "webpack --env port=3000 mode=development",

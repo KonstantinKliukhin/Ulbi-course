@@ -1,14 +1,16 @@
-import { type FC } from 'react';
-import { withLazySlice } from 'shared/lib';
-import { useTranslation } from 'react-i18next';
-import { profileReducer } from 'entities/Profile';
+import { type FC, useEffect } from 'react';
+import { useAppDispatch, withLazySlice } from 'shared/lib';
+import { fetchProfileData, ProfileCard, profileReducer } from 'entities/Profile';
 
 const ProfilePage: FC = () => {
-  const { t, } = useTranslation();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    void dispatch(fetchProfileData());
+  }, [dispatch,]);
+
   return (
-    <>
-      {t('nav_profile')}
-    </>
+    <ProfileCard/>
   );
 };
 

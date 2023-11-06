@@ -21,11 +21,11 @@ const preview: Preview = {
   },
   decorators: [
     OptionalDecoratorsDecorator,
-    GlobalStoreDecorator,
     I18nDecorator,
     StyleDecorator,
-    RouterDecorator,
     ThemeDecorator(Theme.LIGHT),
+    GlobalStoreDecorator,
+    RouterDecorator,
   ],
   globalTypes: {
     locale: {

@@ -1,17 +1,16 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { AppRoutes, RoutePath } from 'shared/config';
-import React, { Suspense } from 'react';
+import React, { type FC, Suspense } from 'react';
 import { MainPage } from 'pages/MainPage';
 import { AboutPage } from 'pages/AboutPage';
-import { RootLayout } from 'app/RootLayout';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { PageLoader } from 'widgets/PageLoader';
 import { ProfilePage } from 'pages/ProfilePage';
 
-export const AppRouter = createBrowserRouter([
+export const createAppRouter = (App: FC) => createBrowserRouter([
   {
     path: RoutePath[AppRoutes.MAIN],
-    element: <RootLayout/>,
+    element: <App/>,
     hasErrorBoundary: true,
     children: [
       {
