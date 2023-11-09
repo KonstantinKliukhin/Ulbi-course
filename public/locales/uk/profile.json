@@ -1,5 +1,9 @@
 {
   "profile": "Профіль",
   "your_firstname_label": "Ваше Імʼя",
-  "your_lastname_label": "Ваше Прізвище"
+  "your_lastname_label": "Ваше Прізвище",
+  "your_age_label": "Ваш Вік",
+  "your_city_label": "Ваше Місто",
+  "your_avatar_label": "Посилання на ваш аватар",
+  "username_label": "Ваше імʼя користувача"
 }

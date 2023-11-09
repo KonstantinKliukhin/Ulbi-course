@@ -47,7 +47,7 @@ const LoginForm: FC<LoginFormProps> = props => {
     <div className={classNames(cls.LoginForm, {}, [props.className,])}>
       <Text title={t('login_form_title')}/>
       {error
-        ? <Text text={t(error)} theme={TextTheme.ERROR} className={cls.error}/>
+        ? <Text text={error} theme={TextTheme.ERROR} className={cls.error}/>
         : <div className={cls.error}/>
             }
       <Input

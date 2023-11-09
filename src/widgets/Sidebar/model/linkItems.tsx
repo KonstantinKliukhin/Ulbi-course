@@ -8,6 +8,7 @@ export interface SidebarItemType {
   path: string
   text: string
   icon: ReactNode
+  onlyAuthorized: boolean
 }
 
 export const linkItems: SidebarItemType[] = [
@@ -15,15 +16,18 @@ export const linkItems: SidebarItemType[] = [
     path: RoutePath[AppRoutes.MAIN],
     text: 'nav_home',
     icon: <HomeSVG/>,
+    onlyAuthorized: false,
   },
   {
     path: RoutePath[AppRoutes.ABOUT],
     text: 'nav_about',
     icon: <InfoSVG/>,
+    onlyAuthorized: false,
   },
   {
     path: RoutePath[AppRoutes.PROFILE],
     text: 'nav_profile',
     icon: <ProfileSVG/>,
+    onlyAuthorized: true,
   },
 ];

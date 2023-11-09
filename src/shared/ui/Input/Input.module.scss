@@ -1,6 +1,12 @@
 .InputWrapper {
   display: flex;
   column-gap: 5px;
+
+  &.readonly {
+    opacity: 0.7;
+    user-select: none;
+    pointer-events: none;
+  }
 }
 
 .caret {

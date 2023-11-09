@@ -2,11 +2,12 @@ import { type ChangeEvent, type InputHTMLAttributes, memo, useEffect, useRef, us
 import cls from './Input.module.scss';
 import { classNames } from 'shared/lib';
 
-type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'>;
+type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value' | 'readOnly'>;
 
 interface InputProps extends HtmlInputProps {
-  value?: string
+  value?: string | number
   onChange?: (value: string) => void
+  readonly?: boolean
 }
 
 const INPUT_FONT_WIDTH = 9.4;
@@ -19,6 +20,7 @@ export const Input = memo<InputProps>(function Input (props) {
     type = 'text',
     placeholder,
     autoFocus,
+    readonly,
     ...inputProps
   } = props;
 
@@ -39,8 +41,12 @@ export const Input = memo<InputProps>(function Input (props) {
     setCaretPosition(e.target.selectionStart || 0);
   };
 
+  const mods = {
+    [cls.readonly]: readonly,
+  };
+
   return (
-    <div className={classNames(cls.InputWrapper, {}, [props.className,])}>
+    <div className={classNames(cls.InputWrapper, mods, [props.className,])}>
       {placeholder
         ? (<div>{`${placeholder} >`}</div>)
         : null
@@ -54,6 +60,7 @@ export const Input = memo<InputProps>(function Input (props) {
           className={cls.input}
           onSelect={onSelect}
           value={value}
+          readOnly={readonly}
         />
         <span style={{ left: caretPosition * INPUT_FONT_WIDTH, }} className={cls.caret}/>
       </div>

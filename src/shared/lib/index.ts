@@ -4,4 +4,6 @@ export { stopPropagation } from './stopPropagation/stopPropagation';
 export { useAppDispatch } from 'shared/lib/hooks/reduxHooks/useAppDispatch';
 export { useAppSelector } from 'shared/lib/hooks/reduxHooks/useAppSelector';
 export { useActions } from 'shared/lib/hooks/reduxHooks/useActions';
-export { withLazySlice } from './withLazySlice/withLazySlice';
+export { withLazySlice } from 'shared/lib/hocs/withLazySlice/withLazySlice';
+export { withLoading, type WithLoadingProps } from 'shared/lib/hocs/withLoading/withLoading';
+export { withError, type WithErrorProps } from 'shared/lib/hocs/withError/withError';

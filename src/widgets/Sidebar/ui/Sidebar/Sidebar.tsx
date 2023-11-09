@@ -5,6 +5,7 @@ import { Button, LanguageSwitcher, ThemeSwitcher } from 'shared/ui';
 import { ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { linkItems } from '../../model/linkItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
+import { useIsAuthorized } from 'entities/User';
 
 interface SidebarProps {
   className?: string
@@ -12,6 +13,7 @@ interface SidebarProps {
 
 export const Sidebar = memo<SidebarProps>(function Sidebar (props) {
   const [collapsed, setCollapsed,] = useState(false);
+  const isAuthorized = useIsAuthorized();
   const onToggle = (): void => {
     setCollapsed(prev => !prev);
   };
@@ -43,7 +45,11 @@ export const Sidebar = memo<SidebarProps>(function Sidebar (props) {
           setCollapsed(true);
         }}
       >
-        {linkItems.map(item => <SidebarItem key={item.path} item={item} collapsed={collapsed}/>)}
+        {linkItems.map(item => (
+          !isAuthorized && item.onlyAuthorized
+            ? null
+            : <SidebarItem key={item.path} item={item} collapsed={collapsed}/>
+        ))}
       </div>
 
       <div className={cls.switchers}>

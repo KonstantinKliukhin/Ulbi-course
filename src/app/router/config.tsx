@@ -6,6 +6,7 @@ import { AboutPage } from 'pages/AboutPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { PageLoader } from 'widgets/PageLoader';
 import { ProfilePage } from 'pages/ProfilePage';
+import { AuthorizedComponent } from 'entities/User';
 
 export const createAppRouter = (App: FC) => createBrowserRouter([
   {
@@ -33,9 +34,11 @@ export const createAppRouter = (App: FC) => createBrowserRouter([
       {
         path: RoutePath[AppRoutes.PROFILE],
         element: (
-          <Suspense fallback={<PageLoader/>}>
-            <ProfilePage/>
-          </Suspense>
+          <AuthorizedComponent redirectPath={RoutePath[AppRoutes.MAIN]}>
+            <Suspense fallback={<PageLoader/>}>
+              <ProfilePage/>
+            </Suspense>
+          </AuthorizedComponent>
         ),
       },
       {

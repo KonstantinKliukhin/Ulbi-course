@@ -1,2 +1,2 @@
 export * from './localstorage';
-export * from './common';
+export * from './commonErrors';

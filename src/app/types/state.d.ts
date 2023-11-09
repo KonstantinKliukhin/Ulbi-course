@@ -12,4 +12,5 @@ interface ThunkExtraArg {
 
 interface ThunkDefaultArg<T extends Record<string, any> = ThunkExtraArg> {
   extra: T
+  state: StateSchema
 }

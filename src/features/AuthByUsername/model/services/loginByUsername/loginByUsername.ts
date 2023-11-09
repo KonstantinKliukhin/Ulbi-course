@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 import { type User, userActions } from 'entities/User';
-import { LoginError } from 'features/AuthByUsername/model/types/loginError';
-import { USER_LOCALSTORAGE_KEY } from 'shared/constants';
+import { LOGIN_ERRORS } from '../../errors/loginErrors';
+import { COMMON_ERRORS, USER_LOCALSTORAGE_KEY } from 'shared/constants';
 
-interface LoginByUsernameProps {
+interface LoginByUsernameArgs {
   username: string
   password: string
 }
@@ -14,14 +14,14 @@ interface LoginByUsernameExtra extends ThunkDefaultArg {
 }
 
 export const loginByUsername =
-    createAsyncThunk<User | undefined, LoginByUsernameProps, LoginByUsernameExtra>(
+    createAsyncThunk<User | undefined, LoginByUsernameArgs, LoginByUsernameExtra>(
       'login/loginByUsername',
       async (authData, thunkAPI) => {
         try {
           const response = await thunkAPI.extra.api.post<User>('/login', authData);
 
           if (!response.data) {
-            throw new Error(LoginError.NO_DATA_PROVIDED_FROM_SERVER);
+            throw new Error(COMMON_ERRORS.NO_DATA_PROVIDED_FROM_SERVER);
           }
 
           saveUserToStorage(response.data);
@@ -33,14 +33,14 @@ export const loginByUsername =
           if (e instanceof AxiosError) {
             switch (e.response?.status) {
               case 403:
-                return thunkAPI.rejectWithValue(LoginError.INVALID_CREDENTIALS);
+                return thunkAPI.rejectWithValue(LOGIN_ERRORS.INVALID_CREDENTIALS);
               default:
-                return thunkAPI.rejectWithValue(LoginError.UKNWON_ERROR);
+                return thunkAPI.rejectWithValue(COMMON_ERRORS.UNKNOWN_ERROR);
             }
-          } else if (e instanceof Error && e.message === LoginError.NO_DATA_PROVIDED_FROM_SERVER) {
-            return thunkAPI.rejectWithValue(LoginError.NO_DATA_PROVIDED_FROM_SERVER);
+          } else if (e instanceof Error && e.message === COMMON_ERRORS.NO_DATA_PROVIDED_FROM_SERVER) {
+            return thunkAPI.rejectWithValue(COMMON_ERRORS.NO_DATA_PROVIDED_FROM_SERVER);
           } else {
-            return thunkAPI.rejectWithValue(LoginError.UKNWON_ERROR);
+            return thunkAPI.rejectWithValue(COMMON_ERRORS.UNKNOWN_ERROR);
           }
         }
       }

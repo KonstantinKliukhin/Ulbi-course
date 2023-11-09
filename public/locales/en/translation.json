@@ -6,6 +6,7 @@
   "not_found_page": "Page Not Found",
   "page_error": "Something went wrong",
   "reload_page": "Reload page",
+  "try_reload": "Please try to reload the page",
   "nav_home": "Home",
   "nav_about": "About Site",
   "nav_profile": "Profile",
@@ -19,5 +20,9 @@
   "login_invalid_credentials": "Provided invalid username or password",
   "login_form_title": "Authorization Form",
   "logout": "Logout",
-  "edit": "edit"
+  "edit": "Edit",
+  "cancel": "Cancel",
+  "save": "Save",
+  "currency_label": "Specify Currency",
+  "country_label": "Your Country"
 }
