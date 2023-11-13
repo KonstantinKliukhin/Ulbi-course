@@ -1,7 +1,7 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
-import { EditableProfileDecorator } from 'entities/Profile/ui/ProfileCard/EditableProfileDecorator';
+import { EditableProfileDecorator } from './EditableProfileDecorator';
 import { mockedProfile } from 'shared/mocks';
 
 export default {

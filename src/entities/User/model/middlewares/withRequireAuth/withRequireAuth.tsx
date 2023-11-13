@@ -1,9 +1,9 @@
 import { type ComponentProps, type FC } from 'react';
-import { AuthorizedComponent } from '../AuthorizedComponent/AuthorizedComponent';
+import { RequireAuth } from '../RequireAuth/RequireAuth';
 
-type WithAuthorizationOptions = ComponentProps<typeof AuthorizedComponent>;
+type WithAuthorizationOptions = ComponentProps<typeof RequireAuth>;
 
-export const withAuthorization =
+export const withRequireAuth =
     <Props extends Record<string, any>>(
     WrappedComponent: FC<Props>,
     options: WithAuthorizationOptions
@@ -12,11 +12,11 @@ export const withAuthorization =
 
       const ReturnComponent: FC<Props> = props => {
         return (
-          <AuthorizedComponent {...options}>
+          <RequireAuth {...options}>
             <WrappedComponent {...props} />
-          </AuthorizedComponent>
+          </RequireAuth>
         );
       };
 
-      ReturnComponent.displayName = `withAuthorization(${displayName})`;
+      ReturnComponent.displayName = `withRequireAuth(${displayName})`;
     };

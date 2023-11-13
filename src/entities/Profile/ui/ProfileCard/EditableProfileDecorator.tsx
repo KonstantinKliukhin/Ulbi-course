@@ -2,7 +2,7 @@ import { type ComponentProps, type FC } from 'react';
 import { type ProfileCard } from './ProfileCard';
 import { FormProvider } from 'react-hook-form';
 import { useProfileForm } from 'features/ProfileForm';
-import { type Profile } from 'entities/Profile';
+import { type Profile } from '../../model/types/profile';
 
 export const EditableProfileDecorator = (initialState?: Profile) =>
   function EditableProfileDecorator (Story: FC<ComponentProps<typeof ProfileCard>>) {

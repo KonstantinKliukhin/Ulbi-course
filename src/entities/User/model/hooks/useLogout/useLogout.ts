@@ -1,7 +1,7 @@
 import { USER_LOCALSTORAGE_KEY } from 'shared/constants';
 import { useDispatch } from 'react-redux';
 import { useCallback } from 'react';
-import { userActions } from 'entities/User';
+import { userActions } from '../../slice/userSlice';
 
 export const useLogout = () => {
   const dispatch = useDispatch();

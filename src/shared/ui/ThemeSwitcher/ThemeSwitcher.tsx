@@ -22,6 +22,9 @@ const THEME_CONTENT_MAP: Record<Theme, ThemeSwitcherContent> = {
   [Theme.DARK]: {
     icon: <MoonIcon className={classNames(cls.icon, {}, [cls.moon,])}/>,
   },
+  [Theme.PURPLE]: {
+    icon: <div className={classNames(cls.icon, {}, [cls.purple,])}/>,
+  },
 };
 
 export const ThemeSwitcher = memo<ThemeSwitcherProps>(function ThemeSwitcher (props) {

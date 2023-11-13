@@ -3,9 +3,9 @@ import cls from './ProfileCard.module.scss';
 import { classNames, type WithErrorProps, withLoading, type WithLoadingProps } from 'shared/lib';
 import { useTranslation } from 'react-i18next';
 import { Avatar, FormInput, FormSelect, Text, TextTheme } from 'shared/ui';
-import { CURRENCY_OPTIONS } from 'entities/Currency';
-import { COUNTRY_OPTIONS } from 'entities/Country';
-import { type Profile } from 'entities/Profile';
+import { CURRENCY_OPTIONS } from 'entities/Currency/@x/profile';
+import { COUNTRY_OPTIONS } from 'entities/Country/@x/profile';
+import { type Profile } from '../../model/types/profile';
 
 interface ProfileCardProps extends WithErrorProps, WithLoadingProps {
   className?: string

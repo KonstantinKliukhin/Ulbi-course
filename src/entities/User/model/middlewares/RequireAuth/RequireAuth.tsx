@@ -1,6 +1,6 @@
 import { type FC, type PropsWithChildren } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useIsAuthorized } from 'entities/User';
+import { useIsAuthorized } from '../../hooks/useIsAuthorized/useIsAuthorized';
 
 interface AuthorizedComponentProps extends PropsWithChildren {
   showIfAuthorized?: boolean
@@ -8,7 +8,7 @@ interface AuthorizedComponentProps extends PropsWithChildren {
   redirectPath?: string
 }
 
-export const AuthorizedComponent: FC<AuthorizedComponentProps> = props => {
+export const RequireAuth: FC<AuthorizedComponentProps> = props => {
   const { showIfAuthorized = true, showIfNotAuthorized = false, } = props;
   const isAuthorized = useIsAuthorized();
 
@@ -17,7 +17,7 @@ export const AuthorizedComponent: FC<AuthorizedComponentProps> = props => {
   } else if (showIfAuthorized && isAuthorized) {
     return props.children;
   } else if (props.redirectPath) {
-    return <Navigate to={props.redirectPath}/>;
+    return <Navigate to={props.redirectPath} replace/>;
   } else {
     return null;
   }

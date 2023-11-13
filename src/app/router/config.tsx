@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 import { AppRoutes, RoutePath } from 'shared/config';
 import React, { type FC, Suspense } from 'react';
 import { MainPage } from 'pages/MainPage';
@@ -6,7 +6,9 @@ import { AboutPage } from 'pages/AboutPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { PageLoader } from 'widgets/PageLoader';
 import { ProfilePage } from 'pages/ProfilePage';
-import { AuthorizedComponent } from 'entities/User';
+import { RequireAuth } from 'entities/User';
+import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
+import { ArticlesPage } from 'pages/ArticlesPage';
 
 export const createAppRouter = (App: FC) => createBrowserRouter([
   {
@@ -34,12 +36,38 @@ export const createAppRouter = (App: FC) => createBrowserRouter([
       {
         path: RoutePath[AppRoutes.PROFILE],
         element: (
-          <AuthorizedComponent redirectPath={RoutePath[AppRoutes.MAIN]}>
+          <RequireAuth redirectPath={RoutePath[AppRoutes.MAIN]}>
             <Suspense fallback={<PageLoader/>}>
               <ProfilePage/>
             </Suspense>
-          </AuthorizedComponent>
+          </RequireAuth>
         ),
+      },
+      {
+        path: RoutePath[AppRoutes.ARTICLES],
+        element: <Outlet/>,
+        children: [
+          {
+            index: true,
+            element: (
+              <RequireAuth redirectPath={RoutePath[AppRoutes.MAIN]}>
+                <Suspense fallback={<PageLoader/>}>
+                  <ArticlesPage/>
+                </Suspense>
+              </RequireAuth>
+            ),
+          },
+          {
+            path: RoutePath[AppRoutes.ARTICLE_DETAILS](':id'),
+            element: (
+              <RequireAuth redirectPath={RoutePath[AppRoutes.MAIN]}>
+                <Suspense fallback={<PageLoader/>}>
+                  <ArticleDetailsPage/>
+                </Suspense>
+              </RequireAuth>
+            ),
+          },
+        ],
       },
       {
         path: RoutePath[AppRoutes.NOT_FOUND],

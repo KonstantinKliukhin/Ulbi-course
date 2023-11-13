@@ -1,4 +1,4 @@
-export { useLogout } from 'entities/User/model/hooks/useLogout/useLogout';
+export { useLogout } from './model/hooks/useLogout/useLogout';
 
 export { getUserAuthData } from './model/selectors/getUserAuthData/getUserAuthData';
 
@@ -8,6 +8,6 @@ export { userReducer, userActions } from './model/slice/userSlice';
 
 export type { User, UserSchema } from './model/types/user';
 
-export { AuthorizedComponent } from './model/middlewares/AuthorizedComponent/AuthorizedComponent';
-export { withAuthorization } from './model/middlewares/withAuthorization/withAuthorization';
+export { RequireAuth } from './model/middlewares/RequireAuth/RequireAuth';
+export { withRequireAuth } from './model/middlewares/withRequireAuth/withRequireAuth';
 export { useIsAuthorized } from './model/hooks/useIsAuthorized/useIsAuthorized';
