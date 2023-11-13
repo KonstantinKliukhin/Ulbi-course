@@ -6,8 +6,6 @@ import { initialState } from '../../slice/loginSlice';
 describe('getLoginState', () => {
   test('should return login state', () => {
     const loginState: LoginSchema = {
-      username: 'username',
-      password: 'password',
       error: 'error',
       isLoading: false,
     };

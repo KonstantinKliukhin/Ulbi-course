@@ -17,5 +17,4 @@ export interface ProfileSchema {
   isLoading: boolean
   error: string | null
   readonly: boolean
-  form: Profile
 }

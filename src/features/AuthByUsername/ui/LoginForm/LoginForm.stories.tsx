@@ -15,8 +15,6 @@ export const Primary: LoginFormStory = {};
 export const Error: LoginFormStory = {
   decorators: [StoreDecorator({
     loginForm: {
-      username: 'Invalid name',
-      password: 'Invalid password',
       error: 'Some login error',
       isLoading: false,
     },
@@ -26,8 +24,6 @@ export const Error: LoginFormStory = {
 export const Loading: LoginFormStory = {
   decorators: [StoreDecorator({
     loginForm: {
-      username: 'Invalid name',
-      password: 'Invalid password',
       isLoading: true,
       error: null,
     },

@@ -24,5 +24,10 @@
   "cancel": "Cancel",
   "save": "Save",
   "currency_label": "Specify Currency",
-  "country_label": "Your Country"
+  "country_label": "Your Country",
+  "error_field_required": "Field is required",
+  "error_field_country": "Invalid country",
+  "error_field_currency": "Invalid currency",
+  "error_field_url": "Invalid URL",
+  "error_field_age": "Age must me bigger than 3 and less than 120"
 }

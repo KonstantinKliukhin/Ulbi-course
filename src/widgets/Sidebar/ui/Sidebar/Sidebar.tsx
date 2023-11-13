@@ -1,8 +1,7 @@
 import { memo, useState } from 'react';
 import cls from './Sidebar.module.scss';
 import { classNames } from 'shared/lib';
-import { Button, LanguageSwitcher, ThemeSwitcher } from 'shared/ui';
-import { ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
+import { Button, ButtonSize, ButtonTheme, LanguageSwitcher, ThemeSwitcher } from 'shared/ui';
 import { linkItems } from '../../model/linkItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { useIsAuthorized } from 'entities/User';

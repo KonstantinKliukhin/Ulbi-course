@@ -14,7 +14,6 @@ export const Counter: FC = () => {
   };
 
   const increment = () => {
-    console.log('incr');
     dispatch(counterActions.increment());
   };
 

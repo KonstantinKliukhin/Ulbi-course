@@ -1,8 +1,7 @@
 import { memo } from 'react';
 import cls from './Navbar.module.scss';
 import { classNames, useAppSelector, useBoolState } from 'shared/lib';
-import { Button } from 'shared/ui';
-import { ButtonTheme } from 'shared/ui/Button/Button';
+import { Button, ButtonTheme } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUsername';
 import { getUserAuthData, useLogout } from 'entities/User';

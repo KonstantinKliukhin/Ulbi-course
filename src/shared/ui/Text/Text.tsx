@@ -15,8 +15,8 @@ export enum TextAlign {
 
 interface TextProps {
   className?: string
-  title?: string
-  text?: string
+  title?: string | null
+  text?: string | null
   theme?: TextTheme
   align?: TextAlign
 }

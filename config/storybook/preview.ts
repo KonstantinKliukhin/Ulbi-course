@@ -6,8 +6,8 @@ import { RouterDecorator } from 'shared/config/storybook/routerDecorator/routerD
 import { I18nDecorator } from 'shared/config/storybook/i18nDecorator/i18nDecorator';
 import { GlobalStoreDecorator } from 'shared/config/storybook/globalStoreDecorator/globalStoreDecorator';
 import {
-  OptionalDecoratorsDecorator
-} from 'shared/config/storybook/OptionalDecoratorsDecorator/OptionalDecoratorsDecorator';
+  OptionalDecoratorsProvider
+} from 'shared/config/storybook/OptionalDecoratorsDecorator/OptionalDecoratorsProvider';
 
 const preview: Preview = {
   parameters: {
@@ -20,12 +20,12 @@ const preview: Preview = {
     },
   },
   decorators: [
-    OptionalDecoratorsDecorator,
     I18nDecorator,
     StyleDecorator,
     ThemeDecorator(Theme.LIGHT),
     GlobalStoreDecorator,
     RouterDecorator,
+    OptionalDecoratorsProvider,
   ],
   globalTypes: {
     locale: {

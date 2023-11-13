@@ -1,29 +1,22 @@
 import { type FC } from 'react';
 import cls from './ProfileCard.module.scss';
-import { classNames, withError, type WithErrorProps, withLoading, type WithLoadingProps } from 'shared/lib';
+import { classNames, type WithErrorProps, withLoading, type WithLoadingProps } from 'shared/lib';
 import { useTranslation } from 'react-i18next';
-import { Avatar, Input } from 'shared/ui';
+import { Avatar, FormInput, FormSelect, Text, TextTheme } from 'shared/ui';
+import { CURRENCY_OPTIONS } from 'entities/Currency';
+import { COUNTRY_OPTIONS } from 'entities/Country';
 import { type Profile } from 'entities/Profile';
-import { compose } from '@reduxjs/toolkit';
-import { type Currency, CurrencySelect } from 'entities/Currency/@x/profile';
-import { type Country, CountrySelect } from 'entities/Country/@x/profile';
 
 interface ProfileCardProps extends WithErrorProps, WithLoadingProps {
   className?: string
-  data: Profile
+  avatar?: string
   readonly?: boolean
-  onChangeFirstname?: (value: string) => void
-  onChangeLastname?: (value: string) => void
-  onChangeAge?: (value: string) => void
-  onChangeCity?: (value: string) => void
-  onChangeUsername?: (value: string) => void
-  onChangeAvatar?: (value: string) => void
-  onChangeCurrency?: (value: Currency) => void
-  onChangeCountry?: (value: Country) => void
+  data?: Profile | null
 }
 
 const ProfileCard: FC<ProfileCardProps> = props => {
   const { t, } = useTranslation('profile');
+  const { t: tGlobal, } = useTranslation();
 
   return (
     <div
@@ -34,63 +27,71 @@ const ProfileCard: FC<ProfileCardProps> = props => {
       )}
     >
       <div className={cls.body}>
-        <Avatar className={cls.avatar} size={125} src={props.data.avatar}/>
-        <Input
+        <Avatar className={cls.avatar} size={125} src={props?.avatar}/>
+        <FormInput
+          value={props.readonly ? props.data?.firstname : undefined}
+          name="firstname"
           readonly={props.readonly}
           className={cls.input}
-          value={props.data?.firstname}
           placeholder={t('your_firstname_label')}
-          onChange={props.onChangeFirstname}
         />
-        <Input
+        <FormInput
+          value={props.readonly ? props.data?.lastname : undefined}
+          name="lastname"
           readonly={props.readonly}
           className={cls.input}
-          value={props.data?.lastname}
           placeholder={t('your_lastname_label')}
-          onChange={props.onChangeLastname}
         />
-        <Input
-          pattern="\d."
+        <FormInput
+          value={props.readonly ? props.data?.age : undefined}
+          name="age"
           readonly={props.readonly}
           className={cls.input}
-          value={props.data?.age}
           placeholder={t('your_age_label')}
-          onChange={props.onChangeAge}
         />
-        <Input
+        <FormInput
+          value={props.readonly ? props.data?.city : undefined}
+          name="city"
           readonly={props.readonly}
           className={cls.input}
-          value={props.data?.avatar}
+          placeholder={t('your_city_label')}
+        />
+        <FormInput
+          value={props.readonly ? props.data?.avatar : undefined}
+          name="avatar"
+          readonly={props.readonly}
+          className={cls.input}
           placeholder={t('your_avatar_label')}
-          onChange={props.onChangeAvatar}
         />
-        <Input
+        <FormInput
+          value={props.readonly ? props.data?.username : undefined}
+          name="username"
           readonly={props.readonly}
           className={cls.input}
-          value={props.data?.username}
           placeholder={t('username_label')}
-          onChange={props.onChangeUsername}
         />
-        <CurrencySelect
+        <FormSelect
+          value={props.readonly ? props.data?.currency : undefined}
+          name="currency"
           readonly={props.readonly}
           className={cls.input}
-          value={props.data?.currency}
-          onChange={props.onChangeCurrency}
+          label={tGlobal('currency_label')}
+          options={CURRENCY_OPTIONS}
         />
-        <CountrySelect
+        <FormSelect
+          value={props.readonly ? props.data?.country : undefined}
+          name="country"
+          label={tGlobal('country_label')}
           readonly={props.readonly}
           className={cls.input}
-          value={props.data?.country}
-          onChange={props.onChangeCountry}
+          options={COUNTRY_OPTIONS}
         />
+        <Text className={cls.textError} theme={TextTheme.ERROR} text={props.error}/>
       </div>
     </div>
   );
 };
 
-const ComposedProfileCard = compose<typeof ProfileCard>(
-  withLoading,
-  withError
-)(ProfileCard);
+const ComposedProfileCard = withLoading(ProfileCard);
 
 export { ComposedProfileCard as ProfileCard };

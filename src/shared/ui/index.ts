@@ -1,11 +1,14 @@
 export { AppLink } from './AppLink/AppLink';
-export { Button } from './Button/Button';
+export { Button, ButtonTheme, ButtonSize } from './Button/Button';
 export { Loader } from './Loader/Loader';
 export { ThemeSwitcher } from './ThemeSwitcher/ThemeSwitcher';
 export { LanguageSwitcher } from './LanguageSwitcher/LanguageSwitcher';
 export { Modal } from './Modal/Modal';
 export { Portal } from './Portal/Portal';
 export { Input } from './Input/Input';
+export { Text, TextTheme, TextAlign } from './Text/Text';
+export { FormInput } from './Input/FormInput';
 export { Avatar } from './Avatar/Avatar';
 export { Select } from './Select/Select';
+export { FormSelect } from './Select/FormSelect';
 export type { SelectOption } from './Select/Select';

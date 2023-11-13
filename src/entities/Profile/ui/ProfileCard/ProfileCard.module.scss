@@ -21,5 +21,9 @@
 }
 
 .input:not(:first-child) {
-  margin-top: 15px;
+  margin-top: 5px;
+}
+
+.textError {
+  min-height: 24px;
 }

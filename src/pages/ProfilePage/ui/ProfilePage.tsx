@@ -2,81 +2,51 @@ import { type FC, useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector, withLazySlice } from 'shared/lib';
 import {
   fetchProfileData,
+  getProfile,
   getProfileError,
-  getProfileForm,
   getProfileIsLoading,
   getProfileReadonly,
-  profileActions,
+  type Profile,
   ProfileCard,
-  profileReducer
+  profileReducer,
+  updateProfileData
 } from 'entities/Profile';
 import { ProfilePageHeader } from 'pages/ProfilePage/ui/ProfilePageHeader/ProfilePageHeader';
-import { validateAge } from '../lib/validateAge/validateAge';
-import { type Country } from 'entities/Country';
-import { type Currency } from 'entities/Currency';
+import { FormProvider } from 'react-hook-form';
+import { useProfileForm } from 'features/ProfileForm';
 
 const ProfilePage: FC = () => {
   const dispatch = useAppDispatch();
-  const profileForm = useAppSelector(getProfileForm);
+  const profile = useAppSelector(getProfile);
   const profileIsLoading = useAppSelector(getProfileIsLoading);
   const profileError = useAppSelector(getProfileError);
   const profileReadonly = useAppSelector(getProfileReadonly);
+  const profileForm = useProfileForm(profile);
 
   useEffect(() => {
-    void dispatch(fetchProfileData());
+    if (__PROJECT__ !== 'storybook') {
+      void dispatch(fetchProfileData());
+    }
   }, [dispatch,]);
 
-  const onChangeFirstname = useCallback((value: string) => {
-    dispatch(profileActions.updateProfile({ firstname: value, }));
-  }, [dispatch,]);
-
-  const onChangeLastname = useCallback((value: string) => {
-    dispatch(profileActions.updateProfile({ lastname: value, }));
-  }, [dispatch,]);
-
-  const onChangeAge = useCallback((value: string) => {
-    const isValid = validateAge(value);
-    if (!isValid) return;
-    dispatch(profileActions.updateProfile({ age: Number(value), }));
-  }, [dispatch,]);
-
-  const onChangeUsername = useCallback((value: string) => {
-    dispatch(profileActions.updateProfile({ username: value, }));
-  }, [dispatch,]);
-
-  const onChangeAvatar = useCallback((value: string) => {
-    dispatch(profileActions.updateProfile({ avatar: value, }));
-  }, [dispatch,]);
-
-  const onChangeCity = useCallback((value: string) => {
-    dispatch(profileActions.updateProfile({ city: value, }));
-  }, [dispatch,]);
-
-  const onChangeCountry = useCallback((value: Country) => {
-    dispatch(profileActions.updateProfile({ country: value, }));
-  }, [dispatch,]);
-
-  const onChangeCurrency = useCallback((value: Currency) => {
-    dispatch(profileActions.updateProfile({ currency: value, }));
+  const onSubmit = useCallback((values: Profile) => {
+    void dispatch(updateProfileData(values));
   }, [dispatch,]);
 
   return (
     <>
-      <ProfilePageHeader readonly={profileReadonly}/>
-      <ProfileCard
-        onChangeCountry={onChangeCountry}
-        onChangeCurrency={onChangeCurrency}
-        onChangeAvatar={onChangeAvatar}
-        onChangeUsername={onChangeUsername}
-        onChangeFirstname={onChangeFirstname}
-        onChangeLastname={onChangeLastname}
-        onChangeAge={onChangeAge}
-        onChangeCity={onChangeCity}
-        readonly={profileReadonly}
-        data={profileForm}
-        error={profileError}
-        isLoading={profileIsLoading}
-      />
+      <FormProvider {...profileForm}>
+        <form onSubmit={profileForm.handleSubmit(onSubmit)}>
+          <ProfilePageHeader readonly={profileReadonly}/>
+          <ProfileCard
+            data={profile}
+            error={profileError}
+            readonly={profileReadonly}
+            avatar={profileForm.getValues('avatar')}
+            isLoading={profileIsLoading}
+          />
+        </form>
+      </FormProvider>
     </>
   );
 };

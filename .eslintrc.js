@@ -25,7 +25,18 @@ module.exports = {
     {
       files: ['*.stories.tsx', '*.stories.ts',],
       rules: {
+        'react-hooks/rules-of-hooks': 'off',
         '@typescript-eslint/consistent-type-assertions': 'off',
+      },
+    },
+    {
+      files: ['*.d.ts',],
+      parserOptions: {
+        project: './tsconfig.json',
+      },
+      rules: {
+        '@typescript-eslint/naming-convention': 'off',
+        '@typescript-eslint/consistent-type-imports': 'off',
       },
     },
   ],

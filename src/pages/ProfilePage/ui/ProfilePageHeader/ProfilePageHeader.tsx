@@ -1,11 +1,10 @@
-import { type FC, useCallback } from 'react';
+import { type FC, type MouseEvent, useCallback } from 'react';
 import cls from './ProfilePageHeader.module.scss';
-import { classNames, useAppDispatch } from 'shared/lib';
-import { Text } from 'shared/ui/Text/Text';
-import { Button } from 'shared/ui';
-import { ButtonTheme } from 'shared/ui/Button/Button';
+import { classNames, useAppDispatch, useAppSelector } from 'shared/lib';
+import { Button, ButtonTheme, Text } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
-import { profileActions, updateProfileData } from 'entities/Profile';
+import { getProfile, profileActions } from 'entities/Profile';
+import { useFormContext } from 'react-hook-form';
 
 interface ProfilePageHeaderProps {
   className?: string
@@ -16,18 +15,20 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = props => {
   const { t: tProfile, } = useTranslation('profile');
   const { t: tGlobal, } = useTranslation();
   const dispatch = useAppDispatch();
+  const { reset, } = useFormContext();
+  const profile = useAppSelector(getProfile);
 
-  const onEdit = useCallback(() => {
+  const onEdit = useCallback((e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     dispatch(profileActions.setReadonly(false));
   }, [dispatch,]);
 
   const onCancelEdit = useCallback(() => {
     dispatch(profileActions.cancelEdit());
-  }, [dispatch,]);
-
-  const onSave = useCallback(() => {
-    void dispatch(updateProfileData());
-  }, [dispatch,]);
+    if (profile) {
+      reset(profile);
+    }
+  }, [dispatch, profile, reset,]);
 
   return (
     <div className={classNames(cls.ProfilePageHeader, {}, [props.className,])}>
@@ -41,10 +42,10 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = props => {
             )
           : (
             <>
-              <Button theme={ButtonTheme.OUTLINE} onClick={onSave}>
+              <Button theme={ButtonTheme.OUTLINE} type="submit">
                 {tGlobal('save')}
               </Button>
-              <Button theme={ButtonTheme.OUTLINE_RED} onClick={onCancelEdit}>
+              <Button theme={ButtonTheme.OUTLINE_RED} onClick={onCancelEdit} type="reset">
                 {tGlobal('cancel')}
               </Button>
             </>

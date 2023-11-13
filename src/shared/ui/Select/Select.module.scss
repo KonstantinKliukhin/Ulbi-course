@@ -20,7 +20,20 @@
   border: 1px solid var(--primary-color);
 }
 
+.readonly .select {
+  border: none;
+  appearance: none;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
 .option {
   color: var(--inverted-primary-color);
   background: var(--inverted-bg-color);
+}
+
+.error {
+  min-height: 24px;
 }

@@ -1,18 +1,13 @@
 import { type FC, useContext, useLayoutEffect } from 'react';
 import { type StateSchema, StoreProvider } from 'app/providers/StoreProvider';
-import { type DeepPartial, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit';
-import { OptionalDecoratorsContext } from '../OptionalDecoratorsDecorator/OptionalDecoratorsDecorator';
-import { loginReducer, type LoginSchema } from 'features/AuthByUsername';
-
-const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
-  loginForm: loginReducer as Reducer<LoginSchema | undefined>,
-};
+import { type DeepPartial, type ReducersMapObject } from '@reduxjs/toolkit';
+import { OptionalDecoratorsContext } from '../OptionalDecoratorsDecorator/OptionalDecoratorsProvider';
 
 export const StoreDecorator = (
   initialState: DeepPartial<StateSchema>,
-  asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>
+  asyncReducers?: DeepPartial<ReducersMapObject<Required<StateSchema>>>
 ) => {
-  const mergedAsyncReducers = { ...defaultAsyncReducers, ...asyncReducers, };
+  const mergedAsyncReducers = { ...asyncReducers, };
 
   return function Component (Story: FC) {
     const { setIsCustomReduxStore, } = useContext(OptionalDecoratorsContext);
@@ -22,7 +17,9 @@ export const StoreDecorator = (
     }, [setIsCustomReduxStore,]);
 
     return (
-      <StoreProvider initialState={initialState} asyncReducers={mergedAsyncReducers}>
+      <StoreProvider initialState={initialState}
+        asyncReducers={mergedAsyncReducers as DeepPartial<ReducersMapObject<StateSchema>>}
+      >
         <Story/>
       </StoreProvider>
     );
