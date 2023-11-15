@@ -47,8 +47,9 @@ const preview: Preview = {
       toolbar: {
         icon: 'circlehollow',
         items: [
-          { value: Theme.LIGHT, icon: 'circlehollow', title: 'light', },
-          { value: Theme.DARK, icon: 'circle', title: 'dark', },
+          { value: Theme.LIGHT, title: 'light', },
+          { value: Theme.DARK, title: 'dark', },
+          { value: Theme.PURPLE, title: 'purple', },
         ],
         showName: true,
       },

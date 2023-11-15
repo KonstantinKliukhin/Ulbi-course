@@ -10,5 +10,7 @@ export { Text, TextTheme, TextAlign } from './Text/Text';
 export { FormInput } from './Input/FormInput';
 export { Avatar } from './Avatar/Avatar';
 export { Select } from './Select/Select';
+export { Icon } from './Icon/Icon';
+export { Code } from './Code/Code';
 export { FormSelect } from './Select/FormSelect';
 export type { SelectOption } from './Select/Select';

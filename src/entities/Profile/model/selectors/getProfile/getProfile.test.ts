@@ -12,7 +12,7 @@ describe('getProfile', () => {
   test('should return profile state', () => {
     const mockedState: DeepPartial<StateSchema> = {
       profile: {
-        profile: mockedProfile,
+        data: mockedProfile,
       },
     };
 

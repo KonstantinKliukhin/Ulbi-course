@@ -4,7 +4,7 @@ import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 
 const initialState: ProfileSchema = {
-  profile: null,
+  data: null,
   isLoading: false,
   error: null,
   readonly: true,
@@ -30,7 +30,7 @@ export const profileSlice = createSlice({
       .addCase(fetchProfileData.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.profile = action.payload;
+        state.data = action.payload;
       })
       .addCase(fetchProfileData.rejected, (state, action) => {
         state.isLoading = false;
@@ -42,7 +42,7 @@ export const profileSlice = createSlice({
       .addCase(updateProfileData.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.profile = action.payload;
+        state.data = action.payload;
         state.readonly = true;
       })
       .addCase(updateProfileData.rejected, (state, action) => {

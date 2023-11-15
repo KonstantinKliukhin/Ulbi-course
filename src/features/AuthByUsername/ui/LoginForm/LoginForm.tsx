@@ -1,6 +1,6 @@
 import { type FC, useCallback } from 'react';
 import cls from './LoginForm.module.scss';
-import { classNames, useAppDispatch, useAppSelector, withLazySlice } from 'shared/lib';
+import { classNames, useAppDispatch, useAppSelector, withLazySlices } from 'shared/lib';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme, FormInput, Text, TextTheme } from 'shared/ui';
 import { loginReducer } from '../../model/slice/loginSlice';
@@ -68,4 +68,4 @@ const LoginForm: FC<LoginFormProps> = props => {
   );
 };
 
-export default withLazySlice(LoginForm, { name: 'loginForm', reducer: loginReducer, });
+export default withLazySlices(LoginForm, { reducers: { loginForm: loginReducer, }, });

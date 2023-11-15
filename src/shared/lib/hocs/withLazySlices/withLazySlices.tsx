@@ -1,5 +1,5 @@
 import { useStore } from 'react-redux';
-import { type ReduxStoreWithManager } from 'app/providers/StoreProvider';
+import { type ReduxStoreWithManager, type StateSchema } from 'app/providers/StoreProvider';
 import { type Reducer } from '@reduxjs/toolkit';
 import { type FC, type ReactNode, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'shared/lib';
@@ -8,19 +8,21 @@ import { Loader } from 'shared/ui';
 const getInitSliceAction = (sliceKey: keyof StateSchema) => ({ type: `@@INIT_SLICE ${sliceKey}`, });
 const getRemoveSliceAction = (sliceKey: keyof StateSchema) => ({ type: `@@DESTROY_SLICE ${sliceKey}`, });
 
-interface WithLazySliceOptions<Key extends keyof StateSchema> {
-  name: Key
-  reducer: Reducer<NonNullable<StateSchema[Key]>>
+type ReducersList = {
+  [Name in keyof StateSchema]?: Reducer<NonNullable<StateSchema[Name]>>;
+};
+
+interface WithLazySliceOptions {
+  reducers: ReducersList
   removeOnUnmount?: boolean
   onlyIfSliceReady?: boolean
-  LoaderComponent?: ReactNode
+  loaderComponent?: ReactNode
 }
 
-export const withLazySlice = <Key extends keyof StateSchema, Props extends Record<string, any>>
-  (WrappedComponent: FC<Props>, options: WithLazySliceOptions<Key>): FC<Props> => {
+export const withLazySlices = <const Key extends keyof StateSchema, Props extends Record<string, any>>
+  (WrappedComponent: FC<Props>, options: WithLazySliceOptions): FC<Props> => {
   const {
-    name,
-    reducer,
+    reducers,
     onlyIfSliceReady,
     removeOnUnmount = false,
   } = options;
@@ -29,17 +31,23 @@ export const withLazySlice = <Key extends keyof StateSchema, Props extends Recor
   const ReturnComponent: FC<Props> = props => {
     const dispatch = useAppDispatch();
     const store = useStore() as ReduxStoreWithManager;
-    const isReady = Boolean(useAppSelector(state => state[name]));
-    const loader = options.LoaderComponent ?? <Loader centered/>;
+    const isReady = useAppSelector(state => (
+      Object.keys(reducers).every(key => Boolean(state[key as Key]))
+    ));
+    const loader = options.loaderComponent ?? <Loader centered/>;
 
     useEffect(function manageLazyReducer () {
-      store.reducerManager.add(name, reducer);
-      dispatch(getInitSliceAction(name));
+      Object.entries(reducers).forEach(([key, reducer,]) => {
+        store.reducerManager.add(key as Key, reducer as Reducer<NonNullable<Values<StateSchema>>>);
+        dispatch(getInitSliceAction(key as Key));
+      });
 
       return () => {
         if (removeOnUnmount) {
-          store.reducerManager.remove(name);
-          dispatch(getRemoveSliceAction(name));
+          Object.keys(reducers).forEach(key => {
+            store.reducerManager.remove(key as Key);
+            dispatch(getRemoveSliceAction(key as Key));
+          });
         }
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -50,7 +58,7 @@ export const withLazySlice = <Key extends keyof StateSchema, Props extends Recor
     return <WrappedComponent {...props}/>;
   };
 
-  ReturnComponent.displayName = `withLazy${name}Slice(${displayName})`;
+  ReturnComponent.displayName = `withLazySlices(${displayName})`;
 
   return ReturnComponent;
 };

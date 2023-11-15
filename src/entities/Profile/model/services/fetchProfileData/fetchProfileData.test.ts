@@ -3,7 +3,7 @@ import { fetchProfileData } from './fetchProfileData';
 import { mockedProfile } from 'shared/mocks';
 
 describe('fetchProfileData', () => {
-  test('success update profile', async () => {
+  test('success fetch profile', async () => {
     const thunk = new TestAsyncThunk(fetchProfileData);
     thunk.api.get.mockReturnValue(Promise.resolve({ data: mockedProfile, }));
 
@@ -15,7 +15,7 @@ describe('fetchProfileData', () => {
     expect(result.payload).toEqual(mockedProfile);
   });
 
-  test('error update profile', async () => {
+  test('error fetch profile', async () => {
     const thunk = new TestAsyncThunk(fetchProfileData);
     thunk.api.get.mockReturnValue(Promise.resolve({ status: 403, }));
 

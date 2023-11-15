@@ -29,7 +29,3 @@ export const fetchProfileData =
         }
       }
     );
-
-// function saveUserToStorage (user: Profile) {
-//   localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(user));
-// }

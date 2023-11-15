@@ -1,5 +1,5 @@
 import { type FC, useCallback, useEffect } from 'react';
-import { useAppDispatch, useAppSelector, withLazySlice } from 'shared/lib';
+import { useAppDispatch, useAppSelector, withLazySlices } from 'shared/lib';
 import {
   fetchProfileData,
   getProfile,
@@ -51,11 +51,10 @@ const ProfilePage: FC = () => {
   );
 };
 
-export default withLazySlice(
+export default withLazySlices(
   ProfilePage,
   {
-    name: 'profile',
-    reducer: profileReducer,
+    reducers: { profile: profileReducer, },
     onlyIfSliceReady: true,
   }
 );

@@ -9,14 +9,15 @@ import {
   type ReducersMapObject
 } from '@reduxjs/toolkit';
 import { type ProfileSchema } from 'entities/Profile';
+import { type ArticleDetailsSchema } from 'entities/Article';
 
 export interface StateSchema {
   counter: CounterSchema
   user: UserSchema
-
   // async schemas
   loginForm?: LoginSchema
   profile?: ProfileSchema
+  articleDetails?: ArticleDetailsSchema
 }
 
 export interface ReducerManager {

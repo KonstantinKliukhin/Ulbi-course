@@ -1,6 +1,6 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
-import { Text, TextTheme } from './Text';
+import { Text, TextSize, TextTheme } from './Text';
 
 export default {
   title: 'shared/Text',
@@ -29,5 +29,13 @@ export const TitleAndTextError: TextStory = {
     theme: TextTheme.ERROR,
     title: 'View with title prop passed',
     text: 'View with text prop passed',
+  },
+};
+
+export const TitleAndTextSizeL = {
+  args: {
+    title: 'View with title prop passed',
+    text: 'View with text prop passed',
+    size: TextSize.L,
   },
 };

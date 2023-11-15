@@ -18,7 +18,7 @@ export const Primary: ProfilePageStory = {
     profile: {
       error: null,
       isLoading: false,
-      profile: mockedProfile,
+      data: mockedProfile,
       readonly: true,
     },
   }, { profile: profileReducer, }),],
@@ -30,7 +30,7 @@ export const Loading: ProfilePageStory = {
     profile: {
       error: null,
       isLoading: true,
-      profile: mockedProfile,
+      data: mockedProfile,
       readonly: true,
     },
   }, { profile: profileReducer, }),],
@@ -42,7 +42,7 @@ export const Error: ProfilePageStory = {
     profile: {
       error: 'Some Api Error',
       isLoading: false,
-      profile: mockedProfile,
+      data: mockedProfile,
       readonly: true,
     },
   }, { profile: profileReducer, }),],

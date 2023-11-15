@@ -30,40 +30,65 @@
   border-radius: 50%;
 }
 
+.clearInverted {
+  color: var(--inverted-primary-color);
+}
+
 .clear, .clearInverted {
   padding: 0;
   margin: 0;
   border: none;
   background: none;
   outline: none;
-}
 
-.clearInverted {
-  color: var(--inverted-primary-color);
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .outlineRed {
   border: 1px solid var(--red-light);
   color: var(--red-light);
   background: none;
+
+  &:hover {
+    color: var(--red-dark);
+    border: 1px solid var(--red-dark);
+  }
 }
 
 .outline {
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
   background: none;
+  transition: all 0.15s ease;
+
+  &:hover {
+    color: var(--inverted-primary-color);
+    border: 1px solid var(--inverted-primary-color);
+  }
 }
 
 .background {
   background: var(--bg-color);
   color: var(--primary-color);
   border: none;
+  transition: all 0.15s ease;
+
+  &:hover {
+    color: var(--inverted-primary-color);
+  }
 }
 
 .backgroundInverted {
   background: var(--inverted-bg-color);
   color: var(--inverted-primary-color);
   border: none;
+  transition: all 0.15s ease;
+
+  &:hover {
+    color: var(--primary-color);
+  }
 }
 
 .sizeM {
