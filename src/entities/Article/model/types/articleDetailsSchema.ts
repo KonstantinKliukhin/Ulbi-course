@@ -1,4 +1,4 @@
-import { type Article } from 'entities/Article';
+import { type Article } from './article';
 
 export interface ArticleDetailsSchema {
   isLoading: boolean

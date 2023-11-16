@@ -1,6 +1,5 @@
 import { type DeepPartial } from '@reduxjs/toolkit';
-import { counterReducer } from './counterSlice';
-import { counterActions } from 'entities/Counter/model/slice/counterSlice';
+import { counterActions, counterReducer } from './counterSlice';
 import { type CounterSchema } from '../types/CounterSchema';
 
 describe('counterSlice', () => {

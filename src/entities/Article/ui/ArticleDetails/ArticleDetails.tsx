@@ -1,7 +1,6 @@
-import { type FC, type ReactNode, useCallback, useEffect } from 'react';
+import { type FC, type ReactNode, useCallback } from 'react';
 import cls from './ArticleDetails.module.scss';
-import { classNames, useAppDispatch, useAppSelector, withLazySlices } from 'shared/lib';
-import { fetcharticleById } from '../../model/services/fetchArticleById/fetchArticleById';
+import { classNames, useAppDispatch, useAppSelector, useInitialEffect, withLazySlices } from 'shared/lib';
 import {
   getArticleDetailsData,
   getArticleDetailsError,
@@ -9,14 +8,15 @@ import {
 } from '../../model/selectors/getArticleDetails/getArticleDetails';
 import { Avatar, Icon, Text, TextAlign, TextTheme } from 'shared/ui';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
-import { ArticleDetailsSkeleton } from 'entities/Article/ui/ArticleDetailsSkeleton/ArticleDetailsSkeleton';
+import { ArticleDetailsSkeleton } from '../ArticleDetailsSkeleton/ArticleDetailsSkeleton';
 import EyeIcon from '../../../../../public/assets/icons/eye-20-20.svg';
 import CalendarIcon from '../../../../../public/assets/icons/calendar-20-20.svg';
 import { TextSize } from 'shared/ui/Text/Text';
-import { type ArticleBlock, ArticleBlockType } from 'entities/Article';
-import { ArticleCodeBlockComponent } from 'entities/Article/ui/ArticleCodeBlockComponent/ArticleCodeBlockComponent';
-import { ArticleImageBlockComponent } from 'entities/Article/ui/ArticleImageBlockComponent/ArticleImageBlockComponent';
-import { ArticleTextBlockComponent } from 'entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { type ArticleBlock, ArticleBlockType } from '../../model/types/article';
+import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
+import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { fetcharticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 
 interface ArticleDetailsProps {
   className?: string
@@ -29,11 +29,9 @@ const ArticleDetails: FC<ArticleDetailsProps> = props => {
   const error = useAppSelector(getArticleDetailsError);
   const article = useAppSelector(getArticleDetailsData);
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      void dispatch(fetcharticleById(props.id));
-    }
-  }, [props.id, dispatch,]);
+  useInitialEffect(useCallback(() => {
+    void dispatch(fetcharticleById(props.id));
+  }, [props.id, dispatch,]));
 
   const renderBlock = useCallback((block: ArticleBlock) => {
     switch (block.type) {
@@ -78,13 +76,12 @@ const ArticleDetails: FC<ArticleDetailsProps> = props => {
 };
 
 const composedArticleDetails = withLazySlices(
-  ArticleDetails,
   {
     reducers: { articleDetails: articleDetailsReducer, },
     onlyIfSliceReady: true,
     removeOnUnmount: true,
     loaderComponent: <ArticleDetailsSkeleton/>,
   }
-);
+)(ArticleDetails);
 
 export { composedArticleDetails as ArticleDetails };

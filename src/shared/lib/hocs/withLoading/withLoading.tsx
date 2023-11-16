@@ -9,20 +9,20 @@ interface WithLoadingOptions {
   LoadingComponent?: ReactNode
 }
 
-export const withLoading = <Props extends WithLoadingProps>
-  (WrappedComponent: FC<Props>, options?: WithLoadingOptions) => {
-  const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
-  const LoadingComponent = options?.LoadingComponent ?? <Loader centered/>;
+export const withLoading = (options?: WithLoadingOptions) =>
+    <Props extends WithLoadingProps>(WrappedComponent: FC<Props>): FC<Props> => {
+      const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
+      const LoadingComponent = options?.LoadingComponent ?? <Loader centered/>;
 
-  const ReturnComponent: FC<Props> = (props) => {
-    if (props.isLoading) {
-      return LoadingComponent;
-    } else {
-      return <WrappedComponent {...props} />;
-    }
-  };
+      const ReturnComponent: FC<Props> = (props) => {
+        if (props.isLoading) {
+          return LoadingComponent;
+        } else {
+          return <WrappedComponent {...props} />;
+        }
+      };
 
-  ReturnComponent.displayName = `withLoading(${displayName})`;
+      ReturnComponent.displayName = `withLoading(${displayName})`;
 
-  return ReturnComponent;
-};
+      return ReturnComponent;
+    };

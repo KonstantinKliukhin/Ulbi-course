@@ -19,46 +19,46 @@ interface WithLazySliceOptions {
   loaderComponent?: ReactNode
 }
 
-export const withLazySlices = <const Key extends keyof StateSchema, Props extends Record<string, any>>
-  (WrappedComponent: FC<Props>, options: WithLazySliceOptions): FC<Props> => {
-  const {
-    reducers,
-    onlyIfSliceReady,
-    removeOnUnmount = false,
-  } = options;
-  const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
+export const withLazySlices = <const Key extends keyof StateSchema, >(options: WithLazySliceOptions) =>
+    <Props extends Record<string, any>>(WrappedComponent: FC<Props>): FC<Props> => {
+      const {
+        reducers,
+        onlyIfSliceReady,
+        removeOnUnmount = false,
+      } = options;
+      const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
 
-  const ReturnComponent: FC<Props> = props => {
-    const dispatch = useAppDispatch();
-    const store = useStore() as ReduxStoreWithManager;
-    const isReady = useAppSelector(state => (
-      Object.keys(reducers).every(key => Boolean(state[key as Key]))
-    ));
-    const loader = options.loaderComponent ?? <Loader centered/>;
+      const ReturnComponent: FC<Props> = props => {
+        const dispatch = useAppDispatch();
+        const store = useStore() as ReduxStoreWithManager;
+        const isReady = useAppSelector(state => (
+          Object.keys(reducers).every(key => Boolean(state[key as Key]))
+        ));
+        const loader = options.loaderComponent ?? <Loader centered/>;
 
-    useEffect(function manageLazyReducer () {
-      Object.entries(reducers).forEach(([key, reducer,]) => {
-        store.reducerManager.add(key as Key, reducer as Reducer<NonNullable<Values<StateSchema>>>);
-        dispatch(getInitSliceAction(key as Key));
-      });
-
-      return () => {
-        if (removeOnUnmount) {
-          Object.keys(reducers).forEach(key => {
-            store.reducerManager.remove(key as Key);
-            dispatch(getRemoveSliceAction(key as Key));
+        useEffect(function manageLazyReducer () {
+          Object.entries(reducers).forEach(([key, reducer,]) => {
+            store.reducerManager.add(key as Key, reducer as Reducer<NonNullable<Values<StateSchema>>>);
+            dispatch(getInitSliceAction(key as Key));
           });
-        }
+
+          return () => {
+            if (removeOnUnmount) {
+              Object.keys(reducers).forEach(key => {
+                store.reducerManager.remove(key as Key);
+                dispatch(getRemoveSliceAction(key as Key));
+              });
+            }
+          };
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
+
+        if (!isReady && onlyIfSliceReady) return loader;
+
+        return <WrappedComponent {...props}/>;
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
-    if (!isReady && onlyIfSliceReady) return loader;
+      ReturnComponent.displayName = `withLazySlices(${displayName})`;
 
-    return <WrappedComponent {...props}/>;
-  };
-
-  ReturnComponent.displayName = `withLazySlices(${displayName})`;
-
-  return ReturnComponent;
-};
+      return ReturnComponent;
+    };

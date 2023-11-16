@@ -68,4 +68,4 @@ const LoginForm: FC<LoginFormProps> = props => {
   );
 };
 
-export default withLazySlices(LoginForm, { reducers: { loginForm: loginReducer, }, });
+export default withLazySlices({ reducers: { loginForm: loginReducer, }, })(LoginForm);

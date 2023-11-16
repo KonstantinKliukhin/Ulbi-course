@@ -23,21 +23,21 @@ const defaultErrorComponent: FC<DefaultErrorProps> = props => (
   />
 );
 
-export const withError = <Props extends WithErrorProps, const ErrorProps extends DefaultErrorProps>
-  (WrappedComponent: FC<Props>, options?: WithErrorOptions<ErrorProps>) => {
-  const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
-  const ErrorComponent = options?.ErrorComponent ?? defaultErrorComponent;
+export const withError = <ErrorProps extends DefaultErrorProps>
+  (options?: WithErrorOptions<ErrorProps>) => <Props extends WithErrorProps>(WrappedComponent: FC<Props>) => {
+    const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
+    const ErrorComponent = options?.ErrorComponent ?? defaultErrorComponent;
 
-  const ReturnComponent: FC<Props> = (props) => {
-    if (props.error) {
-      const errorProps = { error: props.error, } as unknown as ErrorProps;
-      return <ErrorComponent {...errorProps}/>;
-    } else {
-      return <WrappedComponent {...props} />;
-    }
+    const ReturnComponent: FC<Props> = (props) => {
+      if (props.error) {
+        const errorProps = { error: props.error, } as unknown as ErrorProps;
+        return <ErrorComponent {...errorProps}/>;
+      } else {
+        return <WrappedComponent {...props} />;
+      }
+    };
+
+    ReturnComponent.displayName = `withError(${displayName})`;
+
+    return ReturnComponent;
   };
-
-  ReturnComponent.displayName = `withError(${displayName})`;
-
-  return ReturnComponent;
-};

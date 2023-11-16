@@ -10,6 +10,7 @@ import {
 } from '@reduxjs/toolkit';
 import { type ProfileSchema } from 'entities/Profile';
 import { type ArticleDetailsSchema } from 'entities/Article';
+import { type ArticleCommentsSchema } from 'pages/ArticleDetailsPage';
 
 export interface StateSchema {
   counter: CounterSchema
@@ -18,6 +19,7 @@ export interface StateSchema {
   loginForm?: LoginSchema
   profile?: ProfileSchema
   articleDetails?: ArticleDetailsSchema
+  articleComments?: ArticleCommentsSchema
 }
 
 export interface ReducerManager {

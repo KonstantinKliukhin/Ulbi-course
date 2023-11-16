@@ -1,5 +1,5 @@
-import { type FC, useCallback, useEffect } from 'react';
-import { useAppDispatch, useAppSelector, withLazySlices } from 'shared/lib';
+import { type FC, useCallback } from 'react';
+import { useAppDispatch, useAppSelector, useInitialEffect, withLazySlices } from 'shared/lib';
 import {
   fetchProfileData,
   getProfile,
@@ -23,11 +23,9 @@ const ProfilePage: FC = () => {
   const profileReadonly = useAppSelector(getProfileReadonly);
   const profileForm = useProfileForm(profile);
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      void dispatch(fetchProfileData());
-    }
-  }, [dispatch,]);
+  useInitialEffect(useCallback(() => {
+    void dispatch(fetchProfileData());
+  }, [dispatch,]));
 
   const onSubmit = useCallback((values: Profile) => {
     void dispatch(updateProfileData(values));
@@ -52,9 +50,8 @@ const ProfilePage: FC = () => {
 };
 
 export default withLazySlices(
-  ProfilePage,
   {
     reducers: { profile: profileReducer, },
     onlyIfSliceReady: true,
   }
-);
+)(ProfilePage);

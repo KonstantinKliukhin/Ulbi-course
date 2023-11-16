@@ -92,6 +92,6 @@ const ProfileCard: FC<ProfileCardProps> = props => {
   );
 };
 
-const ComposedProfileCard = withLoading(ProfileCard);
+const ComposedProfileCard = withLoading()(ProfileCard);
 
 export { ComposedProfileCard as ProfileCard };

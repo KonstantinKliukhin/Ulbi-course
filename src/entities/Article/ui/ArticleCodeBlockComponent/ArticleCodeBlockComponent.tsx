@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { type ArticleCodeBlock } from 'entities/Article';
+import { type ArticleCodeBlock } from '../../model/types/article';
 import { Code } from 'shared/ui';
 
 interface ArticleCodeBlockComponentProps {

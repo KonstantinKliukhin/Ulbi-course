@@ -5,6 +5,7 @@ export { stopPropagation } from './stopPropagation/stopPropagation';
 export { useAppDispatch } from './hooks/reduxHooks/useAppDispatch';
 export { useAppSelector } from './hooks/reduxHooks/useAppSelector';
 export { useActions } from './hooks/reduxHooks/useActions';
+export { useInitialEffect } from './hooks/useInitialEffect/useInitialEffect';
 export { withLazySlices } from 'shared/lib/hocs/withLazySlices/withLazySlices';
 export { withLoading, type WithLoadingProps } from './hocs/withLoading/withLoading';
 export { withError, type WithErrorProps } from './hocs/withError/withError';
