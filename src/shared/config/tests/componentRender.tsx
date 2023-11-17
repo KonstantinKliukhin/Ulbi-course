@@ -4,7 +4,6 @@ import { render } from '@testing-library/react';
 import i18nForTest from 'shared/config/i18n/i18nForTest';
 import { I18nextProvider } from 'react-i18next';
 import { AppRoutes, RoutePath } from 'shared/config';
-import { type DeepPartial } from '@reduxjs/toolkit';
 import { StoreProvider } from 'app/providers/StoreProvider';
 
 interface RenderWithRouterOptions {

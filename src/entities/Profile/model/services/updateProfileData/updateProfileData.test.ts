@@ -9,7 +9,9 @@ describe('updateProfileData', () => {
     const profileValue: Profile = { firstname: 'Kostya', };
     thunk.api.put.mockReturnValue(Promise.resolve({ data: mockedProfile, }));
 
-    const result = await thunk.callThunk(profileValue);
+    const result = await thunk.callThunk(
+      { profileForm: profileValue, profileId: '1', }
+    );
 
     expect(thunk.dispatch).toHaveBeenCalledTimes(2);
     expect(thunk.api.put).toHaveBeenCalled();
@@ -21,7 +23,7 @@ describe('updateProfileData', () => {
     const thunk = new TestAsyncThunk(updateProfileData);
     thunk.api.put.mockReturnValue(Promise.resolve({ status: 403, }));
 
-    const result = await thunk.callThunk({ firstname: 'Kostya', });
+    const result = await thunk.callThunk({ profileForm: {}, profileId: '1', });
 
     expect(thunk.dispatch).toHaveBeenCalledTimes(2);
     expect(thunk.api.put).toHaveBeenCalled();

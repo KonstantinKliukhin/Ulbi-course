@@ -2,8 +2,9 @@ import { type FC } from 'react';
 import cls from './CommentCard.module.scss';
 import { classNames } from 'shared/lib';
 import { type Comment } from '../../model/types/comment';
-import { Avatar, Text } from 'shared/ui';
+import { AppLink, Avatar, Text } from 'shared/ui';
 import { CommentCardSkeleton } from './CommentCardSkeleton';
+import { AppRoutes, RoutePath } from 'shared/config';
 
 interface CommentCardProps {
   className?: string
@@ -15,10 +16,10 @@ export const CommentCard: FC<CommentCardProps> = props => {
   if (props.isLoading) return <CommentCardSkeleton/>;
   return (
     <div className={classNames(cls.CommentCard, {}, [props.className,])}>
-      <div className={cls.header}>
+      <AppLink className={cls.header} to={RoutePath[AppRoutes.PROFILE](props.comment.user.id)}>
         <Avatar size={45} src={props.comment.user.avatar}/>
-        <Text title={props.comment.user.username}/>
-      </div>
+        <Text titleClassName={cls.username} title={props.comment.user.username}/>
+      </AppLink>
       <Text className={cls.text} text={props.comment.text}/>
     </div>
   );

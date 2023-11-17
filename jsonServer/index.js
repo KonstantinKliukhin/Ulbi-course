@@ -1,7 +1,7 @@
 const fs = require('fs');
 const jsonServer = require('json-server');
 const path = require('path');
-
+const uuidV4 = require('uuid').v4;
 const server = jsonServer.create();
 
 const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
@@ -35,6 +35,21 @@ server.post('/login', (req, res) => {
     } catch (e) {
         console.log(e);
         return res.status(500).json({message: e.message});
+    }
+});
+
+server.post('/comments', (req, res, next) => {
+    const comment = req.body;
+    comment.id = uuidV4();
+    router.db.get('comments').push(comment).write();
+    const users = router.db.get('users').value();
+    const user = users.find(u => u.id === comment.userId);
+
+    if (user) {
+        comment.user = user;
+        res.jsonp(comment);
+    } else {
+        res.status(400).jsonp({error: 'User not found'});
     }
 });
 

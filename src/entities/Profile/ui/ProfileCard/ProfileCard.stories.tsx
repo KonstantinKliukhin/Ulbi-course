@@ -5,7 +5,7 @@ import { EditableProfileDecorator } from './EditableProfileDecorator';
 import { mockedProfile } from 'shared/mocks';
 
 export default {
-  title: 'entities/ProfileCard',
+  title: 'entities/Profile/ProfileCard',
   component: ProfileCard,
 } as Meta<ComponentProps<typeof ProfileCard>>;
 

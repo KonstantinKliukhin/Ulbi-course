@@ -11,11 +11,13 @@ import {
   profileReducer,
   updateProfileData
 } from 'entities/Profile';
-import { ProfilePageHeader } from 'pages/ProfilePage/ui/ProfilePageHeader/ProfilePageHeader';
+import { ProfilePageHeader } from '../ProfilePageHeader/ProfilePageHeader';
 import { FormProvider } from 'react-hook-form';
 import { useProfileForm } from 'features/ProfileForm';
+import { useParams } from 'react-router-dom';
 
 const ProfilePage: FC = () => {
+  const params = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
   const profile = useAppSelector(getProfile);
   const profileIsLoading = useAppSelector(getProfileIsLoading);
@@ -24,18 +26,22 @@ const ProfilePage: FC = () => {
   const profileForm = useProfileForm(profile);
 
   useInitialEffect(useCallback(() => {
-    void dispatch(fetchProfileData());
-  }, [dispatch,]));
+    if (params.id) {
+      void dispatch(fetchProfileData(params.id));
+    }
+  }, [dispatch, params.id,]));
 
   const onSubmit = useCallback((values: Profile) => {
-    void dispatch(updateProfileData(values));
-  }, [dispatch,]);
+    if (params.id) {
+      void dispatch(updateProfileData({ profileForm: values, profileId: params.id, }));
+    }
+  }, [dispatch, params.id,]);
 
   return (
     <>
       <FormProvider {...profileForm}>
         <form onSubmit={profileForm.handleSubmit(onSubmit)}>
-          <ProfilePageHeader readonly={profileReadonly}/>
+          <ProfilePageHeader/>
           <ProfileCard
             data={profile}
             error={profileError}

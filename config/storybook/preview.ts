@@ -2,15 +2,16 @@ import type { Preview } from '@storybook/react';
 import { StyleDecorator } from 'shared/config/storybook/styleDecorator/styleDecorator';
 import { ThemeDecorator } from 'shared/config/storybook/themeDecorator/themeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { RouterDecorator } from 'shared/config/storybook/routerDecorator/routerDecorator';
 import { I18nDecorator } from 'shared/config/storybook/i18nDecorator/i18nDecorator';
 import { GlobalStoreDecorator } from 'shared/config/storybook/globalStoreDecorator/globalStoreDecorator';
 import {
   OptionalDecoratorsProvider
-} from 'shared/config/storybook/OptionalDecoratorsDecorator/OptionalDecoratorsProvider';
+} from 'shared/config/storybook/OptionalDecoratorsProvider/OptionalDecoratorsProvider';
+import { reactRouterParameters, withRouter } from 'storybook-addon-react-router-v6';
 
 const preview: Preview = {
   parameters: {
+    reactRouter: reactRouterParameters({}),
     actions: { argTypesRegex: '^on[A-Z].*', },
     controls: {
       matchers: {
@@ -24,7 +25,7 @@ const preview: Preview = {
     StyleDecorator,
     ThemeDecorator(Theme.LIGHT),
     GlobalStoreDecorator,
-    RouterDecorator,
+    withRouter,
     OptionalDecoratorsProvider,
   ],
   globalTypes: {

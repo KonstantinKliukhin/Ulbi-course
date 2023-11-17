@@ -1,4 +1,3 @@
-import { type DeepPartial } from '@reduxjs/toolkit';
 import { type User, type UserSchema } from '../types/user';
 import { userActions, userReducer } from './userSlice';
 

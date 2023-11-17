@@ -6,13 +6,13 @@ import { mockedArticle } from 'shared/mocks';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 
 export default {
-  title: 'entities/ArticleDetails',
+  title: 'entities/Article/ArticleDetails',
   component: ArticleDetails,
 } as Meta<ComponentProps<typeof ArticleDetails>>;
 
 type ArticleDetailsStory = StoryObj<typeof ArticleDetails>;
 
-export const Primary: ArticleDetailsStory = {
+export const Default: ArticleDetailsStory = {
   args: {},
   decorators: [StoreDecorator({
     articleDetails: {

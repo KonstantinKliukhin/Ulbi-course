@@ -45,18 +45,20 @@ const LoginForm: FC<LoginFormProps> = props => {
           : <div className={cls.error}/>
                 }
         <FormInput
+          disabled={isLoading}
           name="username"
           placeholder={t('user_name')}
           className={cls.input}
           autoFocus
         />
         <FormInput
+          disabled={isLoading}
           name="password"
           placeholder={t('password')}
           className={cls.input}
         />
         <Button
-          disabled={isLoading}
+          disabled={isLoading || !loginForm.formState.isValid}
           onClick={onSubmit}
           theme={ButtonTheme.OUTLINE}
           className={cls.loginBtn}

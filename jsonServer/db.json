@@ -6,22 +6,47 @@
       "author": "typicode"
     }
   ],
-  "profile": {
-    "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-    "username": "admin",
-    "city": "Kharkiv!",
-    "currency": "USD",
-    "country": "England",
-    "age": 21,
-    "lastname": "Kliukhin",
-    "firstname": "Konstantin"
-  },
+  "profile": [
+    {
+      "id": "1",
+      "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+      "username": "admin",
+      "city": "Kharkiv!",
+      "currency": "USD",
+      "country": "England",
+      "age": 21,
+      "lastname": "Kliukhin",
+      "firstname": "Konstantin"
+    },
+    {
+      "id": "2",
+      "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+      "username": "admin 1",
+      "city": "London",
+      "currency": "UAH",
+      "country": "England",
+      "age": 25,
+      "lastname": "Milburn",
+      "firstname": "Dave"
+    },
+    {
+      "id": "3",
+      "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+      "username": "admin 1",
+      "city": "London",
+      "currency": "EUR",
+      "country": "England",
+      "age": 28,
+      "lastname": "Hollingsworth",
+      "firstname": "Anthony"
+    }
+  ],
   "articles": [
     {
       "id": "1",
       "title": "Javascript news",
       "subtitle": "Whats new in JS in 2023 year?",
-      "img": "",
+      "img": "https://javascripttraining.ie/img/javascriptlogo.png",
       "views": 12312,
       "createdAt": "26.02.2022",
       "type": [
@@ -100,13 +125,50 @@
       "id": "2",
       "text": "some comment 2",
       "articleId": "1",
-      "userId": "1"
+      "userId": "2"
     },
     {
       "id": "3",
       "text": "some comment 3",
       "articleId": "1",
-      "userId": "1"
+      "userId": "3"
+    },
+    {
+      "text": "21312312",
+      "userId": "1",
+      "articleId": "1",
+      "id": "vZaOYJU"
+    },
+    {
+      "text": "4234234",
+      "userId": "1",
+      "articleId": "1",
+      "_expand": "user",
+      "id": "QjxqJux"
+    },
+    {
+      "text": "ewqeqw",
+      "userId": "1",
+      "articleId": "1",
+      "id": "QLQOd7y"
+    },
+    {
+      "text": "12312312",
+      "userId": "1",
+      "articleId": "1",
+      "id": "1633a140-8159-4724-8e3b-b292a88ae17f",
+      "user": {
+        "id": "1",
+        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+        "username": "admin",
+        "password": "123"
+      }
+    },
+    {
+      "text": "sadasdasd",
+      "userId": "1",
+      "articleId": "1",
+      "id": "07c88bac-e710-44f6-946f-5979bd898a11"
     }
   ],
   "users": [

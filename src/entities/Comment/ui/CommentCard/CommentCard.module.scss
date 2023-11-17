@@ -9,6 +9,14 @@
   column-gap: 15px;
 }
 
+.username {
+  text-decoration-color: currentcolor;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .text {
   margin-top: 10px;
 }

@@ -1,5 +1,6 @@
 import { type FC, type ReactNode } from 'react';
 import { Loader } from '../../../ui/Loader/Loader';
+import { useAppSelector } from 'shared/lib';
 
 export interface WithLoadingProps {
   isLoading?: boolean
@@ -7,6 +8,7 @@ export interface WithLoadingProps {
 
 interface WithLoadingOptions {
   LoadingComponent?: ReactNode
+  loadingSelector?: (state: StateSchema) => boolean
 }
 
 export const withLoading = (options?: WithLoadingOptions) =>
@@ -15,7 +17,8 @@ export const withLoading = (options?: WithLoadingOptions) =>
       const LoadingComponent = options?.LoadingComponent ?? <Loader centered/>;
 
       const ReturnComponent: FC<Props> = (props) => {
-        if (props.isLoading) {
+        const isLoading = useAppSelector(options?.loadingSelector ?? (() => props.isLoading));
+        if (isLoading) {
           return LoadingComponent;
         } else {
           return <WrappedComponent {...props} />;

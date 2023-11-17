@@ -2,16 +2,22 @@ import { createSlice } from '@reduxjs/toolkit';
 import { type ArticleCommentsSchema } from '../types/ArticleCommentsSchema';
 import { fetchArticleComments } from '../services/fetchArticleComments/fetchArticleComments';
 import { commentsAdapter } from '../adapters/commentsAdapter';
+import { addCommentForArticle } from '../services/addCommentForArticle/addCommentForArticle';
 
-const initialState: ArticleCommentsSchema = commentsAdapter.getInitialState({
+export const initialState: ArticleCommentsSchema = commentsAdapter.getInitialState({
   isLoading: false,
   error: null,
+  addCommentError: null,
+  addCommentIsLoading: false,
 });
 
 export const articleCommentsSlice = createSlice({
   name: 'articleComments',
   initialState,
-  reducers: {},
+  reducers: {
+    addComment: commentsAdapter.addOne,
+    removeComment: commentsAdapter.removeOne,
+  },
   extraReducers: builder =>
     builder
       .addCase(fetchArticleComments.pending, (state) => {
@@ -25,6 +31,17 @@ export const articleCommentsSlice = createSlice({
       .addCase(fetchArticleComments.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload ?? null;
+      })
+      .addCase(addCommentForArticle.pending, (state) => {
+        state.addCommentIsLoading = true;
+      })
+      .addCase(addCommentForArticle.fulfilled, (state, action) => {
+        state.addCommentIsLoading = false;
+        state.addCommentError = null;
+      })
+      .addCase(addCommentForArticle.rejected, (state, action) => {
+        state.addCommentIsLoading = false;
+        state.addCommentError = action.payload ?? null;
       }),
 });
 

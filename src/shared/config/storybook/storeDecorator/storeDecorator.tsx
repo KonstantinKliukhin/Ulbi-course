@@ -1,7 +1,7 @@
 import { type FC, useContext, useLayoutEffect } from 'react';
 import { type StateSchema, StoreProvider } from 'app/providers/StoreProvider';
-import { type DeepPartial, type ReducersMapObject } from '@reduxjs/toolkit';
-import { OptionalDecoratorsContext } from '../OptionalDecoratorsDecorator/OptionalDecoratorsProvider';
+import { type ReducersMapObject } from '@reduxjs/toolkit';
+import { OptionalDecoratorsContext } from 'shared/config/storybook/OptionalDecoratorsProvider/OptionalDecoratorsProvider';
 
 export const StoreDecorator = (
   initialState: DeepPartial<StateSchema>,

@@ -1,58 +1,48 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import cls from './Sidebar.module.scss';
-import { classNames } from 'shared/lib';
+import { classNames, useBoolState } from 'shared/lib';
 import { Button, ButtonSize, ButtonTheme, LanguageSwitcher, ThemeSwitcher } from 'shared/ui';
-import { linkItems } from '../../model/linkItems';
+import { useLinkItems } from '../../model/linkItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
-import { useIsAuthorized } from 'entities/User';
 
 interface SidebarProps {
   className?: string
 }
 
 export const Sidebar = memo<SidebarProps>(function Sidebar (props) {
-  const [collapsed, setCollapsed,] = useState(false);
-  const isAuthorized = useIsAuthorized();
-  const onToggle = (): void => {
-    setCollapsed(prev => !prev);
-  };
+  const collapsed = useBoolState(false);
+  const linkItems = useLinkItems();
 
   return (
     <div
       data-testid="sidebar"
       className={classNames(
         cls.Sidebar,
-        { [cls.collapsed]: collapsed, },
+        { [cls.collapsed]: collapsed.boolState, },
         [props.className,]
       )}
     >
       <Button
         data-testid="sidebar-toggle"
-        onClick={onToggle}
+        onClick={collapsed.toggle}
         className={cls.collapseBtn}
         theme={ButtonTheme.BACKGROUND_INVERTED}
         size={ButtonSize.L}
         square
         rounded
       >
-        {collapsed ? '>' : '<'}
+        {collapsed.boolState ? '>' : '<'}
       </Button>
 
       <div
         className={cls.items}
-        onClick={() => {
-          setCollapsed(true);
-        }}
+        onClick={collapsed.enable}
       >
-        {linkItems.map(item => (
-          !isAuthorized && item.onlyAuthorized
-            ? null
-            : <SidebarItem key={item.path} item={item} collapsed={collapsed}/>
-        ))}
+        {linkItems.map(item => <SidebarItem key={item.path} item={item} collapsed={collapsed.boolState}/>)}
       </div>
 
       <div className={cls.switchers}>
-        <LanguageSwitcher short={collapsed}/>
+        <LanguageSwitcher short={collapsed.boolState}/>
         <ThemeSwitcher className={cls.themeSwitcher}/>
       </div>
     </div>

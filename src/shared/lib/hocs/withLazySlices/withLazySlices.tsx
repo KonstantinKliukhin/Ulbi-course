@@ -23,7 +23,7 @@ export const withLazySlices = <const Key extends keyof StateSchema, >(options: W
     <Props extends Record<string, any>>(WrappedComponent: FC<Props>): FC<Props> => {
       const {
         reducers,
-        onlyIfSliceReady,
+        onlyIfSliceReady = false,
         removeOnUnmount = false,
       } = options;
       const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';

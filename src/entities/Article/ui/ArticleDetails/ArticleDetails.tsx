@@ -28,7 +28,6 @@ const ArticleDetails: FC<ArticleDetailsProps> = props => {
   const isLoading = useAppSelector(getArticleDetailsIsLoading);
   const error = useAppSelector(getArticleDetailsError);
   const article = useAppSelector(getArticleDetailsData);
-
   useInitialEffect(useCallback(() => {
     void dispatch(fetcharticleById(props.id));
   }, [props.id, dispatch,]));

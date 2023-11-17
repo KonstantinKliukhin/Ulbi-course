@@ -1,8 +1,6 @@
 import { type FC, useContext } from 'react';
 import { StoreProvider } from 'app/providers/StoreProvider';
-import {
-  OptionalDecoratorsContext
-} from 'shared/config/storybook/OptionalDecoratorsDecorator/OptionalDecoratorsProvider';
+import { OptionalDecoratorsContext } from 'shared/config/storybook/OptionalDecoratorsProvider/OptionalDecoratorsProvider';
 
 export const GlobalStoreDecorator = (Story: FC) => {
   const isCustomStore = useContext(OptionalDecoratorsContext).isCustomReduxStore;

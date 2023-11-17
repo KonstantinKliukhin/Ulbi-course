@@ -7,11 +7,11 @@ interface fetchProfileDataExtra extends ThunkDefaultArg {
 }
 
 export const fetchProfileData =
-    createAsyncThunk<Profile, undefined, fetchProfileDataExtra>(
+    createAsyncThunk<Profile, string, fetchProfileDataExtra>(
       'profile/fetchProfileData',
-      async (_, thunkAPI) => {
+      async (profileId, thunkAPI) => {
         try {
-          const response = await thunkAPI.extra.api.get<Profile>('/profile');
+          const response = await thunkAPI.extra.api.get<Profile>(`/profile/${profileId}`);
 
           if (!response.data) {
             throw new Error(COMMON_API_ERRORS.NO_DATA_PROVIDED_FROM_SERVER);

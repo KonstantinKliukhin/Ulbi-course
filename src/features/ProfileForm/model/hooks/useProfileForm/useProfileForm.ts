@@ -1,9 +1,7 @@
 import { type Profile } from 'entities/Profile';
 import { useForm } from 'react-hook-form';
 import { useYupValidationResolver } from 'shared/lib';
-import {
-  getProfileValidationSchema
-} from 'features/ProfileForm/model/validation/getProfileValidationSchema/getProfileValidationSchema';
+import { getProfileValidationSchema } from '../../validation/getProfileValidationSchema/getProfileValidationSchema';
 import { useEffect } from 'react';
 
 export interface UseProfileFormOptions {

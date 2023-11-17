@@ -6,12 +6,17 @@ interface fetchProfileDataExtra extends ThunkDefaultArg {
   rejectValue: string
 }
 
+interface FetchProfileDataArg {
+  profileForm: Profile
+  profileId: string
+}
+
 export const updateProfileData =
-    createAsyncThunk<Profile, Profile, fetchProfileDataExtra>(
+    createAsyncThunk<Profile, FetchProfileDataArg, fetchProfileDataExtra>(
       'profile/updateProfileData',
-      async (profileForm, thunkAPI) => {
+      async ({ profileForm, profileId, }, thunkAPI) => {
         try {
-          const response = await thunkAPI.extra.api.put<Profile>('/profile', profileForm);
+          const response = await thunkAPI.extra.api.put<Profile>(`/profile/${profileId}`, profileForm);
 
           if (!response.data) {
             throw new Error(COMMON_API_ERRORS.NO_DATA_PROVIDED_FROM_SERVER);

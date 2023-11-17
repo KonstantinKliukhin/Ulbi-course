@@ -34,7 +34,7 @@ export const createAppRouter = (App: FC) => createBrowserRouter([
         ),
       },
       {
-        path: RoutePath[AppRoutes.PROFILE],
+        path: RoutePath[AppRoutes.PROFILE](':id'),
         element: (
           <RequireAuth redirectPath={RoutePath[AppRoutes.MAIN]}>
             <Suspense fallback={<PageLoader/>}>

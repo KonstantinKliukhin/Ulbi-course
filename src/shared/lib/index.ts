@@ -1,5 +1,6 @@
 export { classNames } from './classNames/classNames';
 export { separateFormProps } from './separateFormProps/separateFormProps';
+export { addOptionalyToArray } from './addOptionalyToArray/addOptionalyToArray';
 export { useBoolState } from './hooks/useBoolState/useBoolState';
 export { stopPropagation } from './stopPropagation/stopPropagation';
 export { useAppDispatch } from './hooks/reduxHooks/useAppDispatch';

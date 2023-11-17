@@ -4,6 +4,9 @@ import { CommentCardSkeleton } from '../CommentCard/CommentCardSkeleton';
 
 export const CommentsListSkeleton = () => (
   <div className={cls.CommentsList}>
-    {Array(4).fill(null).map((_, index) => <CommentCardSkeleton key={index}/>)}
+    <CommentCardSkeleton/>
+    <CommentCardSkeleton/>
+    <CommentCardSkeleton/>
+    <CommentCardSkeleton/>
   </div>
 );

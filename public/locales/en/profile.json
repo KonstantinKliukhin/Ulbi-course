@@ -1,9 +1,9 @@
 {
   "profile": "Profile",
-  "your_firstname_label": "Your Firstname",
-  "your_lastname_label": "Your Lastname",
-  "your_age_label": "Your Age",
-  "your_city_label": "Your City",
-  "your_avatar_label": "Your Avatar URL",
-  "username_label": "Your Username"
+  "your_firstname_label": "Firstname",
+  "your_lastname_label": "Lastname",
+  "your_age_label": "Age",
+  "your_city_label": "City",
+  "your_avatar_label": "Avatar URL",
+  "username_label": "Username"
 }
