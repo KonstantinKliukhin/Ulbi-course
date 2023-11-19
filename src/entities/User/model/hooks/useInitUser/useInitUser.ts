@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { USER_LOCALSTORAGE_KEY } from 'shared/constants';
+import { LOCAL_STORAGE_USER_KEY } from 'shared/constants';
 import { userActions } from '../../slice/userSlice';
 import { type User } from '../../types/user';
 
@@ -17,7 +17,7 @@ export const useInitUser = () => {
 };
 
 function getUserFromLocalStorage (): User | null {
-  const storageValue = localStorage.getItem(USER_LOCALSTORAGE_KEY);
+  const storageValue = localStorage.getItem(LOCAL_STORAGE_USER_KEY);
   if (!storageValue) return null;
 
   const user = JSON.parse(storageValue) as User | undefined;

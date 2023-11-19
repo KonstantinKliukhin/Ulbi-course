@@ -14,7 +14,7 @@ import {
   getAddCommentIsLoading,
   getArticleCommentsError,
   getArticleCommentsIsLoading
-} from '../../model/selectors/getArticleComments/getArticleComments';
+} from 'pages/ArticleDetailsPage/model/selectors/getArticleCommentsState/getArticleCommentsState';
 import { fetchArticleComments } from '../../model/services/fetchArticleComments/fetchArticleComments';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';

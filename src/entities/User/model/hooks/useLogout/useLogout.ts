@@ -1,4 +1,4 @@
-import { USER_LOCALSTORAGE_KEY } from 'shared/constants';
+import { LOCAL_STORAGE_USER_KEY } from 'shared/constants';
 import { useDispatch } from 'react-redux';
 import { useCallback } from 'react';
 import { userActions } from '../../slice/userSlice';
@@ -13,5 +13,5 @@ export const useLogout = () => {
 };
 
 function removeUserFromStorage () {
-  localStorage.removeItem(USER_LOCALSTORAGE_KEY);
+  localStorage.removeItem(LOCAL_STORAGE_USER_KEY);
 }

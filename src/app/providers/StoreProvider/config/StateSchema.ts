@@ -11,6 +11,7 @@ import {
 import { type ProfileSchema } from 'entities/Profile';
 import { type ArticleDetailsSchema } from 'entities/Article';
 import { type ArticleCommentsSchema } from 'pages/ArticleDetailsPage';
+import { type ArticlesPageSchema } from 'pages/ArticlesPage';
 
 export interface StateSchema {
   counter: CounterSchema
@@ -20,6 +21,7 @@ export interface StateSchema {
   profile?: ProfileSchema
   articleDetails?: ArticleDetailsSchema
   articleComments?: ArticleCommentsSchema
+  articlesPage?: ArticlesPageSchema
 }
 
 export interface ReducerManager {

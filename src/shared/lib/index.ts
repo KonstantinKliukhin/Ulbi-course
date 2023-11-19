@@ -13,3 +13,4 @@ export { withError, type WithErrorProps } from './hocs/withError/withError';
 export { withFormContext } from './hocs/withFormContext/withFormContext';
 export { useYupValidationResolver } from './hooks/useYupValidationResolver/useYupValidationResolver';
 export { useHover } from './hooks/useHover/useHover';
+export { useIsMounted } from './hooks/useIsMounted/useIsMounted';

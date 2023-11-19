@@ -1,0 +1,14 @@
+.ArticleViewSelector {
+  display: flex;
+  column-gap: 10px;
+}
+
+.button {
+  opacity: 0.5;
+
+  &.selected {
+    opacity: 1;
+  }
+}
+
+

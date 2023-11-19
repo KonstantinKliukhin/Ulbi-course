@@ -4,9 +4,9 @@ import {
   getAddCommentIsLoading,
   getArticleCommentsError,
   getArticleCommentsIsLoading
-} from './getArticleComments';
+} from './getArticleCommentsState';
 
-describe('getArticleComments', () => {
+describe('getArticleCommentsState', () => {
   test('getArticleCommentsIsLoading should work with empty state', () => {
     const mockedState: DeepPartial<StateSchema> = {};
 

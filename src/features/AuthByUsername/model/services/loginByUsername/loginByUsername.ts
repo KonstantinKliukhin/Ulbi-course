@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 import { type User, userActions } from 'entities/User';
 import { LOGIN_ERRORS } from '../../errors/loginErrors';
-import { COMMON_API_ERRORS, USER_LOCALSTORAGE_KEY } from 'shared/constants';
+import { COMMON_API_ERRORS, LOCAL_STORAGE_USER_KEY } from 'shared/constants';
 
 interface LoginByUsernameArgs {
   username: string
@@ -47,5 +47,5 @@ export const loginByUsername =
     );
 
 function saveUserToStorage (user: User) {
-  localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(user));
+  localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(user));
 }
