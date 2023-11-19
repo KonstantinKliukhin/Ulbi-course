@@ -1,0 +1,14 @@
+.Card {
+  padding: 15px;
+  border-radius: 12px;
+  background: var(--card-bg);
+  transition: all 0.2s ease;
+}
+
+.hover-shadow:hover {
+  box-shadow: rgb(0 0 0 / 15%) 0 5px 15px 0;
+}
+
+.hover-scale-small:hover {
+  transform: scale(1.02);
+}

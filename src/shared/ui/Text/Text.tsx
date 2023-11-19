@@ -35,7 +35,12 @@ export const Text = memo<TextProps>(function Text (props) {
   const textSize = props.size ?? TextSize.M;
 
   return (
-    <div className={classNames(cls.Text, {}, [cls[theme], cls[textAlign], cls[textSize], props.className,])}>
+    <div className={classNames(
+      cls.wrapper,
+      {},
+      [cls[theme], cls[textAlign], cls[textSize], props.className,])
+        }
+    >
       {props.title
         ? (
           <p className={classNames(cls.title, {}, [props.titleClassName,])}>

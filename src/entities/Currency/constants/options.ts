@@ -1,4 +1,4 @@
-import { type SelectOption } from 'shared/ui/Select/Select';
+import { type SelectOption } from 'shared/ui';
 import { Currency } from '../model/types/currency';
 
 export const CURRENCY_OPTIONS: Array<SelectOption<Currency>> = [

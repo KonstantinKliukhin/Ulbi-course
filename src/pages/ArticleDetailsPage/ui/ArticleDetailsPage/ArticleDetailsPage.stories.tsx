@@ -28,8 +28,7 @@ const parameters = {
       pathParams: { id: '1', },
     },
     routing: { path: RoutePath[AppRoutes.ARTICLE_DETAILS](':id'), },
-  }
-  ),
+  }),
 };
 
 export const Default: ArticleDetailsPageStory = {

@@ -1,0 +1,51 @@
+.date {
+  position: absolute;
+  display: none;
+  top: 10px;
+  right: 10px;
+}
+
+.ArticleListItemBig {
+  width: 100%;
+  position: relative;
+
+  &:hover {
+    .date {
+      display: block;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.types {
+  margin: 10px 0;
+}
+
+.img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+}
+
+.textBlock {
+  max-height: 195px;
+  overflow-y: hidden;
+}
+
+.footer {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.viewsWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}

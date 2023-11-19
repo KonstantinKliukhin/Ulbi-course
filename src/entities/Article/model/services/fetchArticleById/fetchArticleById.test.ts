@@ -1,10 +1,10 @@
 import { TestAsyncThunk } from 'shared/config/tests/TestAsyncThunk';
 import { mockedArticle } from 'shared/mocks';
-import { fetcharticleById } from './fetchArticleById';
+import { fetchArticleById } from './fetchArticleById';
 
 describe('fetchArticleById', () => {
   test('success fetch article', async () => {
-    const thunk = new TestAsyncThunk(fetcharticleById);
+    const thunk = new TestAsyncThunk(fetchArticleById);
     thunk.api.get.mockReturnValue(Promise.resolve({ data: mockedArticle, }));
 
     const result = await thunk.callThunk('1');
@@ -16,7 +16,7 @@ describe('fetchArticleById', () => {
   });
 
   test('error fetch article', async () => {
-    const thunk = new TestAsyncThunk(fetcharticleById);
+    const thunk = new TestAsyncThunk(fetchArticleById);
     thunk.api.get.mockReturnValue(Promise.resolve({ status: 403, }));
 
     const result = await thunk.callThunk('error');

@@ -6,7 +6,7 @@ interface fetchArticleByIdExtra extends ThunkDefaultArg {
   rejectValue: string
 }
 
-export const fetcharticleById =
+export const fetchArticleById =
     createAsyncThunk<Article, string, fetchArticleByIdExtra>(
       'article/fetchArticleById',
       async (id, thunkAPI) => {

@@ -1,9 +1,8 @@
 import { memo } from 'react';
 import cls from './SidebarItem.module.scss';
-import { AppLink } from 'shared/ui';
-import { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { AppLink, AppLinkTheme } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
-import { type SidebarItemType } from 'widgets/Sidebar/model/linkItems';
+import { type SidebarItemType } from '../../model/types/sidebarItem';
 
 interface SidebarItemProps {
   item: SidebarItemType

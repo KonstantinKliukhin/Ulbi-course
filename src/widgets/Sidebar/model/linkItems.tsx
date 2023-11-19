@@ -1,4 +1,4 @@
-import { type ReactNode, useMemo } from 'react';
+import { useMemo } from 'react';
 import { AppRoutes, RoutePath } from 'shared/config';
 import HomeSVG from '../../../../public/assets/icons/main-20-20.svg';
 import InfoSVG from '../../../../public/assets/icons/about-20-20.svg';
@@ -6,19 +6,14 @@ import ProfileSVG from '../../../../public/assets/icons/profile-20-20.svg';
 import ArticlesSVG from '../../../../public/assets/icons/article-20-20.svg';
 import { addOptionalyToArray, useAppSelector } from 'shared/lib';
 import { getUserAuthData } from 'entities/User';
-
-export interface SidebarItemType {
-  path: string
-  text: string
-  icon: ReactNode
-}
+import { type SidebarItemType } from './types/sidebarItem';
 
 interface GetLinkItemsArg {
   profileId?: string
   isAuthorized: boolean
 }
 
-export const getLinkItems = (arg: GetLinkItemsArg): SidebarItemType[] => [
+const getLinkItems = (arg: GetLinkItemsArg): SidebarItemType[] => [
   {
     path: RoutePath[AppRoutes.MAIN],
     text: 'nav_home',

@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import cls from './ArticleDetailsSkeleton.module.scss';
 import { classNames } from 'shared/lib';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { Skeleton } from 'shared/ui';
 
 export const ArticleDetailsSkeleton: FC = () => (
   <div className={classNames(cls.ArticleDetailsSkeleton)}>

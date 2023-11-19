@@ -1,0 +1,51 @@
+.date {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.ArticleListItemSmall {
+  width: 230px;
+  cursor: pointer;
+
+  &:hover .date {
+    display: block;
+  }
+}
+
+.imageWrapper {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+.img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.infoWrapper {
+  max-width: 100%;
+  overflow: hidden;
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+}
+
+.types {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.views {
+  margin-right: 8px;
+}
+
+.title {
+  margin-top: 8px;
+}

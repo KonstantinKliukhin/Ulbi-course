@@ -1,14 +1,18 @@
 import { type Article, ArticleBlockType, ArticleType } from 'entities/Article';
+import { mockedUser } from 'shared/mocks/mockedUser';
 
 export const mockedArticle: Article = {
   id: '1',
   title: 'Javascript news',
   subtitle: 'Whats new in JS in 2023 year?',
-  img: '',
+  img: 'https://javascripttraining.ie/img/javascriptlogo.png',
   views: 12312,
   createdAt: '26.02.2022',
+  user: mockedUser,
   type: [
     ArticleType.IT,
+    ArticleType.SCIENCE,
+    ArticleType.ECONOMICS,
   ],
   blocks: [
     {
@@ -71,3 +75,5 @@ export const mockedArticle: Article = {
     },
   ],
 };
+
+export const mockedArticles = Array(16).fill(mockedArticle).map((ar, i) => ({ ...ar, id: `${i}`, }));

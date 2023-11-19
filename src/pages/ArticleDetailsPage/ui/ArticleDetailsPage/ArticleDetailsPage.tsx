@@ -21,7 +21,7 @@ import { addCommentForArticle } from '../../model/services/addCommentForArticle/
 
 const ArticleDetailsPage: FC = () => {
   const params = useParams<{ id: string }>();
-  const { t, } = useTranslation('articleDetails');
+  const { t, } = useTranslation('article');
   const dispatch = useAppDispatch();
   const comments = useAppSelector(articleCommentsEntitySelectors.selectAll);
   const commentsIsLoading = useAppSelector(getArticleCommentsIsLoading);

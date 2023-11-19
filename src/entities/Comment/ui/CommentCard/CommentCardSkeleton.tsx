@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import cls from './CommentCard.module.scss';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { Skeleton } from 'shared/ui';
 
 export const CommentCardSkeleton: FC = () => (
   <div className={cls.CommentCardSkeleton}>

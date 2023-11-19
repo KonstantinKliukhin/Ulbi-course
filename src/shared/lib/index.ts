@@ -12,3 +12,4 @@ export { withLoading, type WithLoadingProps } from './hocs/withLoading/withLoadi
 export { withError, type WithErrorProps } from './hocs/withError/withError';
 export { withFormContext } from './hocs/withFormContext/withFormContext';
 export { useYupValidationResolver } from './hooks/useYupValidationResolver/useYupValidationResolver';
+export { useHover } from './hooks/useHover/useHover';

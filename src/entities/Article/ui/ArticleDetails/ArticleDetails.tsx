@@ -6,17 +6,19 @@ import {
   getArticleDetailsError,
   getArticleDetailsIsLoading
 } from '../../model/selectors/getArticleDetails/getArticleDetails';
-import { Avatar, Icon, Text, TextAlign, TextTheme } from 'shared/ui';
+import { Avatar, Button, ButtonTheme, Icon, Text, TextAlign, TextSize, TextTheme } from 'shared/ui';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { ArticleDetailsSkeleton } from '../ArticleDetailsSkeleton/ArticleDetailsSkeleton';
 import EyeIcon from '../../../../../public/assets/icons/eye-20-20.svg';
 import CalendarIcon from '../../../../../public/assets/icons/calendar-20-20.svg';
-import { TextSize } from 'shared/ui/Text/Text';
 import { type ArticleBlock, ArticleBlockType } from '../../model/types/article';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { fetcharticleById } from '../../model/services/fetchArticleById/fetchArticleById';
+import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { AppRoutes, RoutePath } from 'shared/config';
 
 interface ArticleDetailsProps {
   className?: string
@@ -28,8 +30,10 @@ const ArticleDetails: FC<ArticleDetailsProps> = props => {
   const isLoading = useAppSelector(getArticleDetailsIsLoading);
   const error = useAppSelector(getArticleDetailsError);
   const article = useAppSelector(getArticleDetailsData);
+  const { t, } = useTranslation('article');
+
   useInitialEffect(useCallback(() => {
-    void dispatch(fetcharticleById(props.id));
+    void dispatch(fetchArticleById(props.id));
   }, [props.id, dispatch,]));
 
   const renderBlock = useCallback((block: ArticleBlock) => {
@@ -69,6 +73,11 @@ const ArticleDetails: FC<ArticleDetailsProps> = props => {
 
   return (
     <div className={classNames(cls.ArticleDetails, {}, [props.className,])}>
+      <Link to={RoutePath[AppRoutes.ARTICLES]}>
+        <Button theme={ButtonTheme.OUTLINE}>
+          {t('back_to_list')}
+        </Button>
+      </Link>
       {content}
     </div>
   );
