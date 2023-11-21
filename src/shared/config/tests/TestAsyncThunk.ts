@@ -2,6 +2,7 @@ import { jest } from '@jest/globals';
 import { type AsyncThunkAction } from '@reduxjs/toolkit';
 import { type Dispatch } from 'redux';
 import axios, { type AxiosStatic } from 'axios';
+import { type StateSchema } from 'app/providers/StoreProvider';
 
 // Redux not exported type
 interface AsyncThunkConfig {
@@ -38,11 +39,12 @@ export class TestAsyncThunk<Return, Arg, ThunkApiConfig extends AsyncThunkConfig
   private readonly actionCreator: ActionCreatorType<Return, Arg, ThunkApiConfig>;
 
   constructor (
-    actionCreator: ActionCreatorType<Return, Arg, ThunkApiConfig>
+    actionCreator: ActionCreatorType<Return, Arg, ThunkApiConfig>,
+    state?: DeepPartial<StateSchema>
   ) {
     this.actionCreator = actionCreator;
     this.dispatch = jest.fn();
-    this.getState = jest.fn() as GetStateType<Return, Arg, ThunkApiConfig>;
+    this.getState = (state ? () => state : jest.fn()) as GetStateType<Return, Arg, ThunkApiConfig>;
     this.api = mockedApi;
     this.navigate = jest.fn();
   }

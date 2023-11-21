@@ -1,19 +1,26 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { COMMON_API_ERRORS } from 'shared/constants';
 import { type Article } from 'entities/Article';
+import { getArticlesLimit } from 'pages/ArticlesPage/model/selectors/getArticlesState/getArticlesState';
 
 interface FetchArticlesListExtra extends ThunkDefaultArg {
   rejectValue: string
 }
 
+interface FetchArticlesListArg {
+  page: number
+}
+
 export const fetchArticlesList =
-    createAsyncThunk<Article[], undefined, FetchArticlesListExtra>(
+    createAsyncThunk<Article[], FetchArticlesListArg, FetchArticlesListExtra>(
       'articlesList/fetchArticlesList',
-      async (_, thunkAPI) => {
+      async (arg, thunkAPI) => {
         try {
+          const state = thunkAPI.getState();
+          const limit = getArticlesLimit(state);
           const response = await thunkAPI.extra.api.get<Article[]>(
             '/articles',
-            { params: { _expand: 'user', }, }
+            { params: { _expand: 'user', _page: arg.page, _limit: limit, }, }
           );
 
           if (!response.data) {

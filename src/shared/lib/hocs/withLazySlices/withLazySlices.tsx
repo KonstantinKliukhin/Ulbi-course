@@ -38,8 +38,10 @@ export const withLazySlices = <const Key extends keyof StateSchema, >(options: W
 
         useEffect(function manageLazyReducer () {
           Object.entries(reducers).forEach(([key, reducer,]) => {
-            store.reducerManager.add(key as Key, reducer as Reducer<NonNullable<Values<StateSchema>>>);
-            dispatch(getInitSliceAction(key as Key));
+            if (!store.reducerManager.getReducerMap()[key as Key]) {
+              store.reducerManager.add(key as Key, reducer as Reducer<NonNullable<Values<StateSchema>>>);
+              dispatch(getInitSliceAction(key as Key));
+            }
           });
 
           return () => {

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { ArticleNotFound } from '../ArticleNotFound/ArticleNotFound';
 import { useTranslation } from 'react-i18next';
 import { CommentsList } from 'entities/Comment';
-import { Text } from 'shared/ui';
+import { Page, Text } from 'shared/ui';
 import cls from './ArticleDetailsPage.module.scss';
 import { useAppDispatch, useAppSelector, useInitialEffect, withLazySlices } from 'shared/lib';
 import { articleCommentsReducer } from '../../model/slices/articleCommentsSlice';
@@ -42,7 +42,7 @@ const ArticleDetailsPage: FC = () => {
   if (!params.id) return <ArticleNotFound/>;
 
   return (
-    <>
+    <Page>
       <ArticleDetails id={params.id}/>
       <Text className={cls.commentsTitle} title={t('comments')}/>
       <AddCommentForm
@@ -52,7 +52,7 @@ const ArticleDetailsPage: FC = () => {
         onSendComment={onSendComment}
       />
       <CommentsList comments={comments} isLoading={commentsIsLoading} error={commentsError}/>
-    </>
+    </Page>
   );
 };
 

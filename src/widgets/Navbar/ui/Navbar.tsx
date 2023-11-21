@@ -19,7 +19,7 @@ export const Navbar = memo<NavbarProps>(function Navbar (props) {
 
   if (isAuthenticated) {
     return (
-      <div className={classNames(cls.navbar, {}, [props.className,])}>
+      <header data-testid="navbar" className={classNames(cls.navbar, {}, [props.className,])}>
         <Button
           theme={ButtonTheme.CLEAR_INVERTED}
           className={cls.links}
@@ -27,16 +27,16 @@ export const Navbar = memo<NavbarProps>(function Navbar (props) {
         >
           {t('logout')}
         </Button>
-      </div>
+      </header>
     );
   }
 
   return (
-    <div className={classNames(cls.navbar, {}, [props.className,])}>
+    <header data-testid="navbar" className={classNames(cls.navbar, {}, [props.className,])}>
       <Button theme={ButtonTheme.CLEAR_INVERTED} className={cls.links} onClick={loginModal.enable}>
         {t('login')}
       </Button>
       {loginModal.boolState ? <LoginModal open={loginModal.boolState} onClose={loginModal.disable}/> : null}
-    </div>
+    </header>
   );
 });

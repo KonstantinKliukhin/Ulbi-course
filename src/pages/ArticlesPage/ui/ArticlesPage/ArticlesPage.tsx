@@ -2,7 +2,6 @@ import { type FC, useCallback } from 'react';
 import { ArticleList, type ArticleView } from 'entities/Article';
 import { useAppDispatch, useAppSelector, useInitialEffect, withLazySlices } from 'shared/lib';
 import { articlesPageActions, articlesPageReducer } from '../../model/slices/articlesPageSlice';
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import {
   getArticlesError,
   getArticlesIsLoading,
@@ -11,7 +10,10 @@ import {
 } from '../../model/selectors/getArticlesState/getArticlesState';
 import { ArticleViewSelector } from 'features/ArticleViewSelector';
 import cls from './ArticlesPage.module.scss';
-import { useArticleViewStorage } from '../../model/hooks/useArticleViewStorage/useArticleViewStorage';
+import { useSaveItemToStorage } from '../../lib/articleStorage/articleStorage';
+import { PageWithInfiniteScroll } from 'shared/ui';
+import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 
 const ArticlesPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -19,18 +21,22 @@ const ArticlesPage: FC = () => {
   const articleView = useAppSelector(getArticlesView);
   const articlesIsLoading = useAppSelector(getArticlesIsLoading);
   const articlesError = useAppSelector(getArticlesError);
-  useArticleViewStorage();
+  useSaveItemToStorage(articleView);
 
   useInitialEffect(useCallback(() => {
-    void dispatch(fetchArticlesList());
+    void dispatch(initArticlesPage());
   }, [dispatch,]));
 
   const onSelectView = useCallback((view: ArticleView) => {
     dispatch(articlesPageActions.setView(view));
   }, [dispatch,]);
 
+  const onLoadNextPart = useCallback(() => {
+    void dispatch(fetchNextArticlesPage());
+  }, [dispatch,]);
+
   return (
-    <>
+    <PageWithInfiniteScroll onScrollEnd={onLoadNextPart}>
       <ArticleViewSelector
         className={cls.ArticleViewSelector}
         view={articleView}
@@ -42,13 +48,11 @@ const ArticlesPage: FC = () => {
         view={articleView}
         isLoading={articlesIsLoading}
       />
-    </>
-
+    </PageWithInfiniteScroll>
   );
 };
 
 export default withLazySlices({
   reducers: { articlesPage: articlesPageReducer, },
   onlyIfSliceReady: true,
-  removeOnUnmount: true,
 })(ArticlesPage);

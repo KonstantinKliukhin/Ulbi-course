@@ -14,7 +14,7 @@ export const Sidebar = memo<SidebarProps>(function Sidebar (props) {
   const linkItems = useLinkItems();
 
   return (
-    <div
+    <nav
       data-testid="sidebar"
       className={classNames(
         cls.Sidebar,
@@ -45,6 +45,6 @@ export const Sidebar = memo<SidebarProps>(function Sidebar (props) {
         <LanguageSwitcher short={collapsed.boolState}/>
         <ThemeSwitcher className={cls.themeSwitcher}/>
       </div>
-    </div>
+    </nav>
   );
 });

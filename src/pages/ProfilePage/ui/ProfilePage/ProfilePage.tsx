@@ -15,6 +15,7 @@ import { ProfilePageHeader } from '../ProfilePageHeader/ProfilePageHeader';
 import { FormProvider } from 'react-hook-form';
 import { useProfileForm } from 'features/ProfileForm';
 import { useParams } from 'react-router-dom';
+import { Page } from 'shared/ui';
 
 const ProfilePage: FC = () => {
   const params = useParams<{ id: string }>();
@@ -38,7 +39,7 @@ const ProfilePage: FC = () => {
   }, [dispatch, params.id,]);
 
   return (
-    <>
+    <Page>
       <FormProvider {...profileForm}>
         <form onSubmit={profileForm.handleSubmit(onSubmit)}>
           <ProfilePageHeader/>
@@ -51,7 +52,7 @@ const ProfilePage: FC = () => {
           />
         </form>
       </FormProvider>
-    </>
+    </Page>
   );
 };
 

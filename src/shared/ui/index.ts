@@ -14,4 +14,6 @@ export { Icon } from './Icon/Icon';
 export { Code } from './Code/Code';
 export { FormSelect } from './Select/FormSelect';
 export { Skeleton } from './Skeleton/Skeleton';
+export { Page } from './Page/Page';
+export { PageWithInfiniteScroll } from './PageWithInfiniteScroll/PageWithInfiniteScroll';
 export { Card, CardHoverAnimation } from './Card/Card';

@@ -8,9 +8,7 @@ export const RootLayout: FC<PropsWithChildren> = props => (
     <Navbar/>
     <div className="content-page">
       <Sidebar/>
-      <div className="page">
-        {props.children}
-      </div>
+      {props.children}
     </div>
   </Suspense>
 );
