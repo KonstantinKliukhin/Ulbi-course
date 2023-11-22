@@ -15,5 +15,5 @@ export { Code } from './Code/Code';
 export { FormSelect } from './Select/FormSelect';
 export { Skeleton } from './Skeleton/Skeleton';
 export { Page } from './Page/Page';
-export { PageWithInfiniteScroll } from './PageWithInfiniteScroll/PageWithInfiniteScroll';
-export { Card, CardHoverAnimation } from './Card/Card';
+export { Card, CardHoverAnimation, CardTheme } from './Card/Card';
+export { Tabs, type TabItem } from './Tabs/Tabs';

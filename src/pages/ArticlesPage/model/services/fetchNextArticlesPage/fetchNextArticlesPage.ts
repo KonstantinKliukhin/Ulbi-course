@@ -18,7 +18,7 @@ export const fetchNextArticlesPage =
 
         if (!isLoading && hasMore) {
           thunkAPI.dispatch(articlesPageActions.setPage(page + 1));
-          void thunkAPI.dispatch(fetchArticlesList({ page: page + 1, }));
+          void thunkAPI.dispatch(fetchArticlesList());
         }
       }
     );

@@ -27,7 +27,6 @@ describe('fetchArticlesList', () => {
     expect(articlesPageActions.setPage).toHaveBeenCalled();
     expect(articlesPageActions.setPage).toHaveBeenCalledWith(3);
     expect(fetchArticlesList).toHaveBeenCalled();
-    expect(fetchArticlesList).toHaveBeenCalledWith({ page: 3, });
     expect(result.meta.requestStatus).toBe('fulfilled');
   });
 

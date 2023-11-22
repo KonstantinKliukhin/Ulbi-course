@@ -5,6 +5,7 @@ import { userReducer } from 'entities/User';
 import { createReducerManager } from 'app/providers/StoreProvider/config/reducerManager';
 import { $api } from 'shared/api';
 import { type NavigateFunction } from 'react-router-dom';
+import { UIReducer } from 'features/UI';
 
 export function createReduxStore (
   navigate: NavigateFunction,
@@ -15,6 +16,7 @@ export function createReduxStore (
     ...asyncReducers,
     counter: counterReducer,
     user: userReducer,
+    ui: UIReducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);

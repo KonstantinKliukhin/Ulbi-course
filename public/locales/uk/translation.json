@@ -31,5 +31,14 @@
   "error_field_country": "Не вірно вказана країна",
   "error_field_currency": "Не вірно вказана валюта",
   "error_field_url": "Не вірно вказан URL",
-  "error_field_age": "Вік має бути від 3 до 120 років"
+  "error_field_age": "Вік має бути від 3 до 120 років",
+  "sort_by": "Сортувати за",
+  "sort_direction": "Напрямок",
+  "search": "Пошук",
+  "asc": "Зрост",
+  "desc": "Змен",
+  "sort_created": "Створено у",
+  "sort_title": "За заголовком",
+  "sort_views": "За переглядами",
+  "submit_search": "Знайти"
 }

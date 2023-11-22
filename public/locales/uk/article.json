@@ -2,5 +2,11 @@
   "article_not_found": "Стаття не знайдена",
   "comments": "Коментарі",
   "read_more": "Читати далі...",
-  "back_to_list": "Повернутись до списку"
+  "back_to_list": "Повернутись до списку",
+  "article_type_all": "Всі",
+  "article_type_science": "Наука",
+  "article_type_economics": "Економіка",
+  "article_type_it": "IT",
+  "articles_not_found": "Статті не знайдено",
+  "recommendations": "Рекомендації"
 }

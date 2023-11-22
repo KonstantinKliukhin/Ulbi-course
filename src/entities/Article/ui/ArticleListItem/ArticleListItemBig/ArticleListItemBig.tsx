@@ -1,4 +1,4 @@
-import { type FC, memo, useMemo } from 'react';
+import { type FC, type HTMLAttributeAnchorTarget, memo, useMemo } from 'react';
 import cls from './ArticleListItemBig.module.scss';
 import { classNames } from 'shared/lib';
 import { type Article, ArticleBlockType, type ArticleTextBlock } from '../../../model/types/article';
@@ -12,6 +12,7 @@ import { AppRoutes, RoutePath } from 'shared/config';
 interface ArticleListItemBigProps {
   className?: string
   article: Article
+  cardLinkTarget?: HTMLAttributeAnchorTarget
 }
 
 const cardHoverAnimations = [CardHoverAnimation.SHADOW,];
@@ -25,32 +26,33 @@ export const ArticleListItemBig: FC<ArticleListItemBigProps> = memo<ArticleListI
     )) as ArticleTextBlock | undefined, [props.article.blocks,]);
 
     return (
-      <Link to={RoutePath[AppRoutes.ARTICLE_DETAILS](props.article.id)}>
-        <Card
-          hoverAnimations={cardHoverAnimations}
-          className={classNames(cls.ArticleListItemBig, {}, [props.className,])}
-        >
+      <Card
+        hoverAnimations={cardHoverAnimations}
+        className={classNames(cls.ArticleListItemBig, {}, [props.className,])}
+      >
+        <Text text={props.article.createdAt} className={cls.date}/>
+        <div className={cls.header}>
+          <Avatar src={props.article.user.avatar} size={30}/>
+          <Text text={props.article.user.username}/>
           <Text text={props.article.createdAt} className={cls.date}/>
-          <div className={cls.header}>
-            <Avatar src={props.article.user.avatar} size={30}/>
-            <Text text={props.article.user.username}/>
-            <Text text={props.article.createdAt} className={cls.date}/>
-          </div>
-          <Text title={props.article.title} className={cls.title}/>
-          <Text text={props.article.type.join(', ')} textClassName={cls.types}/>
-          <img src={props.article.img} className={cls.img} alt={props.article.title}/>
-          {textBlock ? <ArticleTextBlockComponent className={cls.textBlock} block={textBlock}/> : null}
-          <div className={cls.footer}>
+        </div>
+        <Text title={props.article.title} className={cls.title}/>
+        <Text text={props.article.type.join(', ')} textClassName={cls.types}/>
+        <img src={props.article.img} className={cls.img} alt={props.article.title}/>
+        {textBlock ? <ArticleTextBlockComponent className={cls.textBlock} block={textBlock}/> : null}
+        <div className={cls.footer}>
+          <Link to={RoutePath[AppRoutes.ARTICLE_DETAILS](props.article.id)} target={props.cardLinkTarget}>
             <Button theme={ButtonTheme.OUTLINE}>
               {t('read_more')}
             </Button>
+          </Link>
 
-            <div className={cls.viewsWrapper}>
-              <Text text={String(props.article.views)} className={cls.views}/>
-              <Icon Svg={EyeSvg}/>
-            </div>
+          <div className={cls.viewsWrapper}>
+            <Text text={String(props.article.views)} className={cls.views}/>
+            <Icon Svg={EyeSvg}/>
           </div>
-        </Card>
-      </Link>
+        </div>
+      </Card>
+
     );
   });

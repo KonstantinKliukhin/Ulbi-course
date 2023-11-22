@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { type HTMLAttributeAnchorTarget, memo } from 'react';
 import cls from './ArticleListItemSmall.module.scss';
 import { classNames } from 'shared/lib';
 import { type Article } from '../../../model/types/article';
@@ -11,6 +11,7 @@ interface ArticleListItemSmallProps {
   className?: string
   article: Article
   isLoading?: boolean
+  cardLinkTarget?: HTMLAttributeAnchorTarget
 }
 
 const cardHoverAnimations = [CardHoverAnimation.SHADOW, CardHoverAnimation.SCALE_SMALL,];
@@ -18,7 +19,7 @@ const cardHoverAnimations = [CardHoverAnimation.SHADOW, CardHoverAnimation.SCALE
 export const ArticleListItemSmall = memo<ArticleListItemSmallProps>(
   function ArticleListItemSmall (props) {
     return (
-      <Link to={RoutePath[AppRoutes.ARTICLE_DETAILS](props.article.id)}>
+      <Link to={RoutePath[AppRoutes.ARTICLE_DETAILS](props.article.id)} target={props.cardLinkTarget}>
         <Card
           className={classNames(cls.ArticleListItemSmall, {}, [props.className,])}
           hoverAnimations={cardHoverAnimations}

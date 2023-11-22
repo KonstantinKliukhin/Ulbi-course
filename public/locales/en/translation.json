@@ -30,5 +30,14 @@
   "error_field_country": "Invalid country",
   "error_field_currency": "Invalid currency",
   "error_field_url": "Invalid URL",
-  "error_field_age": "Age must me bigger than 3 and less than 120"
+  "error_field_age": "Age must me bigger than 3 and less than 120",
+  "sort_direction": "Direction",
+  "sort_by": "Sort by",
+  "search": "Search",
+  "asc": "Asc",
+  "desc": "Desc",
+  "sort_created": "Date created",
+  "sort_title": "Title",
+  "sort_views": "Views",
+  "submit_search": "Submit"
 }

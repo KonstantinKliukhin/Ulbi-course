@@ -12,16 +12,20 @@ import { type ProfileSchema } from 'entities/Profile';
 import { type ArticleDetailsSchema } from 'entities/Article';
 import { type ArticleCommentsSchema } from 'pages/ArticleDetailsPage';
 import { type ArticlesPageSchema } from 'pages/ArticlesPage';
+import { type UISchema } from 'features/UI';
+import { type ArticleRecommendationsSchema } from 'features/ArticleRecomemndations';
 
 export interface StateSchema {
   counter: CounterSchema
   user: UserSchema
+  ui: UISchema
   // async schemas
   loginForm?: LoginSchema
   profile?: ProfileSchema
   articleDetails?: ArticleDetailsSchema
   articleComments?: ArticleCommentsSchema
   articlesPage?: ArticlesPageSchema
+  articleRecommendations?: ArticleRecommendationsSchema
 }
 
 export interface ReducerManager {

@@ -18,6 +18,7 @@ import {
 import { fetchArticleComments } from '../../model/services/fetchArticleComments/fetchArticleComments';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
+import { ArticleRecommendations } from 'features/ArticleRecomemndations';
 
 const ArticleDetailsPage: FC = () => {
   const params = useParams<{ id: string }>();
@@ -44,6 +45,7 @@ const ArticleDetailsPage: FC = () => {
   return (
     <Page>
       <ArticleDetails id={params.id}/>
+      <ArticleRecommendations/>
       <Text className={cls.commentsTitle} title={t('comments')}/>
       <AddCommentForm
         error={addCommentError}

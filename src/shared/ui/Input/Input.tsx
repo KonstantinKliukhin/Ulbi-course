@@ -19,6 +19,7 @@ interface InputProps extends HtmlInputProps {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
   readonly?: boolean
   error?: string
+  noErrorSpace?: boolean
 }
 
 const INPUT_FONT_WIDTH = 9.4;
@@ -33,6 +34,7 @@ export const Input = memo(forwardRef<HTMLInputElement, InputProps>(function Inpu
     autoFocus,
     readonly,
     error,
+    noErrorSpace = false,
     ...inputProps
   } = props;
 
@@ -85,7 +87,7 @@ export const Input = memo(forwardRef<HTMLInputElement, InputProps>(function Inpu
           <span style={{ left: caretPosition * INPUT_FONT_WIDTH, }} className={cls.caret}/>
         </div>
       </div>
-      <Text theme={TextTheme.ERROR} className={cls.error} text={error}/>
+      {noErrorSpace ? null : <Text theme={TextTheme.ERROR} className={cls.error} text={error}/>}
     </>
   );
 }));

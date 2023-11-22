@@ -2,5 +2,11 @@
   "article_not_found": "Article not found",
   "comments": "Comments",
   "read_more": "Read more...",
-  "back_to_list": "Back to list"
+  "back_to_list": "Back to list",
+  "article_type_all": "All",
+  "article_type_science": "Science",
+  "article_type_economics": "Economics",
+  "article_type_it": "IT",
+  "articles_not_found": "Articles not found",
+  "recommendations": "Recommendations"
 }

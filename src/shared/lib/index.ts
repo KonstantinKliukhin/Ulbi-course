@@ -1,14 +1,17 @@
 export { classNames } from './classNames/classNames';
 export { separateFormProps } from './separateFormProps/separateFormProps';
-export { addOptionalyToArray } from './addOptionalyToArray/addOptionalyToArray';
+export { addOptionallyToArray } from 'shared/lib/addOptionallyToArray/addOptionallyToArray';
 export { useBoolState } from './hooks/useBoolState/useBoolState';
 export { stopPropagation } from './stopPropagation/stopPropagation';
 export { useAppDispatch } from './hooks/reduxHooks/useAppDispatch';
 export { useAppSelector } from './hooks/reduxHooks/useAppSelector';
 export { useActions } from './hooks/reduxHooks/useActions';
+export { useAction } from './hooks/reduxHooks/useAction';
+export { useDebounce } from './hooks/useDebounce/useDebounce';
 export { useInitialEffect } from './hooks/useInitialEffect/useInitialEffect';
 export { useLatest } from './hooks/useLatest/useLatest';
 export { useEvent } from './hooks/useEvent/useEvent';
+export { useThrottle } from './hooks/useThrottle/useThrottle';
 export { withLazySlices } from 'shared/lib/hocs/withLazySlices/withLazySlices';
 export { withLoading, type WithLoadingProps } from './hocs/withLoading/withLoading';
 export { withError, type WithErrorProps } from './hocs/withError/withError';

@@ -59,6 +59,7 @@ module.exports = {
     '@typescript-eslint/comma-dangle': 'off',
     'react/react-in-jsx-scope': 'off',
     'n/handle-callback-err': 'off',
+    'n/no-callback-literal': 'off',
     'import/no-unresolved': 'off',
     'react/prop-types': 'off',
     'max-len': ['error', { code: 110, ignoreComments: true, ignoreStrings: true, ignoreRegExpLiterals: true, },],

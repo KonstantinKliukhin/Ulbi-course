@@ -4,7 +4,7 @@ import HomeSVG from '../../../../public/assets/icons/main-20-20.svg';
 import InfoSVG from '../../../../public/assets/icons/about-20-20.svg';
 import ProfileSVG from '../../../../public/assets/icons/profile-20-20.svg';
 import ArticlesSVG from '../../../../public/assets/icons/article-20-20.svg';
-import { addOptionalyToArray, useAppSelector } from 'shared/lib';
+import { addOptionallyToArray, useAppSelector } from 'shared/lib';
 import { getUserAuthData } from 'entities/User';
 import { type SidebarItemType } from './types/sidebarItem';
 
@@ -24,12 +24,12 @@ const getLinkItems = (arg: GetLinkItemsArg): SidebarItemType[] => [
     text: 'nav_about',
     icon: <InfoSVG/>,
   },
-  ...addOptionalyToArray([arg.isAuthorized, Boolean(arg.profileId),], {
+  ...addOptionallyToArray([arg.isAuthorized, Boolean(arg.profileId),], {
     path: RoutePath[AppRoutes.PROFILE](arg.profileId!),
     text: 'nav_profile',
     icon: <ProfileSVG/>,
   }),
-  ...addOptionalyToArray(arg.isAuthorized, {
+  ...addOptionallyToArray(arg.isAuthorized, {
     path: RoutePath[AppRoutes.ARTICLES],
     text: 'nav_articles',
     icon: <ArticlesSVG/>,

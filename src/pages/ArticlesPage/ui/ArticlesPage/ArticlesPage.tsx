@@ -1,19 +1,19 @@
 import { type FC, useCallback } from 'react';
-import { ArticleList, type ArticleView } from 'entities/Article';
+import { ArticleList } from 'entities/Article';
 import { useAppDispatch, useAppSelector, useInitialEffect, withLazySlices } from 'shared/lib';
-import { articlesPageActions, articlesPageReducer } from '../../model/slices/articlesPageSlice';
+import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
 import {
   getArticlesError,
   getArticlesIsLoading,
   getArticlesState,
   getArticlesView
 } from '../../model/selectors/getArticlesState/getArticlesState';
-import { ArticleViewSelector } from 'features/ArticleViewSelector';
-import cls from './ArticlesPage.module.scss';
 import { useSaveItemToStorage } from '../../lib/articleStorage/articleStorage';
-import { PageWithInfiniteScroll } from 'shared/ui';
+import { PageWithInfiniteScroll } from 'widgets/InfiniteScroll';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
+import { ArticlesPageFilters } from 'pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
+import { useSearchParams } from 'react-router-dom';
 
 const ArticlesPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -21,15 +21,12 @@ const ArticlesPage: FC = () => {
   const articleView = useAppSelector(getArticlesView);
   const articlesIsLoading = useAppSelector(getArticlesIsLoading);
   const articlesError = useAppSelector(getArticlesError);
+  const [searchParams,] = useSearchParams();
   useSaveItemToStorage(articleView);
 
   useInitialEffect(useCallback(() => {
-    void dispatch(initArticlesPage());
-  }, [dispatch,]));
-
-  const onSelectView = useCallback((view: ArticleView) => {
-    dispatch(articlesPageActions.setView(view));
-  }, [dispatch,]);
+    void dispatch(initArticlesPage(searchParams));
+  }, [dispatch, searchParams,]));
 
   const onLoadNextPart = useCallback(() => {
     void dispatch(fetchNextArticlesPage());
@@ -37,11 +34,7 @@ const ArticlesPage: FC = () => {
 
   return (
     <PageWithInfiniteScroll onScrollEnd={onLoadNextPart}>
-      <ArticleViewSelector
-        className={cls.ArticleViewSelector}
-        view={articleView}
-        onSelectView={onSelectView}
-      />
+      <ArticlesPageFilters/>
       <ArticleList
         error={articlesError}
         articles={articles}

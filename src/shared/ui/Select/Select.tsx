@@ -16,6 +16,7 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   onChange?: (e: ChangeEvent<HTMLSelectElement>) => void
   readonly?: boolean
   error?: string
+  noErrorSpace?: boolean
 }
 
 export const Select =
@@ -26,6 +27,7 @@ export const Select =
         className,
         readonly,
         error,
+        noErrorSpace = false,
         ...selectProps
       } = props;
 
@@ -62,7 +64,7 @@ export const Select =
               {optionList}
             </select>
           </div>
-          <Text theme={TextTheme.ERROR} className={cls.error} text={props.error}/>
+          {noErrorSpace ? null : <Text theme={TextTheme.ERROR} className={cls.error} text={props.error}/>}
         </>
       );
     }));

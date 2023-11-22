@@ -1,0 +1,14 @@
+.Tabs {
+  display: flex;
+  column-gap: 8px;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 8px;
+}
+
+.disabledTab {
+  opacity: 0.8;
+  cursor: not-allowed;
+}

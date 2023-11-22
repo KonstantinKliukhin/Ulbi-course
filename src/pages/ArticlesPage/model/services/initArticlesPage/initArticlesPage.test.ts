@@ -22,12 +22,11 @@ describe('initArticlesPage', () => {
     });
     thunk.api.get.mockReturnValue(Promise.resolve({ data: mockedArticles, }));
 
-    const result = await thunk.callThunk(undefined);
+    const result = await thunk.callThunk(new URLSearchParams());
 
     expect(thunk.dispatch).toHaveBeenCalledTimes(4);
     expect(articlesPageActions.initState).toHaveBeenCalledTimes(1);
     expect(fetchArticlesList).toHaveBeenCalled();
-    expect(fetchArticlesList).toHaveBeenCalledWith({ page: 1, });
     expect(result.meta.requestStatus).toBe('fulfilled');
   });
 
@@ -44,7 +43,7 @@ describe('initArticlesPage', () => {
       },
     });
 
-    const result = await thunk.callThunk(undefined);
+    const result = await thunk.callThunk(new URLSearchParams());
 
     expect(thunk.dispatch).toHaveBeenCalledTimes(2);
     expect(articlesPageActions.initState).not.toHaveBeenCalled();

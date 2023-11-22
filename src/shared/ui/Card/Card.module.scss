@@ -1,8 +1,7 @@
 .Card {
+  transition: all 0.2s ease;
   padding: 15px;
   border-radius: 12px;
-  background: var(--card-bg);
-  transition: all 0.2s ease;
 }
 
 .hover-shadow:hover {
@@ -11,4 +10,12 @@
 
 .hover-scale-small:hover {
   transform: scale(1.02);
+}
+
+.default {
+  background: var(--card-bg);
+}
+
+.outlined {
+  border: 1px solid var(--primary-color);
 }
