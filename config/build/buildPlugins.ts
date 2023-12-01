@@ -4,8 +4,11 @@ import { type BuildOptions } from './types/config';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import CopyPlugin from 'copy-webpack-plugin';
 
-export default function buildPlugins (options: BuildOptions): webpack.Configuration['plugins'] {
+export default function buildPlugins (
+  options: BuildOptions
+): webpack.Configuration['plugins'] {
   const plugins = [
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({ template: options.paths.html, }),
@@ -17,6 +20,11 @@ export default function buildPlugins (options: BuildOptions): webpack.Configurat
       __IS_DEV__: JSON.stringify(options.isDev),
       __API__: JSON.stringify(options.apiUrl),
       __PROJECT__: JSON.stringify(options.project),
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: options.paths.locales, to: options.paths.buildLocales, },
+      ],
     }),
   ];
 
