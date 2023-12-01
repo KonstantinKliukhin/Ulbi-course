@@ -13,9 +13,9 @@ const App: FC = () => {
   return (
     <ErrorBoundary>
       <ThemeProvider>
-        <div className='app'>
+        <div className="app">
           <RootLayout>
-            <Outlet/>
+            <Outlet />
           </RootLayout>
         </div>
       </ThemeProvider>
@@ -23,9 +23,13 @@ const App: FC = () => {
   );
 };
 
-const AppWithStore: FC = () => <StoreProvider><App/></StoreProvider>;
+const AppWithStore: FC = () => (
+  <StoreProvider>
+    <App />
+  </StoreProvider>
+);
 
 const AppRouter = createAppRouter(AppWithStore);
-const AppWithRouter = () => <RouterProvider router={AppRouter}/>;
+const AppWithRouter = () => <RouterProvider router={AppRouter} />;
 
 export { AppWithRouter as App };

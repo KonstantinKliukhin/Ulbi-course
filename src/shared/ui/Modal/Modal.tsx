@@ -1,7 +1,10 @@
-import { type FC, type PropsWithChildren, useCallback, useEffect, useState } from 'react';
+import { type FC, type PropsWithChildren, useCallback, useState } from 'react';
 import cls from './Modal.module.scss';
-import { classNames, stopPropagation } from 'shared/lib';
-import { Portal } from 'shared/ui';
+import { classNames } from '../../lib/classNames/classNames';
+import { Portal } from '../Portal/Portal';
+import { stopPropagation } from '../../lib/stopPropagation/stopPropagation';
+import { useSyntheticMounted } from '../../lib/hooks/utility/useSyntheticMounted/useSyntheticMounted';
+import { useEscapeClose } from '../../lib/hooks/ui/useEscapeClose/useEscapeClose';
 
 interface ModalProps extends PropsWithChildren {
   className?: string
@@ -11,10 +14,10 @@ interface ModalProps extends PropsWithChildren {
   lazy?: boolean
 }
 
-export const Modal: FC<ModalProps> = props => {
+export const Modal: FC<ModalProps> = (props) => {
   const { onClose, open, contentClassName, lazy, } = props;
   const [closing, setClosing,] = useState<boolean>(false);
-  const [syntheticMounted, setSyntheticMounted,] = useState(false);
+  const syntheticMounted = useSyntheticMounted(open);
   const handleClose = useCallback(() => {
     setClosing(true);
 
@@ -23,26 +26,7 @@ export const Modal: FC<ModalProps> = props => {
       onClose();
     }, 200);
   }, [onClose,]);
-
-  useEffect(function syntheticMount () {
-    if (open) {
-      setSyntheticMounted(true);
-    }
-  }, [open,]);
-
-  const closeHandler = useCallback((e: KeyboardEvent) => {
-    if (e.key === 'Escape') handleClose();
-  }, [handleClose,]);
-
-  useEffect(function closeOnEscapeHandler () {
-    if (open) {
-      window.addEventListener('keydown', closeHandler);
-    }
-
-    return () => {
-      window.removeEventListener('keydown', closeHandler);
-    };
-  }, [closeHandler, open,]);
+  useEscapeClose(handleClose, open);
 
   if (lazy && !syntheticMounted) return null;
 
@@ -55,10 +39,10 @@ export const Modal: FC<ModalProps> = props => {
           [props.className,]
         )}
       >
-        <div className={cls.overlay} onClick={props.onClose}>
+        <div className={cls.overlay} onClick={handleClose}>
           <div
             className={classNames(cls.content, {}, [contentClassName,])}
-            onClick={stopPropagation()}
+            onClick={stopPropagation}
           >
             {props.children}
           </div>

@@ -36,7 +36,7 @@ export const Navbar = memo<NavbarProps>(function Navbar (props) {
       <Button theme={ButtonTheme.CLEAR_INVERTED} className={cls.links} onClick={loginModal.enable}>
         {t('login')}
       </Button>
-      {loginModal.boolState ? <LoginModal open={loginModal.boolState} onClose={loginModal.disable}/> : null}
+      <LoginModal open={loginModal.boolState} onClose={loginModal.disable}/>
     </header>
   );
 });

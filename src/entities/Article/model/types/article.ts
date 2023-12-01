@@ -6,9 +6,15 @@ export enum ArticleBlockType {
   TEXT = 'TEXT',
 }
 
+export interface ArticleTextBlockParagraph {
+  id: string
+  text: string
+}
+
 export interface ArticleBlockBase {
   id: string
   type: ArticleBlockType
+  name?: string
 }
 
 export interface ArticleCodeBlock extends ArticleBlockBase {
@@ -24,7 +30,7 @@ export interface ArticleImageBlock extends ArticleBlockBase {
 
 export interface ArticleTextBlock extends ArticleBlockBase {
   type: ArticleBlockType.TEXT
-  paragraphs: string[]
+  paragraphs: ArticleTextBlockParagraph[]
   title?: string
 }
 

@@ -1,7 +1,6 @@
 .Sidebar {
   position: relative;
-  padding-top: 10px;
-  height: calc(100vh - var(--navbar-height));
+  height: 100vh;
   width: var(--sidebar-width);
   background: var(--inverted-bg-color);
   display: flex;
@@ -25,6 +24,12 @@
   .switchers {
     flex-direction: column;
   }
+}
+
+.userInfo {
+  padding: 0 10px;
+  height: var(--navbar-height);
+  cursor: pointer;
 }
 
 .collapseBtn {

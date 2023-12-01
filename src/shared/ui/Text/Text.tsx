@@ -1,10 +1,10 @@
-import { memo } from 'react';
+import { memo, type MouseEventHandler } from 'react';
 import cls from './Text.module.scss';
-import { classNames } from 'shared/lib';
+import { classNames } from '../../lib/classNames/classNames';
 
 export enum TextTheme {
   PRIMARY = 'primary',
-  ERROR = 'error'
+  ERROR = 'error',
 }
 
 export enum TextAlign {
@@ -27,6 +27,7 @@ interface TextProps {
   theme?: TextTheme
   align?: TextAlign
   size?: TextSize
+  onClick?: MouseEventHandler<HTMLDivElement>
 }
 
 export const Text = memo<TextProps>(function Text (props) {
@@ -35,11 +36,15 @@ export const Text = memo<TextProps>(function Text (props) {
   const textSize = props.size ?? TextSize.M;
 
   return (
-    <div className={classNames(
-      cls.wrapper,
-      {},
-      [cls[theme], cls[textAlign], cls[textSize], props.className,])
-        }
+    <div
+      onClick={props.onClick}
+      className={classNames(
+        cls.wrapper,
+        {
+          [cls.clickable]: props.onClick,
+        },
+        [cls[theme], cls[textAlign], cls[textSize], props.className,]
+      )}
     >
       {props.title
         ? (
@@ -47,16 +52,14 @@ export const Text = memo<TextProps>(function Text (props) {
             {props.title}
           </p>
           )
-        : null
-            }
+        : null}
       {props.text
         ? (
           <p className={classNames(cls.text, {}, [props.textClassName,])}>
             {props.text}
           </p>
           )
-        : null
-            }
+        : null}
     </div>
   );
 });

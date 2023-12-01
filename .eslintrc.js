@@ -27,6 +27,7 @@ module.exports = {
       rules: {
         'react-hooks/rules-of-hooks': 'off',
         '@typescript-eslint/consistent-type-assertions': 'off',
+        'i18next/no-literal-string': 'off',
       },
     },
     {
@@ -44,11 +45,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-    'i18next',
-    'react-hooks',
-  ],
+  plugins: ['react', 'i18next', 'react-hooks',],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
@@ -62,22 +59,45 @@ module.exports = {
     'n/no-callback-literal': 'off',
     'import/no-unresolved': 'off',
     'react/prop-types': 'off',
-    'max-len': ['error', { code: 110, ignoreComments: true, ignoreStrings: true, ignoreRegExpLiterals: true, },],
-    'react/jsx-max-props-per-line': ['error', { maximum: { single: 3, multi: 1, }, },],
+    'max-len': [
+      'error',
+      {
+        code: 110,
+        ignoreComments: true,
+        ignoreStrings: true,
+        ignoreRegExpLiterals: true,
+      },
+    ],
+    'react/jsx-max-props-per-line': [
+      'error',
+      { maximum: { single: 3, multi: 1, }, },
+    ],
     'react/jsx-closing-bracket-location': ['error', 'tag-aligned',],
+    indent: [
+      'error',
+      2,
+      {
+        ignoredNodes: ['JSXElement', 'JSXAttribute',],
+        SwitchCase: 1,
+        offsetTernaryExpressions: true,
+      },
+    ],
     'i18next/no-literal-string': [2, { markupOnly: true, },],
     '@typescript-eslint/semi': ['error', 'always',],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/jsx-indent-props': [2, 2,],
     'react/jsx-indent': [2, 2,],
-    'comma-dangle': ['error', {
-      arrays: 'always',
-      objects: 'always',
-      imports: 'never',
-      exports: 'never',
-      functions: 'never',
-    },],
+    'comma-dangle': [
+      'error',
+      {
+        arrays: 'always',
+        objects: 'always',
+        imports: 'never',
+        exports: 'never',
+        functions: 'never',
+      },
+    ],
   },
   settings: {
     react: {

@@ -3,9 +3,9 @@ export enum AppRoutes {
   ABOUT = 'about',
   PROFILE = 'profile',
   ARTICLES = 'articles',
-  ARTICLE_DETAILS = 'article_details',
+  ARTICLE_DETAILS = 'articleDetails',
   // last
-  NOT_FOUND = 'not_found',
+  NOT_FOUND = 'notFound',
 }
 
 export const RoutePath = {

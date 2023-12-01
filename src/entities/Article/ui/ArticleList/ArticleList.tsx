@@ -36,7 +36,7 @@ export const ArticleList = memo<ArticleListProps>(
             />)
           )
           : null
-                }
+        }
         {props.isLoading ? <ArticleListSkeleton view={view}/> : null}
         {props.error ? <Text theme={TextTheme.ERROR} title={props.error} align={TextAlign.CENTER}/> : null}
       </div>

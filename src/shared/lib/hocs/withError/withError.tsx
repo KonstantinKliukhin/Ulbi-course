@@ -2,7 +2,7 @@ import { type FC } from 'react';
 import { Text, TextAlign, TextTheme } from '../../../ui/Text/Text';
 import { COMMON_API_ERRORS } from '../../../constants/commonApiErrors';
 import i18n from '../../../config/i18n/i18n';
-import { useAppSelector } from 'shared/lib';
+import { useAppSelector } from '../../hooks/reduxHooks/useAppSelector';
 
 export interface WithErrorProps {
   error?: string | null
@@ -17,7 +17,7 @@ interface WithErrorOptions<Props extends DefaultErrorProps> {
   errorSelector?: (state: StateSchema) => string | null
 }
 
-const DefaultErrorComponent: FC<DefaultErrorProps> = props => (
+const DefaultErrorComponent: FC<DefaultErrorProps> = (props) => (
   <Text
     align={TextAlign.CENTER}
     theme={TextTheme.ERROR}
@@ -26,16 +26,22 @@ const DefaultErrorComponent: FC<DefaultErrorProps> = props => (
   />
 );
 
-export const withError = <ErrorProps extends DefaultErrorProps>
-  (options?: WithErrorOptions<ErrorProps>) => <Props extends WithErrorProps>(WrappedComponent: FC<Props>) => {
-    const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
+export const withError =
+  <ErrorProps extends DefaultErrorProps>(
+    options?: WithErrorOptions<ErrorProps>
+  ) =>
+  <Props extends WithErrorProps>(WrappedComponent: FC<Props>) => {
+    const displayName =
+      WrappedComponent.displayName || WrappedComponent.name || 'Component';
     const ErrorComponent = options?.ErrorComponent ?? DefaultErrorComponent;
 
     const ReturnComponent: FC<Props> = (props) => {
-      const error = useAppSelector(options?.errorSelector ?? (() => props.error));
+      const error = useAppSelector(
+        options?.errorSelector ?? (() => props.error)
+      );
       if (error) {
         const errorProps = { error, } as unknown as ErrorProps;
-        return <ErrorComponent {...errorProps}/>;
+        return <ErrorComponent {...errorProps} />;
       } else {
         return <WrappedComponent {...props} />;
       }

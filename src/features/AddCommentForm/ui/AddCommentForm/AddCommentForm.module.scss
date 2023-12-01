@@ -1,13 +1,15 @@
 .body {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  column-gap: 15px;
+  align-items: end;
   padding: 10px;
   border: 1px solid var(--primary-color);
 }
 
-.input {
-  flex-grow: 1;
+.textarea {
+  width: 90%;
+  max-height: 400px;
 }
 
 .error {

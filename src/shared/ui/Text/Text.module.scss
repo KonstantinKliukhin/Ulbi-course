@@ -3,6 +3,10 @@
   overflow: hidden;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .primary {
   .title {
     color: var(--primary-color)

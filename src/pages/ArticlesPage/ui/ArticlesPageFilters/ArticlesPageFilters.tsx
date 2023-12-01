@@ -10,10 +10,10 @@ import {
   getArticlesType,
   getArticlesView
 } from '../../model/selectors/getArticlesState/getArticlesState';
-import { ArticleViewSelector } from 'features/ArticleViewSelector';
+import { ArticleViewSelector } from 'features/SelectArticleView';
 import { Card, Input } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
-import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
+import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { type SortOrder } from 'shared/types';
 
 interface ArticlesPageFiltersProps {
@@ -84,7 +84,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = props => {
         <Input
           onChange={onChangeSearch}
           value={articlesSearch}
-          placeholder={t('search')}
+          label={t('search')}
           noErrorSpace
         />
       </Card>

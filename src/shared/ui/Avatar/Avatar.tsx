@@ -1,9 +1,20 @@
-import { type CSSProperties, type FC, type ImgHTMLAttributes, useCallback, useEffect, useMemo, useState } from 'react';
+import {
+  type CSSProperties,
+  type FC,
+  type ImgHTMLAttributes,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState
+} from 'react';
 import cls from './Avatar.module.scss';
-import { classNames } from 'shared/lib';
+import { classNames } from '../../lib/classNames/classNames';
 import DefaultAvatar from '../../../../public/assets/icons/avatar-200-200.png';
 
-type ImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt' | 'style'>;
+type ImageProps = Omit<
+ImgHTMLAttributes<HTMLImageElement>,
+'src' | 'alt' | 'style'
+>;
 
 interface AvatarProps extends ImageProps {
   className?: string
@@ -13,7 +24,7 @@ interface AvatarProps extends ImageProps {
   defaultAvatar?: string
 }
 
-export const Avatar: FC<AvatarProps> = props => {
+export const Avatar: FC<AvatarProps> = (props) => {
   const {
     className,
     size,
@@ -25,21 +36,28 @@ export const Avatar: FC<AvatarProps> = props => {
 
   const [avatarSrc, setAvatarSrc,] = useState<string>(src ?? defaultAvatar);
 
-  const style = useMemo<CSSProperties>(() => ({
-    width: size,
-    height: size,
-  }), [size,]);
+  const style = useMemo<CSSProperties>(
+    () => ({
+      width: size,
+      height: size,
+    }),
+    [size,]
+  );
 
   const onError = useCallback(() => {
     setAvatarSrc(defaultAvatar);
   }, [defaultAvatar,]);
 
-  useEffect(function resetSrc () {
-    setAvatarSrc(src ?? defaultAvatar);
-  }, [src,]);
+  useEffect(
+    function resetSrc () {
+      setAvatarSrc(src ?? defaultAvatar);
+    },
+    [src, defaultAvatar,]
+  );
 
   return (
-    <img {...inputProps}
+    <img
+      {...inputProps}
       src={avatarSrc}
       alt={alt ?? 'Avatar'}
       onError={onError}

@@ -14,6 +14,7 @@ import { type ArticleCommentsSchema } from 'pages/ArticleDetailsPage';
 import { type ArticlesPageSchema } from 'pages/ArticlesPage';
 import { type UISchema } from 'features/UI';
 import { type ArticleRecommendationsSchema } from 'features/ArticleRecomemndations';
+import { type ManageArticleSchema } from 'widgets/ManageArticle';
 
 export interface StateSchema {
   counter: CounterSchema
@@ -26,6 +27,7 @@ export interface StateSchema {
   articleComments?: ArticleCommentsSchema
   articlesPage?: ArticlesPageSchema
   articleRecommendations?: ArticleRecommendationsSchema
+  manageArticle?: ManageArticleSchema
 }
 
 export interface ReducerManager {

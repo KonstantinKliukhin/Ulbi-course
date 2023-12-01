@@ -5,10 +5,12 @@ import { PageLoader } from 'widgets/PageLoader';
 
 export const RootLayout: FC<PropsWithChildren> = props => (
   <Suspense fallback={<PageLoader/>}>
-    <Navbar/>
-    <div className="content-page">
+    <div className="layout">
       <Sidebar/>
-      {props.children}
+      <div className="content-page">
+        <Navbar/>
+        {props.children}
+      </div>
     </div>
   </Suspense>
 );

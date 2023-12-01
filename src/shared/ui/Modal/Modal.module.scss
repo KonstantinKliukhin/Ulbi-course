@@ -13,7 +13,6 @@
   }
 
   &.open:not(.closing) {
-    opacity: 1;
     pointer-events: auto;
     z-index: var(--modal-z-index);
   }

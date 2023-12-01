@@ -5,7 +5,7 @@ import { type Article } from '../../../model/types/article';
 import { Card, CardHoverAnimation, Icon, Text } from 'shared/ui';
 import EyeSvg from '../../../../../../public/assets/icons/eye-20-20.svg';
 import { Link } from 'react-router-dom';
-import { AppRoutes, RoutePath } from 'shared/config';
+import { RoutePath } from 'shared/config';
 
 interface ArticleListItemSmallProps {
   className?: string
@@ -19,7 +19,10 @@ const cardHoverAnimations = [CardHoverAnimation.SHADOW, CardHoverAnimation.SCALE
 export const ArticleListItemSmall = memo<ArticleListItemSmallProps>(
   function ArticleListItemSmall (props) {
     return (
-      <Link to={RoutePath[AppRoutes.ARTICLE_DETAILS](props.article.id)} target={props.cardLinkTarget}>
+      <Link
+        to={RoutePath.articleDetails(props.article.id)}
+        target={props.cardLinkTarget}
+      >
         <Card
           className={classNames(cls.ArticleListItemSmall, {}, [props.className,])}
           hoverAnimations={cardHoverAnimations}

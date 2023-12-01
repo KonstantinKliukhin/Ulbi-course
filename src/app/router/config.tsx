@@ -1,5 +1,5 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
-import { AppRoutes, RoutePath } from 'shared/config';
+import { RoutePath } from 'shared/config';
 import React, { type FC, Suspense } from 'react';
 import { MainPage } from 'pages/MainPage';
 import { AboutPage } from 'pages/AboutPage';
@@ -12,12 +12,12 @@ import { ArticlesPage } from 'pages/ArticlesPage';
 
 export const createAppRouter = (App: FC) => createBrowserRouter([
   {
-    path: RoutePath[AppRoutes.MAIN],
+    path: RoutePath.main,
     element: <App/>,
     hasErrorBoundary: true,
     children: [
       {
-        path: RoutePath[AppRoutes.MAIN],
+        path: RoutePath.main,
         index: true,
         element: (
           <Suspense fallback={<PageLoader/>}>
@@ -26,7 +26,7 @@ export const createAppRouter = (App: FC) => createBrowserRouter([
         ),
       },
       {
-        path: RoutePath[AppRoutes.ABOUT],
+        path: RoutePath.about,
         element: (
           <Suspense fallback={<PageLoader/>}>
             <AboutPage/>
@@ -34,9 +34,9 @@ export const createAppRouter = (App: FC) => createBrowserRouter([
         ),
       },
       {
-        path: RoutePath[AppRoutes.PROFILE](':id'),
+        path: RoutePath.profile(':id'),
         element: (
-          <RequireAuth redirectPath={RoutePath[AppRoutes.MAIN]}>
+          <RequireAuth redirectPath={RoutePath.main}>
             <Suspense fallback={<PageLoader/>}>
               <ProfilePage/>
             </Suspense>
@@ -44,13 +44,13 @@ export const createAppRouter = (App: FC) => createBrowserRouter([
         ),
       },
       {
-        path: RoutePath[AppRoutes.ARTICLES],
+        path: RoutePath.articles,
         element: <Outlet/>,
         children: [
           {
             index: true,
             element: (
-              <RequireAuth redirectPath={RoutePath[AppRoutes.MAIN]}>
+              <RequireAuth redirectPath={RoutePath.main}>
                 <Suspense fallback={<PageLoader/>}>
                   <ArticlesPage/>
                 </Suspense>
@@ -58,9 +58,9 @@ export const createAppRouter = (App: FC) => createBrowserRouter([
             ),
           },
           {
-            path: RoutePath[AppRoutes.ARTICLE_DETAILS](':id'),
+            path: RoutePath.articleDetails(':id'),
             element: (
-              <RequireAuth redirectPath={RoutePath[AppRoutes.MAIN]}>
+              <RequireAuth redirectPath={RoutePath.main}>
                 <Suspense fallback={<PageLoader/>}>
                   <ArticleDetailsPage/>
                 </Suspense>
@@ -70,7 +70,7 @@ export const createAppRouter = (App: FC) => createBrowserRouter([
         ],
       },
       {
-        path: RoutePath[AppRoutes.NOT_FOUND],
+        path: RoutePath.notFound,
         element: <NotFoundPage/>,
       },
     ],

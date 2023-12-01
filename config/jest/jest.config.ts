@@ -8,12 +8,8 @@ import path from 'path';
 
 const config: Config = {
   clearMocks: true,
-  coveragePathIgnorePatterns: [
-    '/node_modules/',
-  ],
-  moduleDirectories: [
-    'node_modules',
-  ],
+  coveragePathIgnorePatterns: ['/node_modules/',],
+  moduleDirectories: ['node_modules',],
   testEnvironment: 'jsdom',
   moduleFileExtensions: [
     'js',
@@ -26,15 +22,13 @@ const config: Config = {
     'node',
   ],
   rootDir: '../../',
-  testMatch: [
-    '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
-  ],
-  modulePaths: [
-    '<rootDir>src',
-  ],
+  testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',],
+  modulePaths: ['<rootDir>src',],
   setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts',],
   moduleNameMapper: {
-    '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'identity-obj-proxy',
+    '\\.(css|style|less|sass|scss)$': 'identity-obj-proxy',
+    '\\.(png|jpg|jpeg|webp|ttf|woff|woff2)$':
+      '<rootDir>/config/jest/jestFileMock.ts',
     '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
   },
   globals: {

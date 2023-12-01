@@ -23,7 +23,7 @@ const CommentsList: FC<CommentListProps> = props => {
       {props.comments?.length
         ? <>{props.comments.map(comment => <CommentCard comment={comment} key={comment.id}/>)}</>
         : <Text title={t('no_comments')}/>
-            }
+      }
     </div>
   );
 };

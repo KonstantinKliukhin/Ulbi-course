@@ -4,7 +4,7 @@ import { classNames } from 'shared/lib';
 import { type Comment } from '../../model/types/comment';
 import { AppLink, Avatar, Text } from 'shared/ui';
 import { CommentCardSkeleton } from './CommentCardSkeleton';
-import { AppRoutes, RoutePath } from 'shared/config';
+import { RoutePath } from 'shared/config';
 
 interface CommentCardProps {
   className?: string
@@ -16,7 +16,7 @@ export const CommentCard: FC<CommentCardProps> = props => {
   if (props.isLoading) return <CommentCardSkeleton/>;
   return (
     <div className={classNames(cls.CommentCard, {}, [props.className,])}>
-      <AppLink className={cls.header} to={RoutePath[AppRoutes.PROFILE](props.comment.user.id)}>
+      <AppLink className={cls.header} to={RoutePath.profile(props.comment.user.id)}>
         <Avatar size={45} src={props.comment.user.avatar}/>
         <Text titleClassName={cls.username} title={props.comment.user.username}/>
       </AppLink>

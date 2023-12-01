@@ -43,18 +43,18 @@ const LoginForm: FC<LoginFormProps> = props => {
         {error
           ? <Text text={error} theme={TextTheme.ERROR} className={cls.error}/>
           : <div className={cls.error}/>
-                }
+        }
         <FormInput
           disabled={isLoading}
           name="username"
-          placeholder={t('user_name')}
+          label={t('user_name')}
           className={cls.input}
           autoFocus
         />
         <FormInput
           disabled={isLoading}
           name="password"
-          placeholder={t('password')}
+          label={t('password')}
           className={cls.input}
         />
         <Button

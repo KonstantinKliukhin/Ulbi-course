@@ -11,8 +11,8 @@ import { useTranslation } from 'react-i18next';
 import { ArticleList, ArticleView } from 'entities/Article';
 import {
   fetchArticleRecommendations
-} from 'features/ArticleRecomemndations/model/services/fetchArticleRecommendations/fetchArticleRecommendations';
-import { articleRecomendationsReducer } from 'features/ArticleRecomemndations/model/slices/articleRecommendationsSlice';
+} from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { articleRecomendationsReducer } from '../../model/slices/articleRecommendationsSlice';
 
 interface ArticleRecommendationsProps {
   className?: string

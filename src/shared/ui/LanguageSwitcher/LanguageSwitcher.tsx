@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { classNames } from 'shared/lib';
+import { classNames } from '../../lib/classNames/classNames';
 import { Button, ButtonTheme } from '../Button/Button';
 import { useTranslation } from 'react-i18next';
 
@@ -8,20 +8,22 @@ interface LanguageSwitcherProps {
   short?: boolean
 }
 
-export const LanguageSwitcher = memo<LanguageSwitcherProps>(function LanguageSwitcher (props) {
-  const { t, i18n, } = useTranslation();
+export const LanguageSwitcher = memo<LanguageSwitcherProps>(
+  function LanguageSwitcher (props) {
+    const { t, i18n, } = useTranslation();
 
-  const toggleLanguage = (): void => {
-    void i18n.changeLanguage(i18n.language === 'uk' ? 'en' : 'uk');
-  };
+    const toggleLanguage = (): void => {
+      void i18n.changeLanguage(i18n.language === 'uk' ? 'en' : 'uk');
+    };
 
-  return (
-    <Button
-      theme={ButtonTheme.CLEAR}
-      className={classNames('', {}, [props.className,])}
-      onClick={toggleLanguage}
-    >
-      {props.short ? t('language_short') : t('language')}
-    </Button>
-  );
-});
+    return (
+      <Button
+        theme={ButtonTheme.CLEAR}
+        className={classNames('', {}, [props.className,])}
+        onClick={toggleLanguage}
+      >
+        {props.short ? t('language_short') : t('language')}
+      </Button>
+    );
+  }
+);

@@ -8,6 +8,7 @@
 .ArticleListItemSmall {
   width: 230px;
   cursor: pointer;
+  height: 100%;
 
   &:hover .date {
     display: block;

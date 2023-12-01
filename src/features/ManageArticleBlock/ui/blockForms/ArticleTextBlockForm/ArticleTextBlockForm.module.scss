@@ -1,0 +1,16 @@
+.label {
+  display: flex;
+  column-gap: 15px;
+}
+
+.removeButton {
+  cursor: pointer;
+}
+
+.paragraphActions {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: end;
+  column-gap: 15px;
+}

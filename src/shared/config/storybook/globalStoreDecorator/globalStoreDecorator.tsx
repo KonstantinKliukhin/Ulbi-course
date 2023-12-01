@@ -1,15 +1,17 @@
 import { type FC, useContext } from 'react';
 import { StoreProvider } from 'app/providers/StoreProvider';
-import { OptionalDecoratorsContext } from 'shared/config/storybook/OptionalDecoratorsProvider/OptionalDecoratorsProvider';
+import { OptionalDecoratorsContext } from '../OptionalDecoratorsProvider/OptionalDecoratorsProvider';
 
 export const GlobalStoreDecorator = (Story: FC) => {
-  const isCustomStore = useContext(OptionalDecoratorsContext).isCustomReduxStore;
+  const isCustomStore = useContext(
+    OptionalDecoratorsContext
+  ).isCustomReduxStore;
 
-  if (isCustomStore) return <Story/>;
+  if (isCustomStore) return <Story />;
 
   return (
     <StoreProvider>
-      <Story/>
+      <Story />
     </StoreProvider>
   );
 };

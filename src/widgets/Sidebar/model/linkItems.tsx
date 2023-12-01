@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { AppRoutes, RoutePath } from 'shared/config';
+import { RoutePath } from 'shared/config';
 import HomeSVG from '../../../../public/assets/icons/main-20-20.svg';
 import InfoSVG from '../../../../public/assets/icons/about-20-20.svg';
 import ProfileSVG from '../../../../public/assets/icons/profile-20-20.svg';
@@ -15,22 +15,22 @@ interface GetLinkItemsArg {
 
 const getLinkItems = (arg: GetLinkItemsArg): SidebarItemType[] => [
   {
-    path: RoutePath[AppRoutes.MAIN],
+    path: RoutePath.main,
     text: 'nav_home',
     icon: <HomeSVG/>,
   },
   {
-    path: RoutePath[AppRoutes.ABOUT],
+    path: RoutePath.about,
     text: 'nav_about',
     icon: <InfoSVG/>,
   },
   ...addOptionallyToArray([arg.isAuthorized, Boolean(arg.profileId),], {
-    path: RoutePath[AppRoutes.PROFILE](arg.profileId!),
+    path: RoutePath.profile(arg.profileId!),
     text: 'nav_profile',
     icon: <ProfileSVG/>,
   }),
   ...addOptionallyToArray(arg.isAuthorized, {
-    path: RoutePath[AppRoutes.ARTICLES],
+    path: RoutePath.articles,
     text: 'nav_articles',
     icon: <ArticlesSVG/>,
   }),

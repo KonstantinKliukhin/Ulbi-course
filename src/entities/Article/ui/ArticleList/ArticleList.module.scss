@@ -1,7 +1,8 @@
 .ArticleList {
   &.small {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 230px);
+    justify-items: center;
     gap: 10px;
   }
 

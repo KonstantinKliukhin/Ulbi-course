@@ -1,7 +1,7 @@
 import { type ChangeEvent, type FC, useCallback, useState } from 'react';
 import cls from './AddCommentForm.module.scss';
 import { classNames } from 'shared/lib';
-import { Button, ButtonTheme, Input, Text, TextTheme } from 'shared/ui';
+import { Button, ButtonTheme, Text, TextArea, TextTheme } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 
 interface AddCommentFormProps {
@@ -18,7 +18,7 @@ const AddCommentForm: FC<AddCommentFormProps> = props => {
   const mods = { [cls.loading]: props.isLoading, };
   const isTextEmpty = commentText.length === 0;
 
-  const onChangeText = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+  const onChangeText = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
     setCommentText(e.target.value);
   }, []);
 
@@ -30,10 +30,11 @@ const AddCommentForm: FC<AddCommentFormProps> = props => {
   return (
     <div className={classNames(cls.AddCommentForm, mods, [props.className,])}>
       <div className={cls.body}>
-        <Input
+        <TextArea
+          resize="vertical"
           disabled={props.isLoading}
-          className={cls.input}
-          placeholder={t('add_comment_label')}
+          className={cls.textarea}
+          label={t('add_comment_label')}
           onChange={onChangeText}
           value={commentText}
         />

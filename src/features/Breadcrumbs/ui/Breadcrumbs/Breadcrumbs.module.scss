@@ -1,0 +1,12 @@
+.Breadcrumbs {
+  display: grid;
+  max-width: 100%;
+  overflow: hidden;
+  grid-template-columns: repeat(auto-fit, minmax(10px, auto));
+}
+
+.breadcrumbsItem {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-column-gap: 5px;
+}

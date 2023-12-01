@@ -1,0 +1,15 @@
+.UserInfo {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  max-width: 100%;
+  align-items: center;
+  overflow: hidden;
+}
+
+.username {
+  margin-left: 10px;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

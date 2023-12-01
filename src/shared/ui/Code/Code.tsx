@@ -1,6 +1,6 @@
 import { type FC, useCallback } from 'react';
 import cls from './Code.module.scss';
-import { classNames } from 'shared/lib';
+import { classNames } from '../../lib/classNames/classNames';
 import { Button, ButtonTheme } from '../Button/Button';
 import CopySvg from '../../../../public/assets/icons/copy-20-20.svg';
 
@@ -9,7 +9,7 @@ interface CodeProps {
   text: string
 }
 
-export const Code: FC<CodeProps> = props => {
+export const Code: FC<CodeProps> = (props) => {
   const onCopy = useCallback(() => {
     void navigator.clipboard.writeText(props.text);
   }, [props.text,]);
@@ -22,12 +22,10 @@ export const Code: FC<CodeProps> = props => {
         theme={ButtonTheme.CLEAR}
         square
       >
-        <CopySvg className={cls.copyIcon}/>
+        <CopySvg className={cls.copyIcon} />
       </Button>
       <div className={cls.codeWrapper}>
-        <code className={cls.Code}>
-          {props.text}
-        </code>
+        <code className={cls.Code}>{props.text}</code>
       </div>
     </div>
   );

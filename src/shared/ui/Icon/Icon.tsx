@@ -1,5 +1,5 @@
 import React, { type FC } from 'react';
-import { classNames } from 'shared/lib';
+import { classNames } from '../../lib/classNames/classNames';
 import cls from './Icon.module.scss';
 
 interface IconProps extends React.SVGAttributes<SVGElement> {
@@ -7,9 +7,9 @@ interface IconProps extends React.SVGAttributes<SVGElement> {
   Svg: React.FunctionComponent<React.SVGAttributes<SVGElement>>
 }
 
-export const Icon: FC<IconProps> = props => {
+export const Icon: FC<IconProps> = (props) => {
   const { className, Svg, ...svgProps } = props;
   return (
-    <Svg {...svgProps} className={classNames(cls.Icon, {}, [className,])}/>
+    <Svg {...svgProps} className={classNames(cls.Icon, {}, [className,])} />
   );
 };

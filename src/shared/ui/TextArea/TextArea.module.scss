@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+
+  &.readonly {
+    opacity: 0.7;
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+.textarea {
+  padding: 5px;
+  border: 1px solid var(--primary-color);
+  background: transparent;
+  outline: none;
+  color: var(--primary-color);
+  font: var(--font-m);
+  font-family: var(--font-family-monospace);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.error {
+  min-height: 24px;
+}

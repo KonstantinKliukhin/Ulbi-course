@@ -1,7 +1,7 @@
 import { type FC, useContext, useLayoutEffect } from 'react';
 import { type StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 import { type ReducersMapObject } from '@reduxjs/toolkit';
-import { OptionalDecoratorsContext } from 'shared/config/storybook/OptionalDecoratorsProvider/OptionalDecoratorsProvider';
+import { OptionalDecoratorsContext } from '../OptionalDecoratorsProvider/OptionalDecoratorsProvider';
 
 export const StoreDecorator = (
   initialState: DeepPartial<StateSchema>,
@@ -12,15 +12,21 @@ export const StoreDecorator = (
   return function Component (Story: FC) {
     const { setIsCustomReduxStore, } = useContext(OptionalDecoratorsContext);
 
-    useLayoutEffect(function removeGlobalStore () {
-      setIsCustomReduxStore(true);
-    }, [setIsCustomReduxStore,]);
+    useLayoutEffect(
+      function removeGlobalStore () {
+        setIsCustomReduxStore(true);
+      },
+      [setIsCustomReduxStore,]
+    );
 
     return (
-      <StoreProvider initialState={initialState}
-        asyncReducers={mergedAsyncReducers as DeepPartial<ReducersMapObject<StateSchema>>}
+      <StoreProvider
+        initialState={initialState}
+        asyncReducers={
+          mergedAsyncReducers as DeepPartial<ReducersMapObject<StateSchema>>
+        }
       >
-        <Story/>
+        <Story />
       </StoreProvider>
     );
   };

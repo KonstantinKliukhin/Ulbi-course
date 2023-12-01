@@ -13,7 +13,7 @@ import {
 } from 'entities/Profile';
 import { ProfilePageHeader } from '../ProfilePageHeader/ProfilePageHeader';
 import { FormProvider } from 'react-hook-form';
-import { useProfileForm } from 'features/ProfileForm';
+import { useProfileForm } from 'features/EditProfile';
 import { useParams } from 'react-router-dom';
 import { Page } from 'shared/ui';
 

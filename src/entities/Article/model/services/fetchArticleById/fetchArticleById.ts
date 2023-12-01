@@ -11,7 +11,11 @@ export const fetchArticleById =
       'article/fetchArticleById',
       async (id, thunkAPI) => {
         try {
-          const response = await thunkAPI.extra.api.get<Article>(`/articles/${id}`);
+          const response = await thunkAPI.extra.api.get<Article>(`/articles/${id}`, {
+            params: {
+              _expand: 'user',
+            },
+          });
 
           if (!response.data) {
             throw new Error(COMMON_API_ERRORS.NO_DATA_PROVIDED_FROM_SERVER);

@@ -1,0 +1,19 @@
+.input {
+  margin-top: 10px;
+}
+
+.blocksList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.blockActions {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.addBlockButton {
+  margin-bottom: 10px;
+}

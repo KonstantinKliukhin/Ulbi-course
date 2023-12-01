@@ -1,6 +1,11 @@
 import { type FC, useCallback } from 'react';
 import { ArticleList } from 'entities/Article';
-import { useAppDispatch, useAppSelector, useInitialEffect, withLazySlices } from 'shared/lib';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useInitialEffect,
+  withLazySlices
+} from 'shared/lib';
 import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
 import {
   getArticlesError,
@@ -12,8 +17,9 @@ import { useSaveItemToStorage } from '../../lib/articleStorage/articleStorage';
 import { PageWithInfiniteScroll } from 'widgets/InfiniteScroll';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
-import { ArticlesPageFilters } from 'pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { useSearchParams } from 'react-router-dom';
+import { ArticlesPageHeader } from '../ArticlesPageHeader/ArticlesPageHeader';
 
 const ArticlesPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -24,24 +30,31 @@ const ArticlesPage: FC = () => {
   const [searchParams,] = useSearchParams();
   useSaveItemToStorage(articleView);
 
-  useInitialEffect(useCallback(() => {
-    void dispatch(initArticlesPage(searchParams));
-  }, [dispatch, searchParams,]));
+  useInitialEffect(
+    useCallback(() => {
+      void dispatch(initArticlesPage(searchParams));
+    }, [dispatch, searchParams,])
+  );
 
   const onLoadNextPart = useCallback(() => {
-    void dispatch(fetchNextArticlesPage());
+    if (__PROJECT__ !== 'storybook') {
+      void dispatch(fetchNextArticlesPage());
+    }
   }, [dispatch,]);
 
   return (
-    <PageWithInfiniteScroll onScrollEnd={onLoadNextPart}>
-      <ArticlesPageFilters/>
-      <ArticleList
-        error={articlesError}
-        articles={articles}
-        view={articleView}
-        isLoading={articlesIsLoading}
-      />
-    </PageWithInfiniteScroll>
+    <>
+      <ArticlesPageHeader />
+      <PageWithInfiniteScroll onScrollEnd={onLoadNextPart}>
+        <ArticlesPageFilters />
+        <ArticleList
+          error={articlesError}
+          articles={articles}
+          view={articleView}
+          isLoading={articlesIsLoading}
+        />
+      </PageWithInfiniteScroll>
+    </>
   );
 };
 

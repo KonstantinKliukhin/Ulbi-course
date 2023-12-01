@@ -26,6 +26,7 @@ export const loginByUsername =
 
           saveUserToStorage(response.data);
           thunkAPI.dispatch(userActions.setAuthData(response.data));
+          thunkAPI.extra.api.defaults.headers.common.Authorization = JSON.stringify(response.data);
           return response.data;
         } catch (e) {
           console.error(e);

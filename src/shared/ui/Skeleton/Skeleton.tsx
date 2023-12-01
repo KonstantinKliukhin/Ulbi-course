@@ -1,6 +1,6 @@
 import { type CSSProperties, type FC } from 'react';
 import cls from './Skeleton.module.scss';
-import { classNames } from 'shared/lib';
+import { classNames } from '../../lib/classNames/classNames';
 
 interface SkeletonProps {
   className?: string
@@ -10,7 +10,7 @@ interface SkeletonProps {
   centered?: boolean
 }
 
-export const Skeleton: FC<SkeletonProps> = props => {
+export const Skeleton: FC<SkeletonProps> = (props) => {
   const style: CSSProperties = {
     height: props.height,
     width: props.width,

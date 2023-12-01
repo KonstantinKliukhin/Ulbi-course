@@ -1,0 +1,45 @@
+.Flyout {
+  opacity: 0;
+  z-index: -1;
+  inset: 0;
+  position: fixed;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+
+  &.open {
+    opacity: 1;
+    z-index: var(--flyout-z-index);
+  }
+
+  &.open:not(.closing) {
+    pointer-events: auto;
+  }
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  background: var(--overlay-color);
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.content {
+  width: 75%;
+  height: 100%;
+  padding: 20px;
+  background: var(--bg-color);
+  transform: translateX(100%);
+  transition: transform 0.2s ease-in;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.Flyout.open:not(.closing) .content {
+  transform: translateX(0);
+}
+
+
+

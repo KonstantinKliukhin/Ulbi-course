@@ -33,42 +33,42 @@ const ProfileCard: FC<ProfileCardProps> = props => {
           name="firstname"
           readonly={props.readonly}
           className={cls.input}
-          placeholder={t('your_firstname_label')}
+          label={t('your_firstname_label')}
         />
         <FormInput
           value={props.readonly ? props.data?.lastname : undefined}
           name="lastname"
           readonly={props.readonly}
           className={cls.input}
-          placeholder={t('your_lastname_label')}
+          label={t('your_lastname_label')}
         />
         <FormInput
           value={props.readonly ? props.data?.age : undefined}
           name="age"
           readonly={props.readonly}
           className={cls.input}
-          placeholder={t('your_age_label')}
+          label={t('your_age_label')}
         />
         <FormInput
           value={props.readonly ? props.data?.city : undefined}
           name="city"
           readonly={props.readonly}
           className={cls.input}
-          placeholder={t('your_city_label')}
+          label={t('your_city_label')}
         />
         <FormInput
           value={props.readonly ? props.data?.avatar : undefined}
           name="avatar"
           readonly={props.readonly}
           className={cls.input}
-          placeholder={t('your_avatar_label')}
+          label={t('your_avatar_label')}
         />
         <FormInput
           value={props.readonly ? props.data?.username : undefined}
           name="username"
           readonly={props.readonly}
           className={cls.input}
-          placeholder={t('username_label')}
+          label={t('username_label')}
         />
         <FormSelect
           value={props.readonly ? props.data?.currency : undefined}

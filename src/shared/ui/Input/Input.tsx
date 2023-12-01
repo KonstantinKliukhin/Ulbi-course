@@ -9,10 +9,13 @@ import {
   useState
 } from 'react';
 import cls from './Input.module.scss';
-import { classNames } from 'shared/lib';
-import { Text, TextTheme } from 'shared/ui';
+import { classNames } from '../../lib/classNames/classNames';
+import { Text, TextTheme } from '../Text/Text';
 
-type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value' | 'readOnly'>;
+type HtmlInputProps = Omit<
+InputHTMLAttributes<HTMLInputElement>,
+'onChange' | 'value' | 'readOnly'
+>;
 
 interface InputProps extends HtmlInputProps {
   value?: string | number
@@ -20,74 +23,84 @@ interface InputProps extends HtmlInputProps {
   readonly?: boolean
   error?: string
   noErrorSpace?: boolean
+  label: string
 }
 
 const INPUT_FONT_WIDTH = 9.4;
 
-export const Input = memo(forwardRef<HTMLInputElement, InputProps>(function Input (props, ref) {
-  const {
-    value,
-    onChange,
-    className,
-    type = 'text',
-    placeholder,
-    autoFocus,
-    readonly,
-    error,
-    noErrorSpace = false,
-    ...inputProps
-  } = props;
+export const Input = memo(
+  forwardRef<HTMLInputElement, InputProps>(function Input (props, ref) {
+    const {
+      value,
+      onChange,
+      className,
+      type = 'text',
+      label,
+      autoFocus,
+      readonly,
+      error,
+      noErrorSpace = false,
+      ...inputProps
+    } = props;
 
-  const inputRef = useRef<HTMLInputElement | null>(null);
-  const [caretPosition, setCaretPosition,] = useState(0);
-  const mods = {
-    [cls.readonly]: readonly,
-  };
+    const inputRef = useRef<HTMLInputElement | null>(null);
+    const [caretPosition, setCaretPosition,] = useState(0);
+    const mods = {
+      [cls.readonly]: readonly,
+    };
 
-  useEffect(() => {
-    if (autoFocus && inputRef.current) {
-      inputRef.current?.focus();
-    }
-  }, [autoFocus,]);
+    useEffect(() => {
+      if (autoFocus && inputRef.current) {
+        inputRef.current?.focus();
+      }
+    }, [autoFocus,]);
 
-  const onSelect = (e: any) => {
-    setCaretPosition(e.target.selectionStart || 0);
-  };
+    const onSelect = (e: any) => {
+      setCaretPosition(e.target.selectionStart || 0);
+    };
 
-  const refCb = useCallback((elem: HTMLInputElement) => {
-    inputRef.current = elem;
+    const refCb = useCallback(
+      (elem: HTMLInputElement) => {
+        inputRef.current = elem;
 
-    if (!ref) return;
-    if (ref instanceof Function) {
-      ref(elem);
-    } else {
-      ref.current = elem;
-    }
-  }, [ref,]);
+        if (!ref) return;
+        if (ref instanceof Function) {
+          ref(elem);
+        } else {
+          ref.current = elem;
+        }
+      },
+      [ref,]
+    );
 
-  return (
-    <>
-      <div className={classNames(cls.InputWrapper, mods, [props.className,])}>
-        {placeholder
-          ? (<div>{`${placeholder} >`}</div>)
-          : null
-                }
-        <div className={cls.caretWrapper}>
-          <input
-            {...inputProps}
-            aria-invalid={error ? 'true' : 'false'}
-            ref={refCb}
-            type={type}
-            onChange={props.onChange}
-            className={cls.input}
-            onSelect={onSelect}
-            value={value}
-            readOnly={readonly}
-          />
-          <span style={{ left: caretPosition * INPUT_FONT_WIDTH, }} className={cls.caret}/>
+    return (
+      <>
+        <div className={classNames(cls.InputWrapper, mods, [props.className,])}>
+          {label ? <div>{`${label} >`}</div> : null}
+          <div className={cls.caretWrapper}>
+            <input
+              {...inputProps}
+              aria-invalid={error ? 'true' : 'false'}
+              ref={refCb}
+              type={type}
+              onChange={props.onChange}
+              className={cls.input}
+              onSelect={onSelect}
+              value={value}
+              readOnly={readonly}
+            />
+            <span
+              style={{ left: caretPosition * INPUT_FONT_WIDTH, }}
+              className={cls.caret}
+            />
+          </div>
         </div>
-      </div>
-      {noErrorSpace ? null : <Text theme={TextTheme.ERROR} className={cls.error} text={error}/>}
-    </>
-  );
-}));
+        {noErrorSpace
+          ? null
+          : (
+            <Text theme={TextTheme.ERROR} className={cls.error} text={error} />
+            )}
+      </>
+    );
+  })
+);
