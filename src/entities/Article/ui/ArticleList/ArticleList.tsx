@@ -97,7 +97,7 @@ export const ArticleList = memo<ArticleListProps>(function ArticleList (props) {
           isScrolling,
         }) => (
           <div
-            ref={registerChild as any}
+            ref={registerChild as unknown as any}
             className={classNames(cls.ArticleList, {}, [
               props.className,
               cls[view],
@@ -105,8 +105,6 @@ export const ArticleList = memo<ArticleListProps>(function ArticleList (props) {
           >
             <List
               autoHeight
-              autoWidth
-              autoContainerWidth
               onScroll={onChildScroll}
               isScrolling={isScrolling}
               scrollTop={scrollTop}
