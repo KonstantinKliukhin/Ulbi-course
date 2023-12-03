@@ -9,6 +9,8 @@
   width: 230px;
   cursor: pointer;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 
   &:hover .date {
     display: block;

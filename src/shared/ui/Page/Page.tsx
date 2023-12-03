@@ -11,6 +11,8 @@ interface PageProps extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
   className?: string
 }
 
+export const PAGE_ID = 'page';
+
 export const Page = memo(
   forwardRef<HTMLDivElement, PageProps>(function Page (props, ref) {
     const { className, ...mainProps } = props;
@@ -19,6 +21,7 @@ export const Page = memo(
         {...mainProps}
         className={classNames(cls.Page, {}, [className,])}
         ref={ref}
+        id={PAGE_ID}
       >
         {props.children}
       </main>

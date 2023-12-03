@@ -5,9 +5,16 @@ import { ArticleListItemBigSkeleton } from './ArticleListItemBig/ArticleListItem
 
 interface ArticleListItemSkeletonProps {
   view: ArticleView
+  className?: string
 }
 
-export const ArticleListItemSkeleton: FC<ArticleListItemSkeletonProps> = props => {
-  if (props.view === ArticleView.BIG) return <ArticleListItemBigSkeleton/>;
-  if (props.view === ArticleView.SMALL) return <ArticleListItemSmallSkeleton/>;
+export const ArticleListItemSkeleton: FC<ArticleListItemSkeletonProps> = (
+  props
+) => {
+  if (props.view === ArticleView.BIG) {
+    return <ArticleListItemBigSkeleton className={props.className} />;
+  }
+  if (props.view === ArticleView.SMALL) {
+    return <ArticleListItemSmallSkeleton className={props.className} />;
+  }
 };

@@ -10,18 +10,21 @@ interface ArticleListItemProps {
   cardLinkTarget?: HTMLAttributeAnchorTarget
 }
 
-export const ArticleListItem: FC<ArticleListItemProps> = props => {
+export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
   if (props.view === ArticleView.BIG) {
     return (
       <ArticleListItemBig
+        className={props.className}
         article={props.article}
         cardLinkTarget={props.cardLinkTarget}
-      />);
+      />
+    );
   }
 
   if (props.view === ArticleView.SMALL) {
     return (
       <ArticleListItemSmall
+        className={props.className}
         article={props.article}
         cardLinkTarget={props.cardLinkTarget}
       />

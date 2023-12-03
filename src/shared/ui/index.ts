@@ -17,7 +17,7 @@ export { Icon } from './Icon/Icon';
 export { Code } from './Code/Code';
 export { FormSelect } from './Select/FormSelect';
 export { Skeleton } from './Skeleton/Skeleton';
-export { Page } from './Page/Page';
+export { Page, PAGE_ID } from './Page/Page';
 export { Card, CardHoverAnimation, CardTheme } from './Card/Card';
 export { Tabs, type TabItem } from './Tabs/Tabs';
 export { TextArea } from './TextArea/TextArea';
