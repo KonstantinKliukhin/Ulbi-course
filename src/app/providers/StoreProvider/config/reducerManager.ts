@@ -1,7 +1,14 @@
-import { type AnyAction, combineReducers, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit';
+import {
+  type AnyAction,
+  combineReducers,
+  type Reducer,
+  type ReducersMapObject
+} from '@reduxjs/toolkit';
 import { type ReducerManager, type StateSchema } from './StateSchema';
 
-export function createReducerManager (initialReducers: ReducersMapObject<StateSchema>): ReducerManager {
+export function createReducerManager (
+  initialReducers: ReducersMapObject<StateSchema>
+): ReducerManager {
   const reducers = { ...initialReducers, };
   let combinedReducer = combineReducers(reducers);
 
@@ -12,6 +19,7 @@ export function createReducerManager (initialReducers: ReducersMapObject<StateSc
       if (state && keysToRemove.length > 0) {
         state = { ...state, };
         for (const key of keysToRemove) {
+          // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
           delete state[key];
         }
         keysToRemove = [];

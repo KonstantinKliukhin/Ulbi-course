@@ -23,7 +23,7 @@ import { ManageArticleBlockForm } from 'features/ManageArticleBlock';
 import { type ArticleFormType } from '../../model/types/articleForm';
 import { ArticleForm } from '../ArticleForm/ArticleForm.async';
 import { useArticleBlockFormTitle } from './useArticleBlockFormTitle';
-import { ArticleBlocksFormList } from 'widgets/ManageArticle/ui/ArticleBlocksFormList/ArticleBlocksFormList';
+import { ArticleBlocksFormList } from '../ArticleBlocksFormList/ArticleBlocksFormList';
 
 interface ManageArticleFormProps {
   className?: string

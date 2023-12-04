@@ -1,6 +1,11 @@
 import { type FC, useCallback } from 'react';
 import cls from './LoginForm.module.scss';
-import { classNames, useAppDispatch, useAppSelector, withLazySlices } from 'shared/lib';
+import {
+  classNames,
+  useAppDispatch,
+  useAppSelector,
+  withLazySlices
+} from 'shared/lib';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme, FormInput, Text, TextTheme } from 'shared/ui';
 import { loginReducer } from '../../model/slice/loginSlice';
@@ -15,7 +20,7 @@ interface LoginFormProps {
   onSuccess: () => void
 }
 
-const LoginForm: FC<LoginFormProps> = props => {
+const LoginForm: FC<LoginFormProps> = (props) => {
   const { onSuccess, } = props;
   const dispatch = useAppDispatch();
   const error = useAppSelector(getLoginError);
@@ -25,13 +30,18 @@ const LoginForm: FC<LoginFormProps> = props => {
   const loginForm = useLoginForm();
   const { handleSubmit, } = loginForm;
 
-  const onSubmit = useCallback(handleSubmit(async (values) => {
-    const result = await dispatch(loginByUsername(values));
+  const onSubmit = handleSubmit(
+    useCallback(
+      async (values) => {
+        const result = await dispatch(loginByUsername(values));
 
-    const isSuccess = result.meta.requestStatus === 'fulfilled';
+        const isSuccess = result.meta.requestStatus === 'fulfilled';
 
-    if (isSuccess) onSuccess();
-  }), [dispatch, onSuccess, handleSubmit,]);
+        if (isSuccess) onSuccess();
+      },
+      [dispatch, onSuccess, handleSubmit,]
+    )
+  );
 
   return (
     <FormProvider {...loginForm}>
@@ -39,11 +49,14 @@ const LoginForm: FC<LoginFormProps> = props => {
         onSubmit={onSubmit}
         className={classNames(cls.LoginForm, {}, [props.className,])}
       >
-        <Text title={t('login_form_title')}/>
+        <Text title={t('login_form_title')} />
         {error
-          ? <Text text={error} theme={TextTheme.ERROR} className={cls.error}/>
-          : <div className={cls.error}/>
-        }
+          ? (
+            <Text text={error} theme={TextTheme.ERROR} className={cls.error} />
+            )
+          : (
+            <div className={cls.error} />
+            )}
         <FormInput
           disabled={isLoading}
           name="username"
@@ -70,4 +83,6 @@ const LoginForm: FC<LoginFormProps> = props => {
   );
 };
 
-export default withLazySlices({ reducers: { loginForm: loginReducer, }, })(LoginForm);
+export default withLazySlices({ reducers: { loginForm: loginReducer, }, })(
+  LoginForm
+);

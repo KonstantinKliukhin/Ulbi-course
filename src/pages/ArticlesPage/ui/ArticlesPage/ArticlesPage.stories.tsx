@@ -9,7 +9,7 @@ import {
   ArticleType,
   ArticleView
 } from 'entities/Article';
-import { articlesPageReducer } from 'pages/ArticlesPage/model/slices/articlesPageSlice';
+import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
 
 export default {
   title: 'pages/ArticlesPage',

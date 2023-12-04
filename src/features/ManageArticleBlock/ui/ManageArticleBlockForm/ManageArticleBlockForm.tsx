@@ -3,7 +3,7 @@ import { FormProvider } from 'react-hook-form';
 import { type ArticleBlock } from 'entities/Article';
 import { useArticleBlockForm } from '../../model/hooks/useArticleBlockForm/useArticleBlockForm';
 import { formToArticleBlock } from '../../lib/formToArticleBlock/formToArticleBlock';
-import { ArticleBlockForm } from 'features/ManageArticleBlock/ui/ArticleBlockForm/ArticleBlockForm';
+import { ArticleBlockForm } from '../ArticleBlockForm/ArticleBlockForm';
 
 interface ManageArticleBlockFormProps {
   articleBlock?: ArticleBlock

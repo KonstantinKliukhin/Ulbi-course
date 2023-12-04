@@ -1,7 +1,7 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { ArticleTypesTabs } from './ArticleTypesTabs';
-import { ArticleType } from 'entities/Article';
+import { ArticleType } from '../../model/types/article';
 import { action } from '@storybook/addon-actions';
 
 export default {

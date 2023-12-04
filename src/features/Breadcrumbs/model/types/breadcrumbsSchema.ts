@@ -1,4 +1,4 @@
-import { type Breadcrumb } from 'features/Breadcrumbs/model/types/breadcrumbs';
+import { type Breadcrumb } from './breadcrumbs';
 
 export interface BreadcrumbsSchema {
   currentBreadcrumbs: Breadcrumb[]

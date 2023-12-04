@@ -45,7 +45,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', 'i18next', 'react-hooks',],
+  plugins: ['react', 'i18next', 'react-hooks', 'ulbi-eslint-plugin',],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
@@ -59,6 +59,7 @@ module.exports = {
     'n/no-callback-literal': 'off',
     'import/no-unresolved': 'off',
     'react/prop-types': 'off',
+    'ulbi-eslint-plugin/path-checker': 'error',
     'max-len': [
       'error',
       {
