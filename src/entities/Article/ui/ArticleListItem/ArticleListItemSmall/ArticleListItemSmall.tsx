@@ -14,30 +14,44 @@ interface ArticleListItemSmallProps {
   cardLinkTarget?: HTMLAttributeAnchorTarget
 }
 
-const cardHoverAnimations = [CardHoverAnimation.SHADOW, CardHoverAnimation.SCALE_SMALL,];
+const cardHoverAnimations = [
+  CardHoverAnimation.SHADOW,
+  CardHoverAnimation.SCALE_SMALL,
+];
 
 export const ArticleListItemSmall = memo<ArticleListItemSmallProps>(
   function ArticleListItemSmall (props) {
     return (
       <Link
+        className={cls.wrapper}
         to={RoutePath.articleDetails(props.article.id)}
         target={props.cardLinkTarget}
       >
         <Card
-          className={classNames(cls.ArticleListItemSmall, {}, [props.className,])}
+          className={classNames(cls.ArticleListItemSmall, {}, [
+            props.className,
+          ])}
           hoverAnimations={cardHoverAnimations}
         >
           <div className={cls.imageWrapper}>
-            <img src={props.article.img} alt={props.article.title} className={cls.img}/>
-            <Text text={props.article.createdAt} className={cls.date}/>
+            <img
+              src={props.article.img}
+              alt={props.article.title}
+              className={cls.img}
+            />
+            <Text text={props.article.createdAt} className={cls.date} />
           </div>
           <div className={cls.infoWrapper}>
-            <Text text={props.article.type.join(', ')} textClassName={cls.types}/>
-            <Text text={String(props.article.views)} className={cls.views}/>
-            <Icon Svg={EyeSvg}/>
+            <Text
+              text={props.article.type.join(', ')}
+              textClassName={cls.types}
+            />
+            <Text text={String(props.article.views)} className={cls.views} />
+            <Icon Svg={EyeSvg} />
           </div>
-          <Text title={props.article.title} className={cls.title}/>
+          <Text title={props.article.title} className={cls.title} />
         </Card>
       </Link>
     );
-  });
+  }
+);

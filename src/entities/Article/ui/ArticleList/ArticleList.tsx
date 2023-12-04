@@ -1,13 +1,19 @@
-import { type HTMLAttributeAnchorTarget, memo, useRef } from 'react';
+import {
+  type FC,
+  forwardRef,
+  type HTMLAttributeAnchorTarget,
+  memo,
+  useMemo
+} from 'react';
 import { type Article, ArticleView } from '../../model/types/article';
 import { ArticlesNotFound } from './ArticlesNotFound';
-import { List, type ListRowProps, WindowScroller } from 'react-virtualized';
-import { PAGE_ID, Text, TextAlign, TextTheme } from 'shared/ui';
-import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
-import { classNames } from 'shared/lib';
 import cls from './ArticleList.module.scss';
-import { ArticleListSkeleton } from './ArticleListSkeleton';
-import { useSmallItemsPerRow } from './hooks/useSmallItemsPerRow';
+import {
+  type GridScrollSeekPlaceholderProps,
+  VirtuosoGrid
+} from 'react-virtuoso';
+import { classNames } from 'shared/lib';
+import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 
 interface ArticleListProps {
@@ -19,116 +25,79 @@ interface ArticleListProps {
   cardLinkTarget?: HTMLAttributeAnchorTarget
 }
 
-const SMALL_ITEMS_GAP = 30;
-const SMALL_ITEMS_WIDTH = 230;
-const SMALL_ITEM_HEIGHT = 330;
-const SMALL_ITEMS_WIDTH_WITH_GAP = SMALL_ITEMS_WIDTH + SMALL_ITEMS_GAP;
-const SMALL_ITEMS_HEIGHT_WITH_GAP = SMALL_ITEM_HEIGHT + SMALL_ITEMS_GAP;
+export const ArticleList = memo(
+  forwardRef<HTMLElement | null, ArticleListProps>(function ArticleList (
+    props,
+    scrollElementRef
+  ) {
+    const view = props.view ?? ArticleView.SMALL;
 
-const BIG_ITEMS_HEIGHT = 640;
-const BIG_ITEMS_GAP = 30;
-const BIG_ITEMS_HEIGHT_WITH_GAP = BIG_ITEMS_HEIGHT + BIG_ITEMS_GAP;
-const BIG_ITEMS_PER_ROW = 1;
-
-const PAGE_PADDING = 40;
-
-export const ArticleList = memo<ArticleListProps>(function ArticleList (props) {
-  const view = props.view ?? ArticleView.BIG;
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
-  const smallItemsPerRow = useSmallItemsPerRow(
-    wrapperRef,
-    SMALL_ITEMS_WIDTH_WITH_GAP
-  );
-
-  const isBig = view === ArticleView.BIG;
-
-  const itemsPerRow = isBig ? BIG_ITEMS_PER_ROW : smallItemsPerRow;
-
-  const rowCount = isBig
-    ? props.articles.length
-    : Math.ceil(props.articles.length / itemsPerRow);
-
-  const rowRenderer = ({ index, key, style, }: ListRowProps) => {
-    const items = [];
-    const fromIndex = index * itemsPerRow;
-    const toIndex = fromIndex + itemsPerRow;
-
-    for (let i = fromIndex; i < toIndex; i++) {
-      if (props.articles[i]) {
-        items.push(
-          <ArticleListItem
-            className={cls.card}
-            article={props.articles[i]}
-            view={view}
-            key={props.articles[i].id}
-          />
-        );
-      } else if (props.isLoading) {
-        items.push(<ArticleListItemSkeleton view={view} />);
+    const skeletonsCount = useMemo<number>(() => {
+      if (props.isLoading) {
+        if (view === ArticleView.SMALL) {
+          return 20;
+        } else {
+          return 4;
+        }
+      } else {
+        return 0;
       }
+    }, [props.isLoading, view,]);
+
+    const totalCount = props.articles.length + skeletonsCount;
+
+    if (!props.articles.length && !props.isLoading) {
+      return <ArticlesNotFound />;
     }
 
     return (
-      <div key={key} style={style} className={cls.row}>
-        {items}
-      </div>
-    );
-  };
+      <VirtuosoGrid
+        customScrollParent={
+          scrollElementRef &&
+          'current' in scrollElementRef &&
+          scrollElementRef.current
+            ? scrollElementRef.current
+            : undefined
+        }
+        totalCount={totalCount}
+        context={props.view}
+        overscan={200}
+        scrollSeekConfiguration={{
+          enter: (velocity) => Math.abs(velocity) > 700,
+          exit: (velocity) => Math.abs(velocity) < 30,
+        }}
+        components={{ ScrollSeekPlaceholder, }}
+        listClassName={classNames(cls.ArticleList, {}, [cls[view],])}
+        itemContent={(index) => {
+          const article = props.articles[index];
 
-  if (!props.articles.length && !props.isLoading) {
-    return (
-      <div ref={wrapperRef}>
-        <ArticlesNotFound />
-      </div>
+          if (props.isLoading && !article) {
+            return (
+              <div className={cls.card}>
+                <ArticleListItemSkeleton view={view} />
+              </div>
+            );
+          } else {
+            return (
+              <div className={cls.card}>
+                <ArticleListItem
+                  article={article}
+                  view={view}
+                  cardLinkTarget={props.cardLinkTarget}
+                />
+              </div>
+            );
+          }
+        }}
+      />
     );
-  }
+  })
+);
 
-  return (
-    <div ref={wrapperRef}>
-      <WindowScroller
-        scrollElement={document.getElementById(PAGE_ID) as Element}
-      >
-        {({
-          height,
-          width,
-          registerChild,
-          scrollTop,
-          onChildScroll,
-          isScrolling,
-        }) => (
-          <div
-            ref={registerChild as unknown as any}
-            className={classNames(cls.ArticleList, {}, [
-              props.className,
-              cls[view],
-            ])}
-          >
-            <List
-              autoHeight
-              onScroll={onChildScroll}
-              isScrolling={isScrolling}
-              scrollTop={scrollTop}
-              rowCount={rowCount}
-              height={height}
-              rowHeight={
-                isBig ? BIG_ITEMS_HEIGHT_WITH_GAP : SMALL_ITEMS_HEIGHT_WITH_GAP
-              }
-              rowRenderer={rowRenderer}
-              width={width - PAGE_PADDING}
-            />
-            {props.isLoading ? <ArticleListSkeleton view={view} /> : null}
-          </div>
-        )}
-      </WindowScroller>
-      {props.error
-        ? (
-          <Text
-            theme={TextTheme.ERROR}
-            title={props.error}
-            align={TextAlign.CENTER}
-          />
-          )
-        : null}
-    </div>
-  );
-});
+const ScrollSeekPlaceholder: FC<
+GridScrollSeekPlaceholderProps & { context?: ArticleView }
+> = (props) => (
+  <div style={{ height: props.height, }} className={cls.card}>
+    <ArticleListItemSkeleton view={props.context ?? ArticleView.SMALL} />
+  </div>
+);

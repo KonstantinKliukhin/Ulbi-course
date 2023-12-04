@@ -1,3 +1,9 @@
+.wrapper {
+  width: 230px;
+  height: 100%;
+  display: block;
+}
+
 .date {
   display: none;
   position: absolute;
@@ -6,7 +12,7 @@
 }
 
 .ArticleListItemSmall {
-  width: 230px;
+  width: 100%;
   cursor: pointer;
   height: 100%;
   display: flex;
@@ -32,7 +38,7 @@
 .infoWrapper {
   max-width: 100%;
   overflow: hidden;
-  margin-top: 8px;
+  padding-top: 8px;
   display: grid;
   grid-template-columns: 1fr auto auto;
   align-items: center;
@@ -46,9 +52,9 @@
 }
 
 .views {
-  margin-right: 8px;
+  padding-right: 8px;
 }
 
 .title {
-  margin-top: 8px;
+  padding-top: 8px;
 }

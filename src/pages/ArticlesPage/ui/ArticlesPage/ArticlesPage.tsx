@@ -1,4 +1,4 @@
-import { type FC, useCallback } from 'react';
+import { type FC, useCallback, useRef } from 'react';
 import { ArticleList } from 'entities/Article';
 import {
   useAppDispatch,
@@ -28,6 +28,7 @@ const ArticlesPage: FC = () => {
   const articlesIsLoading = useAppSelector(getArticlesIsLoading);
   const articlesError = useAppSelector(getArticlesError);
   const [searchParams,] = useSearchParams();
+  const pageRef = useRef<HTMLDivElement | null>(null);
   useSaveItemToStorage(articleView);
 
   useInitialEffect(
@@ -45,9 +46,10 @@ const ArticlesPage: FC = () => {
   return (
     <>
       <ArticlesPageHeader />
-      <PageWithInfiniteScroll onScrollEnd={onLoadNextPart}>
-        <ArticlesPageFilters />
+      <ArticlesPageFilters />
+      <PageWithInfiniteScroll onScrollEnd={onLoadNextPart} ref={pageRef}>
         <ArticleList
+          ref={pageRef}
           error={articlesError}
           articles={articles}
           view={articleView}
