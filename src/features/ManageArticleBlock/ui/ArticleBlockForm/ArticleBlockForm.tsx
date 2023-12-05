@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Button, ButtonTheme, FormHeader, FormSelect } from 'shared/ui';
+import { Button, FormHeader, FormSelect } from 'shared/ui';
 import { ArticleBlockFormPicker } from '../blockForms/ArticleBlockFormPicker/ArticleBlockFormPicker';
 import { useTranslation } from 'react-i18next';
 import {
@@ -33,12 +33,12 @@ export const ArticleBlockForm = memo<ArticleBlockFormProps>(
             <>
               <Button
                 type="submit"
-                theme={ButtonTheme.OUTLINE}
+                theme="outline"
                 disabled={props.isSubmitDisabled}
               >
                 {tGlobal('save')}
               </Button>
-              <Button theme={ButtonTheme.OUTLINE_RED} onClick={props.onCancel}>
+              <Button theme="outlineRed" onClick={props.onCancel}>
                 {tGlobal('cancel')}
               </Button>
             </>

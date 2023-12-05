@@ -7,15 +7,9 @@ import {
 import cls from './Card.module.scss';
 import { classNames } from '../../lib/classNames/classNames';
 
-export enum CardHoverAnimation {
-  SHADOW = 'hover-shadow',
-  SCALE_SMALL = 'hover-scale-small',
-}
+type CardHoverAnimation = 'hover-shadow' | 'hover-scale-small';
 
-export enum CardTheme {
-  DEFAULT = 'default',
-  OUTLINED = 'outlined',
-}
+type CardTheme = 'default' | 'outlined';
 
 interface CardProps extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
   className?: string
@@ -23,16 +17,27 @@ interface CardProps extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
   theme?: CardTheme
 }
 
+const mapCardHoverAnimationClasses: Record<
+CardHoverAnimation,
+keyof typeof cls
+> = {
+  'hover-shadow': 'hoverShadow',
+  'hover-scale-small': 'hoverScaleSmall',
+};
+
+const mapCardThemeClasses: Record<CardTheme, keyof typeof cls> = {
+  default: 'default',
+  outlined: 'outlined',
+};
+
 export const Card: FC<CardProps> = (props) => {
-  const {
-    className,
-    theme = CardTheme.DEFAULT,
-    hoverAnimations,
-    ...divProps
-  } = props;
+  const { className, theme = 'default', hoverAnimations, ...divProps } = props;
 
   const hoverAnimationsClasses = useMemo(
-    () => hoverAnimations?.map((animation) => cls[animation]) ?? [],
+    () =>
+      hoverAnimations?.map(
+        (animation) => cls[mapCardHoverAnimationClasses[animation]]
+      ) ?? [],
     [hoverAnimations,]
   );
 
@@ -41,7 +46,7 @@ export const Card: FC<CardProps> = (props) => {
       {...divProps}
       className={classNames(cls.Card, {}, [
         className,
-        cls[theme],
+        cls[mapCardThemeClasses[theme]],
         ...hoverAnimationsClasses,
       ])}
     >

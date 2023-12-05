@@ -1,7 +1,8 @@
 import { type FC, type ReactNode } from 'react';
 import cls from './FormHeader.module.scss';
 import { classNames } from '../../lib/classNames/classNames';
-import { Text, TextSize } from '../Text/Text';
+import { Text } from '../Text/Text';
+import { HStack } from '../Stack/HStack/HStack';
 
 interface FormHeaderProps {
   className?: string
@@ -11,9 +12,15 @@ interface FormHeaderProps {
 
 export const FormHeader: FC<FormHeaderProps> = (props) => {
   return (
-    <div className={classNames(cls.FormHeader, {}, [props.className,])}>
-      <Text title={props.title} size={TextSize.L} />
-      <div className={cls.actions}>{props.actions}</div>
-    </div>
+    <HStack
+      align="center"
+      justify="between"
+      className={classNames(cls.FormHeader, {}, [props.className,])}
+    >
+      <Text title={props.title} size="l" />
+      <HStack align="center" xGap={16} className={cls.actions}>
+        {props.actions}
+      </HStack>
+    </HStack>
   );
 };

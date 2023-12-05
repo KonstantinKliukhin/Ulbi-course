@@ -39,7 +39,33 @@
   text-align: center;
 }
 
+.sizeS {
+  &.keepTitleHeight {
+    height: var(--font-line-m);
+  }
+
+  &.keepTextHeight {
+    height: var(--font-line-s);
+  }
+
+  .title {
+    font: var(--font-m);
+  }
+
+  .text {
+    font: var(--font-s);
+  }
+}
+
 .sizeM {
+  &.keepTitleHeight {
+    height: var(--font-line-l);
+  }
+
+  &.keepTextHeight {
+    height: var(--font-line-m);
+  }
+
   .title {
     font: var(--font-l);
   }
@@ -50,6 +76,14 @@
 }
 
 .sizeL {
+  &.keepTitleHeight {
+    height: var(--font-line-xl);
+  }
+
+  &.keepTextHeight {
+    height: var(--font-line-l);
+  }
+
   .title {
     font: var(--font-xl);
   }

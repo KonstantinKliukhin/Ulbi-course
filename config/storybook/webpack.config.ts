@@ -26,7 +26,7 @@ export default ({ config, }: { config: webpack.Configuration }) => {
     build: '',
     entry: '',
     html: '',
-    locales: '',
+    locales: path.resolve(__dirname, '..', '..', 'public'),
     buildLocales: '',
     src: path.resolve(__dirname, '..', '..', 'src'),
   };

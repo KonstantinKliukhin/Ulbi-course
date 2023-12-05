@@ -1,16 +1,11 @@
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  row-gap: 5px;
-
-  &.readonly {
-    opacity: 0.7;
-    user-select: none;
-    pointer-events: none;
-  }
+.readonly {
+  opacity: 0.7;
+  user-select: none;
+  pointer-events: none;
 }
 
 .textarea {
+  width: 100%;
   padding: 5px;
   border: 1px solid var(--primary-color);
   background: transparent;
@@ -22,8 +17,4 @@
   &:focus {
     outline: none;
   }
-}
-
-.error {
-  min-height: 24px;
 }

@@ -1,18 +1,7 @@
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-bottom: 10px;
 }
 
-.blocksList {
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
-}
-
-.blockActions {
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
+.block {
+  width: 100%;
 }

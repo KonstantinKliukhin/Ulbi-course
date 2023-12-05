@@ -1,8 +1,12 @@
-import { type HTMLAttributeAnchorTarget, memo } from 'react';
+import {
+  type ComponentProps,
+  type HTMLAttributeAnchorTarget,
+  memo
+} from 'react';
 import cls from './ArticleListItemSmall.module.scss';
 import { classNames } from 'shared/lib';
 import { type Article } from '../../../model/types/article';
-import { Card, CardHoverAnimation, Icon, Text } from 'shared/ui';
+import { Card, Icon, Text } from 'shared/ui';
 import EyeSvg from '../../../../../../public/assets/icons/eye-20-20.svg';
 import { Link } from 'react-router-dom';
 import { RoutePath } from 'shared/config';
@@ -14,9 +18,9 @@ interface ArticleListItemSmallProps {
   cardLinkTarget?: HTMLAttributeAnchorTarget
 }
 
-const cardHoverAnimations = [
-  CardHoverAnimation.SHADOW,
-  CardHoverAnimation.SCALE_SMALL,
+const cardHoverAnimations: ComponentProps<typeof Card>['hoverAnimations'] = [
+  'hover-shadow',
+  'hover-scale-small',
 ];
 
 export const ArticleListItemSmall = memo<ArticleListItemSmallProps>(
@@ -49,7 +53,7 @@ export const ArticleListItemSmall = memo<ArticleListItemSmallProps>(
             <Text text={String(props.article.views)} className={cls.views} />
             <Icon Svg={EyeSvg} />
           </div>
-          <Text title={props.article.title} className={cls.title} />
+          <Text title={props.article.title} titleClassName={cls.title} />
         </Card>
       </Link>
     );

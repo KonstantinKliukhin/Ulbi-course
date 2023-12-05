@@ -2,7 +2,6 @@ import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { ArticleBlockCard } from './ArticleBlockCard';
 import { mockedArticle } from 'shared/mocks';
-import { CardTheme } from 'shared/ui';
 
 export default {
   title: 'entities/Article/ArticleBlockCard',
@@ -20,7 +19,7 @@ export const Default: ArticleBlockCardStory = {
 export const Outlined: ArticleBlockCardStory = {
   args: {
     block: mockedArticle.blocks[0],
-    theme: CardTheme.OUTLINED,
+    theme: 'outlined',
   },
 };
 

@@ -1,7 +1,7 @@
 import { type ChangeEvent, type FC, useCallback, useState } from 'react';
 import cls from './AddCommentForm.module.scss';
 import { classNames } from 'shared/lib';
-import { Button, ButtonTheme, Text, TextArea, TextTheme } from 'shared/ui';
+import { Button, HStack, Text, TextArea } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 
 interface AddCommentFormProps {
@@ -11,7 +11,7 @@ interface AddCommentFormProps {
   error: string | null
 }
 
-const AddCommentForm: FC<AddCommentFormProps> = props => {
+const AddCommentForm: FC<AddCommentFormProps> = (props) => {
   const { t, } = useTranslation('comment');
   const { onSendComment, } = props;
   const [commentText, setCommentText,] = useState('');
@@ -29,7 +29,11 @@ const AddCommentForm: FC<AddCommentFormProps> = props => {
 
   return (
     <div className={classNames(cls.AddCommentForm, mods, [props.className,])}>
-      <div className={cls.body}>
+      <HStack justify="between"
+        align="end"
+        xGap={16}
+        className={cls.body}
+      >
         <TextArea
           resize="vertical"
           disabled={props.isLoading}
@@ -38,11 +42,15 @@ const AddCommentForm: FC<AddCommentFormProps> = props => {
           onChange={onChangeText}
           value={commentText}
         />
-        <Button disabled={props.isLoading || isTextEmpty} theme={ButtonTheme.OUTLINE} onClick={onSubmit}>
+        <Button
+          disabled={props.isLoading || isTextEmpty}
+          theme="outline"
+          onClick={onSubmit}
+        >
           {t('add_comment_button')}
         </Button>
-      </div>
-      <Text className={cls.error} theme={TextTheme.ERROR} text={props.error}/>
+      </HStack>
+      <Text keepTextHeight theme="error" text={props.error} />
     </div>
   );
 };

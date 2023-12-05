@@ -2,20 +2,15 @@ import { type ButtonHTMLAttributes, memo } from 'react';
 import cls from './Button.module.scss';
 import { classNames } from '../../lib/classNames/classNames';
 
-export enum ButtonTheme {
-  CLEAR = 'clear',
-  CLEAR_INVERTED = 'clearInverted',
-  OUTLINE = 'outline',
-  OUTLINE_RED = 'outlineRed',
-  BACKGROUND = 'background',
-  BACKGROUND_INVERTED = 'backgroundInverted',
-}
+type ButtonTheme =
+  | 'clear'
+  | 'clearInverted'
+  | 'outline'
+  | 'outlineRed'
+  | 'background'
+  | 'backgroundInverted';
 
-export enum ButtonSize {
-  M = 'sizeM',
-  L = 'sizeL',
-  XL = 'sizeXL',
-}
+type ButtonSize = 'm' | 'l' | 'xl';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonTheme
@@ -26,14 +21,29 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean
 }
 
+const mapButtonThemeClasses: Record<ButtonTheme, keyof typeof cls> = {
+  clear: 'clear',
+  clearInverted: 'clearInverted',
+  outline: 'outline',
+  outlineRed: 'outlineRed',
+  background: 'background',
+  backgroundInverted: 'backgroundInverted',
+};
+
+const mapButtonSizeClasses: Record<ButtonSize, keyof typeof cls> = {
+  m: 'sizeM',
+  l: 'sizeL',
+  xl: 'sizeXL',
+};
+
 export const Button = memo<ButtonProps>(function Button (props) {
   const {
     className,
     children,
-    theme = ButtonTheme.CLEAR,
+    theme = 'clear',
     square,
     rounded,
-    size = ButtonSize.M,
+    size = 'm',
     disabled,
     ...buttonProps
   } = props;
@@ -50,8 +60,8 @@ export const Button = memo<ButtonProps>(function Button (props) {
       type={buttonProps.type ?? 'button'}
       className={classNames(cls.Button, classNameMods, [
         props.className,
-        cls[theme],
-        cls[size],
+        cls[mapButtonThemeClasses[theme]],
+        cls[mapButtonSizeClasses[size]],
       ])}
     >
       {children}

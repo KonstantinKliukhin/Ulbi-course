@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { classNames } from '../../lib/classNames/classNames';
-import { Button, ButtonTheme } from '../Button/Button';
+import { Button } from '../Button/Button';
 import { useTranslation } from 'react-i18next';
 
 interface LanguageSwitcherProps {
@@ -18,7 +18,7 @@ export const LanguageSwitcher = memo<LanguageSwitcherProps>(
 
     return (
       <Button
-        theme={ButtonTheme.CLEAR}
+        theme="clear"
         className={classNames('', {}, [props.className,])}
         onClick={toggleLanguage}
       >

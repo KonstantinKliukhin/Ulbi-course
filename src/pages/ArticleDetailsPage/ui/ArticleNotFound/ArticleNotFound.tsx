@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { Page, Text, TextAlign, TextTheme } from 'shared/ui';
+import { Page, Text } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 
 export const ArticleNotFound: FC = () => {
@@ -7,7 +7,7 @@ export const ArticleNotFound: FC = () => {
 
   return (
     <Page>
-      <Text title={t('article_not_found')} align={TextAlign.CENTER} theme={TextTheme.ERROR}/>
+      <Text title={t('article_not_found')} align="center" theme="error" />
     </Page>
   );
 };

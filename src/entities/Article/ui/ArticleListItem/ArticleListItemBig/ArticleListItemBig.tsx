@@ -1,4 +1,10 @@
-import { type FC, type HTMLAttributeAnchorTarget, memo, useMemo } from 'react';
+import {
+  type ComponentProps,
+  type FC,
+  type HTMLAttributeAnchorTarget,
+  memo,
+  useMemo
+} from 'react';
 import cls from './ArticleListItemBig.module.scss';
 import { classNames } from 'shared/lib';
 import {
@@ -6,15 +12,7 @@ import {
   ArticleBlockType,
   type ArticleTextBlock
 } from '../../../model/types/article';
-import {
-  Avatar,
-  Button,
-  ButtonTheme,
-  Card,
-  CardHoverAnimation,
-  Icon,
-  Text
-} from 'shared/ui';
+import { Avatar, Button, Card, HStack, Icon, Text } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 import EyeSvg from '../../../../../../public/assets/icons/eye-20-20.svg';
 import { ArticleTextBlockComponent } from '../../blocks/ArticleTextBlockComponent/ArticleTextBlockComponent';
@@ -27,7 +25,9 @@ interface ArticleListItemBigProps {
   cardLinkTarget?: HTMLAttributeAnchorTarget
 }
 
-const cardHoverAnimations = [CardHoverAnimation.SHADOW,];
+const cardHoverAnimations: ComponentProps<typeof Card>['hoverAnimations'] = [
+  'hover-shadow',
+];
 
 export const ArticleListItemBig: FC<ArticleListItemBigProps> =
   memo<ArticleListItemBigProps>(function ArticleListItemBig (props) {
@@ -47,11 +47,11 @@ export const ArticleListItemBig: FC<ArticleListItemBigProps> =
         className={classNames(cls.ArticleListItemBig, {}, [props.className,])}
       >
         <Text text={props.article.createdAt} className={cls.date} />
-        <div className={cls.header}>
+        <HStack align="center" xGap={8}>
           <Avatar src={props.article.user.avatar} size={30} />
           <Text text={props.article.user.username} />
           <Text text={props.article.createdAt} className={cls.date} />
-        </div>
+        </HStack>
         <Text title={props.article.title} className={cls.title} />
         <Text text={props.article.type.join(', ')} textClassName={cls.types} />
         <img
@@ -67,19 +67,19 @@ export const ArticleListItemBig: FC<ArticleListItemBigProps> =
             />
             )
           : null}
-        <div className={cls.footer}>
+        <HStack align="center" justify="between" className={cls.footer}>
           <Link
             to={RoutePath.articleDetails(props.article.id)}
             target={props.cardLinkTarget}
           >
-            <Button theme={ButtonTheme.OUTLINE}>{t('read_more')}</Button>
+            <Button theme="outline">{t('read_more')}</Button>
           </Link>
 
-          <div className={cls.viewsWrapper}>
+          <HStack align="center" xGap={8}>
             <Text text={String(props.article.views)} className={cls.views} />
             <Icon Svg={EyeSvg} />
-          </div>
-        </div>
+          </HStack>
+        </HStack>
       </Card>
     );
   });

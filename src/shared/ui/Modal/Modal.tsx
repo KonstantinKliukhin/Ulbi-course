@@ -5,6 +5,7 @@ import { Portal } from '../Portal/Portal';
 import { stopPropagation } from '../../lib/stopPropagation/stopPropagation';
 import { useSyntheticMounted } from '../../lib/hooks/utility/useSyntheticMounted/useSyntheticMounted';
 import { useEscapeClose } from '../../lib/hooks/ui/useEscapeClose/useEscapeClose';
+import { VStack } from '../Stack/VStack/VStack';
 
 interface ModalProps extends PropsWithChildren {
   className?: string
@@ -39,14 +40,19 @@ export const Modal: FC<ModalProps> = (props) => {
           [props.className,]
         )}
       >
-        <div className={cls.overlay} onClick={handleClose}>
+        <VStack
+          justify="center"
+          align="center"
+          className={cls.overlay}
+          onClick={handleClose}
+        >
           <div
             className={classNames(cls.content, {}, [contentClassName,])}
             onClick={stopPropagation}
           >
             {props.children}
           </div>
-        </div>
+        </VStack>
       </div>
     </Portal>
   );

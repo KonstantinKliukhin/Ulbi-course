@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { Text, TextAlign, TextTheme } from '../../../ui/Text/Text';
+import { Text } from '../../../ui/Text/Text';
 import { COMMON_API_ERRORS } from '../../../constants/commonApiErrors';
 import i18n from '../../../config/i18n/i18n';
 import { useAppSelector } from '../../hooks/reduxHooks/useAppSelector';
@@ -19,8 +19,8 @@ interface WithErrorOptions<Props extends DefaultErrorProps> {
 
 const DefaultErrorComponent: FC<DefaultErrorProps> = (props) => (
   <Text
-    align={TextAlign.CENTER}
-    theme={TextTheme.ERROR}
+    align="center"
+    theme="error"
     title={props.error ?? COMMON_API_ERRORS.UNKNOWN_ERROR}
     text={i18n.t('try_reload')}
   />

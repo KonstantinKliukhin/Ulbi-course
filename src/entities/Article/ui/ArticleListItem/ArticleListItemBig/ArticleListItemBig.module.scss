@@ -17,12 +17,6 @@
   }
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-}
-
 .types {
   margin: 10px 0;
 }
@@ -40,13 +34,4 @@
 
 .footer {
   margin-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.viewsWrapper {
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
 }

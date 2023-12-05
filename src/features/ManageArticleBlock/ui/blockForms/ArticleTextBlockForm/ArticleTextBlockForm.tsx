@@ -3,13 +3,12 @@ import cls from './ArticleTextBlockForm.module.scss';
 import { classNames, useDragEnd } from 'shared/lib';
 import {
   Button,
-  ButtonTheme,
   CustomDndContext,
   FormInput,
   FormTextArea,
+  HStack,
   SortableItem,
-  Text,
-  TextTheme
+  Text
 } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 import { type Control, useFieldArray } from 'react-hook-form';
@@ -71,11 +70,16 @@ const ArticleTextBlockForm = memo<ArticleTextBlockFormProps>(
           name={'title'}
         />
 
-        <div className={cls.paragraphActions}>
-          <Button theme={ButtonTheme.OUTLINE} onClick={createParagraph}>
+        <HStack
+          justify="end"
+          align="center"
+          xGap={16}
+          className={cls.paragraphActions}
+        >
+          <Button theme="outline" onClick={createParagraph}>
             {t('article_block_paragraphs_add_paragraph')}
           </Button>
-        </div>
+        </HStack>
         <CustomDndContext
           onDragEnd={onParagraphDragEnd}
           pointerSensorOptions={pointerSensorOptions}
@@ -87,15 +91,15 @@ const ArticleTextBlockForm = memo<ArticleTextBlockFormProps>(
                   resize="vertical"
                   {...NOT_DRAGGRABLE_PROPS}
                   label={
-                    <div className={cls.label}>
+                    <HStack xGap={16} align="start">
                       {t('article_block_text_field_label')}
                       <Text
                         onClick={removeParagraph.bind(null, index)}
                         className={cls.removeButton}
-                        theme={TextTheme.ERROR}
+                        theme="error"
                         text={tGlobal('delete')}
                       />
-                    </div>
+                    </HStack>
                   }
                   name={`paragraphs.${index}.text`}
                 />

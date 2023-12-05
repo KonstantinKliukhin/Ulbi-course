@@ -1,7 +1,7 @@
 import { type FC, useCallback } from 'react';
 import cls from './Code.module.scss';
 import { classNames } from '../../lib/classNames/classNames';
-import { Button, ButtonTheme } from '../Button/Button';
+import { Button } from '../Button/Button';
 import CopySvg from '../../../../public/assets/icons/copy-20-20.svg';
 
 interface CodeProps {
@@ -16,10 +16,9 @@ export const Code: FC<CodeProps> = (props) => {
 
   return (
     <div className={classNames(cls.wrapper, {}, [props.className,])}>
-      <Button
-        onClick={onCopy}
+      <Button onClick={onCopy}
         className={cls.buttonCopy}
-        theme={ButtonTheme.CLEAR}
+        theme="clear"
         square
       >
         <CopySvg className={cls.copyIcon} />

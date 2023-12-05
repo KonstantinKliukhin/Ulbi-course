@@ -14,6 +14,7 @@ import { stopPropagation } from '../../lib/stopPropagation/stopPropagation';
 import { useSyntheticMounted } from '../../lib/hooks/utility/useSyntheticMounted/useSyntheticMounted';
 import { useEscapeClose } from '../../lib/hooks/ui/useEscapeClose/useEscapeClose';
 import { Portal } from '../Portal/Portal';
+import { HStack } from '../Stack/HStack/HStack';
 
 interface FlyoutProps extends PropsWithChildren {
   className?: string
@@ -88,7 +89,12 @@ export const Flyout: FC<FlyoutProps> = (props) => {
             [props.className,]
           )}
         >
-          <div className={cls.overlay} onClick={handleClose}>
+          <HStack
+            justify="end"
+            align="center"
+            className={cls.overlay}
+            onClick={handleClose}
+          >
             <div
               style={contentStyle}
               className={classNames(cls.content, {}, [contentClassName,])}
@@ -96,7 +102,7 @@ export const Flyout: FC<FlyoutProps> = (props) => {
             >
               {shouldRenderChildren ? props.children : null}
             </div>
-          </div>
+          </HStack>
         </div>
       </Portal>
     </flyoutContext.Provider>

@@ -2,14 +2,6 @@
   padding: 20px;
   border: 2px solid var(--inverted-bg-color);
 
-  &.loading,
-  &.error {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 300px;
-  }
-
   &.editing {
     border: 2px solid var(--inverted-primary-color);
   }
@@ -22,8 +14,4 @@
 
 .input:not(:first-child) {
   margin-top: 5px;
-}
-
-.textError {
-  min-height: 24px;
 }

@@ -1,8 +1,7 @@
-import { type FC } from 'react';
-import cls from './CommentList.module.scss';
-import { classNames, withError, withLoading } from 'shared/lib';
+import { type FC, Fragment } from 'react';
+import { withError, withLoading } from 'shared/lib';
 import { type Comment } from '../../model/types/comment';
-import { Text } from 'shared/ui';
+import { Text, VStack } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 import { CommentCard } from '../CommentCard/CommentCard';
 import { CommentsListSkeleton } from './CommentsListSkeleton';
@@ -15,22 +14,29 @@ interface CommentListProps {
   error?: null | string
 }
 
-const CommentsList: FC<CommentListProps> = props => {
+const CommentsList: FC<CommentListProps> = (props) => {
   const { t, } = useTranslation('comment');
 
   return (
-    <div className={classNames(cls.CommentsList, {}, [props.className,])}>
+    <VStack align="start" yGap={16} className={props.className}>
       {props.comments?.length
-        ? <>{props.comments.map(comment => <CommentCard comment={comment} key={comment.id}/>)}</>
-        : <Text title={t('no_comments')}/>
-      }
-    </div>
+        ? (
+          <Fragment>
+            {props.comments.map((comment) => (
+              <CommentCard comment={comment} key={comment.id} />
+            ))}
+          </Fragment>
+          )
+        : (
+          <Text title={t('no_comments')} />
+          )}
+    </VStack>
   );
 };
 
 const composedCommentsList = compose<typeof CommentsList>(
   withError(),
-  withLoading({ LoadingComponent: <CommentsListSkeleton/>, })
+  withLoading({ LoadingComponent: <CommentsListSkeleton />, })
 )(CommentsList);
 
 export { composedCommentsList as CommentsList };

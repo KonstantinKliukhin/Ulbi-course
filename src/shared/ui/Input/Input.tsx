@@ -10,7 +10,8 @@ import {
 } from 'react';
 import cls from './Input.module.scss';
 import { classNames } from '../../lib/classNames/classNames';
-import { Text, TextTheme } from '../Text/Text';
+import { Text } from '../Text/Text';
+import { HStack } from '../Stack/HStack/HStack';
 
 type HtmlInputProps = Omit<
 InputHTMLAttributes<HTMLInputElement>,
@@ -75,7 +76,11 @@ export const Input = memo(
 
     return (
       <>
-        <div className={classNames(cls.InputWrapper, mods, [props.className,])}>
+        <HStack
+          xGap={4}
+          align="start"
+          className={classNames(cls.InputWrapper, mods, [props.className,])}
+        >
           {label ? <div>{`${label} >`}</div> : null}
           <div className={cls.caretWrapper}>
             <input
@@ -94,11 +99,11 @@ export const Input = memo(
               className={cls.caret}
             />
           </div>
-        </div>
+        </HStack>
         {noErrorSpace
           ? null
           : (
-            <Text theme={TextTheme.ERROR} className={cls.error} text={error} />
+            <Text theme="error" keepTextHeight text={error} />
             )}
       </>
     );

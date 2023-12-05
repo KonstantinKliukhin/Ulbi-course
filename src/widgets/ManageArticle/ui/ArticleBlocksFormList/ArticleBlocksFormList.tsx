@@ -3,10 +3,11 @@ import { classNames } from 'shared/lib';
 import { type ComponentProps, memo } from 'react';
 import {
   Button,
-  ButtonTheme,
   CustomDndContext,
+  HStack,
   SortableItem,
-  Text
+  Text,
+  VStack
 } from 'shared/ui';
 import { rectSortingStrategy, SortableContext } from '@dnd-kit/sortable';
 import { type ArticleBlock, ArticleBlockCard } from 'entities/Article';
@@ -31,47 +32,55 @@ export const ArticleBlocksFormList = memo<ArticleBlocksFormListProps>(
       <div
         className={classNames(cls.ArticleBlocksFormList, {}, [props.className,])}
       >
-        <div className={cls.header}>
+        <HStack justify="between" align="center" className={cls.header}>
           <Text title={t('article_blocks_list_title')} />
           <Button
             className={cls.addBlockButton}
             onClick={props.onBlockAdd}
-            theme={ButtonTheme.OUTLINE}
+            theme="outline"
           >
             {t('article_block_add_block')}
           </Button>
-        </div>
+        </HStack>
 
         <CustomDndContext {...props.dndContextProps}>
           <SortableContext items={props.blocks} strategy={rectSortingStrategy}>
-            <div className={cls.blocksList}>
+            <VStack align="start" yGap={8}>
               {props.blocks.map((block, index) => (
-                <SortableItem id={block.id} key={block.id}>
+                <SortableItem
+                  defaultClass={cls.block}
+                  id={block.id}
+                  key={block.id}
+                >
                   <ArticleBlockCard block={block}>
-                    <div className={cls.blockActions}>
+                    <HStack
+                      align="center"
+                      xGap={8}
+                      className={cls.blockActions}
+                    >
                       <Button
-                        theme={ButtonTheme.OUTLINE}
+                        theme="outline"
                         onClick={props.onBlockEdit.bind(null, block, index)}
                       >
                         {tGlobal('edit')}
                       </Button>
                       <Button
-                        theme={ButtonTheme.BACKGROUND_INVERTED}
+                        theme="backgroundInverted"
                         onClick={props.onBlockCopy.bind(null, block, index)}
                       >
                         {tGlobal('copy')}
                       </Button>
                       <Button
-                        theme={ButtonTheme.OUTLINE_RED}
+                        theme="outlineRed"
                         onClick={props.onBlockDelete.bind(null, block, index)}
                       >
                         {tGlobal('delete')}
                       </Button>
-                    </div>
+                    </HStack>
                   </ArticleBlockCard>
                 </SortableItem>
               ))}
-            </div>
+            </VStack>
           </SortableContext>
         </CustomDndContext>
       </div>

@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import cls from './Navbar.module.scss';
 import { classNames, useAppSelector, useBoolState } from 'shared/lib';
-import { Button, ButtonTheme } from 'shared/ui';
+import { Button } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUsername';
 import { getUserAuthData, useLogout } from 'entities/User';
@@ -19,12 +19,11 @@ export const Navbar = memo<NavbarProps>(function Navbar (props) {
 
   if (isAuthenticated) {
     return (
-      <header data-testid="navbar" className={classNames(cls.navbar, {}, [props.className,])}>
-        <Button
-          theme={ButtonTheme.CLEAR_INVERTED}
-          className={cls.links}
-          onClick={logout}
-        >
+      <header
+        data-testid="navbar"
+        className={classNames(cls.navbar, {}, [props.className,])}
+      >
+        <Button theme="clearInverted" className={cls.links} onClick={logout}>
           {t('logout')}
         </Button>
       </header>
@@ -32,11 +31,18 @@ export const Navbar = memo<NavbarProps>(function Navbar (props) {
   }
 
   return (
-    <header data-testid="navbar" className={classNames(cls.navbar, {}, [props.className,])}>
-      <Button theme={ButtonTheme.CLEAR_INVERTED} className={cls.links} onClick={loginModal.enable}>
+    <header
+      data-testid="navbar"
+      className={classNames(cls.navbar, {}, [props.className,])}
+    >
+      <Button
+        theme="clearInverted"
+        className={cls.links}
+        onClick={loginModal.enable}
+      >
         {t('login')}
       </Button>
-      <LoginModal open={loginModal.boolState} onClose={loginModal.disable}/>
+      <LoginModal open={loginModal.boolState} onClose={loginModal.disable} />
     </header>
   );
 });

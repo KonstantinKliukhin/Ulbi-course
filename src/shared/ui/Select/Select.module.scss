@@ -1,11 +1,7 @@
-.Wrapper {
-  display: flex;
-
-  &.readonly {
-    opacity: 0.7;
-    user-select: none;
-    pointer-events: none;
-  }
+.readonly {
+  opacity: 0.7;
+  user-select: none;
+  pointer-events: none;
 }
 
 .label {
@@ -34,6 +30,3 @@
   background: var(--inverted-bg-color);
 }
 
-.error {
-  min-height: 24px;
-}

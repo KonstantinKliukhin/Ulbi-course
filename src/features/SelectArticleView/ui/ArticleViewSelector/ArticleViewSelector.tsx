@@ -4,7 +4,7 @@ import { classNames } from 'shared/lib';
 import { ArticleView } from 'entities/Article';
 import ListSvg from '../../../../../public/assets/icons/list-24-24.svg';
 import TiledSvg from '../../../../../public/assets/icons/tiled-24-24.svg';
-import { Button, ButtonTheme, Icon } from 'shared/ui';
+import { Button, HStack, Icon } from 'shared/ui';
 
 interface ArticleViewSelectorProps {
   className?: string
@@ -23,20 +23,22 @@ const viewTypes = [
   },
 ];
 
-export const ArticleViewSelector: FC<ArticleViewSelectorProps> = props => {
+export const ArticleViewSelector: FC<ArticleViewSelectorProps> = (props) => {
   return (
-    <div className={classNames(cls.ArticleViewSelector, {}, [props.className,])}>
+    <HStack xGap={8} align="start" className={props.className}>
       {viewTypes.map((viewType, index) => (
         <Button
-          className={classNames(cls.button, { [cls.selected]: props.view === viewType.view, })}
+          className={classNames(cls.button, {
+            [cls.selected]: props.view === viewType.view,
+          })}
           onClick={props.onSelectView.bind(null, viewType.view)}
-          theme={ButtonTheme.CLEAR}
+          theme="clear"
           square
           key={index}
         >
-          <Icon Svg={viewType.icon}/>
+          <Icon Svg={viewType.icon} />
         </Button>
       ))}
-    </div>
+    </HStack>
   );
 };

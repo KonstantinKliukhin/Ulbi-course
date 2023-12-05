@@ -12,7 +12,8 @@ import {
 } from 'react';
 import { classNames } from '../../lib/classNames/classNames';
 import cls from './TextArea.module.scss';
-import { Text, TextTheme } from '../Text/Text';
+import { Text } from '../Text/Text';
+import { VStack } from '../Stack/VStack/VStack';
 
 type HtmlTextAreaProps = Omit<
 InputHTMLAttributes<HTMLTextAreaElement>,
@@ -82,7 +83,11 @@ export const TextArea = memo(
 
     return (
       <>
-        <div className={classNames(cls.wrapper, mods, [props.className,])}>
+        <VStack
+          yGap={4}
+          align="start"
+          className={classNames('', mods, [props.className,])}
+        >
           {label ? <div>{label}</div> : null}
           <textarea
             {...inputProps}
@@ -94,11 +99,11 @@ export const TextArea = memo(
             value={value}
             readOnly={readonly}
           />
-        </div>
+        </VStack>
         {noErrorSpace
           ? null
           : (
-            <Text theme={TextTheme.ERROR} className={cls.error} text={error} />
+            <Text theme="error" keepTextHeight text={error} />
             )}
       </>
     );

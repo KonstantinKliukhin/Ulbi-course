@@ -3,7 +3,7 @@ import cls from './ArticleDetailsPageHeader.module.scss';
 import { classNames, useAppSelector, useBoolState } from 'shared/lib';
 import { Link } from 'react-router-dom';
 import { RoutePath } from 'shared/config';
-import { Button, ButtonTheme } from 'shared/ui';
+import { Button, HStack } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 import { getCanEditArticle } from '../../model/selectors/getCanEditArticle/getCanEditArticle';
 import { getArticleDetailsData } from 'entities/Article';
@@ -28,7 +28,7 @@ export const ArticleDetailsPageHeader = memo<ArticleDetailsPageHeaderProps>(
     const rightContent = useMemo<ReactNode>(() => {
       if (canEditArticle) {
         return (
-          <Button theme={ButtonTheme.OUTLINE} onClick={openArticleFlyout}>
+          <Button theme="outline" onClick={openArticleFlyout}>
             {t('edit')}
           </Button>
         );
@@ -38,18 +38,20 @@ export const ArticleDetailsPageHeader = memo<ArticleDetailsPageHeaderProps>(
     }, [canEditArticle, t, openArticleFlyout,]);
 
     return (
-      <div
+      <HStack
+        justify="between"
+        align="center"
         className={classNames(cls.ArticleDetailsPageHeader, {}, [
           props.className,
         ])}
       >
         <Link to={RoutePath.articles}>
-          <Button theme={ButtonTheme.OUTLINE}>
-            {articleT('back_to_list')}
-          </Button>
+          <Button theme="outline">{articleT('back_to_list')}</Button>
         </Link>
 
-        <div className={cls.right}>{rightContent}</div>
+        <HStack align="center" xGap={16} className={cls.right}>
+          {rightContent}
+        </HStack>
 
         {article
           ? (
@@ -61,7 +63,7 @@ export const ArticleDetailsPageHeader = memo<ArticleDetailsPageHeaderProps>(
             />
             )
           : null}
-      </div>
+      </HStack>
     );
   }
 );

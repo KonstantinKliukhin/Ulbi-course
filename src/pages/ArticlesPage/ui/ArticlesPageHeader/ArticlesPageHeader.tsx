@@ -1,7 +1,7 @@
 import cls from './ArticlesPageHeader.module.scss';
 import { classNames, useBoolState } from 'shared/lib';
 import { memo } from 'react';
-import { Button, ButtonTheme } from 'shared/ui';
+import { Button, HStack } from 'shared/ui';
 import { ManageArticleFlyout } from 'widgets/ManageArticle';
 import { useTranslation } from 'react-i18next';
 
@@ -15,13 +15,12 @@ export const ArticlesPageHeader = memo<ArticlesPageHeaderProps>(
     const { t, } = useTranslation();
 
     return (
-      <div
+      <HStack
+        align="start"
+        justify="end"
         className={classNames(cls.ArticlesPageHeader, {}, [props.className,])}
       >
-        <Button
-          onClick={manageArticleFlyout.enable}
-          theme={ButtonTheme.OUTLINE}
-        >
+        <Button onClick={manageArticleFlyout.enable} theme="outline">
           {t('create')}
         </Button>
         <ManageArticleFlyout
@@ -29,7 +28,7 @@ export const ArticlesPageHeader = memo<ArticlesPageHeaderProps>(
           open={manageArticleFlyout.boolState}
           onClose={manageArticleFlyout.disable}
         />
-      </div>
+      </HStack>
     );
   }
 );

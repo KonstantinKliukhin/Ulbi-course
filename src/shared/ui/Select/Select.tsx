@@ -8,7 +8,8 @@ import {
 } from 'react';
 import cls from './Select.module.scss';
 import { classNames } from '../../lib/classNames/classNames';
-import { Text, TextTheme } from '../Text/Text';
+import { Text } from '../Text/Text';
+import { HStack } from '../Stack/HStack/HStack';
 
 export interface SelectOption<Value extends string | number> {
   value: Value
@@ -58,7 +59,10 @@ export const Select = memo(
 
     return (
       <>
-        <div className={classNames(cls.Wrapper, mods, [props.className,])}>
+        <HStack
+          align="start"
+          className={classNames(cls.Wrapper, mods, [props.className,])}
+        >
           {props.label
             ? (
               <span className={cls.label}>{`${label} >`}</span>
@@ -73,15 +77,11 @@ export const Select = memo(
           >
             {optionList}
           </select>
-        </div>
+        </HStack>
         {noErrorSpace
           ? null
           : (
-            <Text
-              theme={TextTheme.ERROR}
-              className={cls.error}
-              text={props.error}
-            />
+            <Text theme="error" keepTextHeight text={props.error} />
             )}
       </>
     );

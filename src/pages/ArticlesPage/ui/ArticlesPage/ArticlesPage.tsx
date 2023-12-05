@@ -54,6 +54,7 @@ const ArticlesPage: FC = () => {
           articles={articles}
           view={articleView}
           isLoading={articlesIsLoading}
+          virtualized
         />
       </PageWithInfiniteScroll>
     </>

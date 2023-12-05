@@ -1,6 +1,6 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
-import { Button, ButtonSize, ButtonTheme } from './Button';
+import { Button } from './Button';
 
 export default {
   title: 'shared/Button',
@@ -10,29 +10,47 @@ export default {
 type ButtonStory = StoryObj<typeof Button>;
 
 export const Clear: ButtonStory = {
-  args: { theme: ButtonTheme.CLEAR, children: 'Button', },
+  args: { theme: 'clear', children: 'Button', },
 };
 
 export const ClearInverted: ButtonStory = {
-  args: { theme: ButtonTheme.CLEAR_INVERTED, children: 'Button', },
+  args: { theme: 'clearInverted', children: 'Button', },
 };
 
 export const Background: ButtonStory = {
-  args: { theme: ButtonTheme.BACKGROUND, children: 'Button', },
+  args: { theme: 'background', children: 'Button', },
 };
 
 export const BackgroundInverted: ButtonStory = {
-  args: { theme: ButtonTheme.BACKGROUND_INVERTED, children: 'Button', },
+  args: { theme: 'backgroundInverted', children: 'Button', },
 };
 
 export const Outline: ButtonStory = {
-  args: { theme: ButtonTheme.OUTLINE, children: 'Button', },
+  args: { theme: 'outline', children: 'Button', },
 };
 
 export const Square: ButtonStory = {
-  args: { theme: ButtonTheme.BACKGROUND_INVERTED, children: '>', square: true, },
+  args: { theme: 'backgroundInverted', children: '>', square: true, },
 };
 
 export const Round: ButtonStory = {
-  args: { theme: ButtonTheme.BACKGROUND_INVERTED, rounded: true, children: '>', square: true, size: ButtonSize.XL, },
+  args: {
+    theme: 'backgroundInverted',
+    rounded: true,
+    children: '>',
+    square: true,
+    size: 'xl',
+  },
+};
+
+export const SizeM: ButtonStory = {
+  args: { children: 'Button', size: 'm', },
+};
+
+export const SizeL: ButtonStory = {
+  args: { children: 'Button', size: 'l', },
+};
+
+export const SizeXL: ButtonStory = {
+  args: { children: 'Button', size: 'xl', },
 };

@@ -1,0 +1,5 @@
+.CommonArticlesList {
+  // hack for scaling card animation to not be cropped by overflow
+  padding: 20px;
+  margin: -20px;
+}

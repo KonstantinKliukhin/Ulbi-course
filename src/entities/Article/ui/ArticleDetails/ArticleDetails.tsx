@@ -12,7 +12,7 @@ import {
   getArticleDetailsError,
   getArticleDetailsIsLoading
 } from '../../model/selectors/getArticleDetails/getArticleDetails';
-import { Avatar, Icon, Text, TextAlign, TextSize, TextTheme } from 'shared/ui';
+import { Avatar, HStack, Icon, Text } from 'shared/ui';
 import { articleDetailsReducer } from '../../model/slices/articleDetailsSlice';
 import { ArticleDetailsSkeleton } from '../ArticleDetails/ArticleDetailsSkeleton/ArticleDetailsSkeleton';
 import EyeIcon from '../../../../../public/assets/icons/eye-20-20.svg';
@@ -74,26 +74,20 @@ const ArticleDetails: FC<ArticleDetailsProps> = (props) => {
   if (isLoading) {
     content = <ArticleDetailsSkeleton />;
   } else if (error) {
-    content = (
-      <Text theme={TextTheme.ERROR} align={TextAlign.CENTER} title={error} />
-    );
+    content = <Text theme="error" align="center" title={error} />;
   } else {
     content = (
       <>
         <Avatar size={200} src={article?.img} className={cls.avatar} />
-        <Text
-          size={TextSize.L}
-          title={article?.title}
-          text={article?.subtitle}
-        />
-        <div className={cls.metaLine}>
+        <Text size="l" title={article?.title} text={article?.subtitle} />
+        <HStack align="start" xGap={16} className={cls.metaLine}>
           <Icon Svg={EyeIcon} />
           <Text text={String(article?.views)} />
-        </div>
-        <div className={cls.metaLine}>
+        </HStack>
+        <HStack align="start" xGap={16} className={cls.metaLine}>
           <Icon Svg={CalendarIcon} />
           <Text text={article?.createdAt} />
-        </div>
+        </HStack>
         {article?.blocks.map(renderBlock)}
       </>
     );

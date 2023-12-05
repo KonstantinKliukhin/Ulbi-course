@@ -3,27 +3,16 @@
   height: 100vh;
   width: var(--sidebar-width);
   background: var(--inverted-bg-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 15px;
   transition: width 0.2s ease-out;
 }
 
 .switchers {
   position: absolute;
   bottom: 20px;
-  display: flex;
-  align-items: center;
-  row-gap: 20px;
 }
 
 .collapsed {
   width: var(--sidebar-width-collapsed);
-
-  .switchers {
-    flex-direction: column;
-  }
 }
 
 .userInfo {
@@ -39,9 +28,3 @@
   z-index: 1;
 }
 
-.items {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  row-gap: 25px;
-}

@@ -1,8 +1,13 @@
 import { type FC } from 'react';
 import cls from './ProfileCard.module.scss';
-import { classNames, type WithErrorProps, withLoading, type WithLoadingProps } from 'shared/lib';
+import {
+  classNames,
+  type WithErrorProps,
+  withLoading,
+  type WithLoadingProps
+} from 'shared/lib';
 import { useTranslation } from 'react-i18next';
-import { Avatar, FormInput, FormSelect, Text, TextTheme } from 'shared/ui';
+import { Avatar, FormInput, FormSelect, Text, VStack } from 'shared/ui';
 import { CURRENCY_OPTIONS } from 'entities/Currency/@x/profile';
 import { COUNTRY_OPTIONS } from 'entities/Country/@x/profile';
 import { type Profile } from '../../model/types/profile';
@@ -14,7 +19,7 @@ interface ProfileCardProps extends WithErrorProps, WithLoadingProps {
   data?: Profile | null
 }
 
-const ProfileCard: FC<ProfileCardProps> = props => {
+const ProfileCard: FC<ProfileCardProps> = (props) => {
   const { t, } = useTranslation('profile');
   const { t: tGlobal, } = useTranslation();
 
@@ -26,8 +31,8 @@ const ProfileCard: FC<ProfileCardProps> = props => {
         [props.className,]
       )}
     >
-      <div className={cls.body}>
-        <Avatar className={cls.avatar} size={125} src={props?.avatar}/>
+      <VStack align="start" yGap={4} className={cls.body}>
+        <Avatar className={cls.avatar} size={125} src={props?.avatar} />
         <FormInput
           value={props.readonly ? props.data?.firstname : undefined}
           name="firstname"
@@ -86,8 +91,8 @@ const ProfileCard: FC<ProfileCardProps> = props => {
           className={cls.input}
           options={COUNTRY_OPTIONS}
         />
-        <Text className={cls.textError} theme={TextTheme.ERROR} text={props.error}/>
-      </div>
+        <Text keepTextHeight theme="error" text={props.error} />
+      </VStack>
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import { memo, type ReactNode, useCallback } from 'react';
 import cls from './Tabs.module.scss';
 import { classNames } from '../../lib/classNames/classNames';
-import { Card, CardTheme } from '../Card/Card';
-import { Text, TextTheme } from '../Text/Text';
+import { Card } from '../Card/Card';
+import { Text } from '../Text/Text';
+import { HStack } from '../Stack/HStack/HStack';
 
 export interface TabItem<T extends string> {
   value: T
@@ -45,13 +46,16 @@ export const Tabs = memo(function Tabs<T extends string> (props: TabsProps<T>) {
   return (
     <>
       {props.label ? <p className={cls.label}>{props.label}</p> : null}
-      <div className={classNames(cls.Tabs, {}, [props.className,])}>
+      <HStack
+        align="start"
+        justify="start"
+        xGap={8}
+        className={classNames(cls.Tabs, {}, [props.className,])}
+      >
         {props.tabs.map((tab) => (
           <Card
             onClick={clickHandle(tab)}
-            theme={
-              getIsTabSelected(tab) ? CardTheme.DEFAULT : CardTheme.OUTLINED
-            }
+            theme={getIsTabSelected(tab) ? 'default' : 'outlined'}
             className={classNames(cls.tab, {
               [cls.disabledTab]: tab.disabled,
             })}
@@ -60,14 +64,10 @@ export const Tabs = memo(function Tabs<T extends string> (props: TabsProps<T>) {
             {tab.content}
           </Card>
         ))}
-      </div>
+      </HStack>
       {props.withError
         ? (
-          <Text
-            className={cls.error}
-            theme={TextTheme.ERROR}
-            text={props.error}
-          />
+          <Text keepTextHeight theme="error" text={props.error} />
           )
         : null}
     </>

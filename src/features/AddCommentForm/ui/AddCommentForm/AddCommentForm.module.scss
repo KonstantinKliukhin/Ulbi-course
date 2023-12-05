@@ -1,8 +1,4 @@
 .body {
-  display: flex;
-  justify-content: space-between;
-  column-gap: 15px;
-  align-items: end;
   padding: 10px;
   border: 1px solid var(--primary-color);
 }
@@ -10,10 +6,6 @@
 .textarea {
   width: 90%;
   max-height: 400px;
-}
-
-.error {
-  height: 24px;
 }
 
 .loading {

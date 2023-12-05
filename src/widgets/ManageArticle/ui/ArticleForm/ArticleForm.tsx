@@ -1,7 +1,7 @@
 import { memo, type ReactNode } from 'react';
 import cls from './ArticleForm.module.scss';
 import { classNames } from 'shared/lib';
-import { Button, ButtonTheme, FormHeader, FormInput } from 'shared/ui';
+import { Button, FormHeader, FormInput } from 'shared/ui';
 import { FormArticleTypesTabs } from 'entities/Article';
 import { useTranslation } from 'react-i18next';
 
@@ -25,12 +25,12 @@ const ArticleForm = memo<ArticleFormProps>(function ArticleForm (props) {
           <>
             <Button
               type="submit"
-              theme={ButtonTheme.BACKGROUND_INVERTED}
+              theme="backgroundInverted"
               disabled={props.isSubmitDisabled}
             >
               {tGlobal('save')}
             </Button>
-            <Button theme={ButtonTheme.OUTLINE_RED} onClick={props.onCancel}>
+            <Button theme="outlineRed" onClick={props.onCancel}>
               {tGlobal('cancel')}
             </Button>
           </>

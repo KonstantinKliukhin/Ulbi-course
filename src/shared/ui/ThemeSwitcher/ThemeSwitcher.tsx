@@ -2,7 +2,7 @@ import { memo, type ReactNode } from 'react';
 import cls from './ThemeSwitcher.module.scss';
 import { classNames } from '../../lib/classNames/classNames';
 import { Theme, useTheme } from 'app/providers/ThemeProvider';
-import { Button, ButtonSize, ButtonTheme } from '../Button/Button';
+import { Button } from '../Button/Button';
 import MoonIcon from '../../../../public/assets/icons/moon.svg';
 import SunIcon from '../../../../public/assets/icons/sun.svg';
 
@@ -34,10 +34,10 @@ export const ThemeSwitcher = memo<ThemeSwitcherProps>(function ThemeSwitcher (
 
   return (
     <Button
-      theme={ButtonTheme.CLEAR}
+      theme="clear"
       rounded
       square
-      size={ButtonSize.L}
+      size="l"
       className={classNames(cls.ThemeSwitcher, {}, [props.className,])}
       onClick={toggleTheme}
     >
