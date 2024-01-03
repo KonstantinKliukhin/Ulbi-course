@@ -41,6 +41,15 @@ const config: Config = {
   testEnvironmentOptions: {
     customExportConditions: ['',],
   },
+  reporters: [
+    'default',
+    ['jest-html-reporters', {
+      publicPath: '<rootDir>/reports/unit',
+      filename: 'report.html',
+      openReport: true,
+      inlineSource: true,
+    },],
+  ],
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
