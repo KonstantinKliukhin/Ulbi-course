@@ -1,5 +1,5 @@
 interface AcceptableEvent {
-  stopPropagation: () => void
+  stopPropagation: () => void;
 }
 
 export function stopPropagation<T extends AcceptableEvent> (argument?: ((e: T) => void) | T) {

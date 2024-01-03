@@ -9,8 +9,8 @@ import { getUserAuthData } from 'entities/User';
 import { type SidebarItemType } from './types/sidebarItem';
 
 interface GetLinkItemsArg {
-  profileId?: string
-  isAuthorized: boolean
+  profileId?: string;
+  isAuthorized: boolean;
 }
 
 const getLinkItems = (arg: GetLinkItemsArg): SidebarItemType[] => [

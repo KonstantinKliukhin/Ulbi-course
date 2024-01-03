@@ -20,9 +20,9 @@ import { Link } from 'react-router-dom';
 import { RoutePath } from 'shared/config';
 
 interface ArticleListItemBigProps {
-  className?: string
-  article: Article
-  cardLinkTarget?: HTMLAttributeAnchorTarget
+  className?: string;
+  article: Article;
+  cardLinkTarget?: HTMLAttributeAnchorTarget;
 }
 
 const cardHoverAnimations: ComponentProps<typeof Card>['hoverAnimations'] = [

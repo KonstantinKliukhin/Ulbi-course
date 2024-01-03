@@ -6,10 +6,10 @@ import { formToArticleBlock } from '../../lib/formToArticleBlock/formToArticleBl
 import { ArticleBlockForm } from '../ArticleBlockForm/ArticleBlockForm';
 
 interface ManageArticleBlockFormProps {
-  articleBlock?: ArticleBlock
-  title: string
-  onSubmit: (articleBlock: ArticleBlock) => void
-  onCancel: () => void
+  articleBlock?: ArticleBlock;
+  title: string;
+  onSubmit: (articleBlock: ArticleBlock) => void;
+  onCancel: () => void;
 }
 
 const ManageArticleBlockForm = memo<ManageArticleBlockFormProps>(

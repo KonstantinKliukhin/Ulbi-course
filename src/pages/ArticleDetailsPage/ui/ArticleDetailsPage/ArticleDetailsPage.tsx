@@ -1,83 +1,39 @@
-import { type FC, useCallback } from 'react';
-import { ArticleDetails } from 'entities/Article';
+import { type FC } from 'react';
+import { ArticleDetails, useGetArticleByIdQuery } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import { ArticleNotFound } from '../ArticleNotFound/ArticleNotFound';
-import { useTranslation } from 'react-i18next';
-import { CommentsList } from 'entities/Comment';
-import { Page, Text } from 'shared/ui';
-import cls from './ArticleDetailsPage.module.scss';
-import {
-  useAppDispatch,
-  useAppSelector,
-  useInitialEffect,
-  withLazySlices
-} from 'shared/lib';
-import { articleCommentsReducer } from '../../model/slices/articleCommentsSlice';
-import {
-  articleCommentsEntitySelectors,
-  getAddCommentError,
-  getAddCommentIsLoading,
-  getArticleCommentsError,
-  getArticleCommentsIsLoading
-} from '../../model/selectors/getArticleCommentsState/getArticleCommentsState';
-import { fetchArticleComments } from '../../model/services/fetchArticleComments/fetchArticleComments';
-import { AddCommentForm } from 'features/AddCommentForm';
-import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
+import { Page } from 'shared/ui';
 import { ArticleRecommendations } from 'features/ArticleRecomemndations';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+import { type RtkError } from 'shared/types';
+import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
+import { useAddArticleView } from 'features/AddArticleView';
 
 const ArticleDetailsPage: FC = () => {
   const params = useParams<{ id: string }>();
-  const { t, } = useTranslation('article');
-  const dispatch = useAppDispatch();
-  const comments = useAppSelector(articleCommentsEntitySelectors.selectAll);
-  const commentsIsLoading = useAppSelector(getArticleCommentsIsLoading);
-  const commentsError = useAppSelector(getArticleCommentsError);
-  const addCommentIsLoading = useAppSelector(getAddCommentIsLoading);
-  const addCommentError = useAppSelector(getAddCommentError);
-
-  useInitialEffect(
-    useCallback(() => {
-      if (params.id) {
-        void dispatch(fetchArticleComments(params.id));
-      }
-    }, [dispatch, params.id,])
+  const articleDetailsData = useGetArticleByIdQuery(
+    { id: params.id ?? '', },
+    { skip: !params.id, }
   );
 
-  const onSendComment = useCallback(
-    (text: string) => {
-      void dispatch(addCommentForArticle(text));
-    },
-    [dispatch,]
-  );
+  useAddArticleView(articleDetailsData.data);
 
   if (!params.id) return <ArticleNotFound />;
 
   return (
     <>
-      <ArticleDetailsPageHeader />
+      <ArticleDetailsPageHeader article={articleDetailsData.data} />
       <Page>
-        <ArticleDetails id={params.id} />
+        <ArticleDetails
+          article={articleDetailsData.data}
+          isLoading={articleDetailsData.isLoading}
+          error={(articleDetailsData.error as RtkError)?.message}
+        />
         <ArticleRecommendations />
-        <Text className={cls.commentsTitle} title={t('comments')} />
-        <AddCommentForm
-          error={addCommentError}
-          isLoading={addCommentIsLoading}
-          className={cls.commentsForm}
-          onSendComment={onSendComment}
-        />
-        <CommentsList
-          comments={comments}
-          isLoading={commentsIsLoading}
-          error={commentsError}
-        />
+        <ArticleDetailsComments id={params.id}/>
       </Page>
     </>
   );
 };
 
-export default withLazySlices({
-  reducers: { articleComments: articleCommentsReducer, },
-  onlyIfSliceReady: true,
-  removeOnUnmount: true,
-})(ArticleDetailsPage);
+export default ArticleDetailsPage;

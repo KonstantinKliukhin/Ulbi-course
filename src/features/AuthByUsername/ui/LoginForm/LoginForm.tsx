@@ -16,8 +16,8 @@ import { useLoginForm } from '../../model/hooks/useLoginForm/useLoginForm';
 import { FormProvider } from 'react-hook-form';
 
 interface LoginFormProps {
-  className?: string
-  onSuccess: () => void
+  className?: string;
+  onSuccess: () => void;
 }
 
 const LoginForm: FC<LoginFormProps> = (props) => {

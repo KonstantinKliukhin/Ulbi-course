@@ -1,64 +1,36 @@
-import { type FC, useCallback } from 'react';
-import { useAppDispatch, useAppSelector, useInitialEffect, withLazySlices } from 'shared/lib';
+import { type FC } from 'react';
 import {
-  fetchProfileData,
-  getProfile,
-  getProfileError,
-  getProfileIsLoading,
-  getProfileReadonly,
-  type Profile,
-  ProfileCard,
-  profileReducer,
-  updateProfileData
-} from 'entities/Profile';
+  useAppSelector,
+  withLazySlices
+} from 'shared/lib';
+
 import { ProfilePageHeader } from '../ProfilePageHeader/ProfilePageHeader';
-import { FormProvider } from 'react-hook-form';
-import { useProfileForm } from 'features/EditProfile';
+import { EditableProfile } from 'features/EditableProfile';
 import { useParams } from 'react-router-dom';
-import { Page } from 'shared/ui';
+import { Page, Text } from 'shared/ui';
+import { useTranslation } from 'react-i18next';
+import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
+import { profilePageReducer } from '../../model/slice/profilePageSlice';
 
 const ProfilePage: FC = () => {
   const params = useParams<{ id: string }>();
-  const dispatch = useAppDispatch();
-  const profile = useAppSelector(getProfile);
-  const profileIsLoading = useAppSelector(getProfileIsLoading);
-  const profileError = useAppSelector(getProfileError);
-  const profileReadonly = useAppSelector(getProfileReadonly);
-  const profileForm = useProfileForm(profile);
+  const { t, } = useTranslation('profile');
+  const readonly = useAppSelector(getProfileReadonly);
 
-  useInitialEffect(useCallback(() => {
-    if (params.id) {
-      void dispatch(fetchProfileData(params.id));
-    }
-  }, [dispatch, params.id,]));
-
-  const onSubmit = useCallback((values: Profile) => {
-    if (params.id) {
-      void dispatch(updateProfileData({ profileForm: values, profileId: params.id, }));
-    }
-  }, [dispatch, params.id,]);
+  if (!params.id) {
+    return <Text title={t('profile_not_found')}/>;
+  }
 
   return (
     <Page>
-      <FormProvider {...profileForm}>
-        <form onSubmit={profileForm.handleSubmit(onSubmit)}>
-          <ProfilePageHeader/>
-          <ProfileCard
-            data={profile}
-            error={profileError}
-            readonly={profileReadonly}
-            avatar={profileForm.getValues('avatar')}
-            isLoading={profileIsLoading}
-          />
-        </form>
-      </FormProvider>
+      <ProfilePageHeader />
+      <EditableProfile userId={params.id} readonly={readonly} />
     </Page>
   );
 };
 
-export default withLazySlices(
-  {
-    reducers: { profile: profileReducer, },
-    onlyIfSliceReady: true,
-  }
-)(ProfilePage);
+export default withLazySlices({
+  reducers: { profilePage: profilePageReducer, },
+  onlyIfSliceReady: true,
+  removeOnUnmount: true,
+})(ProfilePage);

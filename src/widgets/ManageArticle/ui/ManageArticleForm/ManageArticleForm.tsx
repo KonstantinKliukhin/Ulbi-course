@@ -26,11 +26,11 @@ import { useArticleBlockFormTitle } from './useArticleBlockFormTitle';
 import { ArticleBlocksFormList } from '../ArticleBlocksFormList/ArticleBlocksFormList';
 
 interface ManageArticleFormProps {
-  className?: string
-  article?: Article
-  onSubmit: (article: ArticleFormType) => void
-  onCancel: () => void
-  title: string
+  className?: string;
+  article?: Article;
+  onSubmit: (article: ArticleFormType) => void;
+  onCancel: () => void;
+  title: string;
 }
 
 const ManageArticleForm = memo<ManageArticleFormProps>(
@@ -39,11 +39,9 @@ const ManageArticleForm = memo<ManageArticleFormProps>(
     const currentBlockIndex = useAppSelector(getCurrentBlockIndex);
     const blockFormMode = useAppSelector(getBlockFormMode);
     const editingBlock = useAppSelector(getEditingArticleBlock);
-
     const articleForm = useArticleForm(props.article);
-    const isSubmitDisabled =
-      !articleForm.formState.isValid || !articleForm.formState.isDirty;
     const { reset: resetArticleForm, } = articleForm;
+    const isSubmitDisabled = !articleForm.formState.isValid || !articleForm.formState.isDirty;
     const {
       fields: articleBlocks,
       move: moveArticleBlock,
@@ -55,9 +53,7 @@ const ManageArticleForm = memo<ManageArticleFormProps>(
       name: 'blocks',
     });
 
-    const resetArticleBlockFormData = useAction(
-      manageArticleActions.resetArticleBlockFormData
-    );
+    const resetArticleBlockFormData = useAction(manageArticleActions.resetArticleBlockFormData);
 
     const onEditBlock = useAction(
       manageArticleActions.editArticleBlock,
@@ -137,8 +133,8 @@ const ManageArticleForm = memo<ManageArticleFormProps>(
     );
 
     const onArticleFormCancel = useCallback(() => {
-      onCancel();
       resetArticleForm({});
+      onCancel();
     }, [onCancel, resetArticleForm,]);
 
     const blockFormTitle = useArticleBlockFormTitle(blockFormMode);

@@ -3,21 +3,24 @@ import { type EntityState } from '@reduxjs/toolkit';
 import { type SortOrder } from 'shared/types';
 
 export interface ArticlesPageSchema extends EntityState<Article> {
-  isLoading: boolean
-  error: null | string
-  view: ArticleView
-  type: ArticleType
+  isLoading: boolean;
+  error: null | string;
+  view: ArticleView;
+  type: ArticleType;
 
   // pagination
-  page: number
-  limit: number
-  hasMore: boolean
+  page: number;
+  limit: number;
+  hasMore: boolean;
 
   // filters
-  order: SortOrder
-  sort: ArticleSortField
-  search: string
+  order: SortOrder;
+  sort: ArticleSortField;
+  search: string;
+
+  // virtuoso scroll state
+  saveItemIndex: number;
 
   // meta
-  _inited: boolean
+  _inited: boolean;
 }

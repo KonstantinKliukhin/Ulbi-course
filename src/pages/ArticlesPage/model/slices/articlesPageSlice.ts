@@ -19,6 +19,8 @@ export const initialState: ArticlesPageSchema = articlesAdapter.getInitialState(
   order: 'asc',
   sort: ArticleSortField.CREATED,
   search: '',
+  isPageDecreased: false,
+  saveItemIndex: 0,
   _inited: false,
 });
 
@@ -49,6 +51,9 @@ export const articlesPageSlice = createSlice({
     },
     setType: (state, action: PayloadAction<ArticleType>) => {
       state.type = action.payload;
+    },
+    setSavedItemIndex: (state, action: PayloadAction<number>) => {
+      state.saveItemIndex = action.payload;
     },
     initState: (state, action: PayloadAction<ArticleView>) => {
       state.view = action.payload;

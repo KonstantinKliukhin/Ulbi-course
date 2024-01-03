@@ -5,5 +5,6 @@
   "your_age_label": "Age",
   "your_city_label": "City",
   "your_avatar_label": "Avatar URL",
-  "username_label": "Username"
+  "username_label": "Username",
+  "profile_not_found": "profile_not_found"
 }

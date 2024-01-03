@@ -1,8 +1,8 @@
 import { createContext, type FC, useState } from 'react';
 
 interface OptionalDecorators {
-  isCustomReduxStore: boolean
-  setIsCustomReduxStore: (value: boolean) => void
+  isCustomReduxStore: boolean;
+  setIsCustomReduxStore: (value: boolean) => void;
 }
 
 const initialState: OptionalDecorators = {

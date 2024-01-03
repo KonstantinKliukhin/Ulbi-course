@@ -1,36 +1,18 @@
 import { type FC } from 'react';
 import cls from './ArticleRecommendations.module.scss';
-import {
-  useAction,
-  useAppSelector,
-  useInitialEffect,
-  withLazySlices
-} from 'shared/lib';
-import {
-  getArticleRecommendationsError,
-  getArticleRecommendationsIsLoading,
-  getArticleRecommendationsState
-} from '../../model/selectors/getArticleRecommendationsState/getArticleRecommendationsState';
 import { Text, VStack } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 import { ArticleList, ArticleView } from 'entities/Article';
-import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
-import { articleRecomendationsReducer } from '../../model/slices/articleRecommendationsSlice';
+import { useGetArticleRecommendationsQuery } from '../../api/articleRecommendationsApi';
+import { type RtkError } from 'shared/types';
 
 interface ArticleRecommendationsProps {
-  className?: string
+  className?: string;
 }
 
-const ArticleRecommendations: FC<ArticleRecommendationsProps> = (props) => {
+export const ArticleRecommendations: FC<ArticleRecommendationsProps> = (props) => {
   const { t, } = useTranslation('article');
-  const recommendations = useAppSelector(
-    getArticleRecommendationsState.selectAll
-  );
-  const recommendationsIsLoading = useAppSelector(
-    getArticleRecommendationsIsLoading
-  );
-  const recommendationsError = useAppSelector(getArticleRecommendationsError);
-  useInitialEffect(useAction(fetchArticleRecommendations));
+  const articleRecommendationsData = useGetArticleRecommendationsQuery({ limit: 4, });
 
   return (
     <VStack role="region"
@@ -40,21 +22,14 @@ const ArticleRecommendations: FC<ArticleRecommendationsProps> = (props) => {
     >
       <Text title={t('recommendations')} size="l" />
       <ArticleList
+        skeletonsCount={4}
         cardLinkTarget="_blank"
         className={cls.list}
         view={ArticleView.SMALL}
-        articles={recommendations}
-        isLoading={recommendationsIsLoading}
-        error={recommendationsError}
+        articles={articleRecommendationsData.data ?? []}
+        isLoading={articleRecommendationsData.isLoading}
+        error={(articleRecommendationsData.error as RtkError)?.message}
       />
     </VStack>
   );
 };
-
-const composedArticleRecommendations = withLazySlices({
-  reducers: { articleRecommendations: articleRecomendationsReducer, },
-  onlyIfSliceReady: true,
-  removeOnUnmount: true,
-})(ArticleRecommendations);
-
-export { composedArticleRecommendations as ArticleRecommendations };

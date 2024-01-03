@@ -3,7 +3,7 @@ import cls from './Loader.module.scss';
 import { classNames } from '../../lib/classNames/classNames';
 
 interface Props {
-  centered?: boolean
+  centered?: boolean;
 }
 
 export const Loader: FC<Props> = (props) => (

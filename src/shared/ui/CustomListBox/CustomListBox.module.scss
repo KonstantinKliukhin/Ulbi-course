@@ -1,0 +1,49 @@
+.CustomListBox {
+  display: flex;
+  align-items: center;
+}
+
+.readonly {
+  opacity: 0.7;
+}
+
+.readonly .button {
+  opacity: 1;
+  pointer-events: none;
+  cursor: default;
+}
+
+.options {
+  overflow: hidden;
+  background: var(--list-box-bg);
+  border-radius: 12px;
+  box-shadow: rgb(0 0 0 / 10%) 0 10px 50px;
+  z-index: 1;
+}
+
+.item {
+  padding: 10px 20px;
+  cursor: pointer;
+
+  &.selected {
+    position: relative;
+    opacity: 0.4;
+    cursor: auto;
+
+    &::after {
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+    }
+  }
+
+  &.active {
+    background-color: var(--inverted-primary-color);
+  }
+}

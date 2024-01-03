@@ -12,19 +12,19 @@ import { Text } from '../Text/Text';
 import { HStack } from '../Stack/HStack/HStack';
 
 export interface SelectOption<Value extends string | number> {
-  value: Value
-  content: ReactNode
+  value: Value;
+  content: ReactNode;
 }
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-  className?: string
-  label?: string
-  options?: Array<SelectOption<string | number>>
-  value?: string
-  onChange?: (e: ChangeEvent<HTMLSelectElement>) => void
-  readonly?: boolean
-  error?: string
-  noErrorSpace?: boolean
+  className?: string;
+  label?: string;
+  options?: Array<SelectOption<string | number>>;
+  value?: string;
+  onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
+  readonly?: boolean;
+  error?: string;
+  noErrorSpace?: boolean;
 }
 
 export const Select = memo(

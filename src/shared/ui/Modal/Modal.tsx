@@ -8,11 +8,11 @@ import { useEscapeClose } from '../../lib/hooks/ui/useEscapeClose/useEscapeClose
 import { VStack } from '../Stack/VStack/VStack';
 
 interface ModalProps extends PropsWithChildren {
-  className?: string
-  contentClassName?: string
-  open: boolean
-  onClose: () => void
-  lazy?: boolean
+  className?: string;
+  contentClassName?: string;
+  open: boolean;
+  onClose: () => void;
+  lazy?: boolean;
 }
 
 export const Modal: FC<ModalProps> = (props) => {

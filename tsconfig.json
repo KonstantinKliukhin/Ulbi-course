@@ -28,7 +28,9 @@
     "./config/jest/**/*"
   ],
   "exclude": [
-    "./jsonServer/*.js"
+    "./jsonServer/*.js",
+    "./scripts/**/*",
+    "./config/jest/jest.polyfills"
   ],
   "ts-node": {
     "compilerOptions": {

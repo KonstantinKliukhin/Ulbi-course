@@ -3,7 +3,7 @@ import { classNames } from 'shared/lib';
 import { memo } from 'react';
 
 interface BreadcrumbsProps {
-  className?: string
+  className?: string;
 }
 
 export const Breadcrumbs = memo<BreadcrumbsProps>(function Breadcrumbs (props) {

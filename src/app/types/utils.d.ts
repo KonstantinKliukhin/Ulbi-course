@@ -5,3 +5,5 @@ type DeepPartial<T> = T extends object ? {
 } : T;
 
 type AnyFunction = (...args: any) => any;
+
+type AnyObject = Record<string, any>;

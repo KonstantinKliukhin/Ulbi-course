@@ -3,12 +3,12 @@ import { Loader } from '../../../ui/Loader/Loader';
 import { useAppSelector } from '../../hooks/reduxHooks/useAppSelector';
 
 export interface WithLoadingProps {
-  isLoading?: boolean
+  isLoading?: boolean;
 }
 
-interface WithLoadingOptions {
-  LoadingComponent?: ReactNode
-  loadingSelector?: (state: StateSchema) => boolean
+export interface WithLoadingOptions {
+  LoadingComponent?: ReactNode;
+  loadingSelector?: (state: StateSchema) => boolean;
 }
 
 export const withLoading =

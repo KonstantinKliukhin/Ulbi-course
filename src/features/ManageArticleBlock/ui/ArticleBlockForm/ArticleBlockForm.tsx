@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Button, FormHeader, FormSelect } from 'shared/ui';
+import { Button, FormCustomListBox, FormHeader } from 'shared/ui';
 import { ArticleBlockFormPicker } from '../blockForms/ArticleBlockFormPicker/ArticleBlockFormPicker';
 import { useTranslation } from 'react-i18next';
 import {
@@ -11,12 +11,12 @@ import { type Control } from 'react-hook-form';
 import { type ArticleBlockFormType } from '../../model/types/articleBlockForm';
 
 interface ArticleBlockFormProps {
-  isSubmitDisabled: boolean
-  title: string
-  articleBlock?: ArticleBlock
-  onCancel: () => void
-  blockType: ArticleBlockType
-  control: Control<ArticleBlockFormType>
+  isSubmitDisabled: boolean;
+  title: string;
+  articleBlock?: ArticleBlock;
+  onCancel: () => void;
+  blockType: ArticleBlockType;
+  control: Control<ArticleBlockFormType>;
 }
 
 export const ArticleBlockForm = memo<ArticleBlockFormProps>(
@@ -45,7 +45,7 @@ export const ArticleBlockForm = memo<ArticleBlockFormProps>(
           }
         />
 
-        <FormSelect
+        <FormCustomListBox
           label={t('article_block_type_field_label')}
           name={'type'}
           options={articleTypesOptions}

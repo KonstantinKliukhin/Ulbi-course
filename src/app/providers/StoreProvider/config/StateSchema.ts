@@ -8,35 +8,31 @@ import {
   type Reducer,
   type ReducersMapObject
 } from '@reduxjs/toolkit';
-import { type ProfileSchema } from 'entities/Profile';
-import { type ArticleDetailsSchema } from 'entities/Article';
-import { type ArticleCommentsSchema } from 'pages/ArticleDetailsPage';
 import { type ArticlesPageSchema } from 'pages/ArticlesPage';
 import { type UISchema } from 'features/UI';
-import { type ArticleRecommendationsSchema } from 'features/ArticleRecomemndations';
 import { type ManageArticleSchema } from 'widgets/ManageArticle';
+import { type $rtkApi } from 'shared/api';
+import { type ProfilePageSchema } from 'pages/ProfilePage';
 
 export interface StateSchema {
-  counter: CounterSchema
-  user: UserSchema
-  ui: UISchema
+  [$rtkApi.reducerPath]: ReturnType<typeof $rtkApi.reducer>;
+  counter: CounterSchema;
+  user: UserSchema;
+  ui: UISchema;
   // async schemas
-  loginForm?: LoginSchema
-  profile?: ProfileSchema
-  articleDetails?: ArticleDetailsSchema
-  articleComments?: ArticleCommentsSchema
-  articlesPage?: ArticlesPageSchema
-  articleRecommendations?: ArticleRecommendationsSchema
-  manageArticle?: ManageArticleSchema
+  loginForm?: LoginSchema;
+  profilePage?: ProfilePageSchema;
+  articlesPage?: ArticlesPageSchema;
+  manageArticle?: ManageArticleSchema;
 }
 
 export interface ReducerManager {
-  getReducerMap: () => ReducersMapObject<StateSchema>
-  reduce: (state: StateSchema | undefined, action: AnyAction) => CombinedState<StateSchema>
-  add: (key: keyof StateSchema, reducer: Reducer) => void
-  remove: (key: keyof StateSchema) => void
+  getReducerMap: () => ReducersMapObject<StateSchema>;
+  reduce: (state: StateSchema | undefined, action: AnyAction) => CombinedState<StateSchema>;
+  add: (key: keyof StateSchema, reducer: Reducer) => void;
+  remove: (key: keyof StateSchema) => void;
 }
 
 export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
-  reducerManager: ReducerManager
+  reducerManager: ReducerManager;
 }

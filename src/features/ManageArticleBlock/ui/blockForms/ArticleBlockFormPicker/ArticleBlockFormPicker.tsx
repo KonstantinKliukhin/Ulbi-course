@@ -8,9 +8,9 @@ import { ArticleBlockType } from 'entities/Article';
 import { type ArticleBlockFormType } from '../../../model/types/articleBlockForm';
 
 interface ArticleBlockFormProps {
-  className?: string
-  blockType?: ArticleBlockType
-  control: Control<ArticleBlockFormType>
+  className?: string;
+  blockType?: ArticleBlockType;
+  control: Control<ArticleBlockFormType>;
 }
 
 export const ArticleBlockFormPicker = memo<ArticleBlockFormProps>(function ArticleBlockFormPicker (props) {

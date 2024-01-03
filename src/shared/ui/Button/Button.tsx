@@ -13,12 +13,12 @@ type ButtonTheme =
 type ButtonSize = 'm' | 'l' | 'xl';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  theme?: ButtonTheme
-  size?: ButtonSize
-  className?: string
-  square?: boolean
-  rounded?: boolean
-  disabled?: boolean
+  theme?: ButtonTheme;
+  size?: ButtonSize;
+  className?: string;
+  square?: boolean;
+  rounded?: boolean;
+  disabled?: boolean;
 }
 
 const mapButtonThemeClasses: Record<ButtonTheme, keyof typeof cls> = {

@@ -8,19 +8,19 @@ import {
   FormTextArea,
   HStack,
   SortableItem,
-  Text
+  Text, VStack
 } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 import { type Control, useFieldArray } from 'react-hook-form';
 import { type ArticleBlock } from 'entities/Article';
 import { v4 as uuidV4 } from 'uuid';
-import { rectSortingStrategy, SortableContext } from '@dnd-kit/sortable';
-import { type PointerSensorOptions } from '@dnd-kit/core';
+import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import { closestCorners, type PointerSensorOptions } from '@dnd-kit/core';
 import { NOT_DRAGGRABLE_PROPS } from 'shared/constants';
 
 interface ArticleTextBlockFormProps {
-  className?: string
-  control: Control<ArticleBlock>
+  className?: string;
+  control: Control<ArticleBlock>;
 }
 
 const getNewParagraph = () => ({
@@ -83,29 +83,37 @@ const ArticleTextBlockForm = memo<ArticleTextBlockFormProps>(
         <CustomDndContext
           onDragEnd={onParagraphDragEnd}
           pointerSensorOptions={pointerSensorOptions}
+          collisionDetection={closestCorners}
         >
-          <SortableContext items={paragraphs} strategy={rectSortingStrategy}>
-            {paragraphs.map((paragraph, index) => (
-              <SortableItem id={paragraph.id} key={paragraph.id}>
-                <FormTextArea
-                  resize="vertical"
-                  {...NOT_DRAGGRABLE_PROPS}
-                  label={
-                    <HStack xGap={16} align="start">
-                      {t('article_block_text_field_label')}
-                      <Text
-                        onClick={removeParagraph.bind(null, index)}
-                        className={cls.removeButton}
-                        theme="error"
-                        text={tGlobal('delete')}
-                      />
-                    </HStack>
-                  }
-                  name={`paragraphs.${index}.text`}
-                />
-              </SortableItem>
-            ))}
-          </SortableContext>
+          <VStack yGap={16} align="stretch">
+            <SortableContext items={paragraphs} strategy={verticalListSortingStrategy}>
+              {paragraphs.map((paragraph, index) => (
+                <SortableItem
+                  id={paragraph.id}
+                  key={paragraph.id}
+                  defaultClass={cls.sortableText}
+                  draggingClass={cls.draggingText}
+                >
+                  <FormTextArea
+                    resize="vertical"
+                    {...NOT_DRAGGRABLE_PROPS}
+                    label={
+                      <HStack xGap={16} align="start">
+                        {t('article_block_text_field_label')}
+                        <Text
+                          onClick={removeParagraph.bind(null, index)}
+                          className={cls.removeButton}
+                          theme="error"
+                          text={tGlobal('delete')}
+                        />
+                      </HStack>
+                    }
+                    name={`paragraphs.${index}.text`}
+                  />
+                </SortableItem>
+              ))}
+            </SortableContext>
+          </VStack>
         </CustomDndContext>
       </div>
     );

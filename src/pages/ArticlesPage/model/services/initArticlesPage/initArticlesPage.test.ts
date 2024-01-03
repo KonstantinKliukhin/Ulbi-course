@@ -1,5 +1,4 @@
 import { TestAsyncThunk } from 'shared/config/tests/TestAsyncThunk';
-import { mockedArticles } from 'shared/mocks';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 import { articlesPageActions } from '../../slices/articlesPageSlice';
 import { initArticlesPage } from './initArticlesPage';
@@ -20,10 +19,8 @@ describe('initArticlesPage', () => {
         _inited: false,
       },
     });
-    thunk.api.get.mockReturnValue(Promise.resolve({ data: mockedArticles, }));
 
     const result = await thunk.callThunk(new URLSearchParams());
-
     expect(thunk.dispatch).toHaveBeenCalledTimes(4);
     expect(articlesPageActions.initState).toHaveBeenCalledTimes(1);
     expect(fetchArticlesList).toHaveBeenCalled();

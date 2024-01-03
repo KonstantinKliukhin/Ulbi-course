@@ -19,12 +19,12 @@ InputHTMLAttributes<HTMLInputElement>,
 >;
 
 interface InputProps extends HtmlInputProps {
-  value?: string | number
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
-  readonly?: boolean
-  error?: string
-  noErrorSpace?: boolean
-  label: string
+  value?: string | number;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  readonly?: boolean;
+  error?: string;
+  noErrorSpace?: boolean;
+  label: string;
 }
 
 const INPUT_FONT_WIDTH = 9.4;

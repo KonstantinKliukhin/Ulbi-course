@@ -2,10 +2,14 @@ import { configureStore, type ReducersMapObject } from '@reduxjs/toolkit';
 import { type ReduxStoreWithManager, type StateSchema } from './StateSchema';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
-import { createReducerManager } from 'app/providers/StoreProvider/config/reducerManager';
-import { $api } from 'shared/api';
+import { createReducerManager } from './reducerManager';
+import { $api, $rtkApi } from 'shared/api';
 import { type NavigateFunction } from 'react-router-dom';
 import { UIReducer } from 'features/UI';
+import { rtkQueryErrorMiddleware } from './middlewares/rtkQueryErrorMiddleware/rtkQueryErrorMiddleware';
+import {
+  apiActionStorybookMiddleware
+} from './middlewares/apiActionStorybookMiddleware/apiActionStorybookMiddleware';
 
 export function createReduxStore (
   navigate: NavigateFunction,
@@ -17,6 +21,7 @@ export function createReduxStore (
     counter: counterReducer,
     user: userReducer,
     ui: UIReducer,
+    [$rtkApi.reducerPath]: $rtkApi.reducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);
@@ -31,9 +36,13 @@ export function createReduxStore (
       reducer: reducerManager.reduce,
       devTools: __IS_DEV__,
       preloadedState: initialState,
-      middleware: getDefaultMiddleware => getDefaultMiddleware({
-        thunk: { extraArgument: thunkExtraArg, },
-      }),
+      middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+          thunk: { extraArgument: thunkExtraArg, },
+        })
+          .concat($rtkApi.middleware)
+          .concat(rtkQueryErrorMiddleware)
+          .concat(...(__PROJECT__ === 'storybook' ? [apiActionStorybookMiddleware,] : [])),
     }),
     reducerManager,
   };

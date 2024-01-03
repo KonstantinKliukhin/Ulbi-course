@@ -3,15 +3,21 @@ import { type Article, ArticleView } from '../../model/types/article';
 import { ArticlesNotFound } from './ArticlesNotFound';
 import { VirtualizedArticlesList } from './VirtualizedArticlesList/VirtualizedArticlesList';
 import { CommonArticlesList } from './CommonArticlesList/CommonArticlesList';
+import { type ListRange } from 'react-virtuoso';
 
 interface ArticleListProps {
-  className?: string
-  articles: Article[]
-  isLoading?: boolean
-  error: string | null
-  view?: ArticleView
-  cardLinkTarget?: HTMLAttributeAnchorTarget
-  virtualized?: boolean
+  articles: Article[];
+  className?: string;
+  isLoading?: boolean;
+  error?: string | null;
+  view?: ArticleView;
+  cardLinkTarget?: HTMLAttributeAnchorTarget;
+  virtualized?: boolean;
+  endReached?: () => void;
+  startReached?: () => void;
+  skeletonsCount?: number;
+  savedItemIndex?: number;
+  onScrollRangeChanged?: (state: ListRange) => void;
 }
 
 export const ArticleList = memo(
@@ -28,18 +34,24 @@ export const ArticleList = memo(
     if (props.virtualized) {
       return (
         <VirtualizedArticlesList
+          savedItemIndex={props.savedItemIndex}
+          onScrollRangeChanged={props.onScrollRangeChanged}
           ref={scrollElementRef}
           className={props.className}
+          skeletonsCount={props.skeletonsCount}
+          isLoading={props.isLoading}
           view={view}
           articles={props.articles}
-          isLoading={props.isLoading}
           error={props.error}
           cardLinkTarget={props.cardLinkTarget}
+          startReached={props.startReached}
+          endReached={props.endReached}
         />
       );
     } else {
       return (
         <CommonArticlesList
+          skeletonsCount={props.skeletonsCount ?? 0}
           className={props.className}
           view={view}
           articles={props.articles}

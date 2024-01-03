@@ -7,8 +7,8 @@ import { RoutePath } from '../routeConfig/routeConfig';
 import { StoreProvider } from 'app/providers/StoreProvider';
 
 interface RenderWithRouterOptions {
-  route?: string
-  initialState?: DeepPartial<StateSchema>
+  route?: string;
+  initialState?: DeepPartial<StateSchema>;
 }
 
 const defaultOptions = {

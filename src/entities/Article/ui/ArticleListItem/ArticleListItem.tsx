@@ -4,10 +4,10 @@ import { ArticleListItemBig } from './ArticleListItemBig/ArticleListItemBig';
 import { ArticleListItemSmall } from './ArticleListItemSmall/ArticleListItemSmall';
 
 interface ArticleListItemProps {
-  className?: string
-  article: Article
-  view: ArticleView
-  cardLinkTarget?: HTMLAttributeAnchorTarget
+  className?: string;
+  article: Article;
+  view: ArticleView;
+  cardLinkTarget?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleListItem: FC<ArticleListItemProps> = (props) => {

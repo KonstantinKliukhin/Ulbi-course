@@ -42,7 +42,7 @@ export const mockedArticle: Article = {
     {
       id: '4',
       type: ArticleBlockType.CODE,
-      code: '<!DOCTYPE html>\n<html>\n  <body>\n    <p id="hello"></p>\n\n    <script>\n      document.getElementById("hello").innerHTML = "Hello, world!";\n    </script>\n  </body>\n</html>;',
+      code: 'const a = 5;',
     },
     {
       id: '5',
@@ -105,9 +105,13 @@ export const mockedArticle: Article = {
   ],
 };
 
-export const mockedArticles: Article[] = Array(16)
-  .fill(mockedArticle)
-  .map((ar, i) => ({ ...ar, id: `${i}`, }));
+export const createMockedArticles = (count: number): Article[] => {
+  return Array(count)
+    .fill(mockedArticle)
+    .map((ar, i) => ({ ...ar, id: `${i}`, }));
+};
+
+export const mockedArticles: Article[] = createMockedArticles(16);
 
 export const mockedArticleTextBlock: ArticleTextBlock = {
   id: '1',

@@ -1,10 +1,19 @@
 
 .SidebarItem {
   text-align: center;
-  
+
   svg {
     width: 20px;
     height: 20px;
     fill: var(--inverted-primary-color);
+  }
+
+  &.active svg {
+    fill: var(--primary-color);
+  }
+
+  &:hover:not(.active) svg {
+    fill: var(--primary-color);
+    opacity: 0.6;
   }
 }

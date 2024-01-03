@@ -3,9 +3,9 @@ import { type Article, type ArticleDTO } from 'entities/Article';
 import { omit } from 'shared/lib';
 
 interface ArticleFormToDTOArg {
-  form: ArticleFormType
-  initialArticle?: Article
-  userId: string
+  form: ArticleFormType;
+  initialArticle?: Article;
+  userId: string;
 }
 
 export const articleFormToDTO = (arg: ArticleFormToDTOArg): ArticleDTO => {
@@ -13,6 +13,7 @@ export const articleFormToDTO = (arg: ArticleFormToDTOArg): ArticleDTO => {
   const formattedDate = `${today.getDate()}.${
     today.getMonth() + 1
   }.${today.getFullYear()}`;
+
   return omit(
     {
       ...arg.initialArticle,

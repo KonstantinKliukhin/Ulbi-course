@@ -1,8 +1,8 @@
 import { useCallback, useMemo, useState } from 'react';
 
 interface HoverBounds {
-  onMouseEnter: () => void
-  onMouseLeave: () => void
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
 type UseHoverResult = [

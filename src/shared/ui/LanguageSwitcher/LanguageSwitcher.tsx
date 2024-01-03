@@ -4,8 +4,8 @@ import { Button } from '../Button/Button';
 import { useTranslation } from 'react-i18next';
 
 interface LanguageSwitcherProps {
-  className?: string
-  short?: boolean
+  className?: string;
+  short?: boolean;
 }
 
 export const LanguageSwitcher = memo<LanguageSwitcherProps>(

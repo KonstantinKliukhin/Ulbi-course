@@ -1,7 +1,9 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { ArticleList } from './ArticleList';
-import { mockedArticles } from 'shared/mocks';
+import { createMockedArticles, mockedArticles } from 'shared/mocks';
+import { ArticleView } from '../../model/types/article';
+import cls from './ArticleList.stories.module.scss';
 
 export default {
   title: 'entities/Article/ArticleList',
@@ -12,12 +14,62 @@ type ArticleListStory = StoryObj<typeof ArticleList>;
 
 export const Default: ArticleListStory = {
   args: {
-    articles: mockedArticles,
+    articles: createMockedArticles(50),
   },
 };
 
-export const Skeleton = {
+export const SmallSkeleton: ArticleListStory = {
   args: {
     isLoading: true,
+    articles: [],
+    skeletonsCount: 12,
   },
+};
+
+export const BigSkeleton: ArticleListStory = {
+  args: {
+    isLoading: true,
+    articles: [],
+    skeletonsCount: 12,
+    view: ArticleView.BIG,
+  },
+};
+
+export const BigView: ArticleListStory = {
+  args: {
+    articles: mockedArticles,
+    view: ArticleView.BIG,
+  },
+};
+
+export const VirtualizedSmall: ArticleListStory = {
+  args: {
+    virtualized: true,
+    articles: createMockedArticles(50),
+    isLoading: false,
+    skeletonsCount: 12,
+    view: ArticleView.SMALL,
+    savedItemIndex: 0,
+  },
+  render: (props) => (
+    <div className={cls.virtualizedListWrapper}>
+      <ArticleList {...props}/>
+    </div>
+  ),
+};
+
+export const VirtualizedBig: ArticleListStory = {
+  args: {
+    virtualized: true,
+    articles: createMockedArticles(50),
+    isLoading: false,
+    skeletonsCount: 12,
+    view: ArticleView.BIG,
+    savedItemIndex: 0,
+  },
+  render: (props) => (
+    <div className={cls.virtualizedListWrapper}>
+      <ArticleList {...props}/>
+    </div>
+  ),
 };

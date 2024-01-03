@@ -4,6 +4,7 @@ import { validateLoginData } from '../../validation/validateLoginData/validateLo
 
 export const useLoginForm = () => {
   const loginFormResolver = useYupValidationResolver(validateLoginData);
+
   return useForm({
     mode: 'onChange',
     delayError: 150,

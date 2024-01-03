@@ -4,7 +4,7 @@ import { classNames } from 'shared/lib';
 import { HStack, Loader } from 'shared/ui';
 
 interface PageLoaderProps {
-  className?: string
+  className?: string;
 }
 
 export const PageLoader: FC<PageLoaderProps> = (props) => {

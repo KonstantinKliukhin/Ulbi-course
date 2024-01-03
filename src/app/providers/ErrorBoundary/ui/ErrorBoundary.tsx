@@ -4,7 +4,7 @@ import { PageError } from 'widgets/PageError';
 type ErrorBoundaryProps = PropsWithChildren;
 
 interface ErrorBoundaryState {
-  hasError: boolean
+  hasError: boolean;
 }
 
 export class ErrorBoundary

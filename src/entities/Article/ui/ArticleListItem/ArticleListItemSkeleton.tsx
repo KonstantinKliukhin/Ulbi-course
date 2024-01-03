@@ -4,8 +4,8 @@ import { ArticleListItemSmallSkeleton } from './ArticleListItemSmall/ArticleList
 import { ArticleListItemBigSkeleton } from './ArticleListItemBig/ArticleListItemBigSkeleton';
 
 interface ArticleListItemSkeletonProps {
-  view: ArticleView
-  className?: string
+  view: ArticleView;
+  className?: string;
 }
 
 export const ArticleListItemSkeleton: FC<ArticleListItemSkeletonProps> = (

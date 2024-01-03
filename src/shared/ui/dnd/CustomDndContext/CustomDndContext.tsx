@@ -19,17 +19,17 @@ import {
 import cls from './CustomDndContext.module.scss';
 
 interface DraggableContextProps {
-  onDragStart?: (event: DragStartEvent) => void
-  onDragEnd: (event: DragEndEvent) => void
-  onDragOver?: (event: DragOverEvent) => void
-  onDragMove?: (event: DragMoveEvent) => void
-  onDragCancel?: (event: DragCancelEvent) => void
-  children: ReactNode | ReactElement
-  overlayChildren?: ReactNode | ReactElement
-  pointerSensorOptions?: PointerSensorOptions
-  touchSensorOptions?: TouchSensorOptions
-  collisionDetection?: CollisionDetection
-  overlayModifiers?: Modifiers
+  onDragStart?: (event: DragStartEvent) => void;
+  onDragEnd: (event: DragEndEvent) => void;
+  onDragOver?: (event: DragOverEvent) => void;
+  onDragMove?: (event: DragMoveEvent) => void;
+  onDragCancel?: (event: DragCancelEvent) => void;
+  children: ReactNode | ReactElement;
+  overlayChildren?: ReactNode | ReactElement;
+  pointerSensorOptions?: PointerSensorOptions;
+  touchSensorOptions?: TouchSensorOptions;
+  collisionDetection?: CollisionDetection;
+  overlayModifiers?: Modifiers;
 }
 
 const defaultPointerSensorOptions: PointerSensorOptions = {

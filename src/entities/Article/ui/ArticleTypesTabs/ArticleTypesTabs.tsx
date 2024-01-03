@@ -5,13 +5,13 @@ import { ARTICLE_TYPE_TRANSLATIONS } from '../../constants/translations';
 import { ArticleType } from '../../model/types/article';
 
 interface ArticleTypesTabsProps {
-  className?: string
-  onSelectType: (type: ArticleType) => void
-  value: ArticleType | ArticleType[]
-  error?: string | null
-  withError?: boolean
-  label?: string
-  excludeAll?: boolean
+  className?: string;
+  onSelectType: (type: ArticleType) => void;
+  value: ArticleType | ArticleType[];
+  error?: string | null;
+  withError?: boolean;
+  label?: string;
+  excludeAll?: boolean;
 }
 
 const articleTypes = Object.values(ArticleType);

@@ -6,11 +6,11 @@ import { FormArticleTypesTabs } from 'entities/Article';
 import { useTranslation } from 'react-i18next';
 
 interface ArticleFormProps {
-  className?: string
-  title: string
-  blocksChildren: ReactNode
-  onCancel: () => void
-  isSubmitDisabled: boolean
+  className?: string;
+  title: string;
+  blocksChildren: ReactNode;
+  onCancel: () => void;
+  isSubmitDisabled: boolean;
 }
 
 const ArticleForm = memo<ArticleFormProps>(function ArticleForm (props) {

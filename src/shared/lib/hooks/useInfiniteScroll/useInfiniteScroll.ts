@@ -1,13 +1,13 @@
 import { type MutableRefObject, useEffect } from 'react';
 
 interface UseInfiniteScrollOptions {
-  onScrollEnd?: () => void
-  triggerRef: MutableRefObject<HTMLElement | null>
-  wrapperRef: MutableRefObject<HTMLElement | null>
+  onScrollAchieved?: () => void;
+  triggerRef: MutableRefObject<HTMLElement | null>;
+  wrapperRef: MutableRefObject<HTMLElement | null>;
 }
 
 export const useInfiniteScroll = (options: UseInfiniteScrollOptions) => {
-  const { onScrollEnd, triggerRef, wrapperRef, } = options;
+  const { onScrollAchieved, triggerRef, wrapperRef, } = options;
 
   useEffect(
     function initializeObserver () {
@@ -15,7 +15,7 @@ export const useInfiniteScroll = (options: UseInfiniteScrollOptions) => {
       const triggerElem = triggerRef.current;
       const wrapperElem = wrapperRef.current;
 
-      if (onScrollEnd && triggerElem && wrapperElem) {
+      if (onScrollAchieved && triggerElem && wrapperElem) {
         const observerInit: IntersectionObserverInit = {
           root: wrapperElem,
           rootMargin: '0px',
@@ -24,7 +24,7 @@ export const useInfiniteScroll = (options: UseInfiniteScrollOptions) => {
 
         observer = new IntersectionObserver(([entry,]) => {
           if (entry.isIntersecting) {
-            onScrollEnd();
+            onScrollAchieved();
           }
         }, observerInit);
 
@@ -37,6 +37,6 @@ export const useInfiniteScroll = (options: UseInfiniteScrollOptions) => {
         }
       };
     },
-    [triggerRef, wrapperRef, onScrollEnd,]
+    [triggerRef, wrapperRef, onScrollAchieved,]
   );
 };

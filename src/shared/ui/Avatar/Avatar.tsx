@@ -17,11 +17,11 @@ ImgHTMLAttributes<HTMLImageElement>,
 >;
 
 interface AvatarProps extends ImageProps {
-  className?: string
-  src?: string
-  size?: number
-  alt?: string
-  defaultAvatar?: string
+  className?: string;
+  src?: string;
+  size?: number;
+  alt?: string;
+  defaultAvatar?: string;
 }
 
 export const Avatar: FC<AvatarProps> = (props) => {

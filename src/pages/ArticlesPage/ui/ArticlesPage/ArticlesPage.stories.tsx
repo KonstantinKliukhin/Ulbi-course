@@ -10,6 +10,7 @@ import {
   ArticleView
 } from 'entities/Article';
 import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
+import cls from './ArticlesPage.stories.module.scss';
 
 export default {
   title: 'pages/ArticlesPage',
@@ -46,4 +47,9 @@ export const Default: ArticlesPageStory = {
       }
     ),
   ],
+  render: (props) => (
+    <div className={cls.storybookWrapper}>
+      <ArticlesPage {...props} />
+    </div>
+  ),
 };

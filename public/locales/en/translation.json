@@ -42,5 +42,6 @@
   "sort_created": "Date created",
   "sort_title": "Title",
   "sort_views": "Views",
-  "submit_search": "Submit"
+  "submit_search": "Submit",
+  "na": "N/A"
 }

@@ -3,7 +3,7 @@ import { FormTextArea } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 
 interface ArticleCodeBlockFormProps {
-  className?: string
+  className?: string;
 }
 
 const ArticleCodeBlockForm = memo<ArticleCodeBlockFormProps>(

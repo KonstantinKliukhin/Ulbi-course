@@ -2,12 +2,12 @@ import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import ArticleDetailsPage from './ArticleDetailsPage';
 import { StoreDecorator } from 'shared/config/storybook/storeDecorator/storeDecorator';
-import { articleCommentsReducer } from '../../model/slices/articleCommentsSlice';
-import { mockedArticle, mockedComments, mockedUser } from 'shared/mocks';
-import { articleDetailsReducer } from 'entities/Article/model/slices/articleDetailsSlice';
-import { type Comment } from 'entities/Comment';
+import { mockedArticle, mockedArticles, mockedComments, mockedUser } from 'shared/mocks';
 import { reactRouterParameters } from 'storybook-addon-react-router-v6';
 import { RoutePath } from 'shared/config';
+import { QueryStatus } from '@reduxjs/toolkit/query';
+import { articleApi, articleCommentsApi } from 'entities/Article';
+import { recommendationsApi } from 'features/ArticleRecomemndations/api/articleRecommendationsApi';
 
 export default {
   title: 'pages/ArticleDetailsPage',
@@ -16,16 +16,7 @@ export default {
 
 type ArticleDetailsPageStory = StoryObj<typeof ArticleDetailsPage>;
 
-const commentsEntities = mockedComments.reduce<Record<string, Comment>>(
-  (acc, comment) => ({
-    ...acc,
-    [comment.id]: comment,
-  }),
-  {}
-);
-const commentsIds = mockedComments.map((comment) => comment.id);
-
-const parameters = {
+const routerParameters = {
   reactRouter: reactRouterParameters({
     location: {
       pathParams: { id: '1', },
@@ -36,21 +27,26 @@ const parameters = {
 
 export const Default: ArticleDetailsPageStory = {
   args: {},
-  parameters,
+  parameters: routerParameters,
   decorators: [
     StoreDecorator(
       {
-        articleDetails: {
-          data: mockedArticle,
+        api: {
+          queries: {
+            [`${articleApi.endpoints.getArticleById.name}({"id":"1"})`]: {
+              status: QueryStatus.fulfilled,
+              data: mockedArticle,
+            },
+            [`${articleCommentsApi.endpoints.getArticleComments.name}({"articleId":"1"})`]: {
+              status: QueryStatus.fulfilled,
+              data: mockedComments,
+            },
+            [`${recommendationsApi.endpoints.getArticleRecommendations.name}({"limit":4})`]: {
+              status: QueryStatus.fulfilled,
+              data: mockedArticles.slice(0, 4),
+            },
+          },
         },
-        articleComments: {
-          entities: commentsEntities,
-          ids: commentsIds,
-        },
-      },
-      {
-        articleComments: articleCommentsReducer,
-        articleDetails: articleDetailsReducer,
       }
     ),
   ],
@@ -58,24 +54,29 @@ export const Default: ArticleDetailsPageStory = {
 
 export const CanEdit: ArticleDetailsPageStory = {
   args: {},
-  parameters,
+  parameters: routerParameters,
   decorators: [
     StoreDecorator(
       {
         user: {
           authData: mockedUser,
         },
-        articleDetails: {
-          data: mockedArticle,
+        api: {
+          queries: {
+            'getArticleById({"id":"1"})': {
+              status: QueryStatus.fulfilled,
+              data: mockedArticle,
+            },
+            'getArticleComments({"articleId":"1"})': {
+              status: QueryStatus.fulfilled,
+              data: mockedComments,
+            },
+            'getArticleRecommendations({"limit":4})': {
+              status: QueryStatus.fulfilled,
+              data: mockedArticles.slice(0, 4),
+            },
+          },
         },
-        articleComments: {
-          entities: commentsEntities,
-          ids: commentsIds,
-        },
-      },
-      {
-        articleComments: articleCommentsReducer,
-        articleDetails: articleDetailsReducer,
       }
     ),
   ],
@@ -83,22 +84,23 @@ export const CanEdit: ArticleDetailsPageStory = {
 
 export const Loading: ArticleDetailsPageStory = {
   args: {},
-  parameters,
+  parameters: routerParameters,
   decorators: [
     StoreDecorator(
       {
-        articleDetails: {
-          isLoading: true,
+        api: {
+          queries: {
+            'getArticleById({"id":"1"})': {
+              status: QueryStatus.pending,
+            },
+            'getArticleComments({"articleId":"1"})': {
+              status: QueryStatus.pending,
+            },
+            'getArticleRecommendations({"limit":4})': {
+              status: QueryStatus.pending,
+            },
+          },
         },
-        articleComments: {
-          isLoading: true,
-          entities: commentsEntities,
-          ids: commentsIds,
-        },
-      },
-      {
-        articleComments: articleCommentsReducer,
-        articleDetails: articleDetailsReducer,
       }
     ),
   ],
@@ -106,22 +108,26 @@ export const Loading: ArticleDetailsPageStory = {
 
 export const Error: ArticleDetailsPageStory = {
   args: {},
-  parameters,
+  parameters: routerParameters,
   decorators: [
     StoreDecorator(
       {
-        articleDetails: {
-          error: 'Some Api Error',
+        api: {
+          queries: {
+            'getArticleById({"id":"1"})': {
+              status: QueryStatus.rejected,
+              error: { message: 'Some Api Error', },
+            },
+            'getArticleComments({"articleId":"1"})': {
+              status: QueryStatus.rejected,
+              error: { message: 'Some Api Error', },
+            },
+            'getArticleRecommendations({"limit":4})': {
+              status: QueryStatus.rejected,
+              error: { message: 'Some Api Error', },
+            },
+          },
         },
-        articleComments: {
-          entities: commentsEntities,
-          ids: commentsIds,
-          error: 'Some Api Error',
-        },
-      },
-      {
-        articleComments: articleCommentsReducer,
-        articleDetails: articleDetailsReducer,
       }
     ),
   ],

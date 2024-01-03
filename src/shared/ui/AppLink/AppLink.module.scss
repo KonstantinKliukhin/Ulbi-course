@@ -5,7 +5,7 @@
 .primary {
   color: var(--primary-color);
 
-  &:hover {
+  &:hover, &.active {
     color: var(--inverted-primary-color);
   }
 }
@@ -13,7 +13,7 @@
 .secondary {
   color: var(--inverted-primary-color);
 
-  &:hover {
+  &:hover, &.active {
     color: var(--primary-color);
   }
 }
@@ -21,3 +21,12 @@
 .red {
   color: tomato;
 }
+
+.clear {
+  color: inherit;
+
+  &:hover, &.active {
+    color: inherit;
+  }
+}
+

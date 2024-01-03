@@ -5,16 +5,16 @@ import i18n from '../../../config/i18n/i18n';
 import { useAppSelector } from '../../hooks/reduxHooks/useAppSelector';
 
 export interface WithErrorProps {
-  error?: string | null
+  error?: string | null;
 }
 
-interface DefaultErrorProps {
-  error?: string
+export interface DefaultErrorProps {
+  error?: string;
 }
 
-interface WithErrorOptions<Props extends DefaultErrorProps> {
-  ErrorComponent?: FC<Props>
-  errorSelector?: (state: StateSchema) => string | null
+export interface WithErrorOptions<Props extends DefaultErrorProps> {
+  ErrorComponent?: FC<Props>;
+  errorSelector?: (state: StateSchema) => string | null;
 }
 
 const DefaultErrorComponent: FC<DefaultErrorProps> = (props) => (
@@ -41,6 +41,7 @@ export const withError =
       );
       if (error) {
         const errorProps = { error, } as unknown as ErrorProps;
+
         return <ErrorComponent {...errorProps} />;
       } else {
         return <WrappedComponent {...props} />;

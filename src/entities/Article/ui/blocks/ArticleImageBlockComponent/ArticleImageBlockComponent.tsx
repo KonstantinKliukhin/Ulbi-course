@@ -5,8 +5,8 @@ import { type ArticleImageBlock } from '../../../model/types/article';
 import { Text } from 'shared/ui';
 
 interface ArticleImageBlockComponentProps {
-  className?: string
-  block: ArticleImageBlock
+  className?: string;
+  block: ArticleImageBlock;
 }
 
 export const ArticleImageBlockComponent = memo<ArticleImageBlockComponentProps>(

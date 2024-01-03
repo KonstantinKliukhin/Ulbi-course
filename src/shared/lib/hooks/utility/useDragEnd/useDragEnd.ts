@@ -4,15 +4,15 @@ import { arrayMove } from '@dnd-kit/sortable';
 import { useCallback } from 'react';
 
 export interface UseDragEndCallbackArgs<T extends { id: string | number }> {
-  movedArray: T[]
-  oldIndex: number
-  newIndex: number
-  direction: 1 | -1
+  movedArray: T[];
+  oldIndex: number;
+  newIndex: number;
+  direction: 1 | -1;
 }
 
 export const useDragEnd = <
   T extends {
-    id: string | number
+    id: string | number;
   }
 >(
     arr: T[],

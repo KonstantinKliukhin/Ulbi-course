@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { COMMON_API_ERRORS } from 'shared/constants';
-import { type Article, ArticleType } from 'entities/Article';
+import { type Article, articleApi } from 'entities/Article';
 import {
   getArticlesLimit,
   getArticlesOrder,
@@ -12,11 +12,11 @@ import {
 import { addQueryParams } from 'shared/lib/url/addQueryParameters/addQueryParameters';
 
 interface FetchArticlesListExtra extends ThunkDefaultArg {
-  rejectValue: string
+  rejectValue: string;
 }
 
 type FetchArticlesListArg = {
-  replace?: boolean
+  replace?: boolean;
 } | undefined;
 
 export const fetchArticlesList =
@@ -37,20 +37,15 @@ export const fetchArticlesList =
             search,
             type,
           });
-          const response = await thunkAPI.extra.api.get<Article[]>(
-            '/articles',
-            {
-              params: {
-                _expand: 'user',
-                _page: page,
-                _limit: limit,
-                _sort: sort,
-                _order: order,
-                q: search,
-                type: type === ArticleType.ALL ? undefined : type,
-              },
-            }
-          );
+
+          const response = await thunkAPI.dispatch(articleApi.endpoints.getArticles.initiate({
+            page,
+            limit,
+            sort,
+            order,
+            search,
+            type,
+          }));
 
           if (!response.data) {
             throw new Error(COMMON_API_ERRORS.NO_DATA_PROVIDED_FROM_SERVER);

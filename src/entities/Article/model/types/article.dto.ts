@@ -1,31 +1,31 @@
 import { type ArticleBlockType, type ArticleType } from './article';
 
 export interface ArticleTextBlockParagraphDTO {
-  id: string
-  text: string
+  id: string;
+  text: string;
 }
 
 export interface ArticleBlockBaseDTO {
-  id: string
-  type: ArticleBlockType
-  name?: string
+  id: string;
+  type: ArticleBlockType;
+  name?: string;
 }
 
 export interface ArticleCodeBlockDTO extends ArticleBlockBaseDTO {
-  type: ArticleBlockType.CODE
-  code: string
+  type: ArticleBlockType.CODE;
+  code: string;
 }
 
 export interface ArticleImageBlockDTO extends ArticleBlockBaseDTO {
-  type: ArticleBlockType.IMAGE
-  src: string
-  title: string
+  type: ArticleBlockType.IMAGE;
+  src: string;
+  title: string;
 }
 
 export interface ArticleTextBlockDTO extends ArticleBlockBaseDTO {
-  type: ArticleBlockType.TEXT
-  paragraphs: ArticleTextBlockParagraphDTO[]
-  title?: string
+  type: ArticleBlockType.TEXT;
+  paragraphs: ArticleTextBlockParagraphDTO[];
+  title?: string;
 }
 
 export type ArticleBlockDTO =
@@ -34,10 +34,10 @@ export type ArticleBlockDTO =
   | ArticleTextBlockDTO;
 
 export interface ArticleDTO {
-  userId: string
-  title: string
-  subtitle: string
-  img: string
-  type: ArticleType[]
-  blocks: ArticleBlockDTO[]
+  userId: string;
+  title: string;
+  subtitle: string;
+  img: string;
+  type: ArticleType[];
+  blocks: ArticleBlockDTO[];
 }

@@ -21,10 +21,10 @@ type ReducersList = {
 };
 
 interface WithLazySliceOptions {
-  reducers: ReducersList
-  removeOnUnmount?: boolean
-  onlyIfSliceReady?: boolean
-  loaderComponent?: ReactNode
+  reducers: ReducersList;
+  removeOnUnmount?: boolean;
+  onlyIfSliceReady?: boolean;
+  loaderComponent?: ReactNode;
 }
 
 export const withLazySlices =

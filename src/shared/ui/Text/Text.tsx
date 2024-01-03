@@ -1,4 +1,4 @@
-import { memo, type MouseEventHandler } from 'react';
+import { memo, type MouseEventHandler, type ReactNode } from 'react';
 import cls from './Text.module.scss';
 import { classNames } from '../../lib/classNames/classNames';
 
@@ -9,17 +9,17 @@ type TextAlign = 'right' | 'left' | 'center';
 type TextSize = 's' | 'm' | 'l';
 
 interface TextProps {
-  className?: string
-  titleClassName?: string
-  textClassName?: string
-  title?: string | null
-  text?: string | null
-  theme?: TextTheme
-  align?: TextAlign
-  size?: TextSize
-  onClick?: MouseEventHandler<HTMLDivElement>
-  keepTextHeight?: boolean
-  keepTitleHeight?: boolean
+  className?: string;
+  titleClassName?: string;
+  textClassName?: string;
+  title?: ReactNode;
+  text?: ReactNode;
+  theme?: TextTheme;
+  align?: TextAlign;
+  size?: TextSize;
+  onClick?: MouseEventHandler<HTMLDivElement>;
+  keepTextHeight?: boolean;
+  keepTitleHeight?: boolean;
 }
 
 type HeaderTag = 'h1' | 'h2' | 'h3';

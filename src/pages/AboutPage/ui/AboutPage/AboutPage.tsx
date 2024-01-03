@@ -4,6 +4,7 @@ import { Page } from 'shared/ui';
 
 const AboutPage: FC = () => {
   const { t, } = useTranslation('about');
+
   return (
     <Page>
       {t('about_site')}

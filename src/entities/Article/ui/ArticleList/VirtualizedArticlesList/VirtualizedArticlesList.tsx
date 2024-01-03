@@ -2,13 +2,12 @@ import {
   type FC,
   forwardRef,
   type HTMLAttributeAnchorTarget,
-  memo,
-  useMemo
+  memo
 } from 'react';
 import { type Article, ArticleView } from '../../../model/types/article';
 import cls from './VirtualizedArticlesList.module.scss';
 import {
-  type GridScrollSeekPlaceholderProps,
+  type GridScrollSeekPlaceholderProps, type ListRange,
   VirtuosoGrid
 } from 'react-virtuoso';
 import { classNames } from 'shared/lib';
@@ -16,30 +15,24 @@ import { ArticleListItem } from '../../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../../ArticleListItem/ArticleListItemSkeleton';
 
 interface VirtualizedArticlesListProps {
-  className?: string
-  articles: Article[]
-  isLoading?: boolean
-  error: string | null
-  view: ArticleView
-  cardLinkTarget?: HTMLAttributeAnchorTarget
+  className?: string;
+  articles: Article[];
+  error?: string | null;
+  view: ArticleView;
+  cardLinkTarget?: HTMLAttributeAnchorTarget;
+  skeletonsCount?: number;
+  endReached?: () => void;
+  startReached?: () => void;
+  isLoading?: boolean;
+  savedItemIndex?: number;
+  onScrollRangeChanged?: (state: ListRange) => void;
 }
 
 export const VirtualizedArticlesList = memo(
   forwardRef<HTMLElement | null, VirtualizedArticlesListProps>(
     function ArticleList (props, scrollElementRef) {
-      const skeletonsCount = useMemo<number>(() => {
-        if (props.isLoading) {
-          if (props.view === ArticleView.SMALL) {
-            return 20;
-          } else {
-            return 4;
-          }
-        } else {
-          return 0;
-        }
-      }, [props.isLoading, props.view,]);
-
-      const totalCount = props.articles.length + skeletonsCount;
+      const skeletonsCount = props.skeletonsCount && props.isLoading ? props.skeletonsCount : 0;
+      const totalCount = skeletonsCount + props.articles.length;
 
       return (
         <VirtuosoGrid
@@ -50,6 +43,8 @@ export const VirtualizedArticlesList = memo(
               ? scrollElementRef.current
               : undefined
           }
+          initialTopMostItemIndex={props.savedItemIndex ?? 0}
+          rangeChanged={props.onScrollRangeChanged}
           totalCount={totalCount}
           context={props.view}
           overscan={200}
@@ -62,10 +57,14 @@ export const VirtualizedArticlesList = memo(
             cls[props.view],
             props.className,
           ])}
+          endReached={props.endReached}
+          startReached={props.startReached}
           itemContent={(index) => {
             const article = props.articles[index];
+            const isEndSkeleton =
+              index > totalCount - skeletonsCount - 1 || !article;
 
-            if (props.isLoading && !article) {
+            if (isEndSkeleton) {
               return (
                 <div className={cls.card}>
                   <ArticleListItemSkeleton view={props.view} />

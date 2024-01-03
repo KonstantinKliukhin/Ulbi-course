@@ -7,17 +7,19 @@ import cls from './CommonArticlesList.module.scss';
 import { classNames } from 'shared/lib';
 
 interface CommonArticlesListProps {
-  className?: string
-  articles: Article[]
-  isLoading?: boolean
-  error: string | null
-  view: ArticleView
-  cardLinkTarget?: HTMLAttributeAnchorTarget
+  className?: string;
+  skeletonsCount: number;
+  articles: Article[];
+  isLoading?: boolean;
+  error?: string | null;
+  view: ArticleView;
+  cardLinkTarget?: HTMLAttributeAnchorTarget;
 }
 
 export const CommonArticlesList = memo<CommonArticlesListProps>(
   function CommonArticlesList (props) {
     const isBig = props.view === ArticleView.BIG;
+
     return (
       <Flex
         direction={isBig ? 'column' : 'row'}
@@ -34,7 +36,15 @@ export const CommonArticlesList = memo<CommonArticlesListProps>(
             cardLinkTarget={props.cardLinkTarget}
           />
         ))}
-        {props.isLoading ? <ArticleListSkeleton view={props.view} /> : null}
+        {props.isLoading
+          ? (
+            <ArticleListSkeleton
+              skeletonsCount={props.skeletonsCount}
+              view={props.view}
+            />
+            )
+          : null
+        }
       </Flex>
     );
   }

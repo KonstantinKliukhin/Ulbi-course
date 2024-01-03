@@ -14,6 +14,7 @@ const buildStorybookSvgLoader = (config: webpack.Configuration) => {
     ) {
       return rule.test.test('.svg');
     }
+
     return false;
   }) as webpack.RuleSetRule;
 
@@ -41,5 +42,6 @@ export default ({ config, }: { config: webpack.Configuration }) => {
       __PROJECT__: JSON.stringify('storybook'),
     })
   );
+
   return config;
 };

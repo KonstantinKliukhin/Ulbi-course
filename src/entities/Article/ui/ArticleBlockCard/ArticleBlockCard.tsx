@@ -11,9 +11,9 @@ import { type ArticleBlock } from '../../model/types/article';
 
 interface ArticleBlockCardProps
   extends Omit<ComponentProps<typeof Card>, 'children' | 'onClick'> {
-  block: ArticleBlock
-  children?: ReactNode
-  onClick?: (block: ArticleBlock, event: MouseEvent<HTMLDivElement>) => void
+  block: ArticleBlock;
+  children?: ReactNode;
+  onClick?: (block: ArticleBlock, event: MouseEvent<HTMLDivElement>) => void;
 }
 
 export const ArticleBlockCard = memo<ArticleBlockCardProps>(

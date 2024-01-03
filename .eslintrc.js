@@ -11,7 +11,7 @@ module.exports = {
     'plugin:i18next/recommended',
     'plugin:storybook/recommended',
   ],
-  ignorePatterns: ['eslintrc.js',],
+  ignorePatterns: ['eslintrc.js', 'jsonServer/**/*', 'scripts/**/*', 'config/jest/jest.polyfills.ts',],
   overrides: [
     {
       files: ['*.ts',],
@@ -45,7 +45,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', 'i18next', 'react-hooks', 'ulbi-eslint-plugin',],
+  plugins: ['react', 'i18next', 'react-hooks', 'ulbi-eslint-plugin', 'unused-imports',],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
@@ -60,6 +60,11 @@ module.exports = {
     'import/no-unresolved': 'off',
     'react/prop-types': 'off',
     'ulbi-eslint-plugin/path-checker': 'error',
+    '@typescript-eslint/return-await': 'off',
+    'padding-line-between-statements': [
+      'error',
+      { blankLine: 'always', prev: '*', next: 'return', },
+    ],
     'max-len': [
       'error',
       {
@@ -69,6 +74,20 @@ module.exports = {
         ignoreRegExpLiterals: true,
       },
     ],
+    '@typescript-eslint/member-delimiter-style': ['error', {
+      multiline: {
+        delimiter: 'semi',
+        requireLast: true,
+      },
+      singleline: {
+        delimiter: 'semi',
+        requireLast: false,
+      },
+    },],
+    'no-empty': [2,],
+    'no-empty-function': [2, { allow: ['constructors',], },],
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': 'off',
     'react/jsx-max-props-per-line': [
       'error',
       { maximum: { single: 3, multi: 1, }, },

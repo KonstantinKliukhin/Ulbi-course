@@ -10,5 +10,6 @@ export const omit = <T extends object, K extends [...Array<keyof T>]>(
       ret[key] = obj[key];
     }
   }
+
   return ret;
 };

@@ -6,11 +6,11 @@ import cls from './SortableItem.module.scss';
 import { classNames } from '../../../lib/classNames/classNames';
 
 type SortableItemProps = PropsWithChildren & {
-  draggingClass?: string
-  defaultClass?: string
-  id: string | number
-  data?: Data
-  disabled?: boolean
+  draggingClass?: string;
+  defaultClass?: string;
+  id: string | number;
+  data?: Data;
+  disabled?: boolean;
 };
 export const SortableItem = memo<SortableItemProps>(function SortableItem (
   props
@@ -46,9 +46,8 @@ export const SortableItem = memo<SortableItemProps>(function SortableItem (
   return (
     <div
       className={classNames(cls.root, {
-        [props.defaultClass || '']: !isDragging,
         [props.draggingClass || '']: isDragging,
-      })}
+      }, [props.defaultClass,])}
       style={style}
       ref={setNodeRef}
       {...listeners}

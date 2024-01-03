@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import { useEvent } from 'shared/lib';
 
 interface StoreProviderProps extends PropsWithChildren {
-  initialState?: DeepPartial<StateSchema>
-  asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>
+  initialState?: DeepPartial<StateSchema>;
+  asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
 }
 
 export const StoreProvider: FC<StoreProviderProps> = props => {

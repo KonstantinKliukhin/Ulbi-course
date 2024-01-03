@@ -6,3 +6,11 @@
   margin-top: 20px;
   margin-bottom: 10px;
 }
+
+.sortableText {
+  background-color: var(--bg-color);
+}
+
+.draggingText {
+  z-index: 10;
+}

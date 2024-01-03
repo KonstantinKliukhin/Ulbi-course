@@ -21,14 +21,14 @@ InputHTMLAttributes<HTMLTextAreaElement>,
 >;
 
 interface TextAreaProps extends HtmlTextAreaProps {
-  value?: string | number
-  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void
-  readonly?: boolean
-  error?: string
-  noErrorSpace?: boolean
-  resize?: CSSProperties['resize']
-  label?: ReactNode
-  textAreaClassName?: string
+  value?: string | number;
+  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  readonly?: boolean;
+  error?: string;
+  withError?: boolean;
+  resize?: CSSProperties['resize'];
+  label?: ReactNode;
+  textAreaClassName?: string;
 }
 
 export const TextArea = memo(
@@ -41,7 +41,7 @@ export const TextArea = memo(
       autoFocus,
       readonly,
       error,
-      noErrorSpace = false,
+      withError = false,
       resize,
       style,
       textAreaClassName,
@@ -99,12 +99,12 @@ export const TextArea = memo(
             value={value}
             readOnly={readonly}
           />
+          {withError
+            ? (
+              <Text theme="error" keepTextHeight text={error} />
+              )
+            : null}
         </VStack>
-        {noErrorSpace
-          ? null
-          : (
-            <Text theme="error" keepTextHeight text={error} />
-            )}
       </>
     );
   })

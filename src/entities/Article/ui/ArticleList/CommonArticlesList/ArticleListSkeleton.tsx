@@ -1,15 +1,15 @@
 import { type FC } from 'react';
-import { ArticleView } from '../../../model/types/article';
+import { type ArticleView } from '../../../model/types/article';
 import { ArticleListItemSkeleton } from '../../ArticleListItem/ArticleListItemSkeleton';
 
 interface ArticleListSkeletonProps {
-  view: ArticleView
+  view: ArticleView;
+  skeletonsCount: number;
+  className?: string;
 }
 
-export const ArticleListSkeleton: FC<ArticleListSkeletonProps> = (props) => {
-  const isBig = props.view === ArticleView.BIG;
-
-  return Array(isBig ? 4 : 20)
+export const ArticleListSkeleton: FC<ArticleListSkeletonProps> = (props) => (
+  Array(props.skeletonsCount)
     .fill(null)
-    .map((_, i) => <ArticleListItemSkeleton key={i} view={props.view} />);
-};
+    .map((_, i) => <ArticleListItemSkeleton key={i} className={props.className} view={props.view} />)
+);

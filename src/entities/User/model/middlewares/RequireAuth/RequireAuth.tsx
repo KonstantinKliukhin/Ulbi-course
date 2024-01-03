@@ -3,9 +3,9 @@ import { Navigate } from 'react-router-dom';
 import { useIsAuthorized } from '../../hooks/useIsAuthorized/useIsAuthorized';
 
 interface AuthorizedComponentProps extends PropsWithChildren {
-  showIfAuthorized?: boolean
-  showIfNotAuthorized?: boolean
-  redirectPath?: string
+  showIfAuthorized?: boolean;
+  showIfNotAuthorized?: boolean;
+  redirectPath?: string;
 }
 
 export const RequireAuth: FC<AuthorizedComponentProps> = props => {

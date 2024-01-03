@@ -14,13 +14,13 @@ import { type ArticleBlock, ArticleBlockCard } from 'entities/Article';
 import { useTranslation } from 'react-i18next';
 
 interface ArticleBlocksFormListProps {
-  className?: string
-  dndContextProps: Omit<ComponentProps<typeof CustomDndContext>, 'children'>
-  blocks: ArticleBlock[]
-  onBlockEdit: (block: ArticleBlock, index: number) => void
-  onBlockCopy: (block: ArticleBlock, index: number) => void
-  onBlockDelete: (block: ArticleBlock, index: number) => void
-  onBlockAdd: () => void
+  className?: string;
+  dndContextProps: Omit<ComponentProps<typeof CustomDndContext>, 'children'>;
+  blocks: ArticleBlock[];
+  onBlockEdit: (block: ArticleBlock, index: number) => void;
+  onBlockCopy: (block: ArticleBlock, index: number) => void;
+  onBlockDelete: (block: ArticleBlock, index: number) => void;
+  onBlockAdd: () => void;
 }
 
 export const ArticleBlocksFormList = memo<ArticleBlocksFormListProps>(

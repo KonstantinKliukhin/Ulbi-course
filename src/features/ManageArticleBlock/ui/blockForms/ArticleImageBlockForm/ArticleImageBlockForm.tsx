@@ -3,7 +3,7 @@ import { FormInput } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 
 interface ArticleImageBlockFormProps {
-  className?: string
+  className?: string;
 }
 
 const ArticleImageBlockForm = memo<ArticleImageBlockFormProps>(

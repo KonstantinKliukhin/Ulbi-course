@@ -7,12 +7,12 @@ import MoonIcon from '../../../../public/assets/icons/moon.svg';
 import SunIcon from '../../../../public/assets/icons/sun.svg';
 
 interface ThemeSwitcherProps {
-  className?: string
+  className?: string;
 }
 
 interface ThemeSwitcherContent {
-  icon: ReactNode
-  className?: string
+  icon: ReactNode;
+  className?: string;
 }
 
 const THEME_CONTENT_MAP: Record<Theme, ThemeSwitcherContent> = {

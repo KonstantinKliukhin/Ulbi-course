@@ -1,45 +1,23 @@
-import { type FC, type ReactNode, useCallback } from 'react';
+import { type FC, useCallback } from 'react';
 import cls from './ArticleDetails.module.scss';
-import {
-  classNames,
-  useAppDispatch,
-  useAppSelector,
-  useInitialEffect,
-  withLazySlices
-} from 'shared/lib';
-import {
-  getArticleDetailsData,
-  getArticleDetailsError,
-  getArticleDetailsIsLoading
-} from '../../model/selectors/getArticleDetails/getArticleDetails';
-import { Avatar, HStack, Icon, Text } from 'shared/ui';
-import { articleDetailsReducer } from '../../model/slices/articleDetailsSlice';
+import { classNames } from 'shared/lib';
+import { AsyncContainer, Avatar, HStack, Icon, Text } from 'shared/ui';
 import { ArticleDetailsSkeleton } from '../ArticleDetails/ArticleDetailsSkeleton/ArticleDetailsSkeleton';
 import EyeIcon from '../../../../../public/assets/icons/eye-20-20.svg';
 import CalendarIcon from '../../../../../public/assets/icons/calendar-20-20.svg';
-import { type ArticleBlock, ArticleBlockType } from '../../model/types/article';
+import { type Article, type ArticleBlock, ArticleBlockType } from '../../model/types/article';
 import { ArticleCodeBlockComponent } from '../blocks/ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../blocks/ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../blocks/ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 
 interface ArticleDetailsProps {
-  className?: string
-  id: string
+  className?: string;
+  article?: Article;
+  error?: null | string;
+  isLoading: boolean;
 }
 
-const ArticleDetails: FC<ArticleDetailsProps> = (props) => {
-  const dispatch = useAppDispatch();
-  const isLoading = useAppSelector(getArticleDetailsIsLoading);
-  const error = useAppSelector(getArticleDetailsError);
-  const article = useAppSelector(getArticleDetailsData);
-
-  useInitialEffect(
-    useCallback(() => {
-      void dispatch(fetchArticleById(props.id));
-    }, [props.id, dispatch,])
-  );
-
+export const ArticleDetails: FC<ArticleDetailsProps> = (props) => {
   const renderBlock = useCallback((block: ArticleBlock) => {
     switch (block.type) {
       case ArticleBlockType.CODE:
@@ -69,42 +47,21 @@ const ArticleDetails: FC<ArticleDetailsProps> = (props) => {
     }
   }, []);
 
-  let content: ReactNode;
-
-  if (isLoading) {
-    content = <ArticleDetailsSkeleton />;
-  } else if (error) {
-    content = <Text theme="error" align="center" title={error} />;
-  } else {
-    content = (
-      <>
-        <Avatar size={200} src={article?.img} className={cls.avatar} />
-        <Text size="l" title={article?.title} text={article?.subtitle} />
+  return (
+    <div className={classNames(cls.ArticleDetails, {}, [props.className,])}>
+      <AsyncContainer isLoading={props.isLoading} error={props.error} loadingNode={<ArticleDetailsSkeleton/>}>
+        <Avatar size={200} src={props.article?.img} className={cls.avatar} />
+        <Text size="l" title={props.article?.title} text={props.article?.subtitle} />
         <HStack align="start" xGap={16} className={cls.metaLine}>
           <Icon Svg={EyeIcon} />
-          <Text text={String(article?.views)} />
+          <Text text={String(props.article?.views)} />
         </HStack>
         <HStack align="start" xGap={16} className={cls.metaLine}>
           <Icon Svg={CalendarIcon} />
-          <Text text={article?.createdAt} />
+          <Text text={props.article?.createdAt} />
         </HStack>
-        {article?.blocks.map(renderBlock)}
-      </>
-    );
-  }
-
-  return (
-    <div className={classNames(cls.ArticleDetails, {}, [props.className,])}>
-      {content}
+        {props.article?.blocks.map(renderBlock)}
+      </AsyncContainer>
     </div>
   );
 };
-
-const composedArticleDetails = withLazySlices({
-  reducers: { articleDetails: articleDetailsReducer, },
-  onlyIfSliceReady: true,
-  removeOnUnmount: true,
-  loaderComponent: <ArticleDetailsSkeleton />,
-})(ArticleDetails);
-
-export { composedArticleDetails as ArticleDetails };

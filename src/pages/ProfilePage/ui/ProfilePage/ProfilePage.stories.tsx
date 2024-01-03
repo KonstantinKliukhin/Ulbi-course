@@ -2,8 +2,12 @@ import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import ProfilePage from './ProfilePage';
 import { StoreDecorator } from 'shared/config/storybook/storeDecorator/storeDecorator';
-import { mockedProfile } from 'shared/mocks';
-import { profileReducer } from 'entities/Profile';
+import { mockedProfile, mockedUser } from 'shared/mocks';
+import { profilePageReducer } from '../../model/slice/profilePageSlice';
+import { reactRouterParameters } from 'storybook-addon-react-router-v6';
+import { RoutePath } from 'shared/config';
+import { QueryStatus } from '@reduxjs/toolkit/query';
+import { profileApi } from 'entities/Profile/api/profileApi/profileApi';
 
 export default {
   title: 'pages/ProfilePage',
@@ -12,38 +16,94 @@ export default {
 
 type ProfilePageStory = StoryObj<typeof ProfilePage>;
 
-export const Primary: ProfilePageStory = {
+const routerParameters = {
+  reactRouter: reactRouterParameters({
+    location: {
+      pathParams: { id: '1', },
+    },
+    routing: { path: RoutePath.profile(':id'), },
+  }),
+};
+
+export const MyProfile: ProfilePageStory = {
   args: {},
+  parameters: routerParameters,
   decorators: [StoreDecorator({
-    profile: {
-      error: null,
-      isLoading: false,
-      data: mockedProfile,
+    user: {
+      authData: mockedUser,
+    },
+    profilePage: {
       readonly: true,
     },
-  }, { profile: profileReducer, }),],
+    api: {
+      queries: {
+        [`${profileApi.endpoints.getProfileById.name}({"userId":"1"})`]: {
+          status: QueryStatus.fulfilled,
+          data: mockedProfile,
+        },
+      },
+    },
+  }, { profilePage: profilePageReducer, }),],
+};
+
+export const NotMyProfile: ProfilePageStory = {
+  args: {},
+  parameters: routerParameters,
+  decorators: [StoreDecorator({
+    user: {
+      authData: { ...mockedUser, id: '12313123', },
+    },
+    profilePage: {
+      readonly: true,
+    },
+    api: {
+      queries: {
+        [`${profileApi.endpoints.getProfileById.name}({"userId":"1"})`]: {
+          status: QueryStatus.fulfilled,
+          data: mockedProfile,
+        },
+      },
+    },
+  }, { profilePage: profilePageReducer, }),],
 };
 
 export const Loading: ProfilePageStory = {
   args: {},
+  parameters: routerParameters,
   decorators: [StoreDecorator({
-    profile: {
-      error: null,
-      isLoading: true,
-      data: mockedProfile,
+    profilePage: {
       readonly: true,
     },
-  }, { profile: profileReducer, }),],
+    user: {
+      authData: mockedUser,
+    },
+    api: {
+      queries: {
+        [`${profileApi.endpoints.getProfileById.name}({"userId":"1"})`]: {
+          status: QueryStatus.pending,
+        },
+      },
+    },
+  }, { profilePage: profilePageReducer, }),],
 };
 
-export const Error: ProfilePageStory = {
+export const ProfileError: ProfilePageStory = {
   args: {},
+  parameters: routerParameters,
   decorators: [StoreDecorator({
-    profile: {
-      error: 'Some Api Error',
-      isLoading: false,
-      data: mockedProfile,
-      readonly: true,
+    user: {
+      authData: mockedUser,
     },
-  }, { profile: profileReducer, }),],
+    profilePage: {
+      readonly: false,
+    },
+    api: {
+      queries: {
+        [`${profileApi.endpoints.getProfileById.name}({"userId":"1"})`]: {
+          status: QueryStatus.rejected,
+          error: { message: 'Some Api Error', },
+        },
+      },
+    },
+  }, { profilePage: profilePageReducer, }),],
 };

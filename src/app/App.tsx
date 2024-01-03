@@ -10,6 +10,7 @@ import { createAppRouter } from 'app/router';
 
 const App: FC = () => {
   useInitUser();
+
   return (
     <ErrorBoundary>
       <ThemeProvider>

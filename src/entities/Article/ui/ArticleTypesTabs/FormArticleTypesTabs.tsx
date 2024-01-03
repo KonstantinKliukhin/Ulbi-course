@@ -8,8 +8,8 @@ interface FormArticleTypesTabsProps
   ComponentProps<typeof ArticleTypesTabs>,
   'onSelectType' | 'value'
   > {
-  name: string
-  multiple?: boolean
+  name: string;
+  multiple?: boolean;
 }
 
 export const FormArticleTypesTabs = memo<FormArticleTypesTabsProps>(

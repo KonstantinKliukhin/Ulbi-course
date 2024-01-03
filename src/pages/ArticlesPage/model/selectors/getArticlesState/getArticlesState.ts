@@ -1,5 +1,9 @@
+import {
+  ArticleSortField,
+  ArticleType,
+  ArticleView
+} from 'entities/Article';
 import { articlesAdapter } from '../../adapters/articlesAdapter';
-import { ArticleSortField, ArticleType, ArticleView } from 'entities/Article';
 
 export const getArticlesState = articlesAdapter.getSelectors<StateSchema>(
   state => state.articlesPage ?? articlesAdapter.getInitialState()
@@ -16,3 +20,4 @@ export const getArticlesSort = (state: StateSchema) => state.articlesPage?.sort 
 export const getArticlesOrder = (state: StateSchema) => state.articlesPage?.order ?? 'asc';
 export const getArticlesSearch = (state: StateSchema) => state.articlesPage?.search ?? '';
 export const getArticlesType = (state: StateSchema) => state.articlesPage?.type ?? ArticleType.ALL;
+export const getArticlesPageSavedItemIndex = (state: StateSchema) => state.articlesPage?.saveItemIndex ?? 0;

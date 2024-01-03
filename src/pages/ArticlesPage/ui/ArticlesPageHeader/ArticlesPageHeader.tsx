@@ -6,7 +6,7 @@ import { ManageArticleFlyout } from 'widgets/ManageArticle';
 import { useTranslation } from 'react-i18next';
 
 interface ArticlesPageHeaderProps {
-  className?: string
+  className?: string;
 }
 
 export const ArticlesPageHeader = memo<ArticlesPageHeaderProps>(

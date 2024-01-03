@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 
 export interface SidebarItemType {
-  path: string
-  text: string
-  icon: ReactNode
+  path: string;
+  text: string;
+  icon: ReactNode;
 }

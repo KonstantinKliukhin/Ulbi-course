@@ -8,15 +8,15 @@
   ],
   "profile": [
     {
-      "id": "1",
       "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
       "username": "admin",
       "city": "Kharkiv!",
-      "currency": "USD",
+      "currency": "UAH",
       "country": "England",
       "age": 21,
       "lastname": "Kliukhin",
-      "firstname": "Konstantin"
+      "firstname": "Konstantin 123123",
+      "id": "1"
     },
     {
       "id": "2",
@@ -43,10 +43,10 @@
   ],
   "articles": [
     {
-      "title": "Javascript news СВЕЖАЯ",
+      "title": "Javascript news СВЕЖАЯ !",
       "subtitle": "Что нового в JS за 2022 год?!",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
+      "views": 1028,
       "createdAt": "26.04.2022",
       "userId": "1",
       "type": [
@@ -222,7 +222,7 @@
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://cdn.analyticsvidhya.com/wp-content/uploads/2023/07/1_m0H6-tUbW6grMlezlb52yw.png",
-      "views": 5204,
+      "views": 5206,
       "createdAt": "26.02.2022",
       "userId": "1",
       "type": [
@@ -249,14 +249,20 @@
             }
           ]
         }
-      ]
+      ],
+      "user": {
+        "id": "1",
+        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+        "username": "admin",
+        "password": "123"
+      }
     },
     {
       "id": "3",
       "title": "Kotlin news 2019",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
-      "views": 94002,
+      "views": 94003,
       "createdAt": "26.02.2019",
       "userId": "1",
       "type": [
@@ -392,7 +398,7 @@
       "title": "Ruby news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://res.cloudinary.com/practicaldev/image/fetch/s--oqV3akcU--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/pgnw91fs7tpxn0wyeqh2.jpg",
-      "views": 100,
+      "views": 101,
       "createdAt": "21.02.2022",
       "userId": "1",
       "type": [
@@ -491,7 +497,7 @@
     },
     {
       "id": "10",
-      "title": "Python news",
+      "title": "Python news 1",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://cdn.analyticsvidhya.com/wp-content/uploads/2023/07/1_m0H6-tUbW6grMlezlb52yw.png",
       "views": 1022,
@@ -521,7 +527,13 @@
             }
           ]
         }
-      ]
+      ],
+      "user": {
+        "id": "1",
+        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+        "username": "admin",
+        "password": "123"
+      }
     },
     {
       "id": "11",
@@ -765,7 +777,7 @@
       "id": "18",
       "title": "Экономическая статья - ИНФЛЯЦИЯ!",
       "subtitle": "Экономика",
-      "img": "https://www.mirea.ru/upload/iblock/7cf/vvp_rf2018_1.jpg",
+      "img": "https://www.interfax.ru/ftproot/textphotos/2018/12/28/ec700.jpg",
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
@@ -870,12 +882,18 @@
           "title": "090909123123123"
         }
       ],
-      "title": "qweqwe",
+      "title": "qweqwe 1",
       "subtitle": "qweqweqwe",
       "img": "https://brandgility.com/images/Brandgility_Black-1024x394.webp",
       "userId": "1",
       "views": 0,
-      "id": "fMAnfii"
+      "id": "fMAnfii",
+      "user": {
+        "id": "1",
+        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+        "username": "admin",
+        "password": "123"
+      }
     },
     {
       "type": [
@@ -895,7 +913,7 @@
       "subtitle": "QWEQWEQWEQWEQWEQWEQWEQWE",
       "img": "https://brandgility.com/images/Brandgility_Black-1024x394.webp",
       "userId": "1",
-      "views": 0,
+      "views": 1,
       "id": "kCr4QIJ"
     },
     {
@@ -906,7 +924,8 @@
       "createdAt": "26.04.2022",
       "userId": "1",
       "type": [
-        "IT"
+        "IT",
+        "SCIENCE"
       ],
       "blocks": [
         {
@@ -1621,8 +1640,8 @@
       "id": "125",
       "title": "Экономическая статья - ИНФЛЯЦИЯ!",
       "subtitle": "Экономика",
-      "img": "https://www.mirea.ru/upload/iblock/7cf/vvp_rf2018_1.jpg",
-      "views": 1022,
+      "img": "https://www.interfax.ru/ftproot/textphotos/2018/12/28/ec700.jpg",
+      "views": 1027,
       "createdAt": "26.02.2022",
       "userId": "1",
       "type": [
@@ -1650,6 +1669,76 @@
           ]
         }
       ]
+    },
+    {
+      "type": [
+        "SCIENCE",
+        "ECONOMICS"
+      ],
+      "blocks": [
+        {
+          "id": "6cc85984-a603-4c46-a824-c0df304b4bb7",
+          "title": "Title",
+          "type": "TEXT",
+          "paragraphs": [
+            {
+              "id": "8f1b3de7-281f-44cd-b887-bd9331dcba8a",
+              "text": "TEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXT TEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXT"
+            },
+            {
+              "id": "5e569382-5950-4532-8ef8-7e09520387c2",
+              "text": "TEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXTTEXT TEXT TEXTTEXTTEXTTEXTTEXTTEXT TEXTTEXT"
+            }
+          ]
+        }
+      ],
+      "title": "Новая",
+      "subtitle": "Новая",
+      "img": "https://brandgility.com/images/Brandgility_Black-1024x394.webp",
+      "userId": "1",
+      "views": 4,
+      "createdAt": "8.12.2023",
+      "id": "0G-72K1"
+    },
+    {
+      "type": [
+        "SCIENCE"
+      ],
+      "blocks": [
+        {
+          "id": "6ea3309c-3797-4778-843d-3fa8849de0e9",
+          "title": "Секція 1",
+          "type": "TEXT",
+          "paragraphs": [
+            {
+              "id": "726697e2-be95-4adf-8a6f-accc8856b9af",
+              "text": "Секція 1 Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1 Секція 1 Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1Секція 1 Секція 1Секція 1Секція 1"
+            },
+            {
+              "id": "4e74bdbf-8d53-4a5c-bcbf-58b78427485d",
+              "text": "віфвфівфівфівфівфівфівфівфів"
+            }
+          ]
+        },
+        {
+          "id": "b29c8bf4-1d92-4ac9-a1bb-fa484e6c9ddc",
+          "type": "CODE",
+          "code": "const goodGirl = \"Tokio\""
+        }
+      ],
+      "title": "Tokio",
+      "subtitle": "My New Test Article My New Test Article My New Test Article",
+      "img": "https://news.sumy.ua/uploads/650094.jpeg",
+      "userId": "1",
+      "views": 9,
+      "createdAt": "16.12.2023",
+      "id": "Lpy7d81",
+      "user": {
+        "id": "1",
+        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+        "username": "admin",
+        "password": "123"
+      }
     }
   ],
   "comments": [
@@ -1743,6 +1832,150 @@
       "userId": "1",
       "articleId": "7tfR20Z",
       "id": "b6686e78-4091-487c-ac81-1b8c813adec6",
+      "user": {
+        "id": "1",
+        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+        "username": "admin",
+        "password": "123"
+      }
+    },
+    {
+      "id": "2b1abb9a-7a53-42f9-8539-26fa13321d3f"
+    },
+    {
+      "id": "2d196c42-1b60-4488-a1ad-cdc4b9634673"
+    },
+    {
+      "id": "64e75f15-216e-48aa-898a-b172a052c03c"
+    },
+    {
+      "id": "e7560f90-33c7-4fa9-b33d-da604c50a84b"
+    },
+    {
+      "id": "cfa20d0c-21aa-4f0a-990c-b167c12cc7e7"
+    },
+    {
+      "id": "3e27c04d-5320-40d5-aefe-898892443db9"
+    },
+    {
+      "articleId": "0G-72K1",
+      "userId": "1",
+      "text": "sadasd",
+      "id": "86b67ce8-18a5-4107-b98c-369f505eeaef",
+      "user": {
+        "id": "1",
+        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+        "username": "admin",
+        "password": "123"
+      }
+    },
+    {
+      "articleId": "0G-72K1",
+      "userId": "1",
+      "text": "Test comment",
+      "id": "f1e323fb-77e0-4d5f-a1dc-0eb3b339d47c",
+      "user": {
+        "id": "1",
+        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+        "username": "admin",
+        "password": "123"
+      }
+    },
+    {
+      "articleId": "0G-72K1",
+      "userId": "1",
+      "text": "Test comment 3",
+      "id": "277c65c1-06e7-4b98-9d48-6d30da8caa3e",
+      "user": {
+        "id": "1",
+        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+        "username": "admin",
+        "password": "123"
+      }
+    },
+    {
+      "articleId": "0G-72K1",
+      "userId": "1",
+      "text": "Test Comment 4",
+      "id": "c437fa51-cbc4-43dc-bebc-14a79d5bffa6",
+      "user": {
+        "id": "1",
+        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+        "username": "admin",
+        "password": "123"
+      }
+    },
+    {
+      "articleId": "0G-72K1",
+      "userId": "1",
+      "text": "asd",
+      "id": "d7ec1285-699e-4e1b-a1df-a2064c340600",
+      "user": {
+        "id": "1",
+        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+        "username": "admin",
+        "password": "123"
+      }
+    },
+    {
+      "articleId": "0G-72K1",
+      "userId": "1",
+      "text": "asdasdasd",
+      "id": "9136e206-0495-4798-aa64-5ac392e18c11"
+    },
+    {
+      "articleId": "Lpy7d81",
+      "userId": "1",
+      "text": "mmmmm",
+      "id": "d398f04b-2083-49fe-ad1e-4964a49786ba",
+      "user": {
+        "id": "1",
+        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+        "username": "admin",
+        "password": "123"
+      }
+    },
+    {
+      "articleId": "Lpy7d81",
+      "userId": "1",
+      "text": ")))))))",
+      "id": "fb13244b-47dc-43ac-a60d-619d748687aa",
+      "user": {
+        "id": "1",
+        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+        "username": "admin",
+        "password": "123"
+      }
+    },
+    {
+      "articleId": "Lpy7d81",
+      "userId": "1",
+      "text": "\"\"",
+      "id": "e98bd355-d034-44a9-b757-102148f18518",
+      "user": {
+        "id": "1",
+        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+        "username": "admin",
+        "password": "123"
+      }
+    },
+    {
+      "articleId": "Lpy7d81",
+      "userId": "1",
+      "text": "\\<script>localstorage.getItem('token')</script>\\",
+      "id": "3300021f-84b9-4367-9714-3c1e00d0b216",
+      "user": {
+        "id": "1",
+        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
+        "username": "admin",
+        "password": "123"
+      }
+    },
+    {
+      "articleId": "Lpy7d81",
+      "userId": "1",
+      "text": "{\n \"a\": 2\n}",
+      "id": "7a1230ff-8418-4948-9137-c809df1b8122",
       "user": {
         "id": "1",
         "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",

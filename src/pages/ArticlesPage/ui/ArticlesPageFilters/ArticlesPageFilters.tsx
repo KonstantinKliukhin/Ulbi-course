@@ -1,50 +1,54 @@
 import { type ChangeEvent, type FC, useCallback } from 'react';
 import cls from './ArticlesPageFilters.module.scss';
 import {
-  classNames,
-  useAction,
+  classNames, useAction,
   useActions,
-  useAppSelector,
-  useDebounce
+  useAppSelector, useDebounce
 } from 'shared/lib';
 import {
   type ArticleSortField,
   ArticleSortSelector,
   type ArticleType,
-  ArticleTypesTabs
+  ArticleTypesTabs, ArticleView
 } from 'entities/Article';
 import { articlesPageActions } from '../../model/slices/articlesPageSlice';
 import {
   getArticlesOrder,
   getArticlesSearch,
   getArticlesSort,
-  getArticlesType,
-  getArticlesView
+  getArticlesType
 } from '../../model/selectors/getArticlesState/getArticlesState';
 import { ArticleViewSelector } from 'features/SelectArticleView';
 import { Card, HStack, Input } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { type SortOrder } from 'shared/types';
+import { useLocalStorage } from 'shared/lib/hooks/useLocalstorageState/useLocalstorageState';
+import { LOCAL_STORAGE_ARTICLE_VIEW_KEY } from 'shared/constants';
+import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 
 interface ArticlesPageFiltersProps {
-  className?: string
+  className?: string;
 }
 
 export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = (props) => {
   const { t, } = useTranslation();
-  const articlesView = useAppSelector(getArticlesView);
+  const [articlesView, setArticlesView,] = useLocalStorage(LOCAL_STORAGE_ARTICLE_VIEW_KEY, ArticleView.SMALL);
   const articlesSort = useAppSelector(getArticlesSort);
   const articlesOrder = useAppSelector(getArticlesOrder);
   const articlesSearch = useAppSelector(getArticlesSearch);
   const articlesType = useAppSelector(getArticlesType);
-  const { setView, setSort, setOrder, setSearch, setPage, setType, } =
-    useActions(articlesPageActions);
   const fetchArticles = useAction(
     fetchArticlesList,
     useCallback(() => ({ replace: true, }), [])
   );
   const debouncedFetchArticles = useDebounce(fetchArticles, 500);
+  const {
+    setSort,
+    setOrder,
+    setSearch,
+    setPage,
+    setType,
+  } = useActions(articlesPageActions);
 
   const onChangeOrder = useCallback(
     (order: SortOrder) => {
@@ -52,7 +56,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = (props) => {
       setPage(1);
       fetchArticles();
     },
-    [setOrder, setPage, fetchArticles,]
+    [fetchArticles, setOrder, setPage,]
   );
 
   const onChangeSort = useCallback(
@@ -70,7 +74,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = (props) => {
       setPage(1);
       debouncedFetchArticles();
     },
-    [setSearch, setPage, debouncedFetchArticles,]
+    [debouncedFetchArticles, setSearch, setPage,]
   );
 
   const onChangeType = useCallback(
@@ -94,7 +98,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = (props) => {
         <ArticleViewSelector
           className={cls.ArticleViewSelector}
           view={articlesView}
-          onSelectView={setView}
+          onSelectView={setArticlesView}
         />
       </HStack>
       <Card className={cls.search}>

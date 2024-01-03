@@ -1,17 +1,17 @@
-import { type FC } from 'react';
+import { memo } from 'react';
 import cls from './UserInfo.module.scss';
 import { classNames, useAppSelector } from 'shared/lib';
 import { Avatar, Text } from 'shared/ui';
 import { getUserAuthData } from '../../model/selectors/getUserAuthData/getUserAuthData';
 
 interface UserInfoProps {
-  className?: string
-  avatarSize?: number
-  shouldDisplayUsername?: boolean
-  onClick?: () => void
+  className?: string;
+  avatarSize?: number;
+  shouldDisplayUsername?: boolean;
+  onClick?: () => void;
 }
 
-export const UserInfo: FC<UserInfoProps> = props => {
+export const UserInfo = memo<UserInfoProps>(function UserInfo (props) {
   const { avatarSize = 30, shouldDisplayUsername = true, } = props;
   const user = useAppSelector(getUserAuthData);
 
@@ -21,4 +21,4 @@ export const UserInfo: FC<UserInfoProps> = props => {
       {shouldDisplayUsername ? <Text text={user?.username} textClassName={cls.username}/> : false}
     </div>
   );
-};
+});

@@ -2,7 +2,7 @@ import { type FC } from 'react';
 import { Skeleton, VStack } from 'shared/ui';
 
 export const ArticleDetailsSkeleton: FC = () => (
-  <VStack align="start" yGap={16}>
+  <VStack yGap={16} align="start">
     <Skeleton height={200}
       width={200}
       borderRadius="50%"

@@ -5,9 +5,9 @@ import { Text } from '../Text/Text';
 import { HStack } from '../Stack/HStack/HStack';
 
 interface FormHeaderProps {
-  className?: string
-  title: string
-  actions?: ReactNode
+  className?: string;
+  title: string;
+  actions?: ReactNode;
 }
 
 export const FormHeader: FC<FormHeaderProps> = (props) => {

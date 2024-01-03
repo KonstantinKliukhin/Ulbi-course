@@ -10,6 +10,10 @@ export default {
 
 type AppLinkStory = StoryObj<typeof AppLink>;
 
+export const Clear: AppLinkStory = {
+  args: { children: 'Link', theme: 'clear', },
+};
+
 export const Primary: AppLinkStory = {
   args: { children: 'Link', theme: 'primary', },
 };

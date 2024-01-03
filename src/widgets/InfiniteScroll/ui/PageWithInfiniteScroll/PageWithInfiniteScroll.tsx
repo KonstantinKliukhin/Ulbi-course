@@ -10,7 +10,7 @@ import { Page } from '../../../../shared/ui/Page/Page';
 import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import {
   useAppDispatch,
-  useAppSelector,
+  useAppSelector, useEvent,
   useInitialEffect,
   useThrottle
 } from 'shared/lib';
@@ -20,32 +20,40 @@ import { type StateSchema } from 'app/providers/StoreProvider';
 import cls from './PageWithInfiniteScroll.module.scss';
 
 interface PageWithInfiniteScrollProps extends PropsWithChildren {
-  className?: string
-  onScrollEnd?: () => void
+  className?: string;
+  onScrollEnd?: () => void;
+  onScrollTopReached?: () => void;
 }
 
 export const PageWithInfiniteScroll = memo(
   forwardRef<HTMLDivElement, PageWithInfiniteScrollProps>(
     function PageWithInfiniteScroll (props, propsRef) {
-      const triggerRef = useRef<HTMLDivElement>(null);
+      const bottomTriggerRef = useRef<HTMLDivElement>(null);
+      const topTriggerRef = useRef<HTMLDivElement>(null);
       const wrapperRef = useRef<HTMLDivElement | null>(null);
       const dispatch = useAppDispatch();
       const location = useLocation();
-      const savedScroll = useAppSelector((state: StateSchema) =>
-        getUiScrollByPath(state, location.pathname)
-      );
+      const savedScroll = useAppSelector((state: StateSchema) => getUiScrollByPath(state, location.pathname));
       useInfiniteScroll({
-        triggerRef,
+        triggerRef: bottomTriggerRef,
         wrapperRef,
-        onScrollEnd: props.onScrollEnd,
+        onScrollAchieved: props.onScrollEnd,
+      });
+
+      useInfiniteScroll({
+        triggerRef: topTriggerRef,
+        wrapperRef,
+        onScrollAchieved: props.onScrollTopReached,
       });
 
       useInitialEffect(
-        useCallback(() => {
-          if (wrapperRef.current) {
-            wrapperRef.current.scrollTop = savedScroll;
+        useEvent(() => {
+          if (wrapperRef.current && typeof savedScroll === 'number') {
+            const isScrollFull = wrapperRef.current?.scrollTop === savedScroll;
+            const scrollToApply = isScrollFull ? savedScroll - 20 : savedScroll;
+            wrapperRef.current?.scrollTo({ top: scrollToApply, });
           }
-        }, [savedScroll,])
+        })
       );
 
       const onScroll = useThrottle(
@@ -76,12 +84,15 @@ export const PageWithInfiniteScroll = memo(
             }
           }}
         >
+          {props.onScrollTopReached
+            ? <div className={cls.trigger} ref={topTriggerRef} />
+            : null
+          }
           {props.children}
           {props.onScrollEnd
-            ? (
-              <div className={cls.trigger} ref={triggerRef} />
-              )
-            : null}
+            ? <div className={cls.trigger} ref={bottomTriggerRef} />
+            : null
+          }
         </Page>
       );
     }

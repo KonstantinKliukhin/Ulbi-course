@@ -17,16 +17,16 @@ import { Portal } from '../Portal/Portal';
 import { HStack } from '../Stack/HStack/HStack';
 
 interface FlyoutProps extends PropsWithChildren {
-  className?: string
-  contentClassName?: string
-  open: boolean
-  onClose: () => void
-  lazy?: boolean
-  removeContentWhenClosed?: boolean
+  className?: string;
+  contentClassName?: string;
+  open: boolean;
+  onClose: () => void;
+  lazy?: boolean;
+  removeContentWhenClosed?: boolean;
 }
 
 interface FlyoutContext {
-  nestedLevel: number
+  nestedLevel: number;
 }
 
 const DEFAULT_Z_INDEX = 10;

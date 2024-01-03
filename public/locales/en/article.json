@@ -27,6 +27,7 @@
   "article_type_label": "Article Types",
   "article_subtitle_label": "Article Subtitle",
   "article_img_label": "Article Image URL",
-  "edit_article_title": "Edit Article Title",
+  "edit_article_title": "Edit Article",
+  "create_article_title": "Create Article",
   "article_blocks_list_title": "Sections"
 }

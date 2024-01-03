@@ -5,11 +5,11 @@ import { type SortOrder } from 'shared/types';
 import { ArticleSortField } from '../../model/types/article';
 
 interface ArticleSortSelectorProps {
-  className?: string
-  onChangeOrder: (order: SortOrder) => void
-  onChangeSort: (sort: ArticleSortField) => void
-  order: SortOrder
-  sort: ArticleSortField
+  className?: string;
+  onChangeOrder: (order: SortOrder) => void;
+  onChangeSort: (sort: ArticleSortField) => void;
+  order: SortOrder;
+  sort: ArticleSortField;
 }
 
 export const ArticleSortSelector = memo<ArticleSortSelectorProps>(
@@ -17,7 +17,7 @@ export const ArticleSortSelector = memo<ArticleSortSelectorProps>(
     const { onChangeSort, onChangeOrder, } = props;
     const { t, } = useTranslation();
 
-    const orderOptions = useMemo<Array<{ value: SortOrder, content: string }>>(
+    const orderOptions = useMemo<Array<{ value: SortOrder; content: string }>>(
       () => [
         {
           value: 'asc',
@@ -32,7 +32,7 @@ export const ArticleSortSelector = memo<ArticleSortSelectorProps>(
     );
 
     const sortOptions = useMemo<
-    Array<{ value: ArticleSortField, content: string }>
+    Array<{ value: ArticleSortField; content: string }>
     >(
       () => [
         {

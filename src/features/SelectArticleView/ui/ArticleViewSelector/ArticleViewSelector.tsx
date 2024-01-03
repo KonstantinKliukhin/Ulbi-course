@@ -7,9 +7,9 @@ import TiledSvg from '../../../../../public/assets/icons/tiled-24-24.svg';
 import { Button, HStack, Icon } from 'shared/ui';
 
 interface ArticleViewSelectorProps {
-  className?: string
-  view: ArticleView
-  onSelectView: (view: ArticleView) => void
+  className?: string;
+  view: ArticleView;
+  onSelectView: (view: ArticleView) => void;
 }
 
 const viewTypes = [

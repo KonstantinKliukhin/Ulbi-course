@@ -5,7 +5,7 @@ import { mockedArticle } from 'shared/mocks';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'widget/ManageArticle/ManageArticleFlyout',
+  title: 'widgets/ManageArticle/ManageArticleFlyout',
   component: ManageArticleFlyout,
 } as Meta<ComponentProps<typeof ManageArticleFlyout>>;
 

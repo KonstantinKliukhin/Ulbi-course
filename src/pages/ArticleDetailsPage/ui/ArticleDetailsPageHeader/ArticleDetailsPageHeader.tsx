@@ -1,24 +1,24 @@
 import { memo, type ReactNode, useMemo } from 'react';
 import cls from './ArticleDetailsPageHeader.module.scss';
-import { classNames, useAppSelector, useBoolState } from 'shared/lib';
+import { classNames, useBoolState } from 'shared/lib';
 import { Link } from 'react-router-dom';
 import { RoutePath } from 'shared/config';
 import { Button, HStack } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
-import { getCanEditArticle } from '../../model/selectors/getCanEditArticle/getCanEditArticle';
-import { getArticleDetailsData } from 'entities/Article';
+import { type Article } from 'entities/Article';
 import { ManageArticleFlyout } from 'widgets/ManageArticle';
+import { useGetCanEditArticle } from '../../model/hooks/useCanEditArticle/useCanEditArticle';
 
 interface ArticleDetailsPageHeaderProps {
-  className?: string
+  className?: string;
+  article?: Article;
 }
 
 export const ArticleDetailsPageHeader = memo<ArticleDetailsPageHeaderProps>(
   function ArticleDetailsPageHeader (props) {
     const { t: articleT, } = useTranslation('article');
     const { t, } = useTranslation();
-    const canEditArticle = useAppSelector(getCanEditArticle);
-    const article = useAppSelector(getArticleDetailsData);
+    const canEditArticle = useGetCanEditArticle(props.article);
     const {
       enable: openArticleFlyout,
       disable: closeArticleFlyout,
@@ -53,13 +53,13 @@ export const ArticleDetailsPageHeader = memo<ArticleDetailsPageHeaderProps>(
           {rightContent}
         </HStack>
 
-        {article
+        {props.article
           ? (
             <ManageArticleFlyout
               mode="edit"
               onClose={closeArticleFlyout}
               open={articleFlyoutOpen}
-              article={article}
+              article={props.article}
             />
             )
           : null}

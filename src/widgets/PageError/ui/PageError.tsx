@@ -5,7 +5,7 @@ import { Button, VStack } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 
 interface PageErrorProps {
-  className?: string
+  className?: string;
 }
 
 export const PageError: FC<PageErrorProps> = (props) => {

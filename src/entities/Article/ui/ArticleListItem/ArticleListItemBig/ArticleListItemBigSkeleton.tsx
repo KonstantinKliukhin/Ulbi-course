@@ -5,7 +5,7 @@ import EyeSvg from '../../../../../../public/assets/icons/eye-20-20.svg';
 import { classNames } from 'shared/lib';
 
 interface ArticleListItemBigSkeletonProps {
-  className?: string
+  className?: string;
 }
 
 export const ArticleListItemBigSkeleton: FC<ArticleListItemBigSkeletonProps> = (

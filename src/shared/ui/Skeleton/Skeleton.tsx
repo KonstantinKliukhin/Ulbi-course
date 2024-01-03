@@ -3,11 +3,11 @@ import cls from './Skeleton.module.scss';
 import { classNames } from '../../lib/classNames/classNames';
 
 interface SkeletonProps {
-  className?: string
-  height?: CSSProperties['height']
-  width?: CSSProperties['width']
-  borderRadius?: CSSProperties['borderRadius']
-  centered?: boolean
+  className?: string;
+  height?: CSSProperties['height'];
+  width?: CSSProperties['width'];
+  borderRadius?: CSSProperties['borderRadius'];
+  centered?: boolean;
 }
 
 export const Skeleton: FC<SkeletonProps> = (props) => {

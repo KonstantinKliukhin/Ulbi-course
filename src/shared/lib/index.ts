@@ -1,5 +1,4 @@
 export { classNames } from './classNames/classNames';
-export { separateFormProps } from './separateFormProps/separateFormProps';
 export { addOptionallyToArray } from './addOptionallyToArray/addOptionallyToArray';
 export { useBoolState } from './hooks/utility/useBoolState/useBoolState';
 export { stopPropagation } from './stopPropagation/stopPropagation';
@@ -8,9 +7,12 @@ export { useAppSelector } from './hooks/reduxHooks/useAppSelector';
 export { useActions } from './hooks/reduxHooks/useActions';
 export { useAction } from './hooks/reduxHooks/useAction';
 export { useDebounce } from './hooks/optimization/useDebounce/useDebounce';
+export { useDebouncedValue } from './hooks/optimization/useDebouncedValue/useDebouncedValue';
+export { useLocalStorage } from './hooks/useLocalstorageState/useLocalstorageState';
 export { useInitialEffect } from './hooks/useInitialEffect/useInitialEffect';
 export { useLatest } from './hooks/optimization/useLatest/useLatest';
 export { useEvent } from './hooks/optimization/useEvent/useEvent';
+export { useFirst } from './hooks/utility/useFirst/useFirst';
 export { useWindowEvent } from './hooks/ui/useWindowEvent/useWindowEvent';
 export { useEscapeClose } from './hooks/ui/useEscapeClose/useEscapeClose';
 export { useSyntheticMounted } from './hooks/utility/useSyntheticMounted/useSyntheticMounted';
@@ -21,7 +23,7 @@ export {
   type WithLoadingProps
 } from './hocs/withLoading/withLoading';
 export { withError, type WithErrorProps } from './hocs/withError/withError';
-export { withFormContext } from './hocs/withFormContext/withFormContext';
+export { withAsync, type WithAsyncProps } from './hocs/withAsync/withAsync';
 export { useYupValidationResolver } from './hooks/useYupValidationResolver/useYupValidationResolver';
 export { useHover } from './hooks/ui/useHover/useHover';
 export { useIsMounted } from './hooks/utility/useIsMounted/useIsMounted';
@@ -31,3 +33,6 @@ export { useInfiniteScroll } from './hooks/useInfiniteScroll/useInfiniteScroll';
 export { findById } from './findById/findById';
 export { findIndexById } from './findIndexById/findIndexById';
 export { omit } from './omit/omit';
+export { normalizeRtkError } from 'shared/lib/error/normalizeRtkError/normalizeRtkError';
+export { mockFn } from './mockFn/mockFn';
+export { ApiError } from './error/ApiError/ApiError';

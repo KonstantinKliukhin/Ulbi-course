@@ -8,7 +8,7 @@ import cls from './Page.module.scss';
 import { classNames } from '../../lib/classNames/classNames';
 
 interface PageProps extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
-  className?: string
+  className?: string;
 }
 
 export const PAGE_ID = 'page';
@@ -16,6 +16,7 @@ export const PAGE_ID = 'page';
 export const Page = memo(
   forwardRef<HTMLDivElement, PageProps>(function Page (props, ref) {
     const { className, ...mainProps } = props;
+
     return (
       <main
         {...mainProps}

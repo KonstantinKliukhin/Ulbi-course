@@ -10,7 +10,7 @@ const config: Config = {
   clearMocks: true,
   coveragePathIgnorePatterns: ['/node_modules/',],
   moduleDirectories: ['node_modules',],
-  testEnvironment: 'jsdom',
+  testEnvironment: '<rootDir>/config/jest/jsdom-extended.ts',
   moduleFileExtensions: [
     'js',
     'mjs',
@@ -30,11 +30,16 @@ const config: Config = {
     '\\.(png|jpg|jpeg|webp|ttf|woff|woff2)$':
       '<rootDir>/config/jest/jestFileMock.ts',
     '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+    uuid: require.resolve('uuid'),
   },
   globals: {
     __IS_DEV__: true,
-    __API__: '',
+    __API__: 'http://localhost:8000',
     __PROJECT__: 'jest',
+  },
+  // Fixes msw imports issue: https://stackoverflow.com/questions/77399773/cannot-find-module-msw-node-from
+  testEnvironmentOptions: {
+    customExportConditions: ['',],
   },
   // All imported modules in your tests should be mocked automatically
   // automock: false,

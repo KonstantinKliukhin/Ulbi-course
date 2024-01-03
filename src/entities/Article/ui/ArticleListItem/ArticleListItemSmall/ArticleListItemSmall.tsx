@@ -12,10 +12,10 @@ import { Link } from 'react-router-dom';
 import { RoutePath } from 'shared/config';
 
 interface ArticleListItemSmallProps {
-  className?: string
-  article: Article
-  isLoading?: boolean
-  cardLinkTarget?: HTMLAttributeAnchorTarget
+  className?: string;
+  article: Article;
+  isLoading?: boolean;
+  cardLinkTarget?: HTMLAttributeAnchorTarget;
 }
 
 const cardHoverAnimations: ComponentProps<typeof Card>['hoverAnimations'] = [

@@ -2,8 +2,8 @@ import { Theme, ThemeContext } from './ThemeContext';
 import { useContext } from 'react';
 
 interface UseThemeResult {
-  toggleTheme: () => void
-  theme: Theme
+  toggleTheme: () => void;
+  theme: Theme;
 }
 
 export const useTheme = (): UseThemeResult => {

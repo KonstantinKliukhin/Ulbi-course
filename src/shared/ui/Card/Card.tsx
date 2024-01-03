@@ -12,9 +12,9 @@ type CardHoverAnimation = 'hover-shadow' | 'hover-scale-small';
 type CardTheme = 'default' | 'outlined';
 
 interface CardProps extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
-  className?: string
-  hoverAnimations?: CardHoverAnimation[]
-  theme?: CardTheme
+  className?: string;
+  hoverAnimations?: CardHoverAnimation[];
+  theme?: CardTheme;
 }
 
 const mapCardHoverAnimationClasses: Record<

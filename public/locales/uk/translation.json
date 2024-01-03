@@ -22,8 +22,10 @@
   "login_invalid_credentials": "Не вірно надано імʼя або пароль",
   "logout": "Вийти",
   "nav_profile": "Профіль",
-  "edit": "редагувати",
+  "edit": "Редагувати",
   "cancel": "Скасувати",
+  "create": "Створити",
+  "delete": "Delete",
   "save": "Зберегти",
   "copy": "Скопіювати",
   "currency_label": "Вкажіть Валюту",
@@ -41,5 +43,6 @@
   "sort_created": "Створено у",
   "sort_title": "За заголовком",
   "sort_views": "За переглядами",
-  "submit_search": "Знайти"
+  "submit_search": "Знайти",
+  "na": "N/A"
 }

@@ -4,6 +4,7 @@
   width: var(--sidebar-width);
   background: var(--inverted-bg-color);
   transition: width 0.2s ease-out;
+  padding-top: calc(var(--navbar-height) + 16px);
 }
 
 .switchers {
@@ -13,12 +14,6 @@
 
 .collapsed {
   width: var(--sidebar-width-collapsed);
-}
-
-.userInfo {
-  padding: 0 10px;
-  height: var(--navbar-height);
-  cursor: pointer;
 }
 
 .collapseBtn {

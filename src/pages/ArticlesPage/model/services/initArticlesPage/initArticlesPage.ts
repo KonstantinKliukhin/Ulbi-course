@@ -1,19 +1,28 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getArticlesStateInited } from '../../selectors/getArticlesState/getArticlesState';
+import {
+  getArticlesOrder, getArticlesSearch,
+  getArticlesSort,
+  getArticlesStateInited, getArticlesType
+} from '../../selectors/getArticlesState/getArticlesState';
 import { articlesPageActions } from '../../slices/articlesPageSlice';
-import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
-import { getArticleFromStorage } from '../../../lib/articleStorage/articleStorage';
+import { getArticleViewFromStorage } from '../../../lib/articleStorage/articleStorage';
 import { includes } from 'shared/lib/includes/includes';
 import { ArticleSortField, ArticleType } from 'entities/Article';
 import { type SortOrder } from 'shared/types';
+import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
+import { addQueryParams } from 'shared/lib/url/addQueryParameters/addQueryParameters';
 
 export const initArticlesPage =
     createAsyncThunk<Promise<void>, URLSearchParams, ThunkDefaultArg>(
       'articlesList/initArticlesPage',
       async (urlParams, thunkAPI) => {
         const state = thunkAPI.getState();
-        const view = getArticleFromStorage();
-        const _inited = getArticlesStateInited(state);
+        const view = getArticleViewFromStorage();
+        const stateInited = getArticlesStateInited(state);
+        const stateSort = getArticlesSort(state);
+        const stateOrder = getArticlesOrder(state);
+        const stateSearch = getArticlesSearch(state);
+        const stateType = getArticlesType(state);
 
         const searchFromParams = urlParams.get('search');
         const sortFromParams = urlParams.get('sort');
@@ -22,18 +31,28 @@ export const initArticlesPage =
 
         if (searchFromParams) {
           thunkAPI.dispatch(articlesPageActions.setSearch(searchFromParams));
+        } else if (stateInited && stateSearch) {
+          addQueryParams({ search: stateSearch, });
         }
         if (sortFromParams && includes(sortFromParams, Object.values(ArticleSortField))) {
           thunkAPI.dispatch(articlesPageActions.setSort(sortFromParams));
-        }
-        if (orderFromParams && includes<SortOrder[]>(orderFromParams, ['asc', 'desc',])) {
-          thunkAPI.dispatch(articlesPageActions.setOrder(orderFromParams));
-        }
-        if (typeFromParams && includes(typeFromParams, Object.values(ArticleType))) {
-          thunkAPI.dispatch(articlesPageActions.setType(typeFromParams));
+        } else if (stateInited && stateSort) {
+          addQueryParams({ sort: stateSort, });
         }
 
-        if (!_inited) {
+        if (orderFromParams && includes<SortOrder[]>(orderFromParams, ['asc', 'desc',])) {
+          thunkAPI.dispatch(articlesPageActions.setOrder(orderFromParams));
+        } else if (stateInited && stateOrder) {
+          addQueryParams({ order: stateOrder, });
+        }
+
+        if (typeFromParams && includes(typeFromParams, Object.values(ArticleType))) {
+          thunkAPI.dispatch(articlesPageActions.setType(typeFromParams));
+        } else if (stateInited && stateType) {
+          addQueryParams({ type: stateType, });
+        }
+
+        if (!stateInited) {
           thunkAPI.dispatch(articlesPageActions.initState(view));
           void thunkAPI.dispatch(fetchArticlesList());
         }

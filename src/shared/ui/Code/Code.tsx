@@ -5,8 +5,8 @@ import { Button } from '../Button/Button';
 import CopySvg from '../../../../public/assets/icons/copy-20-20.svg';
 
 interface CodeProps {
-  className?: string
-  text: string
+  className?: string;
+  text: string;
 }
 
 export const Code: FC<CodeProps> = (props) => {

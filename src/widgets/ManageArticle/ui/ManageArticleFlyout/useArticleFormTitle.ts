@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 
 const ARTICLE_FORM_TITLE_MAP: Partial<Record<FormMode, string>> = {
   edit: 'edit_article_title',
+  create: 'create_article_title',
 };
 
 export const useArticleFormTitle = (formMode: FormMode) => {

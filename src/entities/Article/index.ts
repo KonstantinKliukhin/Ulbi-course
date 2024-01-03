@@ -1,6 +1,5 @@
 export { ARTICLE_TYPE_TRANSLATIONS } from './constants/translations';
 
-export { getArticleDetailsData } from './model/selectors/getArticleDetails/getArticleDetails';
 export { useArticleBlockTypesSelectOptions } from './model/hooks/useArticleBlockTypesSelectOptions/useArticleBlockTypesSelectOptions';
 export { useArticleTypesSelectOptions } from './model/hooks/useArticleTypesSelectOptions/useArticleTypesSelectOptions';
 
@@ -26,6 +25,5 @@ export {
 } from './model/types/article';
 
 export type { ArticleDTO } from './model/types/article.dto';
-export type { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
-
-export { articleDetailsActions } from './model/slices/articleDetailsSlice';
+export { articleCommentsApi, useGetArticleCommentsQuery, useAddArticleCommentMutation } from './api/articleCommentsApi/articleCommentsApi';
+export { useGetArticleByIdQuery, useGetArticlesQuery, useUpdateArticleMutation, useCreateArticleMutation, articleApi, type GetArticlesArg, ArticleApiTags } from './api/articleApi/articleApi';

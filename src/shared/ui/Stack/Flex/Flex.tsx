@@ -4,16 +4,16 @@ import { type HTMLAttributes, memo, type PropsWithChildren } from 'react';
 
 type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around';
 type FlexDirection = 'column' | 'row';
-type FlexAlign = 'start' | 'center' | 'end';
+type FlexAlign = 'start' | 'center' | 'end' | 'stretch';
 type FlexGap = 4 | 8 | 16 | 32;
 
 interface FlexProps extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
-  className?: string
-  justify?: FlexJustify
-  align?: FlexAlign
-  direction?: FlexDirection
-  xGap?: FlexGap
-  yGap?: FlexGap
+  className?: string;
+  justify?: FlexJustify;
+  align?: FlexAlign;
+  direction?: FlexDirection;
+  xGap?: FlexGap;
+  yGap?: FlexGap;
 }
 
 const justifyClasses: Record<FlexJustify, keyof typeof cls> = {
@@ -28,6 +28,7 @@ const alignClasses: Record<FlexAlign, keyof typeof cls> = {
   start: 'alignStart',
   center: 'alignCenter',
   end: 'alignEnd',
+  stretch: 'alignStretch',
 };
 
 const directionClasses: Record<FlexDirection, keyof typeof cls> = {
@@ -59,6 +60,7 @@ export const Flex = memo<FlexProps>(function Flex (props) {
     className,
     ...divProps
   } = props;
+
   return (
     <div
       {...divProps}

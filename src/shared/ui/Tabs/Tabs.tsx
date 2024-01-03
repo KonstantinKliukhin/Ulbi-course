@@ -6,19 +6,19 @@ import { Text } from '../Text/Text';
 import { HStack } from '../Stack/HStack/HStack';
 
 export interface TabItem<T extends string> {
-  value: T
-  content: ReactNode
-  disabled?: boolean
+  value: T;
+  content: ReactNode;
+  disabled?: boolean;
 }
 
 interface TabsProps<T extends string> {
-  className?: string
-  tabs: Array<TabItem<T>>
-  value: T | T[]
-  onTabClick: (tab: TabItem<T>) => void
-  error?: null | string
-  withError?: boolean
-  label?: string
+  className?: string;
+  tabs: Array<TabItem<T>>;
+  value: T | T[];
+  onTabClick: (tab: TabItem<T>) => void;
+  error?: null | string;
+  withError?: boolean;
+  label?: string;
 }
 
 type TabsComponentType = <T extends string>(props: TabsProps<T>) => ReactNode;

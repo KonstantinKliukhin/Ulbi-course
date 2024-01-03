@@ -1,13 +1,15 @@
 import { memo } from 'react';
 import cls from './Navbar.module.scss';
 import { classNames, useAppSelector, useBoolState } from 'shared/lib';
-import { Button } from 'shared/ui';
+import { Button, HStack } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUsername';
-import { getUserAuthData, useLogout } from 'entities/User';
+import { getUserAuthData, useLogout, UserInfo } from 'entities/User';
+import { DropDown } from 'shared/ui/DropDown/DropDown';
+import { RoutePath } from 'shared/config';
 
 interface NavbarProps {
-  className?: string
+  className?: string;
 }
 
 export const Navbar = memo<NavbarProps>(function Navbar (props) {
@@ -17,32 +19,46 @@ export const Navbar = memo<NavbarProps>(function Navbar (props) {
   const loginModal = useBoolState();
   const { t, } = useTranslation();
 
-  if (isAuthenticated) {
+  if (isAuthenticated && userAuthData?.id) {
     return (
-      <header
+      <HStack
+        role="banner"
+        align="center"
+        justify="end"
         data-testid="navbar"
         className={classNames(cls.navbar, {}, [props.className,])}
       >
-        <Button theme="clearInverted" className={cls.links} onClick={logout}>
-          {t('logout')}
-        </Button>
-      </header>
+        <DropDown
+          buttonContent={<UserInfo className={cls.userInfo} shouldDisplayUsername={false}/>}
+          items={[
+            {
+              content: t('logout'),
+              onClick: logout,
+            },
+            {
+              link: RoutePath.profile(userAuthData.id),
+              content: t('nav_profile'),
+            },
+          ]}
+        />
+      </HStack>
     );
   }
 
   return (
-    <header
+    <HStack
+      align="center"
+      justify="end"
       data-testid="navbar"
       className={classNames(cls.navbar, {}, [props.className,])}
     >
       <Button
         theme="clearInverted"
-        className={cls.links}
         onClick={loginModal.enable}
       >
         {t('login')}
       </Button>
       <LoginModal open={loginModal.boolState} onClose={loginModal.disable} />
-    </header>
+    </HStack>
   );
 });
