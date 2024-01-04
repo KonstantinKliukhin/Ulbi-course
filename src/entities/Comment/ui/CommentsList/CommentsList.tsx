@@ -29,7 +29,7 @@ const CommentsList: FC<CommentListProps> = (props) => {
 
 const composedCommentsList = compose<typeof CommentsList>(
   withError(),
-  withLoading({ LoadingComponent: <CommentsListSkeleton />, })
+  withLoading({ loadingComponent: <CommentsListSkeleton />, })
 )(CommentsList);
 
 export { composedCommentsList as CommentsList };

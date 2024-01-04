@@ -14,7 +14,7 @@ export const withAsync =
       };
       const loadingOptions: WithLoadingOptions = {
         loadingSelector: options.loadingSelector,
-        LoadingComponent: options.LoadingComponent,
+        loadingComponent: options.loadingComponent,
       };
 
       return compose(withLoading(loadingOptions), withError(errorOptions))(component);

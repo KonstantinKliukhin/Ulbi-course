@@ -20,6 +20,7 @@ interface TextProps {
   onClick?: MouseEventHandler<HTMLDivElement>;
   keepTextHeight?: boolean;
   keepTitleHeight?: boolean;
+  'data-testid'?: string;
 }
 
 type HeaderTag = 'h1' | 'h2' | 'h3';
@@ -48,7 +49,7 @@ const mapSizeToHeadingTag: Record<TextSize, HeaderTag> = {
 };
 
 export const Text = memo<TextProps>(function Text (props) {
-  const { theme = 'primary', align = 'left', size = 'm', } = props;
+  const { theme = 'primary', align = 'left', size = 'm', 'data-testid': dataTestId, } = props;
   const HeaderTag = mapSizeToHeadingTag[size];
 
   return (
@@ -72,6 +73,7 @@ export const Text = memo<TextProps>(function Text (props) {
       {props.title
         ? (
           <HeaderTag
+            data-testid={`${dataTestId}.Header`}
             className={classNames(cls.title, {}, [props.titleClassName,])}
           >
             {props.title}
@@ -80,7 +82,10 @@ export const Text = memo<TextProps>(function Text (props) {
         : null}
       {props.text
         ? (
-          <p className={classNames(cls.text, {}, [props.textClassName,])}>
+          <p
+            data-testid={`${dataTestId}.Paragraph`}
+            className={classNames(cls.text, {}, [props.textClassName,])}
+          >
             {props.text}
           </p>
           )

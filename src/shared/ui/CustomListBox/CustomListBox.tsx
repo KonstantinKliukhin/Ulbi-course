@@ -23,6 +23,7 @@ interface CustomListBoxProps<Value extends string | number> {
   error?: string | null;
   withError?: boolean;
   label?: ReactNode;
+  'data-testid'?: string;
 }
 
 type CustomListBoxType = <Value extends string | number>(
@@ -73,7 +74,11 @@ export const CustomListBox = memo<CustomListBoxProps<string | number>>(
             />
           </Listbox.Label>
           <Listbox.Button as="div" ref={refs.setReference}>
-            <Button theme="clear" size="m" className={cls.button}>
+            <Button theme="clear"
+              size="m"
+              className={cls.button}
+              data-testid={`${props['data-testid']}.CustomListBox.Value`}
+            >
               {currentContent}
             </Button>
           </Listbox.Button>
@@ -103,6 +108,7 @@ export const CustomListBox = memo<CustomListBoxProps<string | number>>(
           </Listbox.Options>
         </Listbox>
         <Text
+          data-testid={`${props['data-testid']}.CustomListBox.Error`}
           text={props.error}
           size="m"
           theme="error"

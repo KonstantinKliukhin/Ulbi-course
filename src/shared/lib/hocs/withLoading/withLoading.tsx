@@ -7,7 +7,7 @@ export interface WithLoadingProps {
 }
 
 export interface WithLoadingOptions {
-  LoadingComponent?: ReactNode;
+  loadingComponent?: ReactNode;
   loadingSelector?: (state: StateSchema) => boolean;
 }
 
@@ -16,14 +16,14 @@ export const withLoading =
   <Props extends WithLoadingProps>(WrappedComponent: FC<Props>): FC<Props> => {
     const displayName =
       WrappedComponent.displayName || WrappedComponent.name || 'Component';
-    const LoadingComponent = options?.LoadingComponent ?? <Loader centered />;
+    const loadingComponent = options?.loadingComponent ?? <Loader centered />;
 
     const ReturnComponent: FC<Props> = (props) => {
       const isLoading = useAppSelector(
         options?.loadingSelector ?? (() => props.isLoading)
       );
       if (isLoading) {
-        return LoadingComponent;
+        return loadingComponent;
       } else {
         return <WrappedComponent {...props} />;
       }

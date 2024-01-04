@@ -10,12 +10,12 @@
     {
       "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
       "username": "admin",
-      "city": "Kharkiv!",
+      "city": "Kharkiv",
       "currency": "UAH",
       "country": "England",
       "age": 21,
       "lastname": "Kliukhin",
-      "firstname": "Konstantin 123123",
+      "firstname": "Konstantin",
       "id": "1"
     },
     {
@@ -46,7 +46,7 @@
       "title": "Javascript news СВЕЖАЯ !",
       "subtitle": "Что нового в JS за 2022 год?!",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1028,
+      "views": 1029,
       "createdAt": "26.04.2022",
       "userId": "1",
       "type": [
@@ -222,7 +222,7 @@
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://cdn.analyticsvidhya.com/wp-content/uploads/2023/07/1_m0H6-tUbW6grMlezlb52yw.png",
-      "views": 5206,
+      "views": 5207,
       "createdAt": "26.02.2022",
       "userId": "1",
       "type": [

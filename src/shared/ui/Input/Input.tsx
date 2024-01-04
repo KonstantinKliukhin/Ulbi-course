@@ -25,6 +25,7 @@ interface InputProps extends HtmlInputProps {
   error?: string;
   noErrorSpace?: boolean;
   label: string;
+  'data-testid'?: string;
 }
 
 const INPUT_FONT_WIDTH = 9.4;
@@ -41,6 +42,7 @@ export const Input = memo(
       readonly,
       error,
       noErrorSpace = false,
+      'data-testid': dataTestId,
       ...inputProps
     } = props;
 
@@ -93,6 +95,7 @@ export const Input = memo(
               onSelect={onSelect}
               value={value}
               readOnly={readonly}
+              data-testid={`${dataTestId}.Input.Value`}
             />
             <span
               style={{ left: caretPosition * INPUT_FONT_WIDTH, }}
@@ -103,7 +106,12 @@ export const Input = memo(
         {noErrorSpace
           ? null
           : (
-            <Text theme="error" keepTextHeight text={error} />
+            <Text
+              data-testid={`${dataTestId}.Input.Error`}
+              theme="error"
+              keepTextHeight
+              text={error}
+            />
             )}
       </>
     );

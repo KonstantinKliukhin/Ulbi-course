@@ -39,6 +39,7 @@ export function createReduxStore (
       middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
           thunk: { extraArgument: thunkExtraArg, },
+          serializableCheck: false,
         })
           .concat($rtkApi.middleware)
           .concat(rtkQueryErrorMiddleware)
