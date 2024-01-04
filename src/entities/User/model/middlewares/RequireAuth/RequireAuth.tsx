@@ -1,4 +1,4 @@
-import { type FC, type PropsWithChildren } from 'react';
+import { memo, type PropsWithChildren } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useIsAuthorized } from '../../hooks/useIsAuthorized/useIsAuthorized';
 
@@ -8,7 +8,7 @@ interface AuthorizedComponentProps extends PropsWithChildren {
   redirectPath?: string;
 }
 
-export const RequireAuth: FC<AuthorizedComponentProps> = props => {
+export const RequireAuth = memo<AuthorizedComponentProps>(function RequireAuth (props) {
   const { showIfAuthorized = true, showIfNotAuthorized = false, } = props;
   const isAuthorized = useIsAuthorized();
 
@@ -21,4 +21,4 @@ export const RequireAuth: FC<AuthorizedComponentProps> = props => {
   } else {
     return null;
   }
-};
+});

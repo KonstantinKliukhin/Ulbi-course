@@ -9,6 +9,7 @@
   "try_reload": "Please try to reload the page",
   "nav_home": "Home",
   "nav_about": "About Site",
+  "nav_admin": "Admin",
   "nav_articles": "Articles",
   "nav_profile": "Profile",
   "login": "Login",
@@ -42,6 +43,5 @@
   "sort_created": "Date created",
   "sort_title": "Title",
   "sort_views": "Views",
-  "submit_search": "Submit",
   "na": "N/A"
 }

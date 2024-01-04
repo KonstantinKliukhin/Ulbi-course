@@ -24,7 +24,7 @@ const getLinkItems = (arg: GetLinkItemsArg): SidebarItemType[] => [
     text: 'nav_about',
     icon: <InfoSVG/>,
   },
-  ...addOptionallyToArray([arg.isAuthorized, Boolean(arg.profileId),], {
+  ...addOptionallyToArray(arg.isAuthorized && Boolean(arg.profileId), {
     path: RoutePath.profile(arg.profileId!),
     text: 'nav_profile',
     icon: <ProfileSVG/>,

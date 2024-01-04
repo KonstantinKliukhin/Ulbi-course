@@ -1,21 +1,17 @@
-import { type User, type UserSchema } from '../types/user';
+import { type UserSchema } from '../types/user';
 import { userActions, userReducer } from './userSlice';
+import { mockedUser } from 'shared/mocks';
 
 describe('userSlice', () => {
-  const user: User = {
-    username: 'user_name',
-    id: '1',
-  };
-
   test('setAuthData', () => {
     const state: DeepPartial<UserSchema> = { authData: null, };
 
-    expect(userReducer(state as UserSchema, userActions.setAuthData(user)))
-      .toEqual({ authData: user, });
+    expect(userReducer(state as UserSchema, userActions.setAuthData(mockedUser)))
+      .toEqual({ authData: mockedUser, });
   });
 
   test('removeAuthData', () => {
-    const state: DeepPartial<UserSchema> = { authData: user, };
+    const state: DeepPartial<UserSchema> = { authData: mockedUser, };
 
     expect(userReducer(state as UserSchema, userActions.removeAuthData()))
       .toEqual({ authData: null, });

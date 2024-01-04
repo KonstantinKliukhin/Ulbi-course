@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import cls from './Navbar.module.scss';
-import { classNames, useAppSelector, useBoolState } from 'shared/lib';
+import { addOptionallyToArray, classNames, useAppSelector, useBoolState } from 'shared/lib';
 import { Button, HStack } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUsername';
-import { getUserAuthData, useLogout, UserInfo } from 'entities/User';
+import { getIsAdminUser, getIsManagerUser, getUserAuthData, useLogout, UserInfo } from 'entities/User';
 import { DropDown } from 'shared/ui/DropDown/DropDown';
 import { RoutePath } from 'shared/config';
 
@@ -14,6 +14,8 @@ interface NavbarProps {
 
 export const Navbar = memo<NavbarProps>(function Navbar (props) {
   const userAuthData = useAppSelector(getUserAuthData);
+  const isAdmin = useAppSelector(getIsAdminUser);
+  const isManager = useAppSelector(getIsManagerUser);
   const isAuthenticated = Boolean(userAuthData);
   const logout = useLogout();
   const loginModal = useBoolState();
@@ -31,6 +33,10 @@ export const Navbar = memo<NavbarProps>(function Navbar (props) {
         <DropDown
           buttonContent={<UserInfo className={cls.userInfo} shouldDisplayUsername={false}/>}
           items={[
+            ...addOptionallyToArray(isAdmin || isManager, {
+              content: t('nav_admin'),
+              link: RoutePath.adminPanel,
+            }),
             {
               content: t('logout'),
               onClick: logout,

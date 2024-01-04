@@ -46,7 +46,7 @@
       "title": "Javascript news СВЕЖАЯ !",
       "subtitle": "Что нового в JS за 2022 год?!",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1029,
+      "views": 1030,
       "createdAt": "26.04.2022",
       "userId": "1",
       "type": [
@@ -1989,18 +1989,28 @@
       "id": "1",
       "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
       "username": "admin",
+      "roles": [
+        "USER"
+      ],
       "password": "123"
     },
     {
       "id": "2",
       "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
       "username": "admin 2",
+      "roles": [
+        "ADMIN"
+      ],
       "password": "123"
     },
     {
       "id": "3",
       "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
       "username": "admin 3",
+      "roles": [
+        "USER",
+        "ADMIN"
+      ],
       "password": "123"
     }
   ]
