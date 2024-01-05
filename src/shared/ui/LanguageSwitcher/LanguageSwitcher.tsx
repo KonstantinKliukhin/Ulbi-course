@@ -19,6 +19,7 @@ export const LanguageSwitcher = memo<LanguageSwitcherProps>(
     return (
       <Button
         theme="clear"
+        size="sm"
         className={classNames('', {}, [props.className,])}
         onClick={toggleLanguage}
       >

@@ -4,7 +4,7 @@ import { CustomListBox } from './CustomListBox';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'shared/CustomListBox',
+  title: 'shared/Popups/CustomListBox',
   component: CustomListBox,
 } as Meta<ComponentProps<typeof CustomListBox>>;
 

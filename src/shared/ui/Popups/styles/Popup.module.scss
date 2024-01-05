@@ -1,7 +1,3 @@
-.DropDown {
-  line-height: 0;
-}
-
 .btn {
   background: none;
   outline: none;
@@ -9,35 +5,28 @@
   padding: 0;
   border: none;
   cursor: pointer;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
 }
 
 .menu {
   background: var(--card-bg);
   border-radius: 8px;
-  border: 1px solid var(--primary-color);
   overflow: hidden;
   z-index: 1;
+  border: 1px solid var(--primary-color);
+  box-shadow: rgb(0 0 0 / 10%) 0 10px 50px;
 }
 
 .item {
-  display: block;
-  padding: 10px 20px;
-  width: 100%;
-  border: none;
-  background: none;
-  outline: none;
-  color: var(--primary-color);
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-
-  &.active {
+  &.itemActive {
     background-color: var(--inverted-primary-color);
   }
 
-  &.disabled {
+  &.itemDisabled {
     opacity: 0.4;
     pointer-events: none;
   }
 }
-
 

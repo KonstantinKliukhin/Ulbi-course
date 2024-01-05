@@ -14,6 +14,7 @@ interface FlexProps extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
   direction?: FlexDirection;
   xGap?: FlexGap;
   yGap?: FlexGap;
+  as?: 'div' | 'header' | 'main' | 'aside';
 }
 
 const justifyClasses: Record<FlexJustify, keyof typeof cls> = {
@@ -58,11 +59,12 @@ export const Flex = memo<FlexProps>(function Flex (props) {
     xGap,
     yGap,
     className,
+    as: Component = 'div',
     ...divProps
   } = props;
 
   return (
-    <div
+    <Component
       {...divProps}
       className={classNames(cls.Flex, {}, [
         className,
@@ -74,6 +76,6 @@ export const Flex = memo<FlexProps>(function Flex (props) {
       ])}
     >
       {props.children}
-    </div>
+    </Component>
   );
 });

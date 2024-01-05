@@ -1,4 +1,5 @@
 import cls from './DropDown.module.scss';
+import popupCls from '../../styles/Popup.module.scss';
 import { classNames } from 'shared/lib';
 import { memo, type ReactNode } from 'react';
 import { Menu } from '@headlessui/react';
@@ -34,14 +35,14 @@ export const DropDown = memo<DropDownProps>(function DropDown (props) {
 
   return (
     <Menu as="div" className={classNames(cls.DropDown, {}, [props.className,])}>
-      <Menu.Button ref={refs.setReference} className={cls.btn}>
+      <Menu.Button ref={refs.setReference} className={popupCls.btn}>
         {props.buttonContent}
       </Menu.Button>
       <Menu.Items
         as="ul"
         ref={refs.setFloating}
         style={floatingStyles}
-        className={cls.menu}
+        className={popupCls.menu}
       >
         {props.items.map((item, index) => (
           <Menu.Item as="li" disabled={item.disable} key={index}>
@@ -51,7 +52,8 @@ export const DropDown = memo<DropDownProps>(function DropDown (props) {
                 data-href={item.link}
                 className={classNames(
                   cls.item,
-                  { [cls.active]: active, [cls.disabled]: item.disable, }
+                  { [popupCls.itemActive]: active, [popupCls.itemDisabled]: item.disable, },
+                  [popupCls.item,]
                 )}
                 onClick={item.link ? () => { navigate(item.link!); } : item.onClick}
               >

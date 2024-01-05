@@ -1,0 +1,17 @@
+.DropDown {
+  line-height: 0;
+}
+
+.item {
+  display: block;
+  padding: 10px 20px;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+

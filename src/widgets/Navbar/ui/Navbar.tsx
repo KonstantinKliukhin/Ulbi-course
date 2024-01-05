@@ -1,12 +1,13 @@
 import { memo } from 'react';
 import cls from './Navbar.module.scss';
 import { addOptionallyToArray, classNames, useAppSelector, useBoolState } from 'shared/lib';
-import { Button, HStack } from 'shared/ui';
+import { Button, CustomPopover, HStack, Icon } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUsername';
 import { getIsAdminUser, getIsManagerUser, getUserAuthData, useLogout, UserInfo } from 'entities/User';
-import { DropDown } from 'shared/ui/DropDown/DropDown';
+import { DropDown } from 'shared/ui/Popups/ui/DropDown/DropDown';
 import { RoutePath } from 'shared/config';
+import NotificationIcon from '../../../../public/assets/icons/notification-20-20.svg';
 
 interface NavbarProps {
   className?: string;
@@ -24,12 +25,21 @@ export const Navbar = memo<NavbarProps>(function Navbar (props) {
   if (isAuthenticated && userAuthData?.id) {
     return (
       <HStack
+        as="header"
         role="banner"
         align="center"
         justify="end"
         data-testid="navbar"
+        xGap={16}
         className={classNames(cls.navbar, {}, [props.className,])}
       >
+        <CustomPopover triggerClassName={cls.notificationTrigger}
+          trigger={
+            <Icon theme="inverted" Svg={NotificationIcon} />
+          }
+        >
+        </CustomPopover>
+
         <DropDown
           buttonContent={<UserInfo className={cls.userInfo} shouldDisplayUsername={false}/>}
           items={[

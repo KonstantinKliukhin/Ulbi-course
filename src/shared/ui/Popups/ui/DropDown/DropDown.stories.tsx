@@ -1,11 +1,11 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { DropDown } from './DropDown';
-import { Button } from '../Button/Button';
+import { Button } from '../../../Button/Button';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'shared/DropDown',
+  title: 'shared/Popups/DropDown',
   component: DropDown,
 } as Meta<ComponentProps<typeof DropDown>>;
 

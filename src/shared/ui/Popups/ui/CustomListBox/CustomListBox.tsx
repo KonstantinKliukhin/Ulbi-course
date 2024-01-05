@@ -2,10 +2,11 @@ import { Fragment, memo, type ReactNode, useMemo } from 'react';
 import { Listbox } from '@headlessui/react';
 import { classNames } from 'shared/lib';
 import cls from './CustomListBox.module.scss';
-import { Button } from '../Button/Button';
-import { Text } from '../Text/Text';
+import popupCls from '../../styles/Popup.module.scss';
+import { Text } from '../../../Text/Text';
 import { useTranslation } from 'react-i18next';
 import { autoUpdate, flip, shift, useFloating } from '@floating-ui/react-dom';
+import { HStack } from '../../../Stack/HStack/HStack';
 
 export interface ListBoxItem<Value extends string | number> {
   content: ReactNode;
@@ -60,8 +61,10 @@ export const CustomListBox = memo<CustomListBoxProps<string | number>>(
           value={props.value}
           defaultValue={props.defaultValue}
           onChange={props.onChange}
-          as="div"
-          className={classNames(cls.CustomListBox, { [cls.readonly]: props.readonly, }, [props.className,])}
+          as={HStack}
+          xGap={4}
+          align="center"
+          className={classNames('', { [cls.readonly]: props.readonly, }, [props.className,])}
         >
           <Listbox.Label>
             <Text
@@ -73,16 +76,14 @@ export const CustomListBox = memo<CustomListBoxProps<string | number>>(
               }
             />
           </Listbox.Label>
-          <Listbox.Button as="div" ref={refs.setReference}>
-            <Button theme="clear"
-              size="m"
-              className={cls.button}
-              data-testid={`${props['data-testid']}.CustomListBox.Value`}
-            >
-              {currentContent}
-            </Button>
+          <Listbox.Button
+            className={classNames(popupCls.btn, {}, [cls.button,])}
+            ref={refs.setReference}
+            data-testid={`${props['data-testid']}.CustomListBox.Value`}
+          >
+            {currentContent}
           </Listbox.Button>
-          <Listbox.Options className={cls.options}
+          <Listbox.Options className={popupCls.menu}
             ref={refs.setFloating}
             style={floatingStyles}
           >
@@ -97,8 +98,8 @@ export const CustomListBox = memo<CustomListBoxProps<string | number>>(
                   <li
                     className={classNames(cls.item, {
                       [cls.selected]: selected,
-                      [cls.active]: active && !selected,
-                    })}
+                      [popupCls.itemActive]: active && !selected,
+                    }, [popupCls.item,])}
                   >
                     {item.content}
                   </li>

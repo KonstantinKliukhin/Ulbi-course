@@ -1,6 +1,9 @@
 .Button {
   cursor: pointer;
   color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .square {
@@ -89,6 +92,11 @@
   &:hover {
     color: var(--primary-color);
   }
+}
+
+.sizeSm {
+  padding: 6px 12px;
+  font-size: var(--font-m);
 }
 
 .sizeM {

@@ -5,6 +5,7 @@ import { Theme, useTheme } from 'app/providers/ThemeProvider';
 import { Button } from '../Button/Button';
 import MoonIcon from '../../../../public/assets/icons/moon.svg';
 import SunIcon from '../../../../public/assets/icons/sun.svg';
+import { Icon } from '../Icon/Icon';
 
 interface ThemeSwitcherProps {
   className?: string;
@@ -20,7 +21,7 @@ const THEME_CONTENT_MAP: Record<Theme, ThemeSwitcherContent> = {
     icon: <SunIcon className={classNames(cls.icon, {}, [cls.sun,])} />,
   },
   [Theme.DARK]: {
-    icon: <MoonIcon className={classNames(cls.icon, {}, [cls.moon,])} />,
+    icon: <Icon Svg={MoonIcon} className={classNames(cls.icon, {}, [cls.moon,])} />,
   },
   [Theme.PURPLE]: {
     icon: <div className={classNames(cls.icon, {}, [cls.purple,])} />,
