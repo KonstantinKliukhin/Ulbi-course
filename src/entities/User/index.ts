@@ -7,8 +7,8 @@ export { useInitUser } from './model/hooks/useInitUser/useInitUser';
 
 export { userReducer, userActions } from './model/slice/userSlice';
 
-export { type User, type UserSchema, UserRole } from './model/types/user';
-
+export type { User, UserSchema } from './model/types/user';
+export { UserRole } from './model/constants/userRoles';
 export { RequireAuth } from './model/middlewares/RequireAuth/RequireAuth';
 export { RequireRoles } from './model/middlewares/RequireRoles/RequireRoles';
 export { withRequireAuth } from './model/middlewares/withRequireAuth/withRequireAuth';

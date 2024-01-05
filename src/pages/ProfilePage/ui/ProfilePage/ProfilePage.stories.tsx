@@ -6,8 +6,7 @@ import { mockedProfile, mockedUser } from 'shared/mocks';
 import { profilePageReducer } from '../../model/slice/profilePageSlice';
 import { reactRouterParameters } from 'storybook-addon-react-router-v6';
 import { RoutePath } from 'shared/config';
-import { QueryStatus } from '@reduxjs/toolkit/query';
-import { profileApi } from 'entities/Profile/api/profileApi/profileApi';
+import { API_ROUTES } from 'shared/api';
 
 export default {
   title: 'pages/ProfilePage',
@@ -25,85 +24,88 @@ const routerParameters = {
   }),
 };
 
+const successMockDataParameters = [
+  {
+    url: `${API_ROUTES.profile('1')}`,
+    method: 'GET',
+    status: 200,
+    response: mockedProfile,
+  },
+];
+
 export const MyProfile: ProfilePageStory = {
   args: {},
-  parameters: routerParameters,
-  decorators: [StoreDecorator({
-    user: {
-      authData: mockedUser,
-    },
-    profilePage: {
-      readonly: true,
-    },
-    api: {
-      queries: {
-        [`${profileApi.endpoints.getProfileById.name}({"userId":"1"})`]: {
-          status: QueryStatus.fulfilled,
-          data: mockedProfile,
+  parameters: { ...routerParameters, mockData: successMockDataParameters, },
+  decorators: [
+    StoreDecorator(
+      {
+        user: {
+          authData: mockedUser,
+        },
+        profilePage: {
+          readonly: true,
         },
       },
-    },
-  }, { profilePage: profilePageReducer, }),],
+      { profilePage: profilePageReducer, }
+    ),
+  ],
 };
 
 export const NotMyProfile: ProfilePageStory = {
   args: {},
-  parameters: routerParameters,
-  decorators: [StoreDecorator({
-    user: {
-      authData: { ...mockedUser, id: '12313123', },
-    },
-    profilePage: {
-      readonly: true,
-    },
-    api: {
-      queries: {
-        [`${profileApi.endpoints.getProfileById.name}({"userId":"1"})`]: {
-          status: QueryStatus.fulfilled,
-          data: mockedProfile,
+  parameters: { ...routerParameters, mockData: successMockDataParameters, },
+  decorators: [
+    StoreDecorator(
+      {
+        user: {
+          authData: { ...mockedUser, id: '12313123', },
+        },
+        profilePage: {
+          readonly: true,
         },
       },
-    },
-  }, { profilePage: profilePageReducer, }),],
+      { profilePage: profilePageReducer, }
+    ),
+  ],
 };
 
 export const Loading: ProfilePageStory = {
   args: {},
-  parameters: routerParameters,
-  decorators: [StoreDecorator({
-    profilePage: {
-      readonly: true,
-    },
-    user: {
-      authData: mockedUser,
-    },
-    api: {
-      queries: {
-        [`${profileApi.endpoints.getProfileById.name}({"userId":"1"})`]: {
-          status: QueryStatus.pending,
+  parameters: {
+    ...routerParameters,
+    mockData: successMockDataParameters.map(data => ({ ...data, delay: 999999999, })),
+  },
+  decorators: [
+    StoreDecorator(
+      {
+        profilePage: {
+          readonly: true,
+        },
+        user: {
+          authData: mockedUser,
         },
       },
-    },
-  }, { profilePage: profilePageReducer, }),],
+      { profilePage: profilePageReducer, }
+    ),
+  ],
 };
 
 export const ProfileError: ProfilePageStory = {
   args: {},
-  parameters: routerParameters,
+  parameters: {
+    ...routerParameters,
+    mockData: successMockDataParameters.map(data => ({
+      ...data,
+      response: { message: 'Some Api Error', },
+      status: 404,
+    })),
+  },
   decorators: [StoreDecorator({
     user: {
       authData: mockedUser,
     },
     profilePage: {
       readonly: false,
-    },
-    api: {
-      queries: {
-        [`${profileApi.endpoints.getProfileById.name}({"userId":"1"})`]: {
-          status: QueryStatus.rejected,
-          error: { message: 'Some Api Error', },
-        },
-      },
     },
   }, { profilePage: profilePageReducer, }),],
 };

@@ -1,6 +1,6 @@
-import { type FC } from 'react';
+import { type FC, useEffect } from 'react';
 import {
-  useAppDispatch, useEvent, useInitialEffect,
+  useAppDispatch,
   withLazySlices
 } from 'shared/lib';
 import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
@@ -16,9 +16,10 @@ const ArticlesPage: FC = () => {
   const dispatch = useAppDispatch();
   const [searchParams,] = useSearchParams();
 
-  useInitialEffect(useEvent(() => {
+  useEffect(() => {
     void dispatch(initArticlesPage(searchParams));
-  }));
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>

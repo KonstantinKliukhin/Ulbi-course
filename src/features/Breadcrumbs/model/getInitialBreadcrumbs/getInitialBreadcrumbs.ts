@@ -1,7 +1,7 @@
 import {
   BREADCRUMBS,
   MAX_BREADCRUMBS_LENGTH
-} from '../../constants/breadcrumbs';
+} from '../constants/breadcrumbs';
 import { matchPath } from 'react-router-dom';
 import { type Breadcrumb } from '../types/breadcrumbs';
 

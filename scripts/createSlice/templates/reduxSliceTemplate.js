@@ -4,7 +4,7 @@ module.exports = (sliceName) => {
     const typeName = `${firstCharUpperCase(sliceName)}Schema`;
 
     return `import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ${typeName} } from '../types/${sliceName}Schema';
+import { ${typeName} } from '../constants/${sliceName}Schema';
 
 const initialState: ${typeName} = {
     

@@ -1,1 +1,1 @@
-export { AddArticleComment } from './ui/AddArticleComment/AddArticleComment';
+export { AddArticleCommentAsync as AddArticleComment } from './ui/AddArticleComment/AddArticleComment.async';

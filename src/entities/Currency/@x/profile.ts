@@ -1,2 +1,2 @@
-export { Currency } from '../model/types/currency';
-export { CURRENCY_OPTIONS } from '../constants/options';
+export { Currency } from 'entities/Currency/model/constants/currency';
+export { CURRENCY_OPTIONS } from '../model/constants/options';

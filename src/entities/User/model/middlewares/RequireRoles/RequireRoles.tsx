@@ -1,8 +1,8 @@
 import { memo, type PropsWithChildren, useMemo } from 'react';
 import { useAppSelector } from 'shared/lib';
 import { getUserRoles } from '../../selectors/getUserRoles/getUserRoles';
-import { type UserRole } from '../../types/user';
 import { Navigate } from 'react-router-dom';
+import type { UserRole } from '../../constants/userRoles';
 
 interface RequireRolesProps extends PropsWithChildren {
   roles: UserRole[];

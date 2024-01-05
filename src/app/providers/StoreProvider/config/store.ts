@@ -7,9 +7,6 @@ import { $api, $rtkApi } from 'shared/api';
 import { type NavigateFunction } from 'react-router-dom';
 import { UIReducer } from 'features/UI';
 import { rtkQueryErrorMiddleware } from './middlewares/rtkQueryErrorMiddleware/rtkQueryErrorMiddleware';
-import {
-  apiActionStorybookMiddleware
-} from './middlewares/apiActionStorybookMiddleware/apiActionStorybookMiddleware';
 
 export function createReduxStore (
   navigate: NavigateFunction,
@@ -42,8 +39,7 @@ export function createReduxStore (
           serializableCheck: false,
         })
           .concat($rtkApi.middleware)
-          .concat(rtkQueryErrorMiddleware)
-          .concat(...(__PROJECT__ === 'storybook' ? [apiActionStorybookMiddleware,] : [])),
+          .concat(rtkQueryErrorMiddleware),
     }),
     reducerManager,
   };

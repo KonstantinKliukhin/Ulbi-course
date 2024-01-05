@@ -1,4 +1,4 @@
-import { Country } from '../model/types/country';
+import { Country } from './country';
 import { type SelectOption } from 'shared/ui';
 
 export const COUNTRY_OPTIONS: Array<SelectOption<Country>> = [

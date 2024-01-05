@@ -1,5 +1,5 @@
 const createApiRouteGetter = (): ((route: string) => string) => {
-  if (__PROJECT__ === 'jest') {
+  if (__PROJECT__ !== 'frontend') {
     return (route: string) => `${__API__}${route}`;
   } else {
     return (route: string) => route;
@@ -14,4 +14,4 @@ export const API_ROUTES = {
   articles: (id?: string) => getApiRoute(`/articles${addId(id)}`),
   comments: () => getApiRoute('/comments'),
   profile: (id: string) => getApiRoute(`/profile${addId(id)}`),
-};
+} as const;

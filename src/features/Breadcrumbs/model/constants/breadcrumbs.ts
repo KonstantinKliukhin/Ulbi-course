@@ -1,5 +1,5 @@
 import { RoutePath } from 'shared/config';
-import { type Breadcrumb } from '../model/types/breadcrumbs';
+import { type Breadcrumb } from '../types/breadcrumbs';
 
 export const MAIN_BREADCRUMB: Breadcrumb = {
   path: RoutePath.main,

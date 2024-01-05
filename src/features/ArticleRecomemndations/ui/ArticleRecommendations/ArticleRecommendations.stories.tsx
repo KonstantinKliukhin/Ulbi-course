@@ -1,9 +1,8 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { ArticleRecommendations } from './ArticleRecommendations';
-import { StoreDecorator } from 'shared/config/storybook/storeDecorator/storeDecorator';
-import { QueryStatus } from '@reduxjs/toolkit/query';
 import { mockedArticles } from 'shared/mocks';
+import { API_ROUTES } from 'shared/api';
 
 export default {
   title: 'features/ArticleRecommendations',
@@ -12,16 +11,35 @@ export default {
 
 type ArticleRecommendationsStory = StoryObj<typeof ArticleRecommendations>;
 
+const successMockDataParameters = [
+  {
+    url: `${API_ROUTES.articles()}?_limit=4`,
+    method: 'GET',
+    status: 200,
+    response: mockedArticles,
+  },
+];
+
 export const Default: ArticleRecommendationsStory = {
   args: {},
-  decorators: [StoreDecorator({
-    api: {
-      queries: {
-        'getArticleRecommendations({"limit":4})': {
-          status: QueryStatus.fulfilled,
-          data: mockedArticles.slice(0, 4),
-        },
-      },
-    },
-  }),],
+  parameters: {
+    mockData: successMockDataParameters,
+  },
+  decorators: [],
+};
+
+export const Loading: ArticleRecommendationsStory = {
+  args: {},
+  parameters: {
+    mockData: successMockDataParameters.map(data => ({ ...data, delay: 9999999999, })),
+  },
+  decorators: [],
+};
+
+export const NotFound: ArticleRecommendationsStory = {
+  args: {},
+  parameters: {
+    mockData: successMockDataParameters.map(data => ({ ...data, response: [], })),
+  },
+  decorators: [],
 };

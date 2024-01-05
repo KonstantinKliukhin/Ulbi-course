@@ -17,7 +17,8 @@
       "*": [
         "./src/*"
       ]
-    }
+    },
+    "isolatedModules": true
   },
   "include": [
     "config/**/*.ts",

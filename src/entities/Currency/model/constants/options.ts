@@ -1,5 +1,5 @@
 import { type SelectOption } from 'shared/ui';
-import { Currency } from '../model/types/currency';
+import { Currency } from './currency';
 
 export const CURRENCY_OPTIONS: Array<SelectOption<Currency>> = [
   { value: Currency.EUR, content: Currency.EUR, },

@@ -1,6 +1,6 @@
 import cls from './ArticleDetailsComments.module.scss';
-import { memo } from 'react';
-import { Text } from 'shared/ui';
+import { memo, Suspense } from 'react';
+import { Loader, Text } from 'shared/ui';
 import { AddArticleComment } from 'features/AddArticleComment';
 import { CommentsList } from 'entities/Comment';
 import { type RtkError } from 'shared/types';
@@ -24,7 +24,9 @@ export const ArticleDetailsComments = memo<ArticleDetailsCommentsProps>(
     return (
       <div>
         <Text className={cls.commentsTitle} title={t('comments')} />
-        <AddArticleComment articleId={props.id} className={cls.commentsForm} />
+        <Suspense fallback={<Loader centered />}>
+          <AddArticleComment articleId={props.id} className={cls.commentsForm} />
+        </Suspense>
         <CommentsList
           comments={articleCommentsData.data}
           isLoading={articleCommentsData.isLoading}

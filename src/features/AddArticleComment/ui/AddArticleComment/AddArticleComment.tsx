@@ -13,7 +13,7 @@ interface AddArticleCommentProps {
   articleId?: string;
 }
 
-export const AddArticleComment = memo<AddArticleCommentProps>(function AddArticleComment (props) {
+const AddArticleComment = memo<AddArticleCommentProps>(function AddArticleComment (props) {
   const addArticleCommentForm = useAddArticleCommentForm();
   const { reset: resetArticleCommentForm, } = addArticleCommentForm;
   const user = useAppSelector(getUserAuthData);
@@ -46,3 +46,5 @@ export const AddArticleComment = memo<AddArticleCommentProps>(function AddArticl
     </FormProvider>
   );
 });
+
+export default AddArticleComment;

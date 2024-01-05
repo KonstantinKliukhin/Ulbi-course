@@ -2,8 +2,7 @@ import { type FC, memo } from 'react';
 import cls from './ProfileCard.module.scss';
 import {
   classNames,
-  type WithErrorProps,
-  withLoading,
+  type WithErrorProps, withLoading,
   type WithLoadingProps
 } from 'shared/lib';
 import { useTranslation } from 'react-i18next';

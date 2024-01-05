@@ -1,2 +1,2 @@
-export { Country } from './model/types/country';
-export { COUNTRY_OPTIONS } from './constants/options';
+export { Country } from './model/constants/country';
+export { COUNTRY_OPTIONS } from 'entities/Country/model/constants/options';
