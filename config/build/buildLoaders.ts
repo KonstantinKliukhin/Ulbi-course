@@ -2,6 +2,7 @@ import type webpack from 'webpack';
 import { type BuildOptions } from './types/config';
 import { buildCssLoader } from './loaders/buildCssLoader';
 import { buildSvgLoader } from './loaders/buildSvgLoader';
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 
 export default function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] {
   const fileLoader = {
@@ -17,25 +18,8 @@ export default function buildLoaders (options: BuildOptions): webpack.RuleSetRul
 
   const cssLoaders = buildCssLoader(options.isDev);
 
-  const babelLoader = {
-    test: /\.(?:js|jsx|ts|tsx)$/,
-    exclude: /node_modules/,
-    use: {
-      loader: 'babel-loader',
-      options: {
-        presets: [
-          ['@babel/preset-env', { targets: 'defaults', },],
-        ],
-        // plugins: [['i18next-extract', { nsSeparator: '~', locales: ['uk', 'en',], },],],
-      },
-    },
-  };
+  const babelLoader = buildBabelLoader({ isTsx: false, });
+  const tsxBabelLoader = buildBabelLoader({ isTsx: true, });
 
-  const tsLoader = {
-    test: /\.tsx?$/,
-    use: 'ts-loader',
-    exclude: /node_modules/,
-  };
-
-  return [fileLoader, svgLoader, babelLoader, tsLoader, cssLoaders,];
+  return [fileLoader, svgLoader, babelLoader, tsxBabelLoader, cssLoaders,];
 };
