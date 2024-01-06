@@ -5,7 +5,7 @@ import { StoreDecorator } from 'shared/config/storybook/storeDecorator/storeDeco
 import { loginReducer } from '../../model/slice/loginSlice';
 
 export default {
-  title: 'features/LoginForm',
+  title: 'features/AuthByUsername/LoginForm',
   component: LoginForm,
 } as Meta<ComponentProps<typeof LoginForm>>;
 

@@ -5,7 +5,7 @@ import { mockedArticles } from 'shared/mocks';
 import { API_ROUTES } from 'shared/api';
 
 export default {
-  title: 'features/ArticleRecommendations',
+  title: 'features/ArticleRecommendations/ArticleRecommendations',
   component: ArticleRecommendations,
 } as Meta<ComponentProps<typeof ArticleRecommendations>>;
 

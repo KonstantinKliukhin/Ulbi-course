@@ -4,11 +4,5 @@
   max-height: var(--navbar-height);
   min-height: var(--navbar-height);
   background: var(--inverted-bg-color);
-  display: flex;
-  align-items: center;
   padding: 5px 20px;
-}
-
-.notifications {
-  height: fit-content;
 }

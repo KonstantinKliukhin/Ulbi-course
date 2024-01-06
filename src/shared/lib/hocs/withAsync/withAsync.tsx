@@ -6,15 +6,15 @@ import { compose } from '@reduxjs/toolkit';
 export type WithAsyncProps = WithErrorProps & WithLoadingProps;
 
 export const withAsync =
-    <ErrorProps extends DefaultErrorProps>(options: WithLoadingOptions & WithErrorOptions<ErrorProps>) =>
+    <ErrorProps extends DefaultErrorProps>(options?: WithLoadingOptions & WithErrorOptions<ErrorProps>) =>
     <Props extends WithAsyncProps>(Component: FC<Props>): FC<Props> => {
       const errorOptions: WithErrorOptions<ErrorProps> = {
-        errorSelector: options.errorSelector,
-        ErrorComponent: options.ErrorComponent,
+        errorSelector: options?.errorSelector,
+        ErrorComponent: options?.ErrorComponent,
       };
       const loadingOptions: WithLoadingOptions = {
-        loadingSelector: options.loadingSelector,
-        loadingComponent: options.loadingComponent,
+        loadingSelector: options?.loadingSelector,
+        loadingComponent: options?.loadingComponent,
       };
 
       return compose(withLoading(loadingOptions), withError(errorOptions))(Component) as FC<Props>;

@@ -50,7 +50,6 @@ export const Default: ArticleDetailsPageStory = {
     ...routerParameters,
     mockData: successMockDataParameters,
   },
-  decorators: [],
 };
 
 export const CanEdit: ArticleDetailsPageStory = {

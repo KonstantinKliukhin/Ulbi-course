@@ -14,4 +14,5 @@ export const API_ROUTES = {
   articles: (id?: string) => getApiRoute(`/articles${addId(id)}`),
   comments: () => getApiRoute('/comments'),
   profile: (id: string) => getApiRoute(`/profile${addId(id)}`),
+  notifications: () => getApiRoute('/notifications'),
 } as const;
