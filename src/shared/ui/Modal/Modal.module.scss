@@ -4,8 +4,6 @@
   inset: 0;
   position: fixed;
   pointer-events: none;
-  width: 100vw;
-  height: 100vh;
   transition: all 0.2s ease-in;
 
   &.open {
@@ -18,19 +16,13 @@
   }
 }
 
-.overlay {
-  height: 100%;
-  width: 100%;
-  background: var(--overlay-color);
-}
-
 .content {
   max-width: 60%;
   padding: 20px;
   border-radius: 12px;
   background: var(--bg-color);
-  transform: scale(0.1);
-  transition: transform 0.2s ease-in;
+  transform: scale(0);
+  transition: transform 0.2s ease-in-out;
 }
 
 .Modal.open:not(.closing) .content {

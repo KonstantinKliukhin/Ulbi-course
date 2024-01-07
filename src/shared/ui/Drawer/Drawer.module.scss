@@ -1,0 +1,96 @@
+.Drawer {
+  opacity: 0;
+  z-index: -1;
+  inset: 0;
+  position: fixed;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+
+  &.open {
+    opacity: 1;
+    z-index: var(--modal-z-index);
+  }
+
+  &.open:not(.closing) {
+    pointer-events: auto;
+  }
+}
+
+.content {
+  position: relative;
+  height: 100%;
+  padding: 20px;
+  background: var(--bg-color);
+  transition: all 0.2s ease-in;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+// positions
+
+// top
+.positionTop {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+}
+
+.positionTop .content {
+  transform: translateY(-100%);
+  border-radius: 0 0 10px 10px;
+}
+
+.Drawer.positionTop.open:not(.closing) .content {
+  transform: translateX(0);
+}
+
+// right
+.positionRight {
+  display: flex;
+  justify-content: end;
+}
+
+.positionRight .content { /* stylelint-disable-line */
+  transform: translateX(100%);
+  border-radius: 10px 0 0 10px;
+}
+
+.Drawer.positionRight.open:not(.closing) .content {
+  transform: translateX(0);
+}
+
+// bottom
+.positionBottom {
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+}
+
+.positionBottom .content { /* stylelint-disable-line */
+  transform: translateY(100%);
+  border-radius: 10px 10px 0 0;
+}
+
+.Drawer.positionBottom.open:not(.closing) .content {
+  transform: translateY(0);
+}
+
+// left
+.positionLeft {
+  display: flex;
+  justify-content: start;
+}
+
+.positionLeft .content { /* stylelint-disable-line */
+  transform: translateX(-100%);
+  border-radius: 0 10px 10px 0;
+}
+
+.Drawer.positionLeft.open:not(.closing) .content {
+  transform: translateX(0);
+}
+
+
+
+

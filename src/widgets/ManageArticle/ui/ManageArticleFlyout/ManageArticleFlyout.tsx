@@ -1,5 +1,5 @@
 import { type ComponentProps, memo, Suspense, useCallback } from 'react';
-import { Flyout, Loader } from 'shared/ui';
+import { Drawer, Loader } from 'shared/ui';
 import { ManageArticleForm } from '../ManageArticleForm/ManageArticleForm.async';
 import { type Article, useCreateArticleMutation, useUpdateArticleMutation } from 'entities/Article';
 import { type FormMode } from 'shared/types';
@@ -9,7 +9,7 @@ import { useArticleFormTitle } from './useArticleFormTitle';
 import { articleFormToDTO } from '../../lib/articleFormToDTO/articleFormToDTO';
 import { getUserAuthData } from 'entities/User';
 
-interface ManageArticleModalProps extends ComponentProps<typeof Flyout> {
+interface ManageArticleModalProps extends ComponentProps<typeof Drawer> {
   article?: Article;
   mode: FormMode;
 }
@@ -49,21 +49,16 @@ export const ManageArticleFlyout = memo<ManageArticleModalProps>(
     const formTitle = useArticleFormTitle(props.mode);
 
     return (
-      <Flyout {...flyoutProps} onClose={onClose} lazy>
+      <Drawer {...flyoutProps} onClose={onClose} lazy>
         <Suspense fallback={<Loader />}>
-          {flyoutProps.open
-            ? (
-              <ManageArticleForm
-                title={formTitle}
-                onCancel={onClose}
-                onSubmit={onSubmit}
-                article={article}
-              />
-              )
-            : null
-          }
+          <ManageArticleForm
+            title={formTitle}
+            onCancel={onClose}
+            onSubmit={onSubmit}
+            article={article}
+          />
         </Suspense>
-      </Flyout>
+      </Drawer>
     );
   }
 );

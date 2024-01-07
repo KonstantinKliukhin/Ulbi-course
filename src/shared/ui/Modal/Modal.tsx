@@ -5,7 +5,8 @@ import { Portal } from '../Portal/Portal';
 import { stopPropagation } from '../../lib/stopPropagation/stopPropagation';
 import { useSyntheticMounted } from '../../lib/hooks/utility/useSyntheticMounted/useSyntheticMounted';
 import { useEscapeClose } from '../../lib/hooks/ui/useEscapeClose/useEscapeClose';
-import { VStack } from '../Stack/VStack/VStack';
+import { Overlay } from '../Overlay/Overlay';
+import { Flex } from '../Stack/Flex/Flex';
 
 interface ModalProps extends PropsWithChildren {
   className?: string;
@@ -33,27 +34,22 @@ export const Modal: FC<ModalProps> = (props) => {
 
   return (
     <Portal>
-      <div
+      <Flex justify="center"
+        align="center"
         className={classNames(
           cls.Modal,
           { [cls.open]: props.open, [cls.closing]: closing, },
           [props.className,]
         )}
       >
-        <VStack
-          justify="center"
-          align="center"
-          className={cls.overlay}
-          onClick={handleClose}
+        <Overlay open={props.open && !closing} onClick={handleClose}/>
+        <div
+          className={classNames(cls.content, {}, [contentClassName,])}
+          onClick={stopPropagation}
         >
-          <div
-            className={classNames(cls.content, {}, [contentClassName,])}
-            onClick={stopPropagation}
-          >
-            {props.children}
-          </div>
-        </VStack>
-      </div>
+          {props.children}
+        </div>
+      </Flex>
     </Portal>
   );
 };

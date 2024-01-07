@@ -22,6 +22,7 @@ export const CustomPopover = memo<PopoverProps>(function CustomPopover (props) {
   return (
     <Popover as={HStack} align="center" className={classNames(cls.CustomPopover, {}, [props.className,])}>
       <Popover.Button
+        as="div"
         className={classNames(popupCls.btn, {}, [props.triggerClassName,])}
         ref={refs.setReference}
       >

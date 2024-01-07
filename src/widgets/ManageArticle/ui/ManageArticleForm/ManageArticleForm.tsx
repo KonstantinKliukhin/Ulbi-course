@@ -18,7 +18,7 @@ import {
   manageArticleActions,
   manageArticleReducer
 } from '../../model/slices/manageArticleSlice';
-import { Flyout, Loader } from 'shared/ui';
+import { Drawer, Loader } from 'shared/ui';
 import { ManageArticleBlockForm } from 'features/ManageArticleBlock';
 import { type ArticleFormType } from '../../model/types/articleForm';
 import { ArticleForm } from '../ArticleForm/ArticleForm.async';
@@ -162,7 +162,7 @@ const ManageArticleForm = memo<ManageArticleFormProps>(
             </Suspense>
           </form>
         </FormProvider>
-        <Flyout
+        <Drawer
           open={currentBlockIndex !== -1}
           onClose={resetArticleBlockFormData}
           lazy
@@ -175,7 +175,7 @@ const ManageArticleForm = memo<ManageArticleFormProps>(
               onCancel={resetArticleBlockFormData}
             />
           </Suspense>
-        </Flyout>
+        </Drawer>
       </>
     );
   }

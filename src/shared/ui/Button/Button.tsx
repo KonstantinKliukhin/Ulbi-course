@@ -10,7 +10,7 @@ type ButtonTheme =
   | 'background'
   | 'backgroundInverted';
 
-type ButtonSize = 'sm' | 'm' | 'l' | 'xl';
+type ButtonSize = 'sm' | 'm' | 'l' | 'xl' | 'content';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonTheme;
@@ -31,6 +31,7 @@ const mapButtonThemeClasses: Record<ButtonTheme, keyof typeof cls> = {
 };
 
 const mapButtonSizeClasses: Record<ButtonSize, keyof typeof cls> = {
+  content: 'sizeContent',
   sm: 'sizeSm',
   m: 'sizeM',
   l: 'sizeL',

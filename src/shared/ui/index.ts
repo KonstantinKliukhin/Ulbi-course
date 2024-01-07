@@ -4,7 +4,7 @@ export { Loader } from './Loader/Loader';
 export { ThemeSwitcher } from './ThemeSwitcher/ThemeSwitcher';
 export { LanguageSwitcher } from './LanguageSwitcher/LanguageSwitcher';
 export { Modal } from './Modal/Modal';
-export { Flyout } from './Flyout/Flyout';
+export { Drawer } from 'shared/ui/Drawer/Drawer';
 export { CustomDndContext } from './dnd/CustomDndContext/CustomDndContext';
 export { SortableItem } from './dnd/SortableItem/SortableItem';
 export { Portal } from './Portal/Portal';
