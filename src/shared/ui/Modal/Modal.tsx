@@ -1,12 +1,11 @@
-import { type FC, type PropsWithChildren, useCallback, useState } from 'react';
+import { type FC, type PropsWithChildren, useMemo } from 'react';
 import cls from './Modal.module.scss';
 import { classNames } from '../../lib/classNames/classNames';
 import { Portal } from '../Portal/Portal';
 import { stopPropagation } from '../../lib/stopPropagation/stopPropagation';
-import { useSyntheticMounted } from '../../lib/hooks/utility/useSyntheticMounted/useSyntheticMounted';
-import { useEscapeClose } from '../../lib/hooks/ui/useEscapeClose/useEscapeClose';
 import { Overlay } from '../Overlay/Overlay';
 import { Flex } from '../Stack/Flex/Flex';
+import { useModal } from '../../lib/hooks/ui/useModal/useModal';
 
 interface ModalProps extends PropsWithChildren {
   className?: string;
@@ -14,23 +13,23 @@ interface ModalProps extends PropsWithChildren {
   open: boolean;
   onClose: () => void;
   lazy?: boolean;
+  removeContentWhenClosed?: boolean;
 }
 
 export const Modal: FC<ModalProps> = (props) => {
-  const { onClose, open, contentClassName, lazy, } = props;
-  const [closing, setClosing,] = useState<boolean>(false);
-  const syntheticMounted = useSyntheticMounted(open);
-  const handleClose = useCallback(() => {
-    setClosing(true);
-
-    setTimeout(() => {
-      setClosing(false);
-      onClose();
-    }, 200);
-  }, [onClose,]);
-  useEscapeClose(handleClose, open);
-
-  if (lazy && !syntheticMounted) return null;
+  const { onClose, open, contentClassName, lazy, removeContentWhenClosed, } = props;
+  const {
+    localOpen,
+    closing,
+    handleClose,
+    shouldRenderChildren,
+  } = useModal(useMemo(() => ({
+    open,
+    removeContentWhenClosed,
+    lazy,
+    onClose,
+    animationDelay: 200,
+  }), [lazy, onClose, open, removeContentWhenClosed,]));
 
   return (
     <Portal>
@@ -38,16 +37,16 @@ export const Modal: FC<ModalProps> = (props) => {
         align="center"
         className={classNames(
           cls.Modal,
-          { [cls.open]: props.open, [cls.closing]: closing, },
+          { [cls.open]: localOpen, [cls.closing]: closing, },
           [props.className,]
         )}
       >
-        <Overlay open={props.open && !closing} onClick={handleClose}/>
+        <Overlay open={localOpen} onClick={handleClose}/>
         <div
           className={classNames(cls.content, {}, [contentClassName,])}
           onClick={stopPropagation}
         >
-          {props.children}
+          {shouldRenderChildren ? props.children : null}
         </div>
       </Flex>
     </Portal>
