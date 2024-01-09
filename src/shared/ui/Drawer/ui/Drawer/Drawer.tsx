@@ -5,13 +5,13 @@ import {
   useMemo
 } from 'react';
 import cls from './Drawer.module.scss';
-import { classNames } from '../../../../lib/classNames/classNames';
+import { classNames } from '../../../../lib/ui/classNames/classNames';
 import { Portal } from '../../../Portal/Portal';
 import { Overlay } from '../../../Overlay/Overlay';
 import { DrawerProvider, useDrawerContext } from '../../lib/drawerContext/drawerContext';
 import { type DrawerPosition } from '../../types/position';
 import { useDrawerPositionStyle } from '../../lib/useDrawerPositionStyle/useDrawerPositionStyle';
-import { useModal } from 'shared/lib/hooks/ui/useModal/useModal';
+import { useModal } from '../../../../lib/ui/useModal/useModal';
 import { DEFAULT_Z_INDEX } from '../../constants/ui';
 
 const mapDrawerPositionToClass: Record<DrawerPosition, string> = {

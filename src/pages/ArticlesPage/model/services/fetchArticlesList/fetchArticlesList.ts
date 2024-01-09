@@ -9,7 +9,7 @@ import {
   getArticlesSort,
   getArticlesType
 } from '../../selectors/getArticlesState/getArticlesState';
-import { addQueryParams } from 'shared/lib/url/addQueryParameters/addQueryParameters';
+import { addQueryParams } from 'shared/lib';
 
 interface FetchArticlesListExtra extends ThunkDefaultArg {
   rejectValue: string;

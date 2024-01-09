@@ -10,7 +10,7 @@ import {
   useMemo,
   useRef
 } from 'react';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 import cls from './TextArea.module.scss';
 import { Text } from '../Text/Text';
 import { VStack } from '../Stack/VStack/VStack';

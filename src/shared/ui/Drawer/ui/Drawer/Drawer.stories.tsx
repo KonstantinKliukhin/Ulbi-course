@@ -2,7 +2,7 @@ import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { Drawer } from './Drawer';
 import { action } from '@storybook/addon-actions';
-import { useBoolState } from '../../../../lib/hooks/utility/useBoolState/useBoolState';
+import { useBoolState } from '../../../../lib/utils/useBoolState/useBoolState';
 import { Button } from '../../../Button/Button';
 
 export default {

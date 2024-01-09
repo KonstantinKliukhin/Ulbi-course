@@ -1,6 +1,6 @@
 import { type ButtonHTMLAttributes, memo } from 'react';
 import cls from './Button.module.scss';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 
 type ButtonTheme =
   | 'clear'

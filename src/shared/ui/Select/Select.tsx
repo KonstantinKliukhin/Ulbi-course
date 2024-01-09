@@ -7,7 +7,7 @@ import {
   useMemo
 } from 'react';
 import cls from './Select.module.scss';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 import { Text } from '../Text/Text';
 import { HStack } from '../Stack/HStack/HStack';
 

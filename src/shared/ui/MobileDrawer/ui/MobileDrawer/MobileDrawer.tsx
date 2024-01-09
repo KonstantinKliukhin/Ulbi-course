@@ -4,10 +4,10 @@ import {
   useMemo
 } from 'react';
 import cls from './MobileDrawer.module.scss';
-import { classNames } from '../../../../lib/classNames/classNames';
+import { classNames } from '../../../../lib/ui/classNames/classNames';
 import { Portal } from '../../../Portal/Portal';
 import { Overlay } from '../../../Overlay/Overlay';
-import { useModal } from '../../../../lib/hooks/ui/useModal/useModal';
+import { useModal } from '../../../../lib/ui/useModal/useModal';
 import { MobileDrawerSheet } from '../MobileDrawerSheet/MobileDrawerSheet';
 import { MobileDrawerDndContext } from '../MobileDrawerDndContext/MobileDrawerDndContext';
 import { DropRegions } from '../DropRegions/DropRegions';

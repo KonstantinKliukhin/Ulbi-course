@@ -6,11 +6,10 @@ import {
 } from '../../selectors/getArticlesState/getArticlesState';
 import { articlesPageActions } from '../../slices/articlesPageSlice';
 import { getArticleViewFromStorage } from '../../../lib/articleStorage/articleStorage';
-import { includes } from 'shared/lib/includes/includes';
+import { includes, addQueryParams } from 'shared/lib';
 import { ArticleSortField, ArticleType } from 'entities/Article';
 import { type SortOrder } from 'shared/types';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
-import { addQueryParams } from 'shared/lib/url/addQueryParameters/addQueryParameters';
 
 export const initArticlesPage =
     createAsyncThunk<Promise<void>, URLSearchParams, ThunkDefaultArg>(

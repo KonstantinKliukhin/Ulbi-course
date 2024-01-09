@@ -8,7 +8,7 @@ import {
   useState
 } from 'react';
 import cls from './Avatar.module.scss';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 import DefaultAvatar from '../../../../public/assets/icons/avatar-200-200.png';
 
 type ImageProps = Omit<

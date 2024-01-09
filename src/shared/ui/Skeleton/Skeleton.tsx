@@ -1,6 +1,6 @@
 import { type CSSProperties, type FC } from 'react';
 import cls from './Skeleton.module.scss';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 
 interface SkeletonProps {
   className?: string;

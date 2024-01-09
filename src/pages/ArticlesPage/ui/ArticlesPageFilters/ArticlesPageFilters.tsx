@@ -4,6 +4,7 @@ import {
   classNames, useAction,
   useActions,
   useAppSelector, useDebounce
+  , useLocalStorage
 } from 'shared/lib';
 import {
   type ArticleSortField,
@@ -22,7 +23,6 @@ import { ArticleViewSelector } from 'features/SelectArticleView';
 import { Card, HStack, Input } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 import { type SortOrder } from 'shared/types';
-import { useLocalStorage } from 'shared/lib/hooks/useLocalstorageState/useLocalstorageState';
 import { LOCAL_STORAGE_ARTICLE_VIEW_KEY } from 'shared/constants';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 

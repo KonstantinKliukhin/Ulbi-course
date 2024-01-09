@@ -1,6 +1,6 @@
 import { type FC, useCallback } from 'react';
 import cls from './Code.module.scss';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 import { Button } from '../Button/Button';
 import CopySvg from '../../../../public/assets/icons/copy-20-20.svg';
 

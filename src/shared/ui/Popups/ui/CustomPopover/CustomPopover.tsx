@@ -3,7 +3,7 @@ import { Popover } from '@headlessui/react';
 import cls from './CustomPopover.module.scss';
 import popupCls from '../../styles/Popup.module.scss';
 import { autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/react-dom';
-import { classNames } from '../../../../lib/classNames/classNames';
+import { classNames } from '../../../../lib/ui/classNames/classNames';
 import { HStack } from '../../../Stack/HStack/HStack';
 
 interface PopoverProps extends PropsWithChildren {

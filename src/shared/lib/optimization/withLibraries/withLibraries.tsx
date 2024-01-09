@@ -4,7 +4,7 @@ import {
   useState
 } from 'react';
 import { Loader } from '../../../ui/Loader/Loader';
-import { pick } from '../../pick/pick';
+import { pick } from '../../utils/pick/pick';
 
 export interface LibrariesRecord {
   dndKitCore?: DndKitCoreType;

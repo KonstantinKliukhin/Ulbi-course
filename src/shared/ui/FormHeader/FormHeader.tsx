@@ -1,6 +1,6 @@
 import { type FC, type ReactNode } from 'react';
 import cls from './FormHeader.module.scss';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 import { Text } from '../Text/Text';
 import { HStack } from '../Stack/HStack/HStack';
 

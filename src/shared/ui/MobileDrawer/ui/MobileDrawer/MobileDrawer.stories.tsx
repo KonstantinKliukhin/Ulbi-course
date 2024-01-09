@@ -3,7 +3,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import { MobileDrawer } from './MobileDrawer';
 import { Button } from '../../../Button/Button';
 import { Text } from '../../../Text/Text';
-import { useBoolState } from '../../../../lib/hooks/utility/useBoolState/useBoolState';
+import { useBoolState } from '../../../../lib/utils/useBoolState/useBoolState';
 
 export default {
   title: 'shared/MobileDrawer',

@@ -1,11 +1,11 @@
 import { type FC, type PropsWithChildren, useMemo } from 'react';
 import cls from './Modal.module.scss';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 import { Portal } from '../Portal/Portal';
-import { stopPropagation } from '../../lib/stopPropagation/stopPropagation';
+import { stopPropagation } from '../../lib/ui/stopPropagation/stopPropagation';
 import { Overlay } from '../Overlay/Overlay';
 import { Flex } from '../Stack/Flex/Flex';
-import { useModal } from '../../lib/hooks/ui/useModal/useModal';
+import { useModal } from '../../lib/ui/useModal/useModal';
 
 interface ModalProps extends PropsWithChildren {
   className?: string;

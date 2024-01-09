@@ -1,12 +1,12 @@
 import React, { memo, type PropsWithChildren, useMemo } from 'react';
 import type { Data } from '@dnd-kit/core/dist/store';
 import cls from './SortableItem.module.scss';
-import { classNames } from '../../../lib/classNames/classNames';
+import { classNames } from '../../../lib/ui/classNames/classNames';
 import {
   type AsyncLibrariesNames,
   withLibraries,
   type WithLibrariesProps
-} from '../../../lib/providers/withLibraries/withLibraries';
+} from '../../../lib/optimization/withLibraries/withLibraries';
 
 const usedLibraries: AsyncLibrariesNames[] = ['dndKitSortable', 'dndKitUtils',];
 

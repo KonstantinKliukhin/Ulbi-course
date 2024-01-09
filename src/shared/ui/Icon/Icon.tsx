@@ -1,5 +1,5 @@
 import React, { type FC } from 'react';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 import cls from './Icon.module.scss';
 
 type IconTheme = 'primary' | 'inverted';

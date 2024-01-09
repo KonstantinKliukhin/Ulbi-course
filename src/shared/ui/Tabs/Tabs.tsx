@@ -1,6 +1,6 @@
 import { memo, type ReactNode, useCallback } from 'react';
 import cls from './Tabs.module.scss';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 import { Card } from '../Card/Card';
 import { Text } from '../Text/Text';
 import { HStack } from '../Stack/HStack/HStack';

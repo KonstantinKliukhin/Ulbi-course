@@ -1,7 +1,7 @@
-import { findIndexById } from '../../../findIndexById/findIndexById';
+import { findIndexById } from '../../utils/findIndexById/findIndexById';
 import type { DragEndEvent } from '@dnd-kit/core';
 import { useCallback } from 'react';
-import { type AsyncLibrariesNames, useLibraries } from '../../../providers/withLibraries/withLibraries';
+import { type AsyncLibrariesNames, useLibraries } from '../../optimization/withLibraries/withLibraries';
 import { useEvent } from '../../optimization/useEvent/useEvent';
 
 export interface UseDragEndCallbackArgs<T extends { id: string | number }> {

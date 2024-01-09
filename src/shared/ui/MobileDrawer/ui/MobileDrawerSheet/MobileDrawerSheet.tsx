@@ -1,5 +1,5 @@
 import { type CSSProperties, memo, type ReactNode, useMemo } from 'react';
-import { classNames } from '../../../../lib/classNames/classNames';
+import { classNames } from '../../../../lib/ui/classNames/classNames';
 
 import { MobileDrawerHeader } from '../MobileDrawerHeader/MobileDrawerHeader';
 
@@ -9,7 +9,7 @@ import {
   type AsyncLibrariesNames,
   withLibraries,
   type WithLibrariesProps
-} from '../../../../lib/providers/withLibraries/withLibraries';
+} from '../../../../lib/optimization/withLibraries/withLibraries';
 
 interface SheetProps extends WithLibrariesProps<typeof usedLibraries> {
   children: ReactNode;

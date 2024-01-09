@@ -14,7 +14,7 @@ import cls from './CustomDndContext.module.scss';
 import {
   type AsyncLibrariesNames, withLibraries,
   type WithLibrariesProps
-} from '../../../lib/providers/withLibraries/withLibraries';
+} from '../../../lib/optimization/withLibraries/withLibraries';
 
 const usedLibraries: AsyncLibrariesNames[] = ['dndKitCore',];
 

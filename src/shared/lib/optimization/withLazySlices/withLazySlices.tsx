@@ -5,8 +5,8 @@ import {
 } from 'app/providers/StoreProvider';
 import { type Reducer } from '@reduxjs/toolkit';
 import { type FC, type ReactNode, useEffect } from 'react';
-import { useAppSelector } from '../../hooks/reduxHooks/useAppSelector';
-import { useAppDispatch } from '../../hooks/reduxHooks/useAppDispatch';
+import { useAppSelector } from '../../state/reduxHooks/useAppSelector';
+import { useAppDispatch } from '../../state/reduxHooks/useAppDispatch';
 import { Loader } from '../../../ui/Loader/Loader';
 
 const getInitSliceAction = (sliceKey: keyof StateSchema) => ({

@@ -1,6 +1,6 @@
 import { memo, type MouseEventHandler, type ReactNode } from 'react';
 import cls from './Text.module.scss';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 
 type TextTheme = 'primary' | 'error';
 

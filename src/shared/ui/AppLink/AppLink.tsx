@@ -1,6 +1,6 @@
 import { type FC, useCallback } from 'react';
 import cls from './AppLink.module.scss';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 import { type LinkProps, NavLink } from 'react-router-dom';
 
 type AppLinkTheme = 'primary' | 'secondary' | 'red' | 'clear';

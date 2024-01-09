@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import cls from './Loader.module.scss';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 
 interface Props {
   centered?: boolean;

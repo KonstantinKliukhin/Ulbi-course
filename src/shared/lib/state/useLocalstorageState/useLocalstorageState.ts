@@ -5,9 +5,9 @@ import {
   useEffect,
   useState
 } from 'react';
-import { parseJSON } from '../../parseJSON/parseJSON';
-import { useEvent } from '../optimization/useEvent/useEvent';
-import { useWindowEvent } from '../ui/useWindowEvent/useWindowEvent';
+import { parseJSON } from '../../utils/parseJSON/parseJSON';
+import { useEvent } from '../../optimization/useEvent/useEvent';
+import { useWindowEvent } from '../../ui/useWindowEvent/useWindowEvent';
 
 type SetValue<T> = Dispatch<SetStateAction<T>>;
 

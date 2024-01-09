@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useEscapeClose } from '../useEscapeClose/useEscapeClose';
-import { useSyntheticMounted } from '../../utility/useSyntheticMounted/useSyntheticMounted';
+import { useSyntheticMounted } from '../../utils/useSyntheticMounted/useSyntheticMounted';
 
 interface UseModalArg {
   open: boolean;

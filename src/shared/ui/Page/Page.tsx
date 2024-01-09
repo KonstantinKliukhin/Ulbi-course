@@ -5,7 +5,7 @@ import {
   type PropsWithChildren
 } from 'react';
 import cls from './Page.module.scss';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 
 interface PageProps extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
   className?: string;

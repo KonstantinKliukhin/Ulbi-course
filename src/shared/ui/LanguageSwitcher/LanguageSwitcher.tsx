@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 import { Button } from '../Button/Button';
 import { useTranslation } from 'react-i18next';
 

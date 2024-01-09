@@ -5,7 +5,7 @@ import {
   useMemo
 } from 'react';
 import cls from './Card.module.scss';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames } from '../../lib/ui/classNames/classNames';
 
 type CardHoverAnimation = 'hover-shadow' | 'hover-scale-small';
 
