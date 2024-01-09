@@ -1,0 +1,33 @@
+.MobileDrawerSheet {
+  position: relative;
+  pointer-events: all;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: var(--max-height);
+  transition: transform 0.2s ease;
+  transform: translate3d(0, calc(100% - 0px + var(--transform, 0px)), 0);
+  background-color: var(--bg-color);
+  will-change: transform;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+
+  &.dragging {
+    transition: none;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 1px;
+    width: 100%;
+    height: 100vh;
+    transform: translateY(100%);
+    background-color: var(--bg-color);
+  }
+
+  &.open {
+    transform: translate3d(0, var(--transform), 0);
+  }
+}

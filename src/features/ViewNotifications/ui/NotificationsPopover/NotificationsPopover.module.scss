@@ -1,6 +1,15 @@
-.notifications {
+.desktopNotifications {
   min-height: 150px;
   max-height: 300px;
   min-width: 300px;
+}
+
+.mobileNotifications {
+  min-height: 150px;
+  max-height: 75vh;
+  min-width: 100%
+}
+
+.desktopNotifications, .mobileNotifications {
   overflow-y: auto;
 }

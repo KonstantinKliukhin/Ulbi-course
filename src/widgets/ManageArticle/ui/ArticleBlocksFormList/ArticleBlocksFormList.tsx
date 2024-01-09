@@ -1,5 +1,10 @@
 import cls from './ArticleBlocksFormList.module.scss';
-import { classNames } from 'shared/lib';
+import {
+  type AsyncLibrariesNames,
+  classNames,
+  withLibraries,
+  type WithLibrariesProps
+} from 'shared/lib';
 import { type ComponentProps, memo } from 'react';
 import {
   Button,
@@ -9,11 +14,10 @@ import {
   Text,
   VStack
 } from 'shared/ui';
-import { rectSortingStrategy, SortableContext } from '@dnd-kit/sortable';
 import { type ArticleBlock, ArticleBlockCard } from 'entities/Article';
 import { useTranslation } from 'react-i18next';
 
-interface ArticleBlocksFormListProps {
+interface ArticleBlocksFormListProps extends WithLibrariesProps<typeof usedLibraries> {
   className?: string;
   dndContextProps: Omit<ComponentProps<typeof CustomDndContext>, 'children'>;
   blocks: ArticleBlock[];
@@ -23,8 +27,11 @@ interface ArticleBlocksFormListProps {
   onBlockAdd: () => void;
 }
 
-export const ArticleBlocksFormList = memo<ArticleBlocksFormListProps>(
+const usedLibraries: AsyncLibrariesNames[] = ['dndKitSortable',];
+
+const ArticleBlocksFormList = memo<ArticleBlocksFormListProps>(
   function ArticleBlocksFormList (props) {
+    const { dndKitSortable, } = props;
     const { t: tGlobal, } = useTranslation();
     const { t, } = useTranslation('article');
 
@@ -44,7 +51,7 @@ export const ArticleBlocksFormList = memo<ArticleBlocksFormListProps>(
         </HStack>
 
         <CustomDndContext {...props.dndContextProps}>
-          <SortableContext items={props.blocks} strategy={rectSortingStrategy}>
+          <dndKitSortable.SortableContext items={props.blocks} strategy={dndKitSortable.rectSortingStrategy}>
             <VStack align="start" yGap={8}>
               {props.blocks.map((block, index) => (
                 <SortableItem
@@ -81,9 +88,15 @@ export const ArticleBlocksFormList = memo<ArticleBlocksFormListProps>(
                 </SortableItem>
               ))}
             </VStack>
-          </SortableContext>
+          </dndKitSortable.SortableContext>
         </CustomDndContext>
       </div>
     );
   }
 );
+
+const WithLibrariesArticleBlocksFormList = withLibraries({
+  libraries: usedLibraries,
+})(ArticleBlocksFormList);
+
+export { WithLibrariesArticleBlocksFormList as ArticleBlocksFormList };

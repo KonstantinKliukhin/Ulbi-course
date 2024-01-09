@@ -1,12 +1,11 @@
 import { type CSSProperties, useMemo } from 'react';
-import { useDrawerContext } from './drawerContext';
-import { type DrawerPosition } from './position';
-
-const DEFAULT_WIDTH_IN_PERCENTAGES = 75;
-const WIDTH_BY_NESTING_MULTIPLIER = 5;
-
-const DEFAULT_HEIGHT_IN_PERCENTAGES = 75;
-const HEIGHT_BY_NESTING_MULTIPLIER = 5;
+import { useDrawerContext } from '../drawerContext/drawerContext';
+import { type DrawerPosition } from '../../types/position';
+import {
+  DEFAULT_HEIGHT_IN_PERCENTAGES,
+  DEFAULT_WIDTH_IN_PERCENTAGES,
+  HEIGHT_BY_NESTING_MULTIPLIER, WIDTH_BY_NESTING_MULTIPLIER
+} from '../../constants/ui';
 
 interface DrawerPositionStyle {
   height?: string;

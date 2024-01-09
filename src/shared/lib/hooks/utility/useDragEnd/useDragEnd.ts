@@ -1,7 +1,8 @@
 import { findIndexById } from '../../../findIndexById/findIndexById';
-import { type DragEndEvent } from '@dnd-kit/core';
-import { arrayMove } from '@dnd-kit/sortable';
+import type { DragEndEvent } from '@dnd-kit/core';
 import { useCallback } from 'react';
+import { type AsyncLibrariesNames, useLibraries } from '../../../providers/withLibraries/withLibraries';
+import { useEvent } from '../../optimization/useEvent/useEvent';
 
 export interface UseDragEndCallbackArgs<T extends { id: string | number }> {
   movedArray: T[];
@@ -9,6 +10,8 @@ export interface UseDragEndCallbackArgs<T extends { id: string | number }> {
   newIndex: number;
   direction: 1 | -1;
 }
+
+const usedLibraries: AsyncLibrariesNames[] = ['dndKitSortable',];
 
 export const useDragEnd = <
   T extends {
@@ -18,19 +21,22 @@ export const useDragEnd = <
     arr: T[],
     callback: (arg: UseDragEndCallbackArgs<T>) => void
   ) => {
+  const dndKitData = useLibraries(usedLibraries);
+  const callbackEvent = useEvent(callback);
+
   return useCallback(
     (e: DragEndEvent) => {
-      if (e.over?.id && e.active.id !== e.over?.id) {
+      if (e.over?.id && e.active.id !== e.over?.id && dndKitData.dndKitSortable) {
         const oldIndex = findIndexById(arr, e.active.id);
         const newIndex = findIndexById(arr, e.over.id);
         if (newIndex === oldIndex) return;
 
         const direction = newIndex > oldIndex ? 1 : -1;
-        const movedArray = arrayMove(arr, oldIndex, newIndex);
+        const movedArray = dndKitData?.dndKitSortable?.arrayMove(arr, oldIndex, newIndex);
 
-        callback({ movedArray, direction, newIndex, oldIndex, });
+        callbackEvent({ movedArray, direction, newIndex, oldIndex, });
       }
     },
-    [callback, arr,]
+    [arr, dndKitData?.dndKitSortable, callbackEvent,]
   );
 };

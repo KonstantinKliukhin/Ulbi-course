@@ -3,20 +3,18 @@ import {
   memo,
   type PropsWithChildren,
   type UIEvent,
-  useCallback,
+  useCallback, useEffect,
   useRef
 } from 'react';
-import { Page } from '../../../../shared/ui/Page/Page';
-import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
+import { Page } from 'shared/ui';
 import {
+  useInfiniteScroll,
   useAppDispatch,
-  useAppSelector, useEvent,
-  useInitialEffect,
+  useAppSelector,
   useThrottle
 } from 'shared/lib';
 import { getUiScrollByPath, UIActions } from 'features/UI';
 import { useLocation } from 'react-router-dom';
-import { type StateSchema } from 'app/providers/StoreProvider';
 import cls from './PageWithInfiniteScroll.module.scss';
 
 interface PageWithInfiniteScrollProps extends PropsWithChildren {
@@ -46,15 +44,15 @@ export const PageWithInfiniteScroll = memo(
         onScrollAchieved: props.onScrollTopReached,
       });
 
-      useInitialEffect(
-        useEvent(() => {
-          if (wrapperRef.current && typeof savedScroll === 'number') {
-            const isScrollFull = wrapperRef.current?.scrollTop === savedScroll;
-            const scrollToApply = isScrollFull ? savedScroll - 20 : savedScroll;
-            wrapperRef.current?.scrollTo({ top: scrollToApply, });
-          }
-        })
-      );
+      useEffect(() => {
+        if (wrapperRef.current && typeof savedScroll === 'number') {
+          const isScrollFull = wrapperRef.current?.scrollTop === savedScroll;
+          const scrollToApply = isScrollFull ? savedScroll - 20 : savedScroll;
+          wrapperRef.current?.scrollTo({ top: scrollToApply, });
+        }
+      }
+      // eslint-disable-next-line
+      , []);
 
       const onScroll = useThrottle(
         useCallback(

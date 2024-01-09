@@ -1,0 +1,7 @@
+.DropRegions {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: 6fr 4fr;
+  pointer-events: none;
+}

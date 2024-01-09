@@ -1,24 +1,24 @@
 import React, { memo, type ReactElement, type ReactNode, useMemo } from 'react';
-import {
-  type CollisionDetection,
-  DndContext,
-  type DragCancelEvent,
-  type DragEndEvent,
-  type DragMoveEvent,
-  type DragOverEvent,
-  DragOverlay,
-  type DragStartEvent,
-  type Modifiers,
-  PointerSensor,
-  type PointerSensorOptions,
-  TouchSensor,
-  type TouchSensorOptions,
-  useSensor,
-  useSensors
+import type {
+  CollisionDetection,
+  DragCancelEvent,
+  DragEndEvent,
+  DragMoveEvent,
+  DragOverEvent,
+  DragStartEvent,
+  Modifiers,
+  PointerSensorOptions,
+  TouchSensorOptions
 } from '@dnd-kit/core';
 import cls from './CustomDndContext.module.scss';
+import {
+  type AsyncLibrariesNames, withLibraries,
+  type WithLibrariesProps
+} from '../../../lib/providers/withLibraries/withLibraries';
 
-interface DraggableContextProps {
+const usedLibraries: AsyncLibrariesNames[] = ['dndKitCore',];
+
+interface DraggableContextProps extends WithLibrariesProps<typeof usedLibraries> {
   onDragStart?: (event: DragStartEvent) => void;
   onDragEnd: (event: DragEndEvent) => void;
   onDragOver?: (event: DragOverEvent) => void;
@@ -41,11 +41,12 @@ const defaultTouchSensorOptions: TouchSensorOptions = {
   activationConstraint: { distance: 8, },
 };
 
-export const CustomDndContext = memo<DraggableContextProps>(
+const CustomDndContext = memo<DraggableContextProps>(
   function CustomDndContext (props) {
-    const sensors = useSensors(
-      useSensor(
-        PointerSensor,
+    const { dndKitCore, } = props;
+    const sensors = dndKitCore.useSensors(
+      dndKitCore.useSensor(
+        dndKitCore.PointerSensor,
         useMemo(
           () => ({
             ...defaultPointerSensorOptions,
@@ -54,8 +55,8 @@ export const CustomDndContext = memo<DraggableContextProps>(
           [props.pointerSensorOptions,]
         )
       ),
-      useSensor(
-        TouchSensor,
+      dndKitCore.useSensor(
+        dndKitCore.TouchSensor,
         useMemo(
           () => ({
             ...defaultTouchSensorOptions,
@@ -67,7 +68,7 @@ export const CustomDndContext = memo<DraggableContextProps>(
     );
 
     return (
-      <DndContext
+      <dndKitCore.DndContext
         onDragOver={props.onDragOver}
         collisionDetection={props.collisionDetection}
         sensors={sensors}
@@ -79,16 +80,22 @@ export const CustomDndContext = memo<DraggableContextProps>(
         {props.children}
         {props.overlayChildren
           ? (
-            <DragOverlay
+            <dndKitCore.DragOverlay
               modifiers={props.overlayModifiers}
               zIndex={1000}
               className={cls.overlay}
             >
               {props.overlayChildren}
-            </DragOverlay>
+            </dndKitCore.DragOverlay>
             )
           : null}
-      </DndContext>
+      </dndKitCore.DndContext>
     );
   }
 );
+
+const WithDndKitCustomDndContext = withLibraries({
+  libraries: usedLibraries,
+})(CustomDndContext);
+
+export { WithDndKitCustomDndContext as CustomDndContext };

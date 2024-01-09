@@ -1,0 +1,7 @@
+export const DEFAULT_Z_INDEX = 10;
+
+export const DEFAULT_WIDTH_IN_PERCENTAGES = 75;
+export const WIDTH_BY_NESTING_MULTIPLIER = 5;
+
+export const DEFAULT_HEIGHT_IN_PERCENTAGES = 75;
+export const HEIGHT_BY_NESTING_MULTIPLIER = 5;

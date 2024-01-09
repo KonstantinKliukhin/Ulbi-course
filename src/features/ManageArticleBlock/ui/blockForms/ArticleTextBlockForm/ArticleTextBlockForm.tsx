@@ -1,6 +1,12 @@
 import { memo, useCallback } from 'react';
 import cls from './ArticleTextBlockForm.module.scss';
-import { classNames, useDragEnd } from 'shared/lib';
+import {
+  type AsyncLibrariesNames,
+  classNames,
+  useDragEnd,
+  withLibraries,
+  type WithLibrariesProps
+} from 'shared/lib';
 import {
   Button,
   CustomDndContext,
@@ -14,14 +20,15 @@ import { useTranslation } from 'react-i18next';
 import { type Control, useFieldArray } from 'react-hook-form';
 import { type ArticleBlock } from 'entities/Article';
 import { v4 as uuidV4 } from 'uuid';
-import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
-import { closestCorners, type PointerSensorOptions } from '@dnd-kit/core';
+import type { PointerSensorOptions } from '@dnd-kit/core';
 import { NOT_DRAGGRABLE_PROPS } from 'shared/constants';
 
-interface ArticleTextBlockFormProps {
+interface ArticleTextBlockFormProps extends WithLibrariesProps<typeof usedLibraries> {
   className?: string;
   control: Control<ArticleBlock>;
 }
+
+const usedLibraries: AsyncLibrariesNames[] = ['dndKitCore', 'dndKitSortable',];
 
 const getNewParagraph = () => ({
   id: uuidV4(),
@@ -34,6 +41,7 @@ const pointerSensorOptions: PointerSensorOptions = {
 
 const ArticleTextBlockForm = memo<ArticleTextBlockFormProps>(
   function ArticleTextBlockForm (props) {
+    const { dndKitCore, dndKitSortable, } = props;
     const { t: tGlobal, } = useTranslation();
     const { t, } = useTranslation('article');
 
@@ -83,10 +91,13 @@ const ArticleTextBlockForm = memo<ArticleTextBlockFormProps>(
         <CustomDndContext
           onDragEnd={onParagraphDragEnd}
           pointerSensorOptions={pointerSensorOptions}
-          collisionDetection={closestCorners}
+          collisionDetection={dndKitCore.closestCorners}
         >
           <VStack yGap={16} align="stretch">
-            <SortableContext items={paragraphs} strategy={verticalListSortingStrategy}>
+            <dndKitSortable.SortableContext
+              items={paragraphs}
+              strategy={dndKitSortable.verticalListSortingStrategy}
+            >
               {paragraphs.map((paragraph, index) => (
                 <SortableItem
                   id={paragraph.id}
@@ -112,7 +123,7 @@ const ArticleTextBlockForm = memo<ArticleTextBlockFormProps>(
                   />
                 </SortableItem>
               ))}
-            </SortableContext>
+            </dndKitSortable.SortableContext>
           </VStack>
         </CustomDndContext>
       </div>
@@ -120,4 +131,6 @@ const ArticleTextBlockForm = memo<ArticleTextBlockFormProps>(
   }
 );
 
-export default ArticleTextBlockForm;
+export default withLibraries({
+  libraries: usedLibraries,
+})(ArticleTextBlockForm);

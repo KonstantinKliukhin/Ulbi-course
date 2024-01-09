@@ -18,12 +18,6 @@ export { useEscapeClose } from './hooks/ui/useEscapeClose/useEscapeClose';
 export { useSyntheticMounted } from './hooks/utility/useSyntheticMounted/useSyntheticMounted';
 export { useThrottle } from './hooks/optimization/useThrottle/useThrottle';
 export { withLazySlices } from './hocs/withLazySlices/withLazySlices';
-export {
-  withLoading,
-  type WithLoadingProps
-} from './hocs/withLoading/withLoading';
-export { withError, type WithErrorProps } from './hocs/withError/withError';
-export { withAsync, type WithAsyncProps } from './hocs/withAsync/withAsync';
 export { useYupValidationResolver } from './hooks/useYupValidationResolver/useYupValidationResolver';
 export { useHover } from './hooks/ui/useHover/useHover';
 export { useIsMounted } from './hooks/utility/useIsMounted/useIsMounted';
@@ -36,3 +30,4 @@ export { omit } from './omit/omit';
 export { normalizeRtkError } from 'shared/lib/error/normalizeRtkError/normalizeRtkError';
 export { mockFn } from './mockFn/mockFn';
 export { ApiError } from './error/ApiError/ApiError';
+export { withLibraries, useLibraries, type WithLibrariesProps, type AsyncLibrariesNames, type LibrariesRecord } from './providers/withLibraries/withLibraries';

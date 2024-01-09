@@ -1,20 +1,28 @@
 import React, { memo, type PropsWithChildren, useMemo } from 'react';
-import { useSortable } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
-import { type Data } from '@dnd-kit/core/dist/store';
+import type { Data } from '@dnd-kit/core/dist/store';
 import cls from './SortableItem.module.scss';
 import { classNames } from '../../../lib/classNames/classNames';
+import {
+  type AsyncLibrariesNames,
+  withLibraries,
+  type WithLibrariesProps
+} from '../../../lib/providers/withLibraries/withLibraries';
 
-type SortableItemProps = PropsWithChildren & {
+const usedLibraries: AsyncLibrariesNames[] = ['dndKitSortable', 'dndKitUtils',];
+
+interface SortableItemProps extends PropsWithChildren, WithLibrariesProps<typeof usedLibraries> {
   draggingClass?: string;
   defaultClass?: string;
   id: string | number;
   data?: Data;
   disabled?: boolean;
-};
-export const SortableItem = memo<SortableItemProps>(function SortableItem (
+}
+
+const SortableItem = memo<SortableItemProps>(function SortableItem (
   props
 ) {
+  const { dndKitUtils, dndKitSortable, } = props;
+
   const {
     isDragging,
     attributes,
@@ -22,7 +30,7 @@ export const SortableItem = memo<SortableItemProps>(function SortableItem (
     setNodeRef,
     transition,
     transform,
-  } = useSortable({
+  } = dndKitSortable.useSortable({
     id: props.id,
     data: props.data,
     disabled: props.disabled,
@@ -38,10 +46,10 @@ export const SortableItem = memo<SortableItemProps>(function SortableItem (
     }
 
     return {
-      transform: CSS.Transform.toString(transform),
+      transform: dndKitUtils.CSS.Transform.toString(transform),
       transition: transition || undefined,
     };
-  }, [transform, transition,]);
+  }, [dndKitUtils.CSS.Transform, transform, transition,]);
 
   return (
     <div
@@ -57,3 +65,9 @@ export const SortableItem = memo<SortableItemProps>(function SortableItem (
     </div>
   );
 });
+
+const WithLibrariesSortableItem = withLibraries({
+  libraries: usedLibraries,
+})(SortableItem);
+
+export { WithLibrariesSortableItem as SortableItem };

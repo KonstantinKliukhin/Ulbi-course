@@ -30,12 +30,13 @@ export default function buildPlugins (
     }),
   ];
 
-  plugins.push(new CircularDependencyPlugin({
-    exclude: /node_modules/,
-    failOnError: true,
-  }));
+  // plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: true, }));
 
   if (options.isDev) {
+    plugins.push(new CircularDependencyPlugin({
+      exclude: /node_modules/,
+      failOnError: true,
+    }));
     plugins.push(new webpack.HotModuleReplacementPlugin());
     plugins.push(new ReactRefreshPlugin());
     plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false, }));

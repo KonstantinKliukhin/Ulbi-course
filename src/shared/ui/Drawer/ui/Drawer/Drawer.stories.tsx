@@ -2,6 +2,8 @@ import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { Drawer } from './Drawer';
 import { action } from '@storybook/addon-actions';
+import { useBoolState } from '../../../../lib/hooks/utility/useBoolState/useBoolState';
+import { Button } from '../../../Button/Button';
 
 export default {
   title: 'shared/Drawer',
@@ -10,34 +12,37 @@ export default {
 
 type DrawerStory = StoryObj<typeof Drawer>;
 
+type ExampleProps = Omit<ComponentProps<typeof Drawer>, 'open' | 'onClose'>;
+const DrawerExample = (props: ExampleProps) => {
+  const drawerState = useBoolState();
+
+  return (
+    <div style={{ padding: 40, }}>
+      <Button onClick={drawerState.toggle}>{drawerState.boolState ? 'close' : 'open'}</Button>
+      <Drawer {...props} open={drawerState.boolState} onClose={drawerState.disable} />
+    </div>
+  );
+};
+
 export const Default: DrawerStory = {
   args: {
-    open: true,
-    onClose: action('onClose'),
-    children:
-      'Lorem Lorem Lorem  Lorem Lorem  Lorem  Lorem Lorem  Lorem  Lorem  Lorem Lorem  Lorem Lorem  Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem ',
+    children: 'Lorem Lorem Lorem  Lorem Lorem  Lorem  Lorem Lorem  Lorem  Lorem  Lorem Lorem  Lorem Lorem  Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem ',
   },
+  render: DrawerExample,
 };
 
 export const Nested: DrawerStory = {
   args: {
-    open: true,
-    onClose: action('onClose'),
     children: (
-      <>
-        Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
-        Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
-        Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
-        Lorem Lorem Lorem Lorem Lorem Lorem
-        <Drawer open={true} onClose={action('nested: Onclose')}>
-          Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
-          Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
-          Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
-          Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
-        </Drawer>
-      </>
+      <DrawerExample>
+        Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
+        Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
+        Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
+        Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
+      </DrawerExample>
     ),
   },
+  render: DrawerExample,
 };
 
 export const Top: DrawerStory = {
@@ -52,30 +57,27 @@ export const Top: DrawerStory = {
 
 export const Right: DrawerStory = {
   args: {
-    open: true,
     position: 'right',
-    onClose: action('onClose'),
     children:
       'Lorem Lorem Lorem  Lorem Lorem  Lorem  Lorem Lorem  Lorem  Lorem  Lorem Lorem  Lorem Lorem  Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem ',
   },
+  render: DrawerExample,
 };
 
 export const Bottom: DrawerStory = {
   args: {
-    open: true,
     position: 'bottom',
-    onClose: action('onClose'),
     children:
       'Lorem Lorem Lorem  Lorem Lorem  Lorem  Lorem Lorem  Lorem  Lorem  Lorem Lorem  Lorem Lorem  Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem ',
   },
+  render: DrawerExample,
 };
 
 export const Left: DrawerStory = {
   args: {
-    open: true,
     position: 'left',
-    onClose: action('onClose'),
     children:
       'Lorem Lorem Lorem  Lorem Lorem  Lorem  Lorem Lorem  Lorem  Lorem  Lorem Lorem  Lorem Lorem  Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem ',
   },
+  render: DrawerExample,
 };
