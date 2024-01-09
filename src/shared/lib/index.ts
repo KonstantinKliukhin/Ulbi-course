@@ -33,3 +33,4 @@ export { ApiError } from './error/ApiError/ApiError';
 export { withLibraries, useLibraries, type WithLibrariesProps, type AsyncLibrariesNames, type LibrariesRecord } from './optimization/withLibraries/withLibraries';
 export { pick } from './utils/pick/pick';
 export { includes } from './utils/includes/includes';
+export { parseJSON } from './utils/parseJSON/parseJSON';

@@ -1,12 +1,13 @@
 import 'shared/config/i18n/i18n';
+import './styles/index.scss';
 import { type FC } from 'react';
 import { useInitUser } from 'entities/User';
-import { ErrorBoundary } from 'app/providers/ErrorBoundary';
-import { ThemeProvider } from 'app/providers/ThemeProvider';
-import { RootLayout } from 'app/layout';
+import { ErrorBoundary } from './providers/ErrorBoundary';
+import { ThemeProvider } from './providers/ThemeProvider';
+import { RootLayout } from './layout';
 import { Outlet, RouterProvider } from 'react-router-dom';
-import { StoreProvider } from 'app/providers/StoreProvider';
-import { createAppRouter } from 'app/router';
+import { StoreProvider } from './providers/StoreProvider';
+import { createAppRouter } from './router';
 
 const App: FC = () => {
   useInitUser();
