@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_USER_KEY } from 'shared/constants';
+import { LOCAL_STORAGE_USER_KEY } from '@/shared/constants';
 import { useDispatch } from 'react-redux';
 import { useCallback } from 'react';
 import { userActions } from '../../slice/userSlice';

@@ -1,12 +1,12 @@
 import { memo, type ReactNode, useMemo } from 'react';
 import cls from './ArticleDetailsPageHeader.module.scss';
-import { classNames, useBoolState } from 'shared/lib';
+import { classNames, useBoolState } from '@/shared/lib';
 import { Link } from 'react-router-dom';
-import { RoutePath } from 'shared/config';
-import { Button, HStack } from 'shared/ui';
+import { RoutePath } from '@/shared/config';
+import { Button, HStack } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
-import { type Article } from 'entities/Article';
-import { ManageArticleFlyout } from 'widgets/ManageArticle';
+import { type Article } from '@/entities/Article';
+import { ManageArticleFlyout } from '@/widgets/ManageArticle';
 import { useGetCanEditArticle } from '../../model/hooks/useCanEditArticle/useCanEditArticle';
 
 interface ArticleDetailsPageHeaderProps {

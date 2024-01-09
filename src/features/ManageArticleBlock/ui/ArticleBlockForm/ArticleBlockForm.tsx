@@ -1,12 +1,12 @@
 import { memo } from 'react';
-import { Button, FormCustomListBox, FormHeader } from 'shared/ui';
+import { Button, FormCustomListBox, FormHeader } from '@/shared/ui';
 import { ArticleBlockFormPicker } from '../blockForms/ArticleBlockFormPicker/ArticleBlockFormPicker';
 import { useTranslation } from 'react-i18next';
 import {
   type ArticleBlock,
   type ArticleBlockType,
   useArticleBlockTypesSelectOptions
-} from 'entities/Article';
+} from '@/entities/Article';
 import { type Control } from 'react-hook-form';
 import { type ArticleBlockFormType } from '../../model/types/articleBlockForm';
 

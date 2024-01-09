@@ -1,12 +1,12 @@
 import { memo } from 'react';
 import cls from './Navbar.module.scss';
-import { classNames, useAppSelector, useBoolState } from 'shared/lib';
-import { Button, HStack } from 'shared/ui';
+import { classNames, useAppSelector, useBoolState } from '@/shared/lib';
+import { Button, HStack } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
-import { LoginModal } from 'features/AuthByUsername';
-import { getUserAuthData } from 'entities/User';
-import { NotificationsPopover } from 'features/ViewNotifications';
-import { AvatarDropdown } from 'features/ViewAvatarDropdown';
+import { LoginModal } from '@/features/AuthByUsername';
+import { getUserAuthData } from '@/entities/User';
+import { NotificationsPopover } from '@/features/ViewNotifications';
+import { AvatarDropdown } from '@/features/ViewAvatarDropdown';
 
 interface NavbarProps {
   className?: string;

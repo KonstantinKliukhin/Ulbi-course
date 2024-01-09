@@ -1,4 +1,4 @@
-import { type User } from 'entities/User/@x/article';
+import { type User } from '@/entities/User/@x/article';
 
 export enum ArticleBlockType {
   CODE = 'CODE',

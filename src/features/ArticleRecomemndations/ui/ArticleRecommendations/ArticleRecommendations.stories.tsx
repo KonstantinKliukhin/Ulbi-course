@@ -1,8 +1,8 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { ArticleRecommendations } from './ArticleRecommendations';
-import { mockedArticles } from 'shared/mocks';
-import { API_ROUTES } from 'shared/api';
+import { mockedArticles } from '@/shared/mocks';
+import { API_ROUTES } from '@/shared/api';
 
 export default {
   title: 'features/ArticleRecommendations/ArticleRecommendations',

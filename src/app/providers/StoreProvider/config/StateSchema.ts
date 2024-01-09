@@ -1,6 +1,6 @@
-import { type CounterSchema } from 'entities/Counter';
-import { type UserSchema } from 'entities/User';
-import { type LoginSchema } from 'features/AuthByUsername';
+import { type CounterSchema } from '@/entities/Counter';
+import { type UserSchema } from '@/entities/User';
+import { type LoginSchema } from '@/features/AuthByUsername';
 import {
   type AnyAction,
   type CombinedState,
@@ -8,11 +8,11 @@ import {
   type Reducer,
   type ReducersMapObject
 } from '@reduxjs/toolkit';
-import { type ArticlesPageSchema } from 'pages/ArticlesPage';
-import { type UISchema } from 'features/UI';
-import { type ManageArticleSchema } from 'widgets/ManageArticle';
-import { type $rtkApi } from 'shared/api';
-import { type ProfilePageSchema } from 'pages/ProfilePage';
+import { type ArticlesPageSchema } from '@/pages/ArticlesPage';
+import { type UISchema } from '@/features/UI';
+import { type ManageArticleSchema } from '@/widgets/ManageArticle';
+import { type $rtkApi } from '@/shared/api';
+import { type ProfilePageSchema } from '@/pages/ProfilePage';
 
 export interface StateSchema {
   [$rtkApi.reducerPath]: ReturnType<typeof $rtkApi.reducer>;

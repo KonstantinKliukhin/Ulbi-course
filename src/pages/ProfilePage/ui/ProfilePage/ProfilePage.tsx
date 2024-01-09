@@ -2,12 +2,12 @@ import { type FC } from 'react';
 import {
   useAppSelector,
   withLazySlices
-} from 'shared/lib';
+} from '@/shared/lib';
 
 import { ProfilePageHeader } from '../ProfilePageHeader/ProfilePageHeader';
-import { EditableProfile } from 'features/EditableProfile';
+import { EditableProfile } from '@/features/EditableProfile';
 import { useParams } from 'react-router-dom';
-import { Page, Text } from 'shared/ui';
+import { Page, Text } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { profilePageReducer } from '../../model/slice/profilePageSlice';

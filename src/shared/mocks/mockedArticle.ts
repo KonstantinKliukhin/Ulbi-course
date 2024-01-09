@@ -5,9 +5,9 @@ import {
   type ArticleImageBlock,
   type ArticleTextBlock,
   ArticleType
-} from 'entities/Article';
+} from '@/entities/Article';
 import { mockedUser } from './mockedUser';
-import { type ArticleFormType } from 'widgets/ManageArticle';
+import { type ArticleFormType } from '@/widgets/ManageArticle';
 
 export const mockedArticle: Article = {
   id: '1',

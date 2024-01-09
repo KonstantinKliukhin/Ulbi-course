@@ -2,7 +2,7 @@ import {
   ArticleSortField,
   ArticleType,
   ArticleView
-} from 'entities/Article';
+} from '@/entities/Article';
 import { articlesAdapter } from '../../adapters/articlesAdapter';
 
 export const getArticlesState = articlesAdapter.getSelectors<StateSchema>(

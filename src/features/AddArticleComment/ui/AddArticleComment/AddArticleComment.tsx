@@ -1,12 +1,12 @@
 import { memo, useCallback } from 'react';
-import { AddCommentForm } from 'entities/Comment';
-import { type RtkError } from 'shared/types';
+import { AddCommentForm } from '@/entities/Comment';
+import { type RtkError } from '@/shared/types';
 import { FormProvider } from 'react-hook-form';
 import { useAddArticleCommentForm } from '../../model/hooks/useAddArticleCommentForm/useAddArticleCommentForm';
 import { type AddArticleCommentForm } from '../../model/types/addArticleCommentForm';
-import { useAppSelector } from 'shared/lib';
-import { getUserAuthData } from 'entities/User';
-import { useAddArticleCommentMutation } from 'entities/Article';
+import { useAppSelector } from '@/shared/lib';
+import { getUserAuthData } from '@/entities/User';
+import { useAddArticleCommentMutation } from '@/entities/Article';
 
 interface AddArticleCommentProps {
   className?: string;

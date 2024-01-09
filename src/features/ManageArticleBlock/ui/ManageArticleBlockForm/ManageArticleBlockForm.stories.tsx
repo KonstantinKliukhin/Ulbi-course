@@ -1,7 +1,7 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import ManageArticleBlockForm from './ManageArticleBlockForm';
-import { mockedArticleTextBlock } from 'shared/mocks';
+import { mockedArticleTextBlock } from '@/shared/mocks';
 import { action } from '@storybook/addon-actions';
 
 export default {

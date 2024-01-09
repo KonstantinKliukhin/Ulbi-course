@@ -1,6 +1,6 @@
-import { $rtkApi, API_ROUTES } from 'shared/api';
-import { type Comment, createOptimisticComment } from 'entities/Comment/@x/article';
-import { getUserAuthData } from 'entities/User/@x/article';
+import { $rtkApi, API_ROUTES } from '@/shared/api';
+import { type Comment, createOptimisticComment } from '@/entities/Comment/@x/article';
+import { getUserAuthData } from '@/entities/User/@x/article';
 
 interface GetArticleCommentsArg {
   articleId: string;

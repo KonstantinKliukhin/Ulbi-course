@@ -1,10 +1,10 @@
 import { type FC, memo } from 'react';
 import cls from './ProfileCard.module.scss';
-import { classNames } from 'shared/lib';
+import { classNames } from '@/shared/lib';
 import { useTranslation } from 'react-i18next';
-import { AsyncContainer, Avatar, FormCustomListBox, FormInput, Loader, Text, VStack } from 'shared/ui';
-import { CURRENCY_OPTIONS } from 'entities/Currency/@x/profile';
-import { COUNTRY_OPTIONS } from 'entities/Country/@x/profile';
+import { AsyncContainer, Avatar, FormCustomListBox, FormInput, Loader, Text, VStack } from '@/shared/ui';
+import { CURRENCY_OPTIONS } from '@/entities/Currency/@x/profile';
+import { COUNTRY_OPTIONS } from '@/entities/Country/@x/profile';
 import { type Profile } from '../../model/types/profile';
 
 interface ProfileCardProps {

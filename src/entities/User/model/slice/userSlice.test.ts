@@ -1,6 +1,6 @@
 import { type UserSchema } from '../types/user';
 import { userActions, userReducer } from './userSlice';
-import { mockedUser } from 'shared/mocks';
+import { mockedUser } from '@/shared/mocks';
 
 describe('userSlice', () => {
   test('setAuthData', () => {

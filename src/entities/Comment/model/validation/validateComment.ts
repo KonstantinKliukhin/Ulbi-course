@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { COMMON_VALIDATION_ERRORS } from 'shared/constants';
+import { COMMON_VALIDATION_ERRORS } from '@/shared/constants';
 
 export const validateComment = () =>
   Yup.object().shape({

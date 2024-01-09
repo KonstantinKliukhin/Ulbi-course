@@ -1,12 +1,12 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import ProfilePage from './ProfilePage';
-import { StoreDecorator } from 'shared/config/storybook/storeDecorator/storeDecorator';
-import { mockedProfile, mockedUser } from 'shared/mocks';
+import { StoreDecorator } from '@/shared/config/storybook/storeDecorator/storeDecorator';
+import { mockedProfile, mockedUser } from '@/shared/mocks';
 import { profilePageReducer } from '../../model/slice/profilePageSlice';
 import { reactRouterParameters } from 'storybook-addon-react-router-v6';
-import { RoutePath } from 'shared/config';
-import { API_ROUTES } from 'shared/api';
+import { RoutePath } from '@/shared/config';
+import { API_ROUTES } from '@/shared/api';
 
 export default {
   title: 'pages/ProfilePage',

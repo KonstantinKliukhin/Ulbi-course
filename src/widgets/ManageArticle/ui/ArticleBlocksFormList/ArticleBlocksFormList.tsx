@@ -4,7 +4,7 @@ import {
   classNames,
   withLibraries,
   type WithLibrariesProps
-} from 'shared/lib';
+} from '@/shared/lib';
 import { type ComponentProps, memo } from 'react';
 import {
   Button,
@@ -13,8 +13,8 @@ import {
   SortableItem,
   Text,
   VStack
-} from 'shared/ui';
-import { type ArticleBlock, ArticleBlockCard } from 'entities/Article';
+} from '@/shared/ui';
+import { type ArticleBlock, ArticleBlockCard } from '@/entities/Article';
 import { useTranslation } from 'react-i18next';
 
 interface ArticleBlocksFormListProps extends WithLibrariesProps<typeof usedLibraries> {

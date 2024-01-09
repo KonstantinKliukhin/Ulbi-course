@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { LOCAL_STORAGE_USER_KEY } from 'shared/constants';
+import { LOCAL_STORAGE_USER_KEY } from '@/shared/constants';
 import { userActions } from '../../slice/userSlice';
 import { type User } from '../../types/user';
-import { parseJSON } from 'shared/lib';
+import { parseJSON } from '@/shared/lib';
 
 export const useInitUser = () => {
   const dispatch = useDispatch();

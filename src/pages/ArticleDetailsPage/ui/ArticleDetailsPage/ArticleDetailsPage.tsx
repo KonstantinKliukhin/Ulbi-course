@@ -1,13 +1,13 @@
 import { type FC } from 'react';
-import { ArticleDetails, useGetArticleByIdQuery } from 'entities/Article';
+import { ArticleDetails, useGetArticleByIdQuery } from '@/entities/Article';
 import { useParams } from 'react-router-dom';
 import { ArticleNotFound } from '../ArticleNotFound/ArticleNotFound';
-import { Page } from 'shared/ui';
-import { ArticleRecommendations } from 'features/ArticleRecomemndations';
+import { Page } from '@/shared/ui';
+import { ArticleRecommendations } from '@/features/ArticleRecomemndations';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
-import { type RtkError } from 'shared/types';
+import { type RtkError } from '@/shared/types';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
-import { useAddArticleView } from 'features/AddArticleView';
+import { useAddArticleView } from '@/features/AddArticleView';
 
 const ArticleDetailsPage: FC = () => {
   const params = useParams<{ id: string }>();

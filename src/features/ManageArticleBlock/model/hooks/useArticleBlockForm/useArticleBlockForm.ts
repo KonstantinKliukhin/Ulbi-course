@@ -1,7 +1,7 @@
-import { type ArticleBlock, ArticleBlockType } from 'entities/Article';
+import { type ArticleBlock, ArticleBlockType } from '@/entities/Article';
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
-import { useYupValidationResolver } from 'shared/lib';
+import { useYupValidationResolver } from '@/shared/lib';
 import { validateArticleBlock } from '../../validation/validateArticleBlock/validateArticleBlock';
 import { type ArticleBlockFormType } from '../../types/articleBlockForm';
 import { v4 as uuidV4 } from 'uuid';

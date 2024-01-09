@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { Button } from 'shared/ui';
+import { Button } from '@/shared/ui';
 import { useDispatch, useSelector } from 'react-redux';
 import { counterActions } from '../../model/slice/counterSlice';
 import { getCounterValue } from '../../model/selectors/getCounterValue/getCounterValue';

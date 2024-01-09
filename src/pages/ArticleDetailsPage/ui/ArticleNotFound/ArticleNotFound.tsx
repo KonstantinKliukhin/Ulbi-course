@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { Page, Text } from 'shared/ui';
+import { Page, Text } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
 
 export const ArticleNotFound: FC = () => {

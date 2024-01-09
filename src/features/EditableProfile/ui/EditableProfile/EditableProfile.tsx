@@ -1,10 +1,10 @@
 import { memo, useCallback } from 'react';
 import {
   type Profile, ProfileCard, useGetProfileByIdQuery, useUpdateProfileMutation
-} from 'entities/Profile';
+} from '@/entities/Profile';
 import { useProfileForm } from '../../model/hooks/useProfileForm/useProfileForm';
 import { FormProvider } from 'react-hook-form';
-import { type RtkError } from 'shared/types';
+import { type RtkError } from '@/shared/types';
 
 interface EditProfileFormProviderProps {
   className?: string;

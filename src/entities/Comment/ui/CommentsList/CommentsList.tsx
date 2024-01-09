@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import { type Comment } from '../../model/types/comment';
-import { AsyncContainer, Text, VStack } from 'shared/ui';
+import { AsyncContainer, Text, VStack } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
 import { CommentCard } from '../CommentCard/CommentCard';
 import { CommentsListSkeleton } from './CommentsListSkeleton';

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { COMMON_API_ERRORS } from 'shared/constants';
-import { type Article, articleApi } from 'entities/Article';
+import { COMMON_API_ERRORS } from '@/shared/constants';
+import { type Article, articleApi } from '@/entities/Article';
 import {
   getArticlesLimit,
   getArticlesOrder,
@@ -9,7 +9,7 @@ import {
   getArticlesSort,
   getArticlesType
 } from '../../selectors/getArticlesState/getArticlesState';
-import { addQueryParams } from 'shared/lib';
+import { addQueryParams } from '@/shared/lib';
 
 interface FetchArticlesListExtra extends ThunkDefaultArg {
   rejectValue: string;

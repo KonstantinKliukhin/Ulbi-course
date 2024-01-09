@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useYupValidationResolver } from 'shared/lib';
+import { useYupValidationResolver } from '@/shared/lib';
 import { validateLoginData } from '../../validation/validateLoginData/validateLoginData';
 
 export const useLoginForm = () => {

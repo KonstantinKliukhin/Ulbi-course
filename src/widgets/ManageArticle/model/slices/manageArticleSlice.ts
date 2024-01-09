@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { type ManageArticleSchema } from '../types/manageArticleSchema';
-import { type ArticleBlock } from 'entities/Article';
+import { type ArticleBlock } from '@/entities/Article';
 
 const initialState: ManageArticleSchema = {
   blockFormMode: 'none',

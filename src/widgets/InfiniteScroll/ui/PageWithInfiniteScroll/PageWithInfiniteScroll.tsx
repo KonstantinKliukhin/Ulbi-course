@@ -6,14 +6,14 @@ import {
   useCallback, useEffect,
   useRef
 } from 'react';
-import { Page } from 'shared/ui';
+import { Page } from '@/shared/ui';
 import {
   useInfiniteScroll,
   useAppDispatch,
   useAppSelector,
   useThrottle
-} from 'shared/lib';
-import { getUiScrollByPath, UIActions } from 'features/UI';
+} from '@/shared/lib';
+import { getUiScrollByPath, UIActions } from '@/features/UI';
 import { useLocation } from 'react-router-dom';
 import cls from './PageWithInfiniteScroll.module.scss';
 

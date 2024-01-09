@@ -1,7 +1,7 @@
 import { type FC } from 'react';
-import { Card, Skeleton } from 'shared/ui';
+import { Card, Skeleton } from '@/shared/ui';
 import cls from './ArticleListItemSmall.module.scss';
-import { classNames } from 'shared/lib';
+import { classNames } from '@/shared/lib';
 
 interface ArticleListItemSmallSkeletonProps {
   className?: string;

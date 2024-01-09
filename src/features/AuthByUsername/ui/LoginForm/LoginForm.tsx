@@ -5,9 +5,9 @@ import {
   useAppDispatch,
   useAppSelector,
   withLazySlices
-} from 'shared/lib';
+} from '@/shared/lib';
 import { useTranslation } from 'react-i18next';
-import { Button, FormInput, Text, VStack } from 'shared/ui';
+import { Button, FormInput, Text, VStack } from '@/shared/ui';
 import { loginReducer } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';

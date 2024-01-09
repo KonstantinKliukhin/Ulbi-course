@@ -1,6 +1,6 @@
-import { type Article } from 'entities/Article';
-import { getUserAuthData } from 'entities/User';
-import { useAppSelector } from 'shared/lib';
+import { type Article } from '@/entities/Article';
+import { getUserAuthData } from '@/entities/User';
+import { useAppSelector } from '@/shared/lib';
 import { useMemo } from 'react';
 
 export const useGetCanEditArticle = (article?: Article) => {

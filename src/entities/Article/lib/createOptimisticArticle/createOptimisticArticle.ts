@@ -1,5 +1,5 @@
 import { type Article } from '../../model/types/article';
-import { type User } from 'entities/User';
+import { type User } from '@/entities/User';
 import { type ArticleFormType } from '../../../../widgets/ManageArticle/model/types/articleForm';
 import { v4 as uuidV4 } from 'uuid';
 

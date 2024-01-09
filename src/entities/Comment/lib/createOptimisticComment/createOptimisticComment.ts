@@ -1,4 +1,4 @@
-import { type User } from 'entities/User/@x/comment';
+import { type User } from '@/entities/User/@x/comment';
 import { v4 as uuidV4 } from 'uuid';
 
 interface CreateOptimisticCommentArg {

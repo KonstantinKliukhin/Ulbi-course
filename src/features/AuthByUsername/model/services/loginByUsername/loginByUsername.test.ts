@@ -1,11 +1,11 @@
 import { loginByUsername } from './loginByUsername';
-import { userActions } from 'entities/User';
-import { TestApiAsyncThunk } from 'shared/config/tests/TestAsyncThunk';
-import { createTestServer } from 'shared/config/tests/createTestServer';
+import { userActions } from '@/entities/User';
+import { TestApiAsyncThunk } from '@/shared/config/tests/TestAsyncThunk';
+import { createTestServer } from '@/shared/config/tests/createTestServer';
 import { http, HttpResponse } from 'msw';
-import { mockedUser } from 'shared/mocks';
+import { mockedUser } from '@/shared/mocks';
 import { authByUsernameApi } from '../../../api/authByUsernameApi/authByUsernameApi';
-import { API_ROUTES } from 'shared/api';
+import { API_ROUTES } from '@/shared/api';
 
 const server = createTestServer();
 

@@ -1,7 +1,7 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { CommentCard } from './CommentCard';
-import { mockedComment } from 'shared/mocks';
+import { mockedComment } from '@/shared/mocks';
 
 export default {
   title: 'entities/Comment/CommentCard',

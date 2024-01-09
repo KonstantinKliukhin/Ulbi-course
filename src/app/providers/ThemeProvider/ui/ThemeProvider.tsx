@@ -1,6 +1,6 @@
 import { Theme, ThemeContext } from '../lib/ThemeContext';
 import { type FC, type PropsWithChildren, useEffect, useMemo, useState } from 'react';
-import { LOCAL_STORAGE_THEME_KEY } from 'shared/constants';
+import { LOCAL_STORAGE_THEME_KEY } from '@/shared/constants';
 
 const themes = Object.values(Theme);
 const isTheme = (value: string): value is Theme => Object.values(themes).includes(value as Theme);

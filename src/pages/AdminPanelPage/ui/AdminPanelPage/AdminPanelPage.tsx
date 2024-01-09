@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { Page } from 'shared/ui';
+import { Page } from '@/shared/ui';
 
 const AdminPanelPage: FC = () => {
   return (

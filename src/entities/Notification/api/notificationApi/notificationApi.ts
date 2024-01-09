@@ -1,4 +1,4 @@
-import { $rtkApi, API_ROUTES } from 'shared/api';
+import { $rtkApi, API_ROUTES } from '@/shared/api';
 import { type Notification } from '../../model/types/notification';
 
 export enum NotificationApiTags {

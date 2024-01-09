@@ -1,7 +1,7 @@
-import { $rtkApi, API_ROUTES } from 'shared/api';
+import { $rtkApi, API_ROUTES } from '@/shared/api';
 import { type Article, type ArticleSortField, ArticleType } from '../../model/types/article';
 import { type ArticleDTO } from '../../model/types/article.dto';
-import { type SortOrder } from 'shared/types';
+import { type SortOrder } from '@/shared/types';
 
 interface GetArticleByIdArg {
   id: string;

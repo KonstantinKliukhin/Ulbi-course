@@ -1,12 +1,12 @@
 import type { Preview } from '@storybook/react';
-import { StyleDecorator } from 'shared/config/storybook/styleDecorator/styleDecorator';
-import { ThemeDecorator } from 'shared/config/storybook/themeDecorator/themeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-import { I18nDecorator } from 'shared/config/storybook/i18nDecorator/i18nDecorator';
-import { GlobalStoreDecorator } from 'shared/config/storybook/globalStoreDecorator/globalStoreDecorator';
+import { StyleDecorator } from '@/shared/config/storybook/styleDecorator/styleDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/themeDecorator/themeDecorator';
+import { Theme } from '@/app/providers/ThemeProvider';
+import { I18nDecorator } from '@/shared/config/storybook/i18nDecorator/i18nDecorator';
+import { GlobalStoreDecorator } from '@/shared/config/storybook/globalStoreDecorator/globalStoreDecorator';
 import {
   OptionalDecoratorsProvider
-} from 'shared/config/storybook/OptionalDecoratorsProvider/OptionalDecoratorsProvider';
+} from '@/shared/config/storybook/OptionalDecoratorsProvider/OptionalDecoratorsProvider';
 import { reactRouterParameters, withRouter } from 'storybook-addon-react-router-v6';
 
 const preview: Preview = {

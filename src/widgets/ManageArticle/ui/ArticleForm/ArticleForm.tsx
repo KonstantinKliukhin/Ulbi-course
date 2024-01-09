@@ -1,8 +1,8 @@
 import { memo, type ReactNode } from 'react';
 import cls from './ArticleForm.module.scss';
-import { classNames } from 'shared/lib';
-import { Button, FormHeader, FormInput } from 'shared/ui';
-import { FormArticleTypesTabs } from 'entities/Article';
+import { classNames } from '@/shared/lib';
+import { Button, FormHeader, FormInput } from '@/shared/ui';
+import { FormArticleTypesTabs } from '@/entities/Article';
 import { useTranslation } from 'react-i18next';
 
 interface ArticleFormProps {

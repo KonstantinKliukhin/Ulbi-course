@@ -1,7 +1,7 @@
 import { type ChangeEvent, memo, useCallback, useMemo } from 'react';
-import { HStack, Select } from 'shared/ui';
+import { HStack, Select } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
-import { type SortOrder } from 'shared/types';
+import { type SortOrder } from '@/shared/types';
 import { ArticleSortField } from '../../model/types/article';
 
 interface ArticleSortSelectorProps {

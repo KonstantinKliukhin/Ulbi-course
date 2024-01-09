@@ -1,6 +1,6 @@
 import cls from './DropDown.module.scss';
 import popupCls from '../../styles/Popup.module.scss';
-import { classNames } from 'shared/lib';
+import { classNames } from '@/shared/lib';
 import { memo, type ReactNode } from 'react';
 import { Menu } from '@headlessui/react';
 import {

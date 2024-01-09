@@ -1,4 +1,4 @@
-import { type FormMode } from 'shared/types';
+import { type FormMode } from '@/shared/types';
 import { useTranslation } from 'react-i18next';
 import { useMemo } from 'react';
 

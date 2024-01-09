@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { FormTextArea } from 'shared/ui';
+import { FormTextArea } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
 
 interface ArticleCodeBlockFormProps {

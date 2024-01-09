@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import { DropDown } from 'shared/ui';
-import { getIsAdminUser, getIsManagerUser, getUserAuthData, useLogout, UserInfo } from 'entities/User';
-import { addOptionallyToArray, useAppSelector } from 'shared/lib';
-import { RoutePath } from 'shared/config';
+import { DropDown } from '@/shared/ui';
+import { getIsAdminUser, getIsManagerUser, getUserAuthData, useLogout, UserInfo } from '@/entities/User';
+import { addOptionallyToArray, useAppSelector } from '@/shared/lib';
+import { RoutePath } from '@/shared/config';
 import { useTranslation } from 'react-i18next';
 
 interface AvatarDropdownProps {

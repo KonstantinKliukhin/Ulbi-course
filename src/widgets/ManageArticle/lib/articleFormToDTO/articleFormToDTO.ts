@@ -1,6 +1,6 @@
 import { type ArticleFormType } from '../../model/types/articleForm';
-import { type Article, type ArticleDTO } from 'entities/Article';
-import { omit } from 'shared/lib';
+import { type Article, type ArticleDTO } from '@/entities/Article';
+import { omit } from '@/shared/lib';
 
 interface ArticleFormToDTOArg {
   form: ArticleFormType;

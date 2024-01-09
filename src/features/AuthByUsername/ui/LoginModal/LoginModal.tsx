@@ -1,5 +1,5 @@
 import { type ComponentProps, memo, Suspense } from 'react';
-import { Loader, Modal } from 'shared/ui';
+import { Loader, Modal } from '@/shared/ui';
 import { AsyncLoginForm as LoginForm } from '../LoginForm/AsyncLoginForm';
 
 interface LoginModalProps extends Pick<ComponentProps<typeof Modal>, 'onClose' | 'open'> {

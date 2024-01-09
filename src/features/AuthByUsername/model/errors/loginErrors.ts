@@ -1,4 +1,4 @@
-import { i18n } from 'shared/config';
+import { i18n } from '@/shared/config';
 
 export const LOGIN_ERRORS = {
   get INVALID_CREDENTIALS () {

@@ -1,5 +1,5 @@
-import { Card, Skeleton, VStack } from 'shared/ui';
-import { classNames } from 'shared/lib';
+import { Card, Skeleton, VStack } from '@/shared/ui';
+import { classNames } from '@/shared/lib';
 import cls from './NotificationItem.module.scss';
 import { memo } from 'react';
 

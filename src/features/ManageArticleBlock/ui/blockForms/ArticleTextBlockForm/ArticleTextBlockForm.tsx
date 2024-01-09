@@ -6,7 +6,7 @@ import {
   useDragEnd,
   withLibraries,
   type WithLibrariesProps
-} from 'shared/lib';
+} from '@/shared/lib';
 import {
   Button,
   CustomDndContext,
@@ -15,13 +15,13 @@ import {
   HStack,
   SortableItem,
   Text, VStack
-} from 'shared/ui';
+} from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
 import { type Control, useFieldArray } from 'react-hook-form';
-import { type ArticleBlock } from 'entities/Article';
+import { type ArticleBlock } from '@/entities/Article';
 import { v4 as uuidV4 } from 'uuid';
 import type { PointerSensorOptions } from '@dnd-kit/core';
-import { NOT_DRAGGRABLE_PROPS } from 'shared/constants';
+import { NOT_DRAGGRABLE_PROPS } from '@/shared/constants';
 
 interface ArticleTextBlockFormProps extends WithLibrariesProps<typeof usedLibraries> {
   className?: string;

@@ -1,8 +1,8 @@
 import cls from './ArticlesPageHeader.module.scss';
-import { classNames, useBoolState } from 'shared/lib';
+import { classNames, useBoolState } from '@/shared/lib';
 import { memo } from 'react';
-import { Button, HStack } from 'shared/ui';
-import { ManageArticleFlyout } from 'widgets/ManageArticle';
+import { Button, HStack } from '@/shared/ui';
+import { ManageArticleFlyout } from '@/widgets/ManageArticle';
 import { useTranslation } from 'react-i18next';
 
 interface ArticlesPageHeaderProps {

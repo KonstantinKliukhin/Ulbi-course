@@ -1,7 +1,7 @@
 import React, { type FC } from 'react';
-import { Button, Page, Text, VStack } from 'shared/ui';
+import { Button, Page, Text, VStack } from '@/shared/ui';
 import { Link } from 'react-router-dom';
-import { RoutePath } from 'shared/config';
+import { RoutePath } from '@/shared/config';
 import { useTranslation } from 'react-i18next';
 
 const ForbiddenPage: FC = () => {

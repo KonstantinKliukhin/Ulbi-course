@@ -1,11 +1,11 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import ArticleDetailsPage from './ArticleDetailsPage';
-import { StoreDecorator } from 'shared/config/storybook/storeDecorator/storeDecorator';
-import { mockedArticle, mockedArticles, mockedComments, mockedUser } from 'shared/mocks';
+import { StoreDecorator } from '@/shared/config/storybook/storeDecorator/storeDecorator';
+import { mockedArticle, mockedArticles, mockedComments, mockedUser } from '@/shared/mocks';
 import { reactRouterParameters } from 'storybook-addon-react-router-v6';
-import { RoutePath } from 'shared/config';
-import { API_ROUTES } from 'shared/api';
+import { RoutePath } from '@/shared/config';
+import { API_ROUTES } from '@/shared/api';
 
 export default {
   title: 'pages/ArticleDetailsPage',

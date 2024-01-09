@@ -1,10 +1,10 @@
 import { formToArticleBlock } from './formToArticleBlock';
-import { ArticleBlockType } from 'entities/Article';
+import { ArticleBlockType } from '@/entities/Article';
 import {
   mockedArticleCodeBlock,
   mockedArticleImageBlock,
   mockedArticleTextBlock
-} from 'shared/mocks';
+} from '@/shared/mocks';
 import { expect } from '@jest/globals';
 
 describe('formToArticleBlock', () => {

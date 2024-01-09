@@ -1,7 +1,7 @@
-import 'shared/config/i18n/i18n';
+import '@/shared/config/i18n/i18n';
 import './styles/index.scss';
 import { type FC } from 'react';
-import { useInitUser } from 'entities/User';
+import { useInitUser } from '@/entities/User';
 import { ErrorBoundary } from './providers/ErrorBoundary';
 import { ThemeProvider } from './providers/ThemeProvider';
 import { RootLayout } from './layout';

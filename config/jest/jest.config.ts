@@ -5,6 +5,8 @@
 
 import type { Config } from 'jest';
 import path from 'path';
+import { pathsToModuleNameMapper } from 'ts-jest';
+import { compilerOptions } from '../../tsconfig.json';
 
 const config: Config = {
   clearMocks: true,
@@ -31,6 +33,7 @@ const config: Config = {
       '<rootDir>/config/jest/jestFileMock.ts',
     '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     uuid: require.resolve('uuid'),
+    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/', }),
   },
   globals: {
     __IS_DEV__: true,

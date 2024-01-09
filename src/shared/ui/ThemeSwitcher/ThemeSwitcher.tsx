@@ -1,7 +1,7 @@
 import { memo, type ReactNode } from 'react';
 import cls from './ThemeSwitcher.module.scss';
 import { classNames } from '../../lib/ui/classNames/classNames';
-import { Theme, useTheme } from 'app/providers/ThemeProvider';
+import { Theme, useTheme } from '@/app/providers/ThemeProvider';
 import { Button } from '../Button/Button';
 import MoonIcon from '../../../../public/assets/icons/moon.svg';
 import SunIcon from '../../../../public/assets/icons/sun.svg';

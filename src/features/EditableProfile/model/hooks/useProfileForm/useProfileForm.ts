@@ -1,6 +1,6 @@
-import { type Profile } from 'entities/Profile';
+import { type Profile } from '@/entities/Profile';
 import { useForm } from 'react-hook-form';
-import { useYupValidationResolver } from 'shared/lib';
+import { useYupValidationResolver } from '@/shared/lib';
 import { validateProfile } from '../../validation/validateProfile/validateProfile';
 import { useEffect } from 'react';
 

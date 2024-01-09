@@ -1,5 +1,5 @@
 import { memo, type PropsWithChildren, useMemo } from 'react';
-import { useAppSelector } from 'shared/lib';
+import { useAppSelector } from '@/shared/lib';
 import { getUserRoles } from '../../selectors/getUserRoles/getUserRoles';
 import { Navigate } from 'react-router-dom';
 import type { UserRole } from '../../constants/userRoles';

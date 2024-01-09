@@ -2,7 +2,7 @@ import { jest } from '@jest/globals';
 import { type AsyncThunkAction } from '@reduxjs/toolkit';
 import { type Dispatch } from 'redux';
 import axios, { type AxiosStatic } from 'axios';
-import { type StateSchema } from 'app/providers/StoreProvider';
+import { type StateSchema } from '@/app/providers/StoreProvider';
 import { setupApiStore } from './setupApiStore';
 
 // Redux not exported type

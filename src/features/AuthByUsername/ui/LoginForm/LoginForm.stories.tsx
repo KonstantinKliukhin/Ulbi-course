@@ -1,7 +1,7 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import LoginForm from './LoginForm';
-import { StoreDecorator } from 'shared/config/storybook/storeDecorator/storeDecorator';
+import { StoreDecorator } from '@/shared/config/storybook/storeDecorator/storeDecorator';
 import { loginReducer } from '../../model/slice/loginSlice';
 
 export default {

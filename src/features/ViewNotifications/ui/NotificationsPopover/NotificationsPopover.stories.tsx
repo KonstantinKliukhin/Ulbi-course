@@ -1,8 +1,8 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { NotificationsPopover } from './NotificationsPopover';
-import { API_ROUTES } from 'shared/api';
-import { mockedNotifications } from 'shared/mocks';
+import { API_ROUTES } from '@/shared/api';
+import { mockedNotifications } from '@/shared/mocks';
 
 export default {
   title: 'features/ViewNotifications/NotificationsPopover',

@@ -1,15 +1,15 @@
 import { screen, waitFor } from '@testing-library/react';
 import ProfilePage from './ProfilePage';
-import { componentRender } from 'shared/config/tests/componentRender';
+import { componentRender } from '@/shared/config/tests/componentRender';
 import { profilePageReducer } from '../../model/slice/profilePageSlice';
-import { createTestServer } from 'shared/config/tests/createTestServer';
+import { createTestServer } from '@/shared/config/tests/createTestServer';
 import { http, HttpResponse } from 'msw';
-import { API_ROUTES } from 'shared/api';
-import { mockedProfile, mockedUser } from 'shared/mocks';
-import { RoutePath } from 'shared/config';
+import { API_ROUTES } from '@/shared/api';
+import { mockedProfile, mockedUser } from '@/shared/mocks';
+import { RoutePath } from '@/shared/config';
 import { Route, Routes } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import { COMMON_API_ERRORS } from 'shared/constants';
+import { COMMON_API_ERRORS } from '@/shared/constants';
 
 const server = createTestServer();
 

@@ -4,7 +4,7 @@ import {
   type ArticleCodeBlock,
   type ArticleImageBlock,
   type ArticleTextBlock
-} from 'entities/Article';
+} from '@/entities/Article';
 import { v4 as uuidV4 } from 'uuid';
 import { type ArticleBlockFormType } from '../../model/types/articleBlockForm';
 

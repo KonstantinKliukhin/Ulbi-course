@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
-import { COMMON_VALIDATION_ERRORS } from 'shared/constants';
-import { type ArticleBlock, ArticleBlockType } from 'entities/Article';
+import { COMMON_VALIDATION_ERRORS } from '@/shared/constants';
+import { type ArticleBlock, ArticleBlockType } from '@/entities/Article';
 import { type ArticleBlockFormType } from '../../types/articleBlockForm';
 
 export const validateArticleBlock = (existingBlocks: ArticleBlock[]) => () =>

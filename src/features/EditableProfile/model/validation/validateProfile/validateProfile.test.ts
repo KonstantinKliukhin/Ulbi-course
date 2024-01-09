@@ -1,5 +1,5 @@
 import { validateProfile } from './validateProfile';
-import { mockedProfile } from 'shared/mocks';
+import { mockedProfile } from '@/shared/mocks';
 import * as Yup from 'yup';
 
 describe('getProfileValidationSchema', () => {

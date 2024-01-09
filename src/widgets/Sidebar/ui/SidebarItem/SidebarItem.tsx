@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import cls from './SidebarItem.module.scss';
-import { AppLink, HStack } from 'shared/ui';
+import { AppLink, HStack } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
 import { type SidebarItemType } from '../../model/types/sidebarItem';
 

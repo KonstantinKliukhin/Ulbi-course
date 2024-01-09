@@ -1,6 +1,6 @@
-import { ArticleView } from 'entities/Article';
-import { LOCAL_STORAGE_ARTICLE_VIEW_KEY } from 'shared/constants';
-import { usePrevious } from 'shared/lib';
+import { ArticleView } from '@/entities/Article';
+import { LOCAL_STORAGE_ARTICLE_VIEW_KEY } from '@/shared/constants';
+import { usePrevious } from '@/shared/lib';
 
 const ARTICLE_VIEW_DEFAULT_VALUE = ArticleView.SMALL;
 

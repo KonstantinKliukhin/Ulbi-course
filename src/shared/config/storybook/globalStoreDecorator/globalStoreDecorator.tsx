@@ -1,5 +1,5 @@
 import { type FC, useContext } from 'react';
-import { StoreProvider } from 'app/providers/StoreProvider';
+import { StoreProvider } from '@/app/providers/StoreProvider';
 import { OptionalDecoratorsContext } from '../OptionalDecoratorsProvider/OptionalDecoratorsProvider';
 
 export const GlobalStoreDecorator = (Story: FC) => {

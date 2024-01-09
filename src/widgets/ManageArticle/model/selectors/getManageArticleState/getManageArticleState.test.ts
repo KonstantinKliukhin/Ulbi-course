@@ -1,10 +1,10 @@
-import { type StateSchema } from 'app/providers/StoreProvider';
+import { type StateSchema } from '@/app/providers/StoreProvider';
 import {
   getBlockFormMode,
   getCurrentBlockIndex,
   getEditingArticleBlock
 } from './getManageArticleState';
-import { mockedArticleTextBlock } from 'shared/mocks';
+import { mockedArticleTextBlock } from '@/shared/mocks';
 
 describe('getManageArticleState', () => {
   test('getBlockFormMode should work with empty state', () => {

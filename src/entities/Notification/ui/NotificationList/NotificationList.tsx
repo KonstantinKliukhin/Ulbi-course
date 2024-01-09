@@ -1,8 +1,8 @@
-import { classNames } from 'shared/lib';
+import { classNames } from '@/shared/lib';
 import { memo } from 'react';
 import { type Notification } from '../../model/types/notification';
 import { NotificationItem } from '../NotificationItem/NotificationItem';
-import { AsyncContainer, VStack } from 'shared/ui';
+import { AsyncContainer, VStack } from '@/shared/ui';
 import { NotificationListSkeleton } from './NotificationListSkeleton';
 
 interface NotificationProps {

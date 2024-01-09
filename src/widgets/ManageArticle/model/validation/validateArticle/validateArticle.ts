@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
-import { ArticleType } from 'entities/Article';
-import { COMMON_VALIDATION_ERRORS } from 'shared/constants';
+import { ArticleType } from '@/entities/Article';
+import { COMMON_VALIDATION_ERRORS } from '@/shared/constants';
 import { type ArticleFormType } from '../../types/articleForm';
 
 export const validateArticle = () =>

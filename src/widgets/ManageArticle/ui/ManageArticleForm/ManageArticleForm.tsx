@@ -1,5 +1,5 @@
 import { memo, Suspense, useCallback, useMemo } from 'react';
-import { type Article, type ArticleBlock } from 'entities/Article';
+import { type Article, type ArticleBlock } from '@/entities/Article';
 import { FormProvider, useFieldArray } from 'react-hook-form';
 import {
   findIndexById,
@@ -7,7 +7,7 @@ import {
   useAppSelector,
   useDragEnd,
   withLazySlices
-} from 'shared/lib';
+} from '@/shared/lib';
 import { useArticleForm } from '../../model/hooks/useArticleForm/useArticleForm';
 import {
   getBlockFormMode,
@@ -18,8 +18,8 @@ import {
   manageArticleActions,
   manageArticleReducer
 } from '../../model/slices/manageArticleSlice';
-import { Drawer, Loader } from 'shared/ui';
-import { ManageArticleBlockForm } from 'features/ManageArticleBlock';
+import { Drawer, Loader } from '@/shared/ui';
+import { ManageArticleBlockForm } from '@/features/ManageArticleBlock';
 import { type ArticleFormType } from '../../model/types/articleForm';
 import { ArticleForm } from '../ArticleForm/ArticleForm.async';
 import { useArticleBlockFormTitle } from './useArticleBlockFormTitle';

@@ -1,7 +1,7 @@
-import { useYupValidationResolver } from 'shared/lib';
+import { useYupValidationResolver } from '@/shared/lib';
 import { validateArticle } from '../../validation/validateArticle/validateArticle';
 import { useForm } from 'react-hook-form';
-import { type Article } from 'entities/Article';
+import { type Article } from '@/entities/Article';
 import { useEffect } from 'react';
 import { type ArticleFormType } from '../../types/articleForm';
 

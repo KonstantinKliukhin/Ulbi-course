@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import cls from './UserInfo.module.scss';
-import { classNames, useAppSelector } from 'shared/lib';
-import { Avatar, Text } from 'shared/ui';
+import { classNames, useAppSelector } from '@/shared/lib';
+import { Avatar, Text } from '@/shared/ui';
 import { getUserAuthData } from '../../model/selectors/getUserAuthData/getUserAuthData';
 
 interface UserInfoProps {

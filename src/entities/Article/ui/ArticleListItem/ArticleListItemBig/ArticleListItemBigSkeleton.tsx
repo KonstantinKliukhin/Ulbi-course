@@ -1,8 +1,8 @@
 import React, { type FC } from 'react';
-import { Card, HStack, Icon, Skeleton } from 'shared/ui';
+import { Card, HStack, Icon, Skeleton } from '@/shared/ui';
 import cls from './ArticleListItemBig.module.scss';
 import EyeSvg from '../../../../../../public/assets/icons/eye-20-20.svg';
-import { classNames } from 'shared/lib';
+import { classNames } from '@/shared/lib';
 
 interface ArticleListItemBigSkeletonProps {
   className?: string;

@@ -1,10 +1,10 @@
 import { type FC } from 'react';
 import cls from './ArticleRecommendations.module.scss';
-import { Text, VStack } from 'shared/ui';
+import { Text, VStack } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
-import { ArticleList, ArticleView } from 'entities/Article';
+import { ArticleList, ArticleView } from '@/entities/Article';
 import { useGetArticleRecommendationsQuery } from '../../api/articleRecommendationsApi';
-import { type RtkError } from 'shared/types';
+import { type RtkError } from '@/shared/types';
 
 interface ArticleRecommendationsProps {
   className?: string;

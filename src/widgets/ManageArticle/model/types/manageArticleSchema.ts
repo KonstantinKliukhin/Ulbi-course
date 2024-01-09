@@ -1,5 +1,5 @@
-import { type FormMode } from 'shared/types';
-import { type ArticleBlock } from 'entities/Article';
+import { type FormMode } from '@/shared/types';
+import { type ArticleBlock } from '@/entities/Article';
 
 export interface ManageArticleSchema {
   blockFormMode: FormMode;

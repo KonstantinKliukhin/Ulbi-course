@@ -4,12 +4,12 @@ import {
   memo
 } from 'react';
 import cls from './ArticleListItemSmall.module.scss';
-import { classNames } from 'shared/lib';
+import { classNames } from '@/shared/lib';
 import { type Article } from '../../../model/types/article';
-import { Card, Icon, Text } from 'shared/ui';
+import { Card, Icon, Text } from '@/shared/ui';
 import EyeSvg from '../../../../../../public/assets/icons/eye-20-20.svg';
 import { Link } from 'react-router-dom';
-import { RoutePath } from 'shared/config';
+import { RoutePath } from '@/shared/config';
 
 interface ArticleListItemSmallProps {
   className?: string;

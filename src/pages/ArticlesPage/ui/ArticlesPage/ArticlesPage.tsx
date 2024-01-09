@@ -2,14 +2,14 @@ import { type FC, useEffect } from 'react';
 import {
   useAppDispatch,
   withLazySlices
-} from 'shared/lib';
+} from '@/shared/lib';
 import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { ArticlesPageHeader } from '../ArticlesPageHeader/ArticlesPageHeader';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { useSearchParams } from 'react-router-dom';
 import cls from './ArticlesPage.module.scss';
-import { Page } from 'shared/ui';
+import { Page } from '@/shared/ui';
 import { ArticlesInfiniteList } from '../ArticlesInfiniteList/ArticlesInfiniteList';
 
 const ArticlesPage: FC = () => {

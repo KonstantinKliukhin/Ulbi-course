@@ -1,4 +1,4 @@
-import { type User, UserRole } from 'entities/User';
+import { type User, UserRole } from '@/entities/User';
 
 export const mockedUser: User = {
   id: '1',

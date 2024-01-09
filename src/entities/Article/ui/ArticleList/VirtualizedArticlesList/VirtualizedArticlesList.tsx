@@ -10,7 +10,7 @@ import {
   type GridScrollSeekPlaceholderProps, type ListRange,
   VirtuosoGrid
 } from 'react-virtuoso';
-import { classNames } from 'shared/lib';
+import { classNames } from '@/shared/lib';
 import { ArticleListItem } from '../../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../../ArticleListItem/ArticleListItemSkeleton';
 

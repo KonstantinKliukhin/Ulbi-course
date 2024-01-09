@@ -6,9 +6,9 @@ import {
 } from '../../selectors/getArticlesState/getArticlesState';
 import { articlesPageActions } from '../../slices/articlesPageSlice';
 import { getArticleViewFromStorage } from '../../../lib/articleStorage/articleStorage';
-import { includes, addQueryParams } from 'shared/lib';
-import { ArticleSortField, ArticleType } from 'entities/Article';
-import { type SortOrder } from 'shared/types';
+import { includes, addQueryParams } from '@/shared/lib';
+import { ArticleSortField, ArticleType } from '@/entities/Article';
+import { type SortOrder } from '@/shared/types';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 
 export const initArticlesPage =

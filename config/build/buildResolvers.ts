@@ -7,6 +7,8 @@ export default function buildResolvers (options: BuildOptions): webpack.ResolveO
     preferAbsolute: true,
     modules: [options.paths.src, 'node_modules',],
     mainFiles: ['index',],
-    alias: {},
+    alias: {
+      '@': options.paths.src,
+    },
   };
 }

@@ -1,13 +1,13 @@
-import { useAction, useAppSelector, useDebounce, useLocalStorage } from 'shared/lib';
+import { useAction, useAppSelector, useDebounce, useLocalStorage } from '@/shared/lib';
 import { type FC, useCallback } from 'react';
-import { ArticleList, ArticleView } from 'entities/Article';
+import { ArticleList, ArticleView } from '@/entities/Article';
 import { DEFAULT_ARTICLES_LIMIT } from '../../model/constants';
 import {
   useArticlesPageSavedItemIndex
 } from '../../model/hooks/useArticlesPageSavedItemIndex/useArticlesPageSavedItemIndex';
 import { articlesPageActions } from '../../model/slices/articlesPageSlice';
 import { type ListRange } from 'react-virtuoso';
-import { LOCAL_STORAGE_ARTICLE_VIEW_KEY } from 'shared/constants';
+import { LOCAL_STORAGE_ARTICLE_VIEW_KEY } from '@/shared/constants';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import {
   getArticlesError, getArticlesHasMore,

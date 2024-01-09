@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
-import { useYupValidationResolver } from 'shared/lib';
-import { validateComment } from 'entities/Comment';
+import { useYupValidationResolver } from '@/shared/lib';
+import { validateComment } from '@/entities/Comment';
 import { type AddArticleCommentForm } from '../../types/addArticleCommentForm';
 
 export const useAddArticleCommentForm = () => {

@@ -1,10 +1,10 @@
 import cls from './ArticleDetailsComments.module.scss';
 import { memo, Suspense } from 'react';
-import { Loader, Text } from 'shared/ui';
-import { AddArticleComment } from 'features/AddArticleComment';
-import { CommentsList } from 'entities/Comment';
-import { type RtkError } from 'shared/types';
-import { useGetArticleCommentsQuery } from 'entities/Article';
+import { Loader, Text } from '@/shared/ui';
+import { AddArticleComment } from '@/features/AddArticleComment';
+import { CommentsList } from '@/entities/Comment';
+import { type RtkError } from '@/shared/types';
+import { useGetArticleCommentsQuery } from '@/entities/Article';
 import { useTranslation } from 'react-i18next';
 
 interface ArticleDetailsCommentsProps {

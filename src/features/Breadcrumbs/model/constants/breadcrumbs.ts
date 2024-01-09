@@ -1,4 +1,4 @@
-import { RoutePath } from 'shared/config';
+import { RoutePath } from '@/shared/config';
 import { type Breadcrumb } from '../types/breadcrumbs';
 
 export const MAIN_BREADCRUMB: Breadcrumb = {

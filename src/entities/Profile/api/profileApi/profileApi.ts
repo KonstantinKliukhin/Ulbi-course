@@ -1,4 +1,4 @@
-import { $rtkApi } from 'shared/api';
+import { $rtkApi } from '@/shared/api';
 import { type Profile } from '../../model/types/profile';
 
 interface GetProfileByIdArg {

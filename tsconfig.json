@@ -14,7 +14,7 @@
     "baseUrl": ".",
     "resolveJsonModule": true,
     "paths": {
-      "*": [
+      "@/*": [
         "./src/*"
       ]
     },
@@ -30,7 +30,7 @@
   ],
   "exclude": [
     "./jsonServer/*.js",
-    "./scripts/**/*",
+    "./scripts/createSlice/**/*",
     "./config/jest/jest.polyfills"
   ],
   "ts-node": {

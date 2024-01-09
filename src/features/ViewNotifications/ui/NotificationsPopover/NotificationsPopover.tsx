@@ -1,14 +1,14 @@
 import cls from './NotificationsPopover.module.scss';
 import { memo } from 'react';
-import { Button, CustomPopover, Icon, MobileDrawer, Text } from 'shared/ui';
+import { Button, CustomPopover, Icon, MobileDrawer, Text } from '@/shared/ui';
 import NotificationIcon from '../../../../../public/assets/icons/notification-20-20.svg';
 import { BrowserView, MobileView } from 'react-device-detect';
 import {
   NotificationList,
   useGetNotificationsQuery
-} from 'entities/Notification';
-import { type RtkError } from 'shared/types';
-import { useBoolState } from 'shared/lib';
+} from '@/entities/Notification';
+import { type RtkError } from '@/shared/types';
+import { useBoolState } from '@/shared/lib';
 import { useTranslation } from 'react-i18next';
 
 export const NotificationsPopover = memo(function NotificationsPopover () {

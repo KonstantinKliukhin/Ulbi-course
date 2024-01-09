@@ -6,7 +6,7 @@ import {
   useCallback,
   useMemo
 } from 'react';
-import { Card, HStack, Text } from 'shared/ui';
+import { Card, HStack, Text } from '@/shared/ui';
 import { type ArticleBlock } from '../../model/types/article';
 
 interface ArticleBlockCardProps

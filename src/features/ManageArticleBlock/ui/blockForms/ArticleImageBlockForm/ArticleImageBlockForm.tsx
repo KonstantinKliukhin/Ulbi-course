@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { FormInput } from 'shared/ui';
+import { FormInput } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
 
 interface ArticleImageBlockFormProps {

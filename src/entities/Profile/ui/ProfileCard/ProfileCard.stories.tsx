@@ -2,7 +2,7 @@ import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
 import { EditableProfileDecorator } from './EditableProfileDecorator';
-import { mockedProfile } from 'shared/mocks';
+import { mockedProfile } from '@/shared/mocks';
 
 export default {
   title: 'entities/Profile/ProfileCard',

@@ -1,7 +1,7 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import ManageArticleForm from './ManageArticleForm';
-import { mockedArticle } from 'shared/mocks';
+import { mockedArticle } from '@/shared/mocks';
 import { action } from '@storybook/addon-actions';
 
 export default {

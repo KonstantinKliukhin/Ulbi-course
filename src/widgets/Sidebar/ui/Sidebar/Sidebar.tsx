@@ -1,13 +1,13 @@
 import { memo } from 'react';
 import cls from './Sidebar.module.scss';
-import { classNames, useBoolState } from 'shared/lib';
+import { classNames, useBoolState } from '@/shared/lib';
 import {
   Button,
   Flex,
   LanguageSwitcher,
   ThemeSwitcher,
   VStack
-} from 'shared/ui';
+} from '@/shared/ui';
 import { useLinkItems } from '../../model/linkItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 

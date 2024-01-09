@@ -1,13 +1,13 @@
 import { type ComponentProps, memo, Suspense, useCallback } from 'react';
-import { Drawer, Loader } from 'shared/ui';
+import { Drawer, Loader } from '@/shared/ui';
 import { ManageArticleForm } from '../ManageArticleForm/ManageArticleForm.async';
-import { type Article, useCreateArticleMutation, useUpdateArticleMutation } from 'entities/Article';
-import { type FormMode } from 'shared/types';
-import { useAppSelector } from 'shared/lib';
+import { type Article, useCreateArticleMutation, useUpdateArticleMutation } from '@/entities/Article';
+import { type FormMode } from '@/shared/types';
+import { useAppSelector } from '@/shared/lib';
 import { type ArticleFormType } from '../../model/types/articleForm';
 import { useArticleFormTitle } from './useArticleFormTitle';
 import { articleFormToDTO } from '../../lib/articleFormToDTO/articleFormToDTO';
-import { getUserAuthData } from 'entities/User';
+import { getUserAuthData } from '@/entities/User';
 
 interface ManageArticleModalProps extends ComponentProps<typeof Drawer> {
   article?: Article;

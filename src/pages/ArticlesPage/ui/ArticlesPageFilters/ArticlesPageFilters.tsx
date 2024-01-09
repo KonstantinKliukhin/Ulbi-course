@@ -5,13 +5,13 @@ import {
   useActions,
   useAppSelector, useDebounce
   , useLocalStorage
-} from 'shared/lib';
+} from '@/shared/lib';
 import {
   type ArticleSortField,
   ArticleSortSelector,
   type ArticleType,
   ArticleTypesTabs, ArticleView
-} from 'entities/Article';
+} from '@/entities/Article';
 import { articlesPageActions } from '../../model/slices/articlesPageSlice';
 import {
   getArticlesOrder,
@@ -19,11 +19,11 @@ import {
   getArticlesSort,
   getArticlesType
 } from '../../model/selectors/getArticlesState/getArticlesState';
-import { ArticleViewSelector } from 'features/SelectArticleView';
-import { Card, HStack, Input } from 'shared/ui';
+import { ArticleViewSelector } from '@/features/SelectArticleView';
+import { Card, HStack, Input } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
-import { type SortOrder } from 'shared/types';
-import { LOCAL_STORAGE_ARTICLE_VIEW_KEY } from 'shared/constants';
+import { type SortOrder } from '@/shared/types';
+import { LOCAL_STORAGE_ARTICLE_VIEW_KEY } from '@/shared/constants';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 
 interface ArticlesPageFiltersProps {

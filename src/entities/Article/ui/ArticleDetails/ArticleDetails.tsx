@@ -1,7 +1,7 @@
 import { type FC, useCallback } from 'react';
 import cls from './ArticleDetails.module.scss';
-import { classNames } from 'shared/lib';
-import { AsyncContainer, Avatar, HStack, Icon, Text } from 'shared/ui';
+import { classNames } from '@/shared/lib';
+import { AsyncContainer, Avatar, HStack, Icon, Text } from '@/shared/ui';
 import { ArticleDetailsSkeleton } from '../ArticleDetails/ArticleDetailsSkeleton/ArticleDetailsSkeleton';
 import EyeIcon from '../../../../../public/assets/icons/eye-20-20.svg';
 import CalendarIcon from '../../../../../public/assets/icons/calendar-20-20.svg';

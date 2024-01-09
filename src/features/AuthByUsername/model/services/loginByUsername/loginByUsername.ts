@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { type User, userActions } from 'entities/User';
+import { type User, userActions } from '@/entities/User';
 import { LOGIN_ERRORS } from '../../errors/loginErrors';
-import { COMMON_API_ERRORS, LOCAL_STORAGE_USER_KEY } from 'shared/constants';
+import { COMMON_API_ERRORS, LOCAL_STORAGE_USER_KEY } from '@/shared/constants';
 import { type LoginDto } from '../../types/login.dto';
 import { authByUsernameApi } from '../../../api/authByUsernameApi/authByUsernameApi';
-import { normalizeRtkError, ApiError } from 'shared/lib';
+import { normalizeRtkError, ApiError } from '@/shared/lib';
 
 interface LoginByUsernameExtra extends ThunkDefaultArg {
   rejectValue: string;

@@ -1,5 +1,5 @@
-import { type Article, articleApi, ArticleApiTags } from 'entities/Article';
-import { API_ROUTES } from 'shared/api';
+import { type Article, articleApi, ArticleApiTags } from '@/entities/Article';
+import { API_ROUTES } from '@/shared/api';
 
 interface GetArticleRecommendationsArg {
   limit: number;

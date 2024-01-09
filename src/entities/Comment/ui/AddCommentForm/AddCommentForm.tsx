@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import cls from './AddCommentForm.module.scss';
-import { classNames } from 'shared/lib';
-import { Button, Card, FormTextArea, HStack, Text } from 'shared/ui';
+import { classNames } from '@/shared/lib';
+import { Button, Card, FormTextArea, HStack, Text } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
 
 interface AddCommentFormProps {

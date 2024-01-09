@@ -1,8 +1,8 @@
 import cls from './NotificationItem.module.scss';
-import { classNames } from 'shared/lib';
+import { classNames } from '@/shared/lib';
 import { memo } from 'react';
 import { type Notification } from '../../model/types/notification';
-import { Card, Text } from 'shared/ui';
+import { Card, Text } from '@/shared/ui';
 import { Link } from 'react-router-dom';
 
 interface NotificationItemProps {

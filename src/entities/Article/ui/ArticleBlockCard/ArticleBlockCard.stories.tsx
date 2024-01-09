@@ -1,7 +1,7 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { ArticleBlockCard } from './ArticleBlockCard';
-import { mockedArticle } from 'shared/mocks';
+import { mockedArticle } from '@/shared/mocks';
 
 export default {
   title: 'entities/Article/ArticleBlockCard',

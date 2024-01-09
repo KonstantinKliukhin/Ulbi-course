@@ -1,4 +1,5 @@
 type StateSchema = import('../providers/StoreProvider').StateSchema;
+type ReduxStoreWithManager = import('../providers/StoreProvider').ReduxStoreWithManager;
 type AppDispatch = import('../providers/StoreProvider').AppDispatch;
 
 interface ThunkExtraArg {

@@ -1,10 +1,10 @@
 import { type FC } from 'react';
 import cls from './CommentCard.module.scss';
-import { classNames } from 'shared/lib';
+import { classNames } from '@/shared/lib';
 import { type Comment } from '../../model/types/comment';
-import { AppLink, Avatar, Card, HStack, Text } from 'shared/ui';
+import { AppLink, Avatar, Card, HStack, Text } from '@/shared/ui';
 import { CommentCardSkeleton } from './CommentCardSkeleton';
-import { RoutePath } from 'shared/config';
+import { RoutePath } from '@/shared/config';
 
 interface CommentCardProps {
   className?: string;

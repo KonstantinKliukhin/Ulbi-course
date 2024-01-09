@@ -1,16 +1,16 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import ArticlesPage from './ArticlesPage';
-import { StoreDecorator } from 'shared/config/storybook/storeDecorator/storeDecorator';
-import { createMockedArticles } from 'shared/mocks';
+import { StoreDecorator } from '@/shared/config/storybook/storeDecorator/storeDecorator';
+import { createMockedArticles } from '@/shared/mocks';
 import {
   ArticleSortField,
   ArticleType,
   ArticleView
-} from 'entities/Article';
+} from '@/entities/Article';
 import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPage.stories.module.scss';
-import { API_ROUTES } from 'shared/api';
+import { API_ROUTES } from '@/shared/api';
 import { articlesAdapter } from '../../model/adapters/articlesAdapter';
 import { v4 as uuidV4 } from 'uuid';
 

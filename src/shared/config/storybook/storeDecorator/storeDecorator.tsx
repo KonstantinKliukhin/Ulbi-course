@@ -1,5 +1,5 @@
 import { type FC, useContext, useLayoutEffect } from 'react';
-import { type StateSchema, StoreProvider } from 'app/providers/StoreProvider';
+import { type StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { type ReducersMapObject } from '@reduxjs/toolkit';
 import { OptionalDecoratorsContext } from '../OptionalDecoratorsProvider/OptionalDecoratorsProvider';
 
@@ -22,9 +22,7 @@ export const StoreDecorator = (
     return (
       <StoreProvider
         initialState={initialState}
-        asyncReducers={
-          mergedAsyncReducers as DeepPartial<ReducersMapObject<StateSchema>>
-        }
+        asyncReducers={mergedAsyncReducers}
       >
         <Story />
       </StoreProvider>

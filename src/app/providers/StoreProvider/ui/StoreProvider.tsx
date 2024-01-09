@@ -4,7 +4,7 @@ import { createReduxStore } from '../config/store';
 import { type StateSchema } from '../config/StateSchema';
 import { type ReducersMapObject } from '@reduxjs/toolkit';
 import { useNavigate } from 'react-router-dom';
-import { useEvent } from 'shared/lib';
+import { useEvent } from '@/shared/lib';
 
 interface StoreProviderProps extends PropsWithChildren {
   initialState?: DeepPartial<StateSchema>;

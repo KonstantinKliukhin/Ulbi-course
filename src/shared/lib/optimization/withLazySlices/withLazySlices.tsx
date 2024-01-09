@@ -1,8 +1,4 @@
 import { useStore } from 'react-redux';
-import {
-  type ReduxStoreWithManager,
-  type StateSchema
-} from 'app/providers/StoreProvider';
 import { type Reducer } from '@reduxjs/toolkit';
 import { type FC, type ReactNode, useEffect } from 'react';
 import { useAppSelector } from '../../state/reduxHooks/useAppSelector';
@@ -10,10 +6,10 @@ import { useAppDispatch } from '../../state/reduxHooks/useAppDispatch';
 import { Loader } from '../../../ui/Loader/Loader';
 
 const getInitSliceAction = (sliceKey: keyof StateSchema) => ({
-  type: `@@INIT_SLICE ${sliceKey}`,
+  type: `@@INIT_SLICE ${sliceKey as string}`,
 });
 const getRemoveSliceAction = (sliceKey: keyof StateSchema) => ({
-  type: `@@DESTROY_SLICE ${sliceKey}`,
+  type: `@@DESTROY_SLICE ${sliceKey as string}`,
 });
 
 type ReducersList = {
@@ -51,10 +47,7 @@ export const withLazySlices =
       useEffect(function manageLazyReducer () {
         Object.entries(reducers).forEach(([key, reducer,]) => {
           if (!store.reducerManager.getReducerMap()[key as Key]) {
-            store.reducerManager.add(
-              key as Key,
-              reducer as Reducer<NonNullable<Values<StateSchema>>>
-            );
+            store.reducerManager.add(key as Key, reducer);
             dispatch(getInitSliceAction(key as Key));
           }
         });

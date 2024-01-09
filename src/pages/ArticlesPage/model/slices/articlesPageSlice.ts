@@ -1,9 +1,9 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { articlesAdapter } from '../adapters/articlesAdapter';
 import { type ArticlesPageSchema } from '../types/articlesPageSchema';
-import { ArticleSortField, ArticleType, ArticleView } from 'entities/Article';
+import { ArticleSortField, ArticleType, ArticleView } from '@/entities/Article';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
-import { type SortOrder } from 'shared/types';
+import { type SortOrder } from '@/shared/types';
 
 const BIG_ARTICLES_LIMIT = 4;
 const SMALL_ARTICLES_LIMIT = 20;

@@ -3,7 +3,7 @@ import {
   type Middleware,
   type MiddlewareAPI
 } from '@reduxjs/toolkit';
-import { normalizeRtkError } from 'shared/lib';
+import { normalizeRtkError } from '@/shared/lib';
 
 export const rtkQueryErrorMiddleware: Middleware =
   (_: MiddlewareAPI) => (next) => (action: AnyAction) => {

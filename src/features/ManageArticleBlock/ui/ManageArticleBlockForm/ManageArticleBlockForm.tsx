@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react';
 import { FormProvider } from 'react-hook-form';
-import { type ArticleBlock } from 'entities/Article';
+import { type ArticleBlock } from '@/entities/Article';
 import { useArticleBlockForm } from '../../model/hooks/useArticleBlockForm/useArticleBlockForm';
 import { formToArticleBlock } from '../../lib/formToArticleBlock/formToArticleBlock';
 import { ArticleBlockForm } from '../ArticleBlockForm/ArticleBlockForm';
