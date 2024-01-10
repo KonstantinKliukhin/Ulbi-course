@@ -2,7 +2,7 @@ import { type FC, useCallback } from 'react';
 import cls from './Code.module.scss';
 import { classNames } from '../../lib/ui/classNames/classNames';
 import { Button } from '../Button/Button';
-import CopySvg from '../../../../public/assets/icons/copy-20-20.svg';
+import { CopyIcon } from '@/shared/assets';
 
 interface CodeProps {
   className?: string;
@@ -21,7 +21,7 @@ export const Code: FC<CodeProps> = (props) => {
         theme="clear"
         square
       >
-        <CopySvg className={cls.copyIcon} />
+        <CopyIcon className={cls.copyIcon} />
       </Button>
       <div className={cls.codeWrapper}>
         <code className={cls.Code}>{props.text}</code>

@@ -7,7 +7,7 @@ import cls from './ArticleListItemSmall.module.scss';
 import { classNames } from '@/shared/lib';
 import { type Article } from '../../../model/types/article';
 import { Card, Icon, Text } from '@/shared/ui';
-import EyeSvg from '../../../../../../public/assets/icons/eye-20-20.svg';
+import { EyeIcon } from '@/shared/assets';
 import { Link } from 'react-router-dom';
 import { RoutePath } from '@/shared/config';
 
@@ -51,7 +51,7 @@ export const ArticleListItemSmall = memo<ArticleListItemSmallProps>(
               textClassName={cls.types}
             />
             <Text text={String(props.article.views)} className={cls.views} />
-            <Icon Svg={EyeSvg} />
+            <Icon Svg={EyeIcon} />
           </div>
           <Text title={props.article.title} titleClassName={cls.title} />
         </Card>

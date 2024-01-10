@@ -1,7 +1,7 @@
 import React, { type FC } from 'react';
 import { Card, HStack, Icon, Skeleton } from '@/shared/ui';
 import cls from './ArticleListItemBig.module.scss';
-import EyeSvg from '../../../../../../public/assets/icons/eye-20-20.svg';
+import { EyeIcon } from '@/shared/assets';
 import { classNames } from '@/shared/lib';
 
 interface ArticleListItemBigSkeletonProps {
@@ -41,7 +41,7 @@ export const ArticleListItemBigSkeleton: FC<ArticleListItemBigSkeletonProps> = (
 
         <HStack align="center" xGap={8}>
           <Skeleton width={50} height={19} />
-          <Icon Svg={EyeSvg} />
+          <Icon Svg={EyeIcon} />
         </HStack>
       </HStack>
     </Card>

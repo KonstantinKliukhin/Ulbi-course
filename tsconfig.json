@@ -16,7 +16,8 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ]
+      ],
+      "vite": ["node_modules/vite"]
     },
     "isolatedModules": true
   },
@@ -37,5 +38,6 @@
     "compilerOptions": {
       "module": "CommonJS"
     }
-  }
+  },
+  "types": ["vite/client", "@svgx/vite-plugin-react"]
 }

@@ -1,9 +1,6 @@
 import { useMemo } from 'react';
 import { RoutePath } from '@/shared/config';
-import HomeSVG from '../../../../public/assets/icons/main-20-20.svg';
-import InfoSVG from '../../../../public/assets/icons/about-20-20.svg';
-import ProfileSVG from '../../../../public/assets/icons/profile-20-20.svg';
-import ArticlesSVG from '../../../../public/assets/icons/article-20-20.svg';
+import { MainIcon, AboutIcon, ProfileIcon, ArticleIcon } from '@/shared/assets';
 import { addOptionallyToArray, useAppSelector } from '@/shared/lib';
 import { getUserAuthData } from '@/entities/User';
 import { type SidebarItemType } from './types/sidebarItem';
@@ -17,22 +14,22 @@ const getLinkItems = (arg: GetLinkItemsArg): SidebarItemType[] => [
   {
     path: RoutePath.main,
     text: 'nav_home',
-    icon: <HomeSVG/>,
+    icon: <MainIcon/>,
   },
   {
     path: RoutePath.about,
     text: 'nav_about',
-    icon: <InfoSVG/>,
+    icon: <AboutIcon/>,
   },
   ...addOptionallyToArray(arg.isAuthorized && Boolean(arg.profileId), {
     path: RoutePath.profile(arg.profileId!),
     text: 'nav_profile',
-    icon: <ProfileSVG/>,
+    icon: <ProfileIcon/>,
   }),
   ...addOptionallyToArray(arg.isAuthorized, {
     path: RoutePath.articles,
     text: 'nav_articles',
-    icon: <ArticlesSVG/>,
+    icon: <ArticleIcon/>,
   }),
 ];
 

@@ -9,7 +9,7 @@ import {
 } from 'react';
 import cls from './Avatar.module.scss';
 import { classNames } from '../../lib/ui/classNames/classNames';
-import DefaultAvatar from '../../../../public/assets/icons/avatar-200-200.png';
+import { AvtarIcon } from '@/shared/assets';
 
 type ImageProps = Omit<
 ImgHTMLAttributes<HTMLImageElement>,
@@ -30,7 +30,7 @@ export const Avatar: FC<AvatarProps> = (props) => {
     size,
     alt,
     src,
-    defaultAvatar = DefaultAvatar,
+    defaultAvatar = AvtarIcon,
     ...inputProps
   } = props;
 

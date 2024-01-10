@@ -2,8 +2,7 @@ import { type FC } from 'react';
 import cls from './ArticleViewSelector.module.scss';
 import { classNames } from '@/shared/lib';
 import { ArticleView } from '@/entities/Article';
-import ListSvg from '../../../../../public/assets/icons/list-24-24.svg';
-import TiledSvg from '../../../../../public/assets/icons/tiled-24-24.svg';
+import { ListIcon, TiledIcon } from '@/shared/assets';
 import { Button, HStack, Icon } from '@/shared/ui';
 
 interface ArticleViewSelectorProps {
@@ -15,11 +14,11 @@ interface ArticleViewSelectorProps {
 const viewTypes = [
   {
     view: ArticleView.BIG,
-    icon: ListSvg,
+    icon: ListIcon,
   },
   {
     view: ArticleView.SMALL,
-    icon: TiledSvg,
+    icon: TiledIcon,
   },
 ];
 

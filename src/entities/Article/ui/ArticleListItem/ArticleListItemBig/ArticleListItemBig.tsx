@@ -14,7 +14,7 @@ import {
 } from '../../../model/types/article';
 import { Avatar, Button, Card, HStack, Icon, Text } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
-import EyeSvg from '../../../../../../public/assets/icons/eye-20-20.svg';
+import { EyeIcon } from '@/shared/assets';
 import { ArticleTextBlockComponent } from '../../blocks/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { Link } from 'react-router-dom';
 import { RoutePath } from '@/shared/config';
@@ -77,7 +77,7 @@ export const ArticleListItemBig: FC<ArticleListItemBigProps> =
 
           <HStack align="center" xGap={8}>
             <Text text={String(props.article.views)} className={cls.views} />
-            <Icon Svg={EyeSvg} />
+            <Icon Svg={EyeIcon} />
           </HStack>
         </HStack>
       </Card>

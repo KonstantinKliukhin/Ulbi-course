@@ -1,7 +1,7 @@
 import cls from './NotificationsPopover.module.scss';
 import { memo } from 'react';
 import { Button, CustomPopover, Icon, MobileDrawer, Text } from '@/shared/ui';
-import NotificationIcon from '../../../../../public/assets/icons/notification-20-20.svg';
+import { NotificationIcon } from '@/shared/assets';
 import { BrowserView, MobileView } from 'react-device-detect';
 import {
   NotificationList,
