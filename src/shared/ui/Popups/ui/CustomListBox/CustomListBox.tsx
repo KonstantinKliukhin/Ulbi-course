@@ -1,6 +1,6 @@
 import { Fragment, memo, type ReactNode, useMemo } from 'react';
 import { Listbox } from '@headlessui/react';
-import { classNames } from '@/shared/lib';
+import { classNames } from '../../../../lib/ui/classNames/classNames';
 import cls from './CustomListBox.module.scss';
 import popupCls from '../../styles/Popup.module.scss';
 import { Text } from '../../../Text/Text';

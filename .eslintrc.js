@@ -59,7 +59,7 @@ module.exports = {
     'n/no-callback-literal': 'off',
     'import/no-unresolved': 'off',
     'react/prop-types': 'off',
-    'ulbi-eslint-plugin/path-checker': 'error',
+    'ulbi-eslint-plugin/path-checker': ['error', { alias: '@', },],
     '@typescript-eslint/return-await': 'off',
     'padding-line-between-statements': [
       'error',

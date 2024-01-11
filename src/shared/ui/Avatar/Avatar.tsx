@@ -9,7 +9,7 @@ import {
 } from 'react';
 import cls from './Avatar.module.scss';
 import { classNames } from '../../lib/ui/classNames/classNames';
-import { AvtarIcon } from '@/shared/assets';
+import { AvtarIcon } from '../../assets';
 
 type ImageProps = Omit<
 ImgHTMLAttributes<HTMLImageElement>,

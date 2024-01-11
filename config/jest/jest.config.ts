@@ -51,6 +51,9 @@ const config: Config = {
       filename: 'report.html',
       openReport: true,
       inlineSource: true,
+      darkTheme: true,
+      includeConsoleLog: true,
+      failureMessageOnly: 2,
     },],
   ],
   // All imported modules in your tests should be mocked automatically

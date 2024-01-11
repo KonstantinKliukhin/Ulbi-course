@@ -2,7 +2,7 @@ import { type FC, useCallback } from 'react';
 import cls from './Code.module.scss';
 import { classNames } from '../../lib/ui/classNames/classNames';
 import { Button } from '../Button/Button';
-import { CopyIcon } from '@/shared/assets';
+import { CopyIcon } from '../../assets';
 
 interface CodeProps {
   className?: string;

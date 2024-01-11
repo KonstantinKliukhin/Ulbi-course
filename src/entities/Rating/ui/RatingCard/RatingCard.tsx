@@ -15,7 +15,7 @@ import {
 } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
 import { BrowserView, MobileView } from 'react-device-detect';
-import { RatingCardSkeleton } from '@/entities/Rating/ui/RatingCard/RatingCardSkeleton';
+import { RatingCardSkeleton } from './RatingCardSkeleton';
 
 interface RatingCardProps {
   className?: string;

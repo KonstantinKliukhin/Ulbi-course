@@ -1,5 +1,5 @@
 import cls from './Flex.module.scss';
-import { classNames } from '@/shared/lib';
+import { classNames } from '../../../lib/ui/classNames/classNames';
 import { type HTMLAttributes, memo, type PropsWithChildren } from 'react';
 
 type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around';

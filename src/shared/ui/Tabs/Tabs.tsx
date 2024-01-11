@@ -4,7 +4,7 @@ import { classNames } from '../../lib/ui/classNames/classNames';
 import { Card } from '../Card/Card';
 import { Text } from '../Text/Text';
 import { HStack } from '../Stack/HStack/HStack';
-import { VStack } from '@/shared/ui';
+import { VStack } from '../Stack/VStack/VStack';
 
 export interface TabItem<T extends string> {
   value: T;

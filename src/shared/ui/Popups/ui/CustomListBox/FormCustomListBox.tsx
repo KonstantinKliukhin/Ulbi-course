@@ -1,7 +1,7 @@
 import { type ComponentProps, memo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { CustomListBox } from './CustomListBox';
-import { mockFn } from '@/shared/lib';
+import { mockFn } from '../../../../lib/utils/mockFn/mockFn';
 
 type CustomListBoxProps = Omit<
 ComponentProps<typeof CustomListBox<string | number>>,
