@@ -1,4 +1,3 @@
-import { type StateSchema } from '@/app/providers/StoreProvider';
 import {
   getBlockFormMode,
   getCurrentBlockIndex,

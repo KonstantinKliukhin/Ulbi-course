@@ -8,7 +8,7 @@ jest.mock('../../slices/articlesPageSlice');
 
 describe('initArticlesPage', () => {
   test('success initialized articles page state', async () => {
-    const thunk = new TestAsyncThunk(initArticlesPage, {
+    const thunk = new TestAsyncThunk(initArticlesPage, () => ({
       articlesPage: {
         ids: [],
         entities: {},
@@ -18,7 +18,7 @@ describe('initArticlesPage', () => {
         isLoading: false,
         _inited: false,
       },
-    });
+    }));
 
     const result = await thunk.callThunk(new URLSearchParams());
     expect(thunk.dispatch).toHaveBeenCalledTimes(4);
@@ -28,7 +28,7 @@ describe('initArticlesPage', () => {
   });
 
   test('must not initialize article state if already initialized', async () => {
-    const thunk = new TestAsyncThunk(initArticlesPage, {
+    const thunk = new TestAsyncThunk(initArticlesPage, () => ({
       articlesPage: {
         ids: [],
         entities: {},
@@ -38,7 +38,7 @@ describe('initArticlesPage', () => {
         isLoading: false,
         _inited: true,
       },
-    });
+    }));
 
     const result = await thunk.callThunk(new URLSearchParams());
 

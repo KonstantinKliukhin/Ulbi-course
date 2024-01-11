@@ -1,10 +1,11 @@
 import { memo, type ReactNode } from 'react';
 import cls from './ThemeSwitcher.module.scss';
-import { classNames } from '../../lib/ui/classNames/classNames';
-import { Theme, useTheme } from '@/app/providers/ThemeProvider';
-import { Button } from '../Button/Button';
-import { MoonIcon, SunIcon } from '../../assets';
-import { Icon } from '../Icon/Icon';
+import { classNames } from '../../../../shared/lib/ui/classNames/classNames';
+import { Button } from '../../../../shared/ui/Button/Button';
+import { MoonIcon, SunIcon } from '../../../../shared/assets';
+import { Icon } from '../../../../shared/ui/Icon/Icon';
+import { useTheme } from '../../../../shared/lib/ui/useTheme/useTheme';
+import { Theme } from '../../../../shared/constants/theme';
 
 interface ThemeSwitcherProps {
   className?: string;

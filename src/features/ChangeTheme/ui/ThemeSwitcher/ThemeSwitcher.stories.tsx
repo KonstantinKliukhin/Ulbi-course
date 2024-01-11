@@ -3,7 +3,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 export default {
-  title: 'shared/ThemeSwitcher',
+  title: 'features/ChangeTheme/ThemeSwitcher',
   component: ThemeSwitcher,
 } as Meta<ComponentProps<typeof ThemeSwitcher>>;
 

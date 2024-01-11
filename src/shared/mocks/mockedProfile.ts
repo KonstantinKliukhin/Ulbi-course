@@ -1,5 +1,8 @@
+// eslint-disable-next-line ulbi-eslint-plugin/layer-imports
 import { type Profile } from '@/entities/Profile';
+// eslint-disable-next-line ulbi-eslint-plugin/layer-imports
 import { Currency } from '@/entities/Currency';
+// eslint-disable-next-line ulbi-eslint-plugin/layer-imports
 import { Country } from '@/entities/Country';
 
 export const mockedProfile: Profile = {

@@ -1,5 +1,4 @@
 import type { Preview } from '@storybook/react';
-import { Theme } from '@/app/providers/ThemeProvider';
 import { reactRouterParameters, withRouter } from 'storybook-addon-react-router-v6';
 import {
   GlobalStoreDecorator,
@@ -8,6 +7,7 @@ import {
   StyleDecorator,
   ThemeDecorator
 } from '@/shared/config/storybook';
+import { Theme } from '@/shared/constants';
 
 const preview: Preview = {
   parameters: {

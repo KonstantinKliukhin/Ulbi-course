@@ -35,3 +35,5 @@ export { pick } from './utils/pick/pick';
 export { includes } from './utils/includes/includes';
 export { parseJSON } from './utils/parseJSON/parseJSON';
 export { useCombinedRefs } from './utils/useCombinedRefs/useCombinedRefs';
+export { useTheme } from './ui/useTheme/useTheme';
+export { ThemeContext } from './state/themeContext/themeContext';

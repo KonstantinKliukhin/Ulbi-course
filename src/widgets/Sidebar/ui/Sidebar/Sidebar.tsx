@@ -4,12 +4,12 @@ import { classNames, useBoolState } from '@/shared/lib';
 import {
   Button,
   Flex,
-  LanguageSwitcher,
-  ThemeSwitcher,
   VStack
 } from '@/shared/ui';
 import { useLinkItems } from '../../model/linkItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
+import { LanguageSwitcher } from '@/features/ChangeLanguage';
+import { ThemeSwitcher } from '@/features/ChangeTheme';
 
 export const Sidebar = memo(function Sidebar () {
   const collapsed = useBoolState(false);

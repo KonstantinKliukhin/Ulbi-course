@@ -1,5 +1,4 @@
 import { getProfileReadonly } from './getProfileReadonly';
-import { type StateSchema } from '@/app/providers/StoreProvider';
 
 describe('getProfileReadonly', () => {
   test('should work with empty state', () => {

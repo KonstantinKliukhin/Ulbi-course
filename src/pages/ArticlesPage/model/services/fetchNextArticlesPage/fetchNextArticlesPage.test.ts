@@ -9,7 +9,7 @@ jest.mock('../../slices/articlesPageSlice');
 
 describe('fetchArticlesList', () => {
   test('success fetch next articles list', async () => {
-    const thunk = new TestAsyncThunk(fetchNextArticlesPage, {
+    const thunk = new TestAsyncThunk(fetchNextArticlesPage, () => ({
       articlesPage: {
         ids: [],
         entities: {},
@@ -18,7 +18,7 @@ describe('fetchArticlesList', () => {
         hasMore: true,
         isLoading: false,
       },
-    });
+    }));
     thunk.api.get.mockReturnValue(Promise.resolve({ data: mockedArticles, }));
 
     const result = await thunk.callThunk(undefined);
@@ -31,14 +31,14 @@ describe('fetchArticlesList', () => {
   });
 
   test('must not fetch articles if no more', async () => {
-    const thunk = new TestAsyncThunk(fetchNextArticlesPage, {
+    const thunk = new TestAsyncThunk(fetchNextArticlesPage, () => ({
       articlesPage: {
         limit: 9,
         hasMore: false,
         isLoading: false,
         page: 2,
       },
-    });
+    }));
 
     const result = await thunk.callThunk(undefined);
 
@@ -49,14 +49,14 @@ describe('fetchArticlesList', () => {
   });
 
   test('must not fetch articles if already loading', async () => {
-    const thunk = new TestAsyncThunk(fetchNextArticlesPage, {
+    const thunk = new TestAsyncThunk(fetchNextArticlesPage, () => ({
       articlesPage: {
         limit: 9,
         hasMore: true,
         isLoading: true,
         page: 2,
       },
-    });
+    }));
 
     const result = await thunk.callThunk(undefined);
 

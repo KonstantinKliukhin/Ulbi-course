@@ -1,5 +1,5 @@
 import { type FC, useContext, useLayoutEffect } from 'react';
-import { type StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
+import { StoreProvider } from '@/app/providers/StoreProvider';
 import { type ReducersMapObject } from '@reduxjs/toolkit';
 import { OptionalDecoratorsContext } from '../OptionalDecoratorsProvider/OptionalDecoratorsProvider';
 

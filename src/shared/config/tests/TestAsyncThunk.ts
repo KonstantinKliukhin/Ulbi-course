@@ -1,8 +1,7 @@
 import { jest } from '@jest/globals';
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
-import { type Dispatch } from 'redux';
+import type { AsyncThunkAction } from '@reduxjs/toolkit';
+import type { Dispatch } from 'redux';
 import axios, { type AxiosStatic } from 'axios';
-import { type StateSchema } from '@/app/providers/StoreProvider';
 import { setupApiStore } from './setupApiStore';
 
 // Redux not exported type
@@ -35,17 +34,16 @@ const mockedApi = jest.mocked(axios);
 export class TestAsyncThunk<Return, Arg, ThunkApiConfig extends AsyncThunkConfig> {
   dispatch: jest.MockedFunction<any> = jest.fn();
   getState: GetStateType<Return, Arg, ThunkApiConfig>;
-  api: jest.MockedFunction<AxiosStatic>;
+  api: jest.MockedFunction<AxiosStatic> = mockedApi;
   navigate: jest.MockedFunction<any> = jest.fn();
   private readonly actionCreator: ActionCreatorType<Return, Arg, ThunkApiConfig>;
 
   constructor (
     actionCreator: ActionCreatorType<Return, Arg, ThunkApiConfig>,
-    state?: DeepPartial<StateSchema>
+    getState: () => DeepPartial<StateSchema> | jest.MockedFunction<any> = jest.fn()
   ) {
     this.actionCreator = actionCreator;
-    this.getState = (state ? () => state : jest.fn()) as GetStateType<Return, Arg, ThunkApiConfig>;
-    this.api = mockedApi;
+    this.getState = getState as GetStateType<Return, Arg, ThunkApiConfig>;
   }
 
   async callThunk (arg: Arg) {
@@ -65,9 +63,10 @@ export class TestApiAsyncThunk<Return, Arg, ThunkApiConfig extends AsyncThunkCon
     actionCreator: ActionCreatorType<Return, Arg, ThunkApiConfig>,
     ...setupApiStoreArgs: Parameters<typeof setupApiStore>
   ) {
-    super(actionCreator, undefined);
     const storeRef = setupApiStore(...setupApiStoreArgs);
-    this.getState = storeRef.store.getState;
+
+    super(actionCreator, storeRef.store.getState);
+
     this.dispatch = storeRef.store.dispatch;
     this.store = storeRef.store;
 
