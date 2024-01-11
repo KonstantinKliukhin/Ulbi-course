@@ -5,9 +5,6 @@ export { useArticleTypesSelectOptions } from './model/hooks/useArticleTypesSelec
 
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
 export { ArticleList } from './ui/ArticleList/ArticleList';
-export { ArticleSortSelector } from './ui/ArticleSortSelector/ArticleSortSelector';
-export { ArticleTypesTabs } from './ui/ArticleTypesTabs/ArticleTypesTabs';
-export { FormArticleTypesTabs } from './ui/ArticleTypesTabs/FormArticleTypesTabs';
 export { ArticleBlockCard } from './ui/ArticleBlockCard/ArticleBlockCard';
 
 export {

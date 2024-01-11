@@ -13,10 +13,15 @@ interface AddCommentFormProps {
 
 export const AddCommentForm: FC<AddCommentFormProps> = (props) => {
   const { t, } = useTranslation('comment');
-  const mods = { [cls.loading]: props.isLoading, };
 
   return (
-    <div className={classNames(cls.AddCommentForm, mods, [props.className,])}>
+    <div
+      className={classNames(
+        cls.AddCommentForm,
+        { [cls.loading]: props.isLoading, },
+        [props.className,])
+      }
+    >
       <Card theme="outlined" className={cls.body}>
         <HStack
           justify="between"

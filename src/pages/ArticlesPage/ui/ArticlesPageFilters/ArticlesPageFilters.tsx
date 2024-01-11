@@ -8,9 +8,8 @@ import {
 } from '@/shared/lib';
 import {
   type ArticleSortField,
-  ArticleSortSelector,
   type ArticleType,
-  ArticleTypesTabs, ArticleView
+  ArticleView
 } from '@/entities/Article';
 import { articlesPageActions } from '../../model/slices/articlesPageSlice';
 import {
@@ -25,6 +24,8 @@ import { useTranslation } from 'react-i18next';
 import { type SortOrder } from '@/shared/types';
 import { LOCAL_STORAGE_ARTICLE_VIEW_KEY } from '@/shared/constants';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
+import { ArticleSortSelector } from '@/features/SelectArticleSort';
+import { ArticleTypesTabs } from '@/features/SelectArticleType';
 
 interface ArticlesPageFiltersProps {
   className?: string;

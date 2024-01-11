@@ -1,11 +1,11 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { ArticleTypesTabs } from './ArticleTypesTabs';
-import { ArticleType } from '../../model/types/article';
 import { action } from '@storybook/addon-actions';
+import { ArticleType } from '@/entities/Article';
 
 export default {
-  title: 'entities/Article/ArticleTypesTabs',
+  title: 'features/SelectArticleType/ArticleTypesTabs',
   component: ArticleTypesTabs,
 } as Meta<ComponentProps<typeof ArticleTypesTabs>>;
 
