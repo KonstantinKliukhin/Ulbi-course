@@ -1,7 +1,7 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { AvatarDropdown } from './AvatarDropdown';
-import { StoreDecorator } from '@/shared/config/storybook/storeDecorator/storeDecorator';
+import { StoreDecorator } from '@/shared/config/storybook';
 import { mockedAdminUser, mockedManagerUser, mockedUser } from '@/shared/mocks';
 
 export default {

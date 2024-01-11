@@ -1,11 +1,10 @@
-import { TestApiAsyncThunk } from '@/shared/config/tests/TestAsyncThunk';
+import { TestApiAsyncThunk, createTestServer } from '@/shared/config/tests';
 import { fetchArticlesList } from './fetchArticlesList';
 import { mockedArticles } from '@/shared/mocks';
 import { articleApi, ArticleSortField } from '@/entities/Article';
 import { http, HttpResponse } from 'msw';
 import { articlesPageReducer } from '../../slices/articlesPageSlice';
 import { articlesAdapter } from '../../adapters/articlesAdapter';
-import { createTestServer } from '@/shared/config/tests/createTestServer';
 import { API_ROUTES } from '@/shared/api';
 
 const server = createTestServer();

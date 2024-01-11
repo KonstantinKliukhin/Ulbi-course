@@ -1,4 +1,4 @@
-import { TestAsyncThunk } from '@/shared/config/tests/TestAsyncThunk';
+import { TestAsyncThunk } from '@/shared/config/tests';
 import { fetchNextArticlesPage } from './fetchNextArticlesPage';
 import { mockedArticles } from '@/shared/mocks';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';

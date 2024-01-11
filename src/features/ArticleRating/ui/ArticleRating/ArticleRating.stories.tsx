@@ -3,7 +3,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import ArticleRating from './ArticleRating';
 import { API_ROUTES } from '@/shared/api';
 import { mockedArticle, mockedArticleRatings, mockedUser } from '@/shared/mocks';
-import { StoreDecorator } from '@/shared/config/storybook/storeDecorator/storeDecorator';
+import { StoreDecorator } from '@/shared/config/storybook';
 
 export default {
   title: 'features/ArticleRating/ArticleRating',

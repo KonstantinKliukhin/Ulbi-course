@@ -60,6 +60,11 @@ module.exports = {
     'import/no-unresolved': 'off',
     'react/prop-types': 'off',
     'ulbi-eslint-plugin/path-checker': ['error', { alias: '@', },],
+    'ulbi-eslint-plugin/public-api-imports': ['error', {
+      alias: '@',
+      ignorePatterns: ['**/config/**/*',],
+      testFilesPatterns: ['**/*.test.(ts|tsx)', '**/*.stories.(ts|tsx)',],
+    },],
     '@typescript-eslint/return-await': 'off',
     'padding-line-between-statements': [
       'error',

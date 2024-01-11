@@ -1,8 +1,9 @@
-import { type ComponentProps } from 'react';
+import { type ComponentProps, type FC } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
-import { EditableProfileDecorator } from './EditableProfileDecorator';
 import { mockedProfile } from '@/shared/mocks';
+import { type Profile } from '../../model/types/profile';
+import { FormProvider, useForm } from 'react-hook-form';
 
 export default {
   title: 'entities/Profile/ProfileCard',
@@ -10,6 +11,19 @@ export default {
 } as Meta<ComponentProps<typeof ProfileCard>>;
 
 type ProfileCardStory = StoryObj<typeof ProfileCard>;
+
+const EditableProfileDecorator = (initialState?: Profile) =>
+  function EditableProfileDecorator (Story: FC<ComponentProps<typeof ProfileCard>>) {
+    const profileForm = useForm({ defaultValues: initialState, });
+
+    return (
+      <FormProvider {...profileForm}>
+        <form>
+          <Story/>
+        </form>
+      </FormProvider>
+    );
+  };
 
 export const Static: ProfileCardStory = {
   args: {

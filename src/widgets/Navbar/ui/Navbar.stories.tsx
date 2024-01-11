@@ -3,7 +3,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import { Navbar } from './Navbar';
 import { API_ROUTES } from '@/shared/api';
 import { mockedAdminUser, mockedManagerUser, mockedNotifications, mockedUser } from '@/shared/mocks';
-import { StoreDecorator } from '@/shared/config/storybook/storeDecorator/storeDecorator';
+import { StoreDecorator } from '@/shared/config/storybook';
 
 export default {
   title: 'widgets/Navbar',

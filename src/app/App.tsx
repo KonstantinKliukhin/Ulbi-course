@@ -1,3 +1,4 @@
+// eslint-disable-next-line ulbi-eslint-plugin/public-api-imports
 import '@/shared/config/i18n/i18n';
 import './styles/index.scss';
 import { type FC } from 'react';

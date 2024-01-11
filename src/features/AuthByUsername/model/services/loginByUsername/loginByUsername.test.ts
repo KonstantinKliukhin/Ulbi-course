@@ -1,7 +1,6 @@
 import { loginByUsername } from './loginByUsername';
 import { userActions } from '@/entities/User';
-import { TestApiAsyncThunk } from '@/shared/config/tests/TestAsyncThunk';
-import { createTestServer } from '@/shared/config/tests/createTestServer';
+import { TestApiAsyncThunk, createTestServer } from '@/shared/config/tests';
 import { http, HttpResponse } from 'msw';
 import { mockedUser } from '@/shared/mocks';
 import { authByUsernameApi } from '../../../api/authByUsernameApi/authByUsernameApi';

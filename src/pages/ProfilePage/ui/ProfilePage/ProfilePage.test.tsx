@@ -1,8 +1,7 @@
 import { screen, waitFor } from '@testing-library/react';
 import ProfilePage from './ProfilePage';
-import { componentRender } from '@/shared/config/tests/componentRender';
+import { componentRender, createTestServer } from '@/shared/config/tests';
 import { profilePageReducer } from '../../model/slice/profilePageSlice';
-import { createTestServer } from '@/shared/config/tests/createTestServer';
 import { http, HttpResponse } from 'msw';
 import { API_ROUTES } from '@/shared/api';
 import { mockedProfile, mockedUser } from '@/shared/mocks';

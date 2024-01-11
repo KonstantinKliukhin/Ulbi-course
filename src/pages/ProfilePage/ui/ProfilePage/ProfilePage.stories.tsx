@@ -1,7 +1,7 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import ProfilePage from './ProfilePage';
-import { StoreDecorator } from '@/shared/config/storybook/storeDecorator/storeDecorator';
+import { StoreDecorator } from '@/shared/config/storybook';
 import { mockedProfile, mockedUser } from '@/shared/mocks';
 import { profilePageReducer } from '../../model/slice/profilePageSlice';
 import { reactRouterParameters } from 'storybook-addon-react-router-v6';

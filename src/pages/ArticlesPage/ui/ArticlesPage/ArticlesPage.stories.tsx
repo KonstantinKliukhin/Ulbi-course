@@ -1,7 +1,7 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import ArticlesPage from './ArticlesPage';
-import { StoreDecorator } from '@/shared/config/storybook/storeDecorator/storeDecorator';
+import { StoreDecorator } from '@/shared/config/storybook';
 import { createMockedArticles } from '@/shared/mocks';
 import {
   ArticleSortField,
