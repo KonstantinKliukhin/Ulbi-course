@@ -2,12 +2,12 @@ import { $rtkApi } from '@/shared/api';
 import { type Profile } from '../../model/types/profile';
 
 interface GetProfileByIdArg {
-  userId: string;
+  profileId: string;
 }
 
 interface UpdateProfileArg {
   profile: Profile;
-  userId: string;
+  profileId: string;
 }
 
 export enum ProfileApiTags {
@@ -21,22 +21,22 @@ export const profileApi = $rtkApi.enhanceEndpoints({
     endpoints: (build) => ({
       getProfileById: build.query<Profile, GetProfileByIdArg>({
         query: (arg) => ({
-          url: `/profile/${arg.userId}`,
+          url: `/profile/${arg.profileId}`,
         }),
         providesTags: (_, __, arg) => [{
-          id: arg.userId, type: ProfileApiTags.PROFILE,
+          id: arg.profileId, type: ProfileApiTags.PROFILE,
         },],
       }),
 
       updateProfile: build.mutation<Profile, UpdateProfileArg>({
         query: (arg) => ({
-          url: `/profile/${arg.userId}`,
+          url: `/profile/${arg.profileId}`,
           method: 'PATCH',
           body: arg.profile,
         }),
         invalidatesTags: (_, __, arg) => [{
           type: ProfileApiTags.PROFILE,
-          id: arg.userId,
+          id: arg.profileId,
         },],
       }),
     }),

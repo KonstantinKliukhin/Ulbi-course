@@ -6,5 +6,7 @@
   "your_city_label": "City",
   "your_avatar_label": "Avatar URL",
   "username_label": "Username",
-  "profile_not_found": "profile_not_found"
+  "profile_not_found": "profile_not_found",
+  "profile_rating_title": "How satisfied are you with this user?",
+  "profile_leave_feedback_title": "Leave feedback about this user"
 }

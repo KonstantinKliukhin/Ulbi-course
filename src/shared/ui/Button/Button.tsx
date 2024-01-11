@@ -19,6 +19,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   square?: boolean;
   rounded?: boolean;
   disabled?: boolean;
+  fullWidth?: boolean;
 }
 
 const mapButtonThemeClasses: Record<ButtonTheme, keyof typeof cls> = {
@@ -54,6 +55,7 @@ export const Button = memo<ButtonProps>(function Button (props) {
     [cls.square]: square,
     [cls.rounded]: rounded,
     [cls.disabled]: disabled,
+    [cls.fullWidth]: props.fullWidth,
   };
 
   return (

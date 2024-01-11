@@ -1,4 +1,3 @@
-import { type CounterSchema } from '@/entities/Counter';
 import { type UserSchema } from '@/entities/User';
 import { type LoginSchema } from '@/features/AuthByUsername';
 import {
@@ -16,7 +15,6 @@ import { type ProfilePageSchema } from '@/pages/ProfilePage';
 
 export interface StateSchema {
   [$rtkApi.reducerPath]: ReturnType<typeof $rtkApi.reducer>;
-  counter: CounterSchema;
   user: UserSchema;
   ui: UISchema;
   // async schemas

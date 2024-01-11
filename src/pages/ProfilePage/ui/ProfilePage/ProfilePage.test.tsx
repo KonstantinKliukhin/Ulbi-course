@@ -50,19 +50,19 @@ describe('pages/ProfilePage', () => {
     await waitFor(() => { expect(loader).not.toBeInTheDocument(); });
 
     const nameInput: HTMLInputElement = screen.getByTestId('ProfileCard.Firstname.Input.Value');
-    expect(nameInput).toHaveValue(mockedProfile.firstname);
+    expect(nameInput.value).toBe(mockedProfile.firstname);
 
     const lastnameInput: HTMLInputElement = screen.getByTestId('ProfileCard.Lastname.Input.Value');
-    expect(lastnameInput).toHaveValue(mockedProfile.lastname);
+    expect(lastnameInput.value).toBe(mockedProfile.lastname);
 
     const ageInput: HTMLInputElement = screen.getByTestId('ProfileCard.Age.Input.Value');
-    expect(ageInput).toHaveValue(String(mockedProfile.age));
+    expect(ageInput.value).toBe(String(mockedProfile.age));
 
     const avatarInput: HTMLInputElement = screen.getByTestId('ProfileCard.Avatar.Input.Value');
-    expect(avatarInput).toHaveValue(mockedProfile.avatar);
+    expect(avatarInput.value).toBe(mockedProfile.avatar);
 
     const usernameInput: HTMLInputElement = screen.getByTestId('ProfileCard.Username.Input.Value');
-    expect(usernameInput).toHaveValue(mockedProfile.username);
+    expect(usernameInput.value).toBe(mockedProfile.username);
 
     const currencyInput = screen.getByTestId('ProfileCard.Currency.CustomListBox.Value');
     expect(currencyInput).toHaveTextContent(mockedProfile.currency as string);
@@ -83,26 +83,29 @@ describe('pages/ProfilePage', () => {
 
     await userEvent.click(editButton);
 
-    const nameInput = screen.getByTestId('ProfileCard.Firstname.Input.Value');
-    expect(nameInput).toHaveValue(mockedProfile.firstname);
+    let nameInput: HTMLInputElement = screen.getByTestId('ProfileCard.Firstname.Input.Value');
+    expect(nameInput.value).toBe(mockedProfile.firstname);
 
-    const lastnameInput: HTMLInputElement = screen.getByTestId('ProfileCard.Lastname.Input.Value');
-    expect(lastnameInput).toHaveValue(mockedProfile.lastname);
+    let lastnameInput: HTMLInputElement = screen.getByTestId('ProfileCard.Lastname.Input.Value');
+    expect(lastnameInput.value).toBe(mockedProfile.lastname);
 
     await userEvent.clear(nameInput);
     await userEvent.type(nameInput, 'name');
-    expect(nameInput).toHaveValue('name');
+    expect(nameInput.value).toBe('name');
 
     await userEvent.clear(lastnameInput);
     await userEvent.type(lastnameInput, 'lastname');
-    expect(lastnameInput).toHaveValue('lastname');
+    expect(lastnameInput.value).toBe('lastname');
 
     const cancelButton = screen.getByTestId('ProfilePageHeader.CancelButton');
     expect(cancelButton).toBeInTheDocument();
     await userEvent.click(cancelButton);
 
-    expect(nameInput).toHaveValue(mockedProfile.firstname);
-    expect(lastnameInput).toHaveValue(mockedProfile.lastname);
+    nameInput = screen.getByTestId('ProfileCard.Firstname.Input.Value');
+    lastnameInput = screen.getByTestId('ProfileCard.Lastname.Input.Value');
+
+    expect(nameInput.value).toBe(mockedProfile.firstname);
+    expect(lastnameInput.value).toBe(mockedProfile.lastname);
   });
 
   test('Root error must appear for server failed response', async () => {
@@ -147,8 +150,8 @@ describe('pages/ProfilePage', () => {
 
     await userEvent.click(editButton);
 
-    const nameInput = screen.getByTestId('ProfileCard.Firstname.Input.Value');
-    expect(nameInput).toHaveValue(mockedProfile.firstname);
+    const nameInput: HTMLInputElement = screen.getByTestId('ProfileCard.Firstname.Input.Value');
+    expect(nameInput.value).toBe(mockedProfile.firstname);
     await userEvent.clear(nameInput);
     await userEvent.type(nameInput, 'TEST_TEST');
 
@@ -160,6 +163,6 @@ describe('pages/ProfilePage', () => {
 
     expect(screen.queryByTestId('ProfileCard.Root.Error.Paragraph')).not.toBeInTheDocument();
 
-    expect(nameInput).toHaveValue('TEST_TEST');
+    expect(nameInput.value).toBe('TEST_TEST');
   });
 });

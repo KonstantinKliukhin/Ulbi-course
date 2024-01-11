@@ -29,7 +29,6 @@ export const AddCommentForm: FC<AddCommentFormProps> = (props) => {
             disabled={props.isLoading}
             className={cls.textarea}
             label={t('add_comment_label')}
-            withError={false}
           />
           <Button
             disabled={props.isLoading || !props.isValid}

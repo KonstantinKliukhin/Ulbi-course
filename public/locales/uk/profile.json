@@ -5,5 +5,7 @@
   "your_age_label": "Ваш Вік",
   "your_city_label": "Ваше Місто",
   "your_avatar_label": "Посилання на ваш аватар",
-  "username_label": "Ваше імʼя користувача"
+  "username_label": "Ваше імʼя користувача",
+  "profile_rating_title": "На скільки ви задоволени цим юзером?",
+  "profile_leave_feedback_title": "Залиште відгук про юзера"
 }

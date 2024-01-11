@@ -1,3 +1,7 @@
+.TextArea {
+  position: relative;
+}
+
 .readonly {
   opacity: 0.7;
   user-select: none;
@@ -17,4 +21,9 @@
   &:focus {
     outline: none;
   }
+}
+
+.error {
+  position: absolute;
+  top: 100%;
 }

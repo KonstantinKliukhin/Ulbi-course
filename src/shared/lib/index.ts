@@ -34,3 +34,4 @@ export { withLibraries, useLibraries, type WithLibrariesProps, type AsyncLibrari
 export { pick } from './utils/pick/pick';
 export { includes } from './utils/includes/includes';
 export { parseJSON } from './utils/parseJSON/parseJSON';
+export { useCombinedRefs } from './utils/useCombinedRefs/useCombinedRefs';

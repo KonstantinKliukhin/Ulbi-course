@@ -72,14 +72,12 @@ export const ArticleSortSelector = memo<ArticleSortSelectorProps>(
           options={sortOptions}
           label={t('sort_by')}
           value={props.sort}
-          noErrorSpace
         />
         <Select
           onChange={onSelectOrder}
           options={orderOptions}
           label={t('sort_direction')}
           value={props.order}
-          noErrorSpace
         />
       </HStack>
     );

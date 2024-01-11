@@ -4,6 +4,7 @@ import { classNames } from '../../lib/ui/classNames/classNames';
 import { Card } from '../Card/Card';
 import { Text } from '../Text/Text';
 import { HStack } from '../Stack/HStack/HStack';
+import { VStack } from '@/shared/ui';
 
 export interface TabItem<T extends string> {
   value: T;
@@ -17,7 +18,6 @@ interface TabsProps<T extends string> {
   value: T | T[];
   onTabClick: (tab: TabItem<T>) => void;
   error?: null | string;
-  withError?: boolean;
   label?: string;
 }
 
@@ -44,13 +44,12 @@ export const Tabs = memo(function Tabs<T extends string> (props: TabsProps<T>) {
   };
 
   return (
-    <>
-      {props.label ? <p className={cls.label}>{props.label}</p> : null}
+    <VStack yGap={4} className={classNames(cls.Tabs, {}, [props.className,])}>
+      {props.label ? <Text text={props.label}/> : null}
       <HStack
         align="start"
         justify="start"
         xGap={8}
-        className={classNames(cls.Tabs, {}, [props.className,])}
       >
         {props.tabs.map((tab) => (
           <Card
@@ -65,11 +64,12 @@ export const Tabs = memo(function Tabs<T extends string> (props: TabsProps<T>) {
           </Card>
         ))}
       </HStack>
-      {props.withError
-        ? (
-          <Text keepTextHeight theme="error" text={props.error} />
-          )
-        : null}
-    </>
+      <Text
+        size="s"
+        className={cls.error}
+        theme="error"
+        text={props.error}
+      />
+    </VStack>
   );
 }) as TabsComponentType;

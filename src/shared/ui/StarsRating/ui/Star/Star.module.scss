@@ -1,0 +1,15 @@
+.startIcon {
+  cursor: pointer;
+}
+
+.normal {
+  fill: none;
+}
+
+.hover {
+  fill: var(--primary-color);
+}
+
+.selected {
+  cursor: default;
+}

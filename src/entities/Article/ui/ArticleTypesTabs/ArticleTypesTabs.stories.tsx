@@ -32,7 +32,6 @@ export const WithError: ArticleTypesTabsStory = {
     value: ArticleType.SCIENCE,
     onSelectType: action('onSelectType'),
     error: 'Some Api Error',
-    withError: true,
   },
 };
 
@@ -42,6 +41,5 @@ export const Multiple: ArticleTypesTabsStory = {
     value: [ArticleType.SCIENCE, ArticleType.IT,],
     onSelectType: action('onSelectType'),
     error: 'Some Api Error',
-    withError: true,
   },
 };

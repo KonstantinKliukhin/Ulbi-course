@@ -8,7 +8,7 @@ import { type RtkError } from '@/shared/types';
 
 interface EditProfileFormProviderProps {
   className?: string;
-  userId: string;
+  profileId: string;
   readonly: boolean;
 }
 
@@ -16,15 +16,15 @@ export const EDITABLE_PROFILE_FORM_ID = 'EDITABLE_PROFILE_FORM_ID';
 
 export const EditableProfile = memo<EditProfileFormProviderProps>(
   function EditableProfile (props) {
-    const profileQueryData = useGetProfileByIdQuery({ userId: props.userId, });
+    const profileQueryData = useGetProfileByIdQuery({ profileId: props.profileId, });
     const [updateProfile, updateProfileData,] = useUpdateProfileMutation();
     const profileForm = useProfileForm(profileQueryData.data);
     const formAvatar = profileForm.watch('avatar');
     const onSubmit = useCallback(
       (values: Profile) => {
-        void updateProfile({ userId: props.userId, profile: values, });
+        void updateProfile({ profileId: props.profileId, profile: values, });
       },
-      [props.userId, updateProfile,]
+      [props.profileId, updateProfile,]
     );
 
     const error = (updateProfileData.error || profileQueryData.error) as RtkError;

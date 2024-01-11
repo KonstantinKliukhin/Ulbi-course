@@ -3,8 +3,7 @@ import {
   forwardRef,
   type InputHTMLAttributes,
   memo,
-  useCallback,
-  useEffect,
+  useEffect, useId, useMemo,
   useRef,
   useState
 } from 'react';
@@ -12,6 +11,7 @@ import cls from './Input.module.scss';
 import { classNames } from '../../lib/ui/classNames/classNames';
 import { Text } from '../Text/Text';
 import { HStack } from '../Stack/HStack/HStack';
+import { useCombinedRefs } from '../../lib/utils/useCombinedRefs/useCombinedRefs';
 
 type HtmlInputProps = Omit<
 InputHTMLAttributes<HTMLInputElement>,
@@ -23,7 +23,6 @@ interface InputProps extends HtmlInputProps {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   readonly?: boolean;
   error?: string;
-  noErrorSpace?: boolean;
   label: string;
   'data-testid'?: string;
 }
@@ -41,17 +40,14 @@ export const Input = memo(
       autoFocus,
       readonly,
       error,
-      noErrorSpace = false,
       'data-testid': dataTestId,
       ...inputProps
     } = props;
-
     const inputRef = useRef<HTMLInputElement | null>(null);
+    const refCb = useCombinedRefs(inputRef, ref);
     const [caretPosition, setCaretPosition,] = useState(0);
-    const mods = {
-      [cls.readonly]: readonly,
-    };
-
+    const generatedId = useId();
+    const inputId = inputProps.id ?? generatedId;
     useEffect(() => {
       if (autoFocus && inputRef.current) {
         inputRef.current?.focus();
@@ -62,58 +58,44 @@ export const Input = memo(
       setCaretPosition(e.target.selectionStart || 0);
     };
 
-    const refCb = useCallback(
-      (elem: HTMLInputElement) => {
-        inputRef.current = elem;
-
-        if (!ref) return;
-        if (ref instanceof Function) {
-          ref(elem);
-        } else {
-          ref.current = elem;
-        }
-      },
-      [ref,]
-    );
+    const labelProps = useMemo(() => ({
+      htmlFor: inputId,
+    }), [inputId,]);
 
     return (
-      <>
-        <HStack
-          xGap={4}
-          align="start"
-          className={classNames(cls.InputWrapper, mods, [props.className,])}
-        >
-          {label ? <div>{`${label} >`}</div> : null}
-          <div className={cls.caretWrapper}>
-            <input
-              {...inputProps}
-              aria-invalid={error ? 'true' : 'false'}
-              ref={refCb}
-              type={type}
-              onChange={props.onChange}
-              className={cls.input}
-              onSelect={onSelect}
-              value={value}
-              readOnly={readonly}
-              data-testid={`${dataTestId}.Input.Value`}
-            />
-            <span
-              style={{ left: caretPosition * INPUT_FONT_WIDTH, }}
-              className={cls.caret}
-            />
-          </div>
-        </HStack>
-        {noErrorSpace
-          ? null
-          : (
-            <Text
-              data-testid={`${dataTestId}.Input.Error`}
-              theme="error"
-              keepTextHeight
-              text={error}
-            />
-            )}
-      </>
+      <HStack
+        xGap={4}
+        align="start"
+        className={classNames(cls.InputWrapper, { [cls.readonly]: readonly, }, [props.className,])}
+      >
+        {label ? <Text textTag="label" labelProps={labelProps} text={`${label} >`}/> : null}
+        <div className={cls.caretWrapper}>
+          <input
+            {...inputProps}
+            id={inputId}
+            aria-invalid={error ? 'true' : 'false'}
+            ref={refCb}
+            type={type}
+            onChange={props.onChange}
+            className={cls.input}
+            onSelect={onSelect}
+            value={value}
+            readOnly={readonly}
+            data-testid={`${dataTestId}.Input.Value`}
+          />
+          <span
+            style={{ left: caretPosition * INPUT_FONT_WIDTH, }}
+            className={cls.caret}
+          />
+        </div>
+        <Text
+          className={cls.error}
+          size="s"
+          data-testid={`${dataTestId}.Input.Error`}
+          theme="error"
+          text={error}
+        />
+      </HStack>
     );
   })
 );

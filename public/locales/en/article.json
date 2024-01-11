@@ -29,5 +29,7 @@
   "article_img_label": "Article Image URL",
   "edit_article_title": "Edit Article",
   "create_article_title": "Create Article",
-  "article_blocks_list_title": "Sections"
+  "article_blocks_list_title": "Sections",
+  "article_leave_feedback_title": "Leave feedback about article",
+  "article_rating_title": "How much did you like the article?"
 }

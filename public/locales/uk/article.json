@@ -28,5 +28,7 @@
   "article_block_form_title_edit": "Редагування Секції Статті",
   "article_block_form_title_copy": "Копіювання Секції Статті",
   "article_block_form_title_create": "Створення Секції Статті",
-  "article_blocks_list_title": "Секції"
+  "article_blocks_list_title": "Секції",
+  "article_rating_title": "На скільки сподобалась вам стаття?",
+  "article_leave_feedback_title": "Залиште відгук про статтю"
 }

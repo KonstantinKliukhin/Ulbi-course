@@ -70,9 +70,6 @@ export const articleApi = $rtkApi.enhanceEndpoints({
         query: (arg) => ({
           url: API_ROUTES.articles(arg.oldArticle.id),
           method: 'PATCH',
-          params: {
-            _expand: 'user',
-          },
           body: arg.article,
         }),
         invalidatesTags: (_, __, arg) => [{
@@ -84,9 +81,6 @@ export const articleApi = $rtkApi.enhanceEndpoints({
         query: (arg) => ({
           url: API_ROUTES.articles(),
           method: 'POST',
-          params: {
-            _expand: 'user',
-          },
           body: arg.article,
         }),
         invalidatesTags: [ArticleApiTags.ARTICLE,],

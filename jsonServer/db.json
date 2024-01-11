@@ -73,7 +73,7 @@
       "title": "Javascript news СВЕЖАЯ !",
       "subtitle": "Что нового в JS за 2022 год?!",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1035,
+      "views": 12313,
       "createdAt": "26.04.2022",
       "userId": "1",
       "type": [
@@ -236,12 +236,6 @@
           ]
         }
       ],
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      },
       "id": "1"
     },
     {
@@ -276,20 +270,14 @@
             }
           ]
         }
-      ],
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
+      ]
     },
     {
       "id": "3",
       "title": "Kotlin news 2019",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
-      "views": 94004,
+      "views": 94005,
       "createdAt": "26.02.2019",
       "userId": "1",
       "type": [
@@ -357,7 +345,7 @@
       "title": "Golang news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://www.freecodecamp.org/news/content/images/2021/10/golang.png",
-      "views": 10223,
+      "views": 10224,
       "createdAt": "26.02.2020",
       "userId": "1",
       "type": [
@@ -425,7 +413,7 @@
       "title": "Ruby news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://res.cloudinary.com/practicaldev/image/fetch/s--oqV3akcU--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/pgnw91fs7tpxn0wyeqh2.jpg",
-      "views": 101,
+      "views": 103,
       "createdAt": "21.02.2022",
       "userId": "1",
       "type": [
@@ -459,7 +447,7 @@
       "title": "TypeScript news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://miro.medium.com/max/1400/1*aTCN2ctKNoZupUCMP0hQuw.png",
-      "views": 102222,
+      "views": 102228,
       "createdAt": "26.02.2022",
       "userId": "1",
       "type": [
@@ -527,7 +515,7 @@
       "title": "Python news 1",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://cdn.analyticsvidhya.com/wp-content/uploads/2023/07/1_m0H6-tUbW6grMlezlb52yw.png",
-      "views": 1022,
+      "views": 1026,
       "createdAt": "26.02.2022",
       "userId": "1",
       "type": [
@@ -554,13 +542,7 @@
             }
           ]
         }
-      ],
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
+      ]
     },
     {
       "id": "11",
@@ -601,7 +583,7 @@
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://cdn.analyticsvidhya.com/wp-content/uploads/2023/07/1_m0H6-tUbW6grMlezlb52yw.png",
-      "views": 1022,
+      "views": 1030,
       "createdAt": "26.02.2022",
       "userId": "1",
       "type": [
@@ -914,13 +896,7 @@
       "img": "https://brandgility.com/images/Brandgility_Black-1024x394.webp",
       "userId": "1",
       "views": 0,
-      "id": "fMAnfii",
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
+      "id": "fMAnfii"
     },
     {
       "type": [
@@ -947,7 +923,7 @@
       "title": "Javascript news СВЕЖАЯ",
       "subtitle": "Что нового в JS за 2022 год?!",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
+      "views": 1023,
       "createdAt": "26.04.2022",
       "userId": "1",
       "type": [
@@ -1111,12 +1087,6 @@
           ]
         }
       ],
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      },
       "id": "98"
     },
     {
@@ -1464,7 +1434,7 @@
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://cdn.analyticsvidhya.com/wp-content/uploads/2023/07/1_m0H6-tUbW6grMlezlb52yw.png",
-      "views": 1022,
+      "views": 1023,
       "createdAt": "26.02.2022",
       "userId": "1",
       "type": [
@@ -1676,16 +1646,7 @@
             }
           ]
         }
-      ],
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "roles": [
-          "USER"
-        ],
-        "password": "123"
-      }
+      ]
     },
     {
       "id": "125",
@@ -1783,11 +1744,39 @@
       "userId": "1",
       "views": 12,
       "createdAt": "16.12.2023",
-      "id": "Lpy7d81",
+      "id": "Lpy7d81"
+    },
+    {
+      "type": [
+        "IT"
+      ],
+      "blocks": [
+        {
+          "id": "a64f3af6-d2a9-406c-8db2-3d084ac9c8f8",
+          "title": "1337",
+          "type": "TEXT",
+          "paragraphs": [
+            {
+              "id": "5dafeb6a-f600-4212-bd88-f2158316107a",
+              "text": "1337"
+            }
+          ]
+        }
+      ],
+      "title": "1337",
+      "subtitle": "1337",
+      "img": "https://brandgility.com/images/Brandgility_Black-1024x394.webp",
+      "userId": "2",
+      "views": 5,
+      "createdAt": "11.1.2024",
+      "id": "H5bJWfs",
       "user": {
-        "id": "1",
+        "id": "2",
         "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
+        "username": "admin 2",
+        "roles": [
+          "ADMIN"
+        ],
         "password": "123"
       }
     }
@@ -1821,7 +1810,6 @@
       "text": "4234234",
       "userId": "1",
       "articleId": "1",
-      "_expand": "user",
       "id": "QjxqJux"
     },
     {
@@ -1834,13 +1822,7 @@
       "text": "12312312",
       "userId": "1",
       "articleId": "1",
-      "id": "1633a140-8159-4724-8e3b-b292a88ae17f",
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
+      "id": "1633a140-8159-4724-8e3b-b292a88ae17f"
     },
     {
       "text": "sadasdasd",
@@ -1870,103 +1852,43 @@
       "text": "123123",
       "userId": "1",
       "articleId": "7tfR20Z",
-      "id": "f11dd3cc-0c7d-4419-b030-30a94b92a7c1",
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
+      "id": "f11dd3cc-0c7d-4419-b030-30a94b92a7c1"
     },
     {
       "text": "1241243123",
       "userId": "1",
       "articleId": "7tfR20Z",
-      "id": "b6686e78-4091-487c-ac81-1b8c813adec6",
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
-    },
-    {
-      "id": "2b1abb9a-7a53-42f9-8539-26fa13321d3f"
-    },
-    {
-      "id": "2d196c42-1b60-4488-a1ad-cdc4b9634673"
-    },
-    {
-      "id": "64e75f15-216e-48aa-898a-b172a052c03c"
-    },
-    {
-      "id": "e7560f90-33c7-4fa9-b33d-da604c50a84b"
-    },
-    {
-      "id": "cfa20d0c-21aa-4f0a-990c-b167c12cc7e7"
-    },
-    {
-      "id": "3e27c04d-5320-40d5-aefe-898892443db9"
+      "id": "b6686e78-4091-487c-ac81-1b8c813adec6"
     },
     {
       "articleId": "0G-72K1",
       "userId": "1",
       "text": "sadasd",
-      "id": "86b67ce8-18a5-4107-b98c-369f505eeaef",
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
+      "id": "86b67ce8-18a5-4107-b98c-369f505eeaef"
     },
     {
       "articleId": "0G-72K1",
       "userId": "1",
       "text": "Test comment",
-      "id": "f1e323fb-77e0-4d5f-a1dc-0eb3b339d47c",
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
+      "id": "f1e323fb-77e0-4d5f-a1dc-0eb3b339d47c"
     },
     {
       "articleId": "0G-72K1",
       "userId": "1",
       "text": "Test comment 3",
-      "id": "277c65c1-06e7-4b98-9d48-6d30da8caa3e",
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
+      "id": "277c65c1-06e7-4b98-9d48-6d30da8caa3e"
     },
     {
       "articleId": "0G-72K1",
       "userId": "1",
       "text": "Test Comment 4",
-      "id": "c437fa51-cbc4-43dc-bebc-14a79d5bffa6",
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
+      "id": "c437fa51-cbc4-43dc-bebc-14a79d5bffa6"
     },
     {
       "articleId": "0G-72K1",
       "userId": "1",
       "text": "asd",
-      "id": "d7ec1285-699e-4e1b-a1df-a2064c340600",
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
+      "id": "d7ec1285-699e-4e1b-a1df-a2064c340600"
     },
     {
       "articleId": "0G-72K1",
@@ -1978,76 +1900,49 @@
       "articleId": "Lpy7d81",
       "userId": "1",
       "text": "mmmmm",
-      "id": "d398f04b-2083-49fe-ad1e-4964a49786ba",
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
+      "id": "d398f04b-2083-49fe-ad1e-4964a49786ba"
     },
     {
       "articleId": "Lpy7d81",
       "userId": "1",
       "text": ")))))))",
-      "id": "fb13244b-47dc-43ac-a60d-619d748687aa",
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
+      "id": "fb13244b-47dc-43ac-a60d-619d748687aa"
     },
     {
       "articleId": "Lpy7d81",
       "userId": "1",
       "text": "\"\"",
-      "id": "e98bd355-d034-44a9-b757-102148f18518",
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
+      "id": "e98bd355-d034-44a9-b757-102148f18518"
     },
     {
       "articleId": "Lpy7d81",
       "userId": "1",
       "text": "\\<script>localstorage.getItem('token')</script>\\",
-      "id": "3300021f-84b9-4367-9714-3c1e00d0b216",
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
+      "id": "3300021f-84b9-4367-9714-3c1e00d0b216"
     },
     {
       "articleId": "Lpy7d81",
       "userId": "1",
       "text": "{\n \"a\": 2\n}",
-      "id": "7a1230ff-8418-4948-9137-c809df1b8122",
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "password": "123"
-      }
+      "id": "7a1230ff-8418-4948-9137-c809df1b8122"
     },
     {
       "articleId": "124",
       "userId": "1",
       "text": "nnnnnnn\n",
-      "id": "e6274cfd-e957-4700-9125-679ff48ea941",
-      "user": {
-        "id": "1",
-        "avatar": "http://media.discordapp.net/attachments/1039145378630598728/1069585335203405824/photo_5386435348135003852_y.jpg?ex=655b47f7&is=6548d2f7&hm=12b993b0834968acede9bbeb893da87949caf353b74b8ada9867ef793799070c&=&width=1116&height=1116",
-        "username": "admin",
-        "roles": [
-          "USER"
-        ],
-        "password": "123"
-      }
+      "id": "e6274cfd-e957-4700-9125-679ff48ea941"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "as",
+      "id": "7b2a6177-c188-4c1d-b5f3-f2da7eac5c2b"
+    },
+    {
+      "articleId": "H5bJWfs",
+      "userId": "2",
+      "text": "123",
+      "id": "8c5b6790-93ac-4cb5-8125-02596e904016"
     }
   ],
   "users": [
@@ -2078,6 +1973,141 @@
         "ADMIN"
       ],
       "password": "123"
+    }
+  ],
+  "article-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "articleId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "articleId": "2"
+    },
+    {
+      "userId": "1",
+      "articleId": "3",
+      "rate": 3,
+      "feedback": "",
+      "id": "I7ofk1u"
+    },
+    {
+      "userId": "1",
+      "articleId": "9",
+      "rate": 5,
+      "feedback": "asdasdasdasd",
+      "id": "Y7MhPzo"
+    },
+    {
+      "userId": "1",
+      "articleId": "10",
+      "rate": 1,
+      "feedback": "отстой",
+      "id": "II0a75O"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 3,
+      "feedback": "",
+      "id": "bcPnbbZ"
+    },
+    {
+      "userId": "2",
+      "articleId": "10",
+      "feedback": "awesome",
+      "rate": 3,
+      "id": "sdyNVQK"
+    },
+    {
+      "userId": "2",
+      "articleId": "10",
+      "rate": 3,
+      "id": "-TsIG3H"
+    },
+    {
+      "userId": "1",
+      "articleId": "8",
+      "feedback": "pop1",
+      "rate": 3,
+      "id": "beaQI4m"
+    },
+    {
+      "userId": "1",
+      "articleId": "12",
+      "feedback": "чушь!",
+      "rate": 1,
+      "id": "-9xTRey"
+    },
+    {
+      "userId": "1",
+      "articleId": "98",
+      "feedback": "ppppp",
+      "rate": 1,
+      "id": "loiCymf"
+    },
+    {
+      "userId": "1",
+      "articleId": "109",
+      "feedback": "llll",
+      "rate": 3,
+      "id": "MaOUuTu"
+    },
+    {
+      "userId": "1",
+      "articleId": "H5bJWfs",
+      "rate": 1,
+      "id": "WmuWcBT"
+    },
+    {
+      "userId": "2",
+      "articleId": "5",
+      "feedback": "norm",
+      "rate": 4,
+      "id": "5OEl2pK"
+    },
+    {
+      "userId": "",
+      "articleId": "1",
+      "feedback": "llll",
+      "rate": 4,
+      "id": "59VCVxT"
+    }
+  ],
+  "profile-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "profileId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "profileId": "2"
+    },
+    {
+      "userId": "2",
+      "profileId": "1",
+      "feedback": "ok",
+      "rate": 4,
+      "id": "J92Y44U"
+    },
+    {
+      "userId": "12313123",
+      "profileId": "1",
+      "feedback": "ppppp",
+      "rate": 4,
+      "id": "IjCOemu"
     }
   ]
 }

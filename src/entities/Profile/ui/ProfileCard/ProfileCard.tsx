@@ -19,6 +19,7 @@ interface ProfileCardProps {
 export const ProfileCard: FC<ProfileCardProps> = memo<ProfileCardProps>(function ProfileCard (props) {
   const { t, } = useTranslation('profile');
   const { t: tGlobal, } = useTranslation();
+  const getInputValue = (name: keyof Profile) => props.readonly ? props.data?.[name] ?? '' : undefined;
 
   return (
     <div
@@ -32,52 +33,52 @@ export const ProfileCard: FC<ProfileCardProps> = memo<ProfileCardProps>(function
         isLoading={props.isLoading}
         loadingNode={<Loader centered data-testid="ProfileCard" />}
       >
-        <VStack align="start" yGap={4} className={cls.body}>
+        <VStack align="start" yGap={32} className={cls.body}>
           <Avatar className={cls.avatar} size={125} src={props?.avatar} />
           <FormInput
-            value={props.readonly ? props.data?.firstname : undefined}
+            value={getInputValue('firstname')}
             name="firstname"
             readonly={props.readonly}
             label={t('your_firstname_label')}
             data-testid="ProfileCard.Firstname"
           />
           <FormInput
-            value={props.readonly ? props.data?.lastname : undefined}
+            value={getInputValue('lastname')}
             name="lastname"
             readonly={props.readonly}
             label={t('your_lastname_label')}
             data-testid="ProfileCard.Lastname"
           />
           <FormInput
-            value={props.readonly ? props.data?.age : undefined}
+            value={getInputValue('age')}
             name="age"
             readonly={props.readonly}
             label={t('your_age_label')}
             data-testid="ProfileCard.Age"
           />
           <FormInput
-            value={props.readonly ? props.data?.city : undefined}
+            value={getInputValue('city')}
             name="city"
             readonly={props.readonly}
             label={t('your_city_label')}
             data-testid="ProfileCard.City"
           />
           <FormInput
-            value={props.readonly ? props.data?.avatar : undefined}
+            value={getInputValue('avatar')}
             name="avatar"
             readonly={props.readonly}
             label={t('your_avatar_label')}
             data-testid="ProfileCard.Avatar"
           />
           <FormInput
-            value={props.readonly ? props.data?.username : undefined}
+            value={getInputValue('username')}
             name="username"
             readonly={props.readonly}
             label={t('username_label')}
             data-testid="ProfileCard.Username"
           />
           <FormCustomListBox
-            value={props.readonly ? props.data?.currency : undefined}
+            value={getInputValue('currency')}
             name="currency"
             readonly={props.readonly}
             label={tGlobal('currency_label')}
@@ -85,7 +86,7 @@ export const ProfileCard: FC<ProfileCardProps> = memo<ProfileCardProps>(function
             data-testid="ProfileCard.Currency"
           />
           <FormCustomListBox
-            value={props.readonly ? props.data?.country : undefined}
+            value={getInputValue('country')}
             name="country"
             label={tGlobal('country_label')}
             readonly={props.readonly}

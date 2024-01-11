@@ -15,6 +15,7 @@ interface FlexProps extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
   xGap?: FlexGap;
   yGap?: FlexGap;
   as?: 'div' | 'header' | 'main' | 'aside';
+  fullWidth?: boolean;
 }
 
 const justifyClasses: Record<FlexJustify, keyof typeof cls> = {
@@ -60,20 +61,23 @@ export const Flex = memo<FlexProps>(function Flex (props) {
     yGap,
     className,
     as: Component = 'div',
+    fullWidth,
     ...divProps
   } = props;
 
   return (
     <Component
       {...divProps}
-      className={classNames(cls.Flex, {}, [
-        className,
-        cls[justifyClasses[justify]],
-        cls[alignClasses[align]],
-        cls[directionClasses[direction]],
-        xGap ? cls[xGapClasses[xGap]] : '',
-        yGap ? cls[yGapClasses[yGap]] : '',
-      ])}
+      className={classNames(cls.Flex,
+        { [cls.fullWidth]: fullWidth, },
+        [
+          className,
+          cls[justifyClasses[justify]],
+          cls[alignClasses[align]],
+          cls[directionClasses[direction]],
+          xGap ? cls[xGapClasses[xGap]] : '',
+          yGap ? cls[yGapClasses[yGap]] : '',
+        ])}
     >
       {props.children}
     </Component>

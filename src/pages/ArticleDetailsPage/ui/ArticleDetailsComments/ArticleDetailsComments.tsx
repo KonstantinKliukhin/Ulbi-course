@@ -1,6 +1,5 @@
-import cls from './ArticleDetailsComments.module.scss';
 import { memo, Suspense } from 'react';
-import { Loader, Text } from '@/shared/ui';
+import { Loader, Text, VStack } from '@/shared/ui';
 import { AddArticleComment } from '@/features/AddArticleComment';
 import { CommentsList } from '@/entities/Comment';
 import { type RtkError } from '@/shared/types';
@@ -9,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 interface ArticleDetailsCommentsProps {
   className?: string;
-  id?: string;
+  articleId?: string;
 }
 
 export const ArticleDetailsComments = memo<ArticleDetailsCommentsProps>(
@@ -17,21 +16,23 @@ export const ArticleDetailsComments = memo<ArticleDetailsCommentsProps>(
     const { t, } = useTranslation('article');
 
     const articleCommentsData = useGetArticleCommentsQuery(
-      { articleId: props.id ?? '', },
-      { skip: !props.id, }
+      { articleId: props.articleId ?? '', },
+      { skip: !props.articleId, }
     );
 
     return (
-      <div>
-        <Text className={cls.commentsTitle} title={t('comments')} />
-        <Suspense fallback={<Loader centered />}>
-          <AddArticleComment articleId={props.id} className={cls.commentsForm} />
-        </Suspense>
+      <VStack yGap={16} align="stretch">
+        <VStack yGap={8} align="stretch">
+          <Text title={t('comments')} />
+          <Suspense fallback={<Loader centered />}>
+            <AddArticleComment articleId={props.articleId} />
+          </Suspense>
+        </VStack>
         <CommentsList
           comments={articleCommentsData.data}
           isLoading={articleCommentsData.isLoading}
           error={(articleCommentsData.error as RtkError)?.message}
         />
-      </div>
+      </VStack>
     );
   });

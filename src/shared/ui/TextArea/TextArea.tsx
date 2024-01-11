@@ -5,8 +5,7 @@ import {
   type InputHTMLAttributes,
   memo,
   type ReactNode,
-  useCallback,
-  useEffect,
+  useEffect, useId,
   useMemo,
   useRef
 } from 'react';
@@ -14,6 +13,7 @@ import { classNames } from '../../lib/ui/classNames/classNames';
 import cls from './TextArea.module.scss';
 import { Text } from '../Text/Text';
 import { VStack } from '../Stack/VStack/VStack';
+import { useCombinedRefs } from '../../lib/utils/useCombinedRefs/useCombinedRefs';
 
 type HtmlTextAreaProps = Omit<
 InputHTMLAttributes<HTMLTextAreaElement>,
@@ -25,7 +25,6 @@ interface TextAreaProps extends HtmlTextAreaProps {
   onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   readonly?: boolean;
   error?: string;
-  withError?: boolean;
   resize?: CSSProperties['resize'];
   label?: ReactNode;
   textAreaClassName?: string;
@@ -41,17 +40,14 @@ export const TextArea = memo(
       autoFocus,
       readonly,
       error,
-      withError = false,
       resize,
       style,
       textAreaClassName,
       ...inputProps
     } = props;
-
     const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
-    const mods = {
-      [cls.readonly]: readonly,
-    };
+    const generatedId = useId();
+    const textAreaId = inputProps.id ?? generatedId;
 
     useEffect(() => {
       if (autoFocus && textAreaRef.current) {
@@ -59,53 +55,42 @@ export const TextArea = memo(
       }
     }, [autoFocus,]);
 
-    const refCb = useCallback(
-      (elem: HTMLTextAreaElement) => {
-        textAreaRef.current = elem;
-
-        if (!ref) return;
-        if (ref instanceof Function) {
-          ref(elem);
-        } else {
-          ref.current = elem;
-        }
-      },
-      [ref,]
-    );
+    const refCb = useCombinedRefs(textAreaRef, ref);
 
     const textareaStyle = useMemo<CSSProperties>(
-      () => ({
-        ...style,
-        resize,
-      }),
+      () => ({ ...style, resize, }),
       [resize, style,]
     );
 
+    const labelProps = useMemo(() => ({
+      htmlFor: textAreaId,
+    }), [textAreaId,]);
+
     return (
-      <>
-        <VStack
-          yGap={4}
-          align="start"
-          className={classNames('', mods, [props.className,])}
-        >
-          {label ? <div>{label}</div> : null}
-          <textarea
-            {...inputProps}
-            style={textareaStyle}
-            aria-invalid={error ? 'true' : 'false'}
-            ref={refCb}
-            onChange={props.onChange}
-            className={classNames(cls.textarea, {}, [textAreaClassName,])}
-            value={value}
-            readOnly={readonly}
-          />
-          {withError
-            ? (
-              <Text theme="error" keepTextHeight text={error} />
-              )
-            : null}
-        </VStack>
-      </>
+      <VStack
+        yGap={4}
+        align="start"
+        className={classNames(cls.TextArea, { [cls.readonly]: readonly, }, [props.className,])}
+      >
+        {label ? <Text labelProps={labelProps} textTag="label" text={label} /> : null}
+        <textarea
+          {...inputProps}
+          id={textAreaId}
+          style={textareaStyle}
+          aria-invalid={error ? 'true' : 'false'}
+          ref={refCb}
+          onChange={props.onChange}
+          className={classNames(cls.textarea, {}, [textAreaClassName,])}
+          value={value}
+          readOnly={readonly}
+        />
+        <Text
+          className={cls.error}
+          size="s"
+          theme="error"
+          text={error}
+        />
+      </VStack>
     );
   })
 );

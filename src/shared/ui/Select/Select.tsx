@@ -24,7 +24,6 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
   readonly?: boolean;
   error?: string;
-  noErrorSpace?: boolean;
 }
 
 export const Select = memo(
@@ -35,7 +34,6 @@ export const Select = memo(
       className,
       readonly,
       error,
-      noErrorSpace = false,
       ...selectProps
     } = props;
 
@@ -53,37 +51,32 @@ export const Select = memo(
       [options,]
     );
 
-    const mods = {
-      [cls.readonly]: readonly,
-    };
-
     return (
-      <>
-        <HStack
-          align="start"
-          className={classNames(cls.Wrapper, mods, [props.className,])}
+      <HStack
+        align="start"
+        className={classNames(cls.Select, { [cls.readonly]: readonly, }, [props.className,])}
+      >
+        {props.label
+          ? (
+            <span className={cls.label}>{`${label} >`}</span>
+            )
+          : null}
+        <select
+          {...selectProps}
+          aria-invalid={error ? 'true' : 'false'}
+          disabled={readonly || selectProps.disabled}
+          className={cls.select}
+          ref={selectRef}
         >
-          {props.label
-            ? (
-              <span className={cls.label}>{`${label} >`}</span>
-              )
-            : null}
-          <select
-            {...selectProps}
-            aria-invalid={error ? 'true' : 'false'}
-            disabled={readonly || selectProps.disabled}
-            className={cls.select}
-            ref={selectRef}
-          >
-            {optionList}
-          </select>
-        </HStack>
-        {noErrorSpace
-          ? null
-          : (
-            <Text theme="error" keepTextHeight text={props.error} />
-            )}
-      </>
+          {optionList}
+        </select>
+        <Text
+          size="s"
+          className={cls.error}
+          theme="error"
+          text={props.error}
+        />
+      </HStack>
     );
   })
 );

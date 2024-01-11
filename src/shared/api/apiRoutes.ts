@@ -12,7 +12,9 @@ const addId = (id?: string) => `${id ? `/${id}` : ''}`;
 export const API_ROUTES = {
   login: () => getApiRoute('/login'),
   articles: (id?: string) => getApiRoute(`/articles${addId(id)}`),
+  articleRating: () => getApiRoute('/article-ratings'),
   comments: () => getApiRoute('/comments'),
   profile: (id: string) => getApiRoute(`/profile${addId(id)}`),
+  profileRating: () => getApiRoute('/profile-ratings'),
   notifications: () => getApiRoute('/notifications'),
 } as const;

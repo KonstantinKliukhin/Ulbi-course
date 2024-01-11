@@ -16,9 +16,8 @@ interface FormCustomListBoxProps extends CustomListBoxProps {
 export const FormCustomListBox =
   memo<FormCustomListBoxProps>(function FormCustomListBox (props) {
     const context = useFormContext();
-    const withError = props.withError !== undefined ? props.withError : true;
 
-    if (context) {
+    if (context && !props.value) {
       return (
         <Controller
           name={props.name}
@@ -29,7 +28,6 @@ export const FormCustomListBox =
               {...props}
               value={field.value}
               onChange={field.onChange}
-              withError={withError}
             />
           )}
         />

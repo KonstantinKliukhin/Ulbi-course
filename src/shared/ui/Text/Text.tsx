@@ -1,4 +1,4 @@
-import { memo, type MouseEventHandler, type ReactNode } from 'react';
+import { type HTMLAttributes, type LabelHTMLAttributes, memo, type MouseEventHandler, type ReactNode } from 'react';
 import cls from './Text.module.scss';
 import { classNames } from '../../lib/ui/classNames/classNames';
 
@@ -8,7 +8,12 @@ type TextAlign = 'right' | 'left' | 'center';
 
 type TextSize = 's' | 'm' | 'l';
 
+type HeaderTag = 'h1' | 'h2' | 'h3';
+
+type TextTags = 'p' | 'label';
+
 interface TextProps {
+  textTag?: TextTags;
   className?: string;
   titleClassName?: string;
   textClassName?: string;
@@ -21,9 +26,9 @@ interface TextProps {
   keepTextHeight?: boolean;
   keepTitleHeight?: boolean;
   'data-testid'?: string;
+  textProps?: HTMLAttributes<HTMLDivElement>;
+  labelProps?: LabelHTMLAttributes<HTMLLabelElement>;
 }
-
-type HeaderTag = 'h1' | 'h2' | 'h3';
 
 const mapTextAlignClasses: Record<TextAlign, keyof typeof cls> = {
   left: 'left',
@@ -49,8 +54,35 @@ const mapSizeToHeadingTag: Record<TextSize, HeaderTag> = {
 };
 
 export const Text = memo<TextProps>(function Text (props) {
-  const { theme = 'primary', align = 'left', size = 'm', 'data-testid': dataTestId, } = props;
+  const {
+    textTag: TextTag = 'p',
+    theme = 'primary',
+    align = 'left',
+    size = 'm',
+    'data-testid': dataTestId
+    ,
+  } = props;
   const HeaderTag = mapSizeToHeadingTag[size];
+
+  const textNode = TextTag === 'label'
+    ? (
+      <TextTag
+        data-testid={`${dataTestId}.Paragraph`}
+        className={classNames(cls.text, {}, [props.textClassName,])}
+        {...props.labelProps}
+      >
+        {props.text}
+      </TextTag>
+      )
+    : (
+      <TextTag
+        data-testid={`${dataTestId}.Paragraph`}
+        className={classNames(cls.text, {}, [props.textClassName,])}
+        {...props.textProps}
+      >
+        {props.text}
+      </TextTag>
+      );
 
   return (
     <div
@@ -80,16 +112,7 @@ export const Text = memo<TextProps>(function Text (props) {
           </HeaderTag>
           )
         : null}
-      {props.text
-        ? (
-          <p
-            data-testid={`${dataTestId}.Paragraph`}
-            className={classNames(cls.text, {}, [props.textClassName,])}
-          >
-            {props.text}
-          </p>
-          )
-        : null}
+      {props.text ? textNode : null}
     </div>
   );
 });

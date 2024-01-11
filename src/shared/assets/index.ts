@@ -13,3 +13,4 @@ export { default as NotificationIcon } from './icons/notification-20-20.svg';
 export { default as ProfileIcon } from './icons/profile-20-20.svg';
 export { default as TiledIcon } from './icons/tiled-24-24.svg';
 export { default as UserIcon } from './icons/user-32-32.png';
+export { default as StarIcon } from './icons/star.svg';

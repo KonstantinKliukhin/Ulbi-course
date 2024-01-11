@@ -31,6 +31,11 @@ const successMockDataParameters = [
     status: 200,
     response: mockedProfile,
   },
+  {
+    url: `${API_ROUTES.profileRating()}`,
+    method: 'POST',
+    status: 200,
+  },
 ];
 
 export const MyProfile: ProfilePageStory = {

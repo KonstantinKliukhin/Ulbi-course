@@ -114,7 +114,6 @@ export const WithError: TabsStory = {
     ],
     value: '1',
     label: 'Some label',
-    withError: true,
     error: 'Some Api Error',
     onTabClick: action('onTabClick'),
   },

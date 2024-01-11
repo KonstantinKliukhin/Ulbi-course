@@ -101,12 +101,11 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = (props) => {
           onSelectView={setArticlesView}
         />
       </HStack>
-      <Card className={cls.search}>
+      <Card>
         <Input
           onChange={onChangeSearch}
           value={articlesSearch}
           label={t('search')}
-          noErrorSpace
         />
       </Card>
       <ArticleTypesTabs

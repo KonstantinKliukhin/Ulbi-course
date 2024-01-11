@@ -9,7 +9,6 @@ interface ArticleTypesTabsProps {
   onSelectType: (type: ArticleType) => void;
   value: ArticleType | ArticleType[];
   error?: string | null;
-  withError?: boolean;
   label?: string;
   excludeAll?: boolean;
 }
@@ -45,7 +44,6 @@ export const ArticleTypesTabs = memo<ArticleTypesTabsProps>(
     return (
       <Tabs
         label={props.label}
-        withError={props.withError}
         error={props.error}
         tabs={typeTabs}
         value={props.value}

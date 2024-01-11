@@ -22,6 +22,7 @@ const buildStorybookSvgLoader = (config: webpack.Configuration) => {
 
   return buildSvgLoader();
 };
+
 export default ({ config, }: { config: webpack.Configuration }) => {
   const paths: BuildPaths = {
     build: '',
@@ -42,6 +43,10 @@ export default ({ config, }: { config: webpack.Configuration }) => {
       __PROJECT__: JSON.stringify('storybook'),
     })
   );
+  config.resolve!.alias = {
+    ...config.resolve!.alias,
+    '@': paths.src,
+  };
 
   return config;
 };

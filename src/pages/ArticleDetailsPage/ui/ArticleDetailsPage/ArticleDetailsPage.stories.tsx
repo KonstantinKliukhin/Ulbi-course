@@ -31,7 +31,7 @@ const successMockDataParameters = [
     response: mockedArticles,
   },
   {
-    url: `${API_ROUTES.comments()}?articleId=1&_expand=user`,
+    url: `${API_ROUTES.comments()}?articleId=${mockedArticle.id}&_expand=user`,
     method: 'GET',
     status: 200,
     response: mockedComments,
@@ -41,6 +41,11 @@ const successMockDataParameters = [
     method: 'GET',
     status: 200,
     response: mockedArticle,
+  },
+  {
+    url: API_ROUTES.articleRating(),
+    method: 'POST',
+    status: 200,
   },
 ];
 

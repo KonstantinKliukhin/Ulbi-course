@@ -22,7 +22,6 @@ interface CustomListBoxProps<Value extends string | number> {
   defaultValue?: Value;
   onChange: (value: Value) => void;
   error?: string | null;
-  withError?: boolean;
   label?: ReactNode;
   'data-testid'?: string;
 }
@@ -55,7 +54,13 @@ export const CustomListBox = memo<CustomListBoxProps<string | number>>(
     }, [props.value, props.defaultValue, props.options, t,]);
 
     return (
-      <>
+      <div
+        className={classNames(
+          cls.CustomListBox,
+          { [cls.readonly]: props.readonly, },
+          [props.className,]
+        )}
+      >
         <Listbox
           disabled={props.readonly}
           value={props.value}
@@ -109,13 +114,13 @@ export const CustomListBox = memo<CustomListBoxProps<string | number>>(
           </Listbox.Options>
         </Listbox>
         <Text
+          className={cls.error}
           data-testid={`${props['data-testid']}.CustomListBox.Error`}
           text={props.error}
-          size="m"
+          size="s"
           theme="error"
-          keepTextHeight={props.withError}
         />
-      </>
+      </div>
     );
   }
 ) as CustomListBoxType;

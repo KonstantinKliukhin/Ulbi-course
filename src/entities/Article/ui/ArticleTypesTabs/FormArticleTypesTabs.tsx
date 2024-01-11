@@ -41,7 +41,6 @@ export const FormArticleTypesTabs = memo<FormArticleTypesTabsProps>(
             error={fieldState.error?.message}
             onSelectType={onSelectType.bind(null, field.value, field.onChange)}
             value={field.value}
-            withError
           />
         )}
       />
