@@ -45,6 +45,11 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   plugins: ['react', 'i18next', 'react-hooks', 'ulbi-eslint-plugin', 'unused-imports',],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
@@ -127,10 +132,5 @@ module.exports = {
         functions: 'never',
       },
     ],
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
   },
 };
