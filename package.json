@@ -24,7 +24,8 @@
     "test:ui": "npx chromatic --project-token=chpt_2c07134b88336c0 --build-script-name storybook:build",
     "test:ui:ok": "npx chromatic --project-token=chpt_2c07134b88336c0 --auto-accept-changes",
     "prepare": "husky install",
-    "generate:slice": "node ./scripts/createSlice/index.js"
+    "generate:slice": "node ./scripts/createSlice/index.js",
+    "postinstall": "node scripts/clearCache.js"
   },
   "keywords": [],
   "author": "",

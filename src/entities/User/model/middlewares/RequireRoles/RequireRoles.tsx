@@ -1,6 +1,5 @@
 import { memo, type PropsWithChildren, useMemo } from 'react';
-import { useAppSelector } from '@/shared/lib';
-import { getUserRoles } from '../../selectors/getUserRoles/getUserRoles';
+import { useUserRoles } from '../../selectors/getUserRoles/getUserRoles';
 import { Navigate } from 'react-router-dom';
 import type { UserRole } from '../../constants/userRoles';
 
@@ -10,7 +9,7 @@ interface RequireRolesProps extends PropsWithChildren {
 }
 
 export const RequireRoles = memo<RequireRolesProps>(function RequireRoles (props) {
-  const userRoles = useAppSelector(getUserRoles);
+  const userRoles = useUserRoles();
 
   const isAccepted = useMemo(() => (
     props.roles.some(role => userRoles.includes(role))

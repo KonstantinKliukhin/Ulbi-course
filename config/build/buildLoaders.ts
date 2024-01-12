@@ -18,8 +18,8 @@ export default function buildLoaders (options: BuildOptions): webpack.RuleSetRul
 
   const cssLoaders = buildCssLoader(options.isDev);
 
-  const babelLoader = buildBabelLoader({ isTsx: false, });
-  const tsxBabelLoader = buildBabelLoader({ isTsx: true, });
+  const babelLoader = buildBabelLoader({ isTsx: false, isProd: !options.isDev, });
+  const tsxBabelLoader = buildBabelLoader({ isTsx: true, isProd: !options.isDev, });
 
   return [fileLoader, svgLoader, babelLoader, tsxBabelLoader, cssLoaders,];
 };

@@ -4,8 +4,7 @@ import { type RtkError } from '@/shared/types';
 import { FormProvider } from 'react-hook-form';
 import { useAddArticleCommentForm } from '../../model/hooks/useAddArticleCommentForm/useAddArticleCommentForm';
 import { type AddArticleCommentForm } from '../../model/types/addArticleCommentForm';
-import { useAppSelector } from '@/shared/lib';
-import { getUserAuthData } from '@/entities/User';
+import { useUserAuthData } from '@/entities/User';
 import { useAddArticleCommentMutation } from '@/entities/Article';
 
 interface AddArticleCommentProps {
@@ -16,7 +15,7 @@ interface AddArticleCommentProps {
 const AddArticleComment = memo<AddArticleCommentProps>(function AddArticleComment (props) {
   const addArticleCommentForm = useAddArticleCommentForm();
   const { reset: resetArticleCommentForm, } = addArticleCommentForm;
-  const user = useAppSelector(getUserAuthData);
+  const user = useUserAuthData();
   const [addArticleComment, addArticleCommentData,] = useAddArticleCommentMutation();
 
   const onSubmit = useCallback((formValue: AddArticleCommentForm) => {

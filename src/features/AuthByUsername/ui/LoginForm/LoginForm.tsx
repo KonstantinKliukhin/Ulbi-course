@@ -3,17 +3,15 @@ import cls from './LoginForm.module.scss';
 import {
   classNames,
   useAppDispatch,
-  useAppSelector,
   withLazySlices
 } from '@/shared/lib';
 import { useTranslation } from 'react-i18next';
 import { Button, FormInput, Text, VStack } from '@/shared/ui';
 import { loginReducer } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
-import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
-import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { useLoginForm } from '../../model/hooks/useLoginForm/useLoginForm';
 import { FormProvider } from 'react-hook-form';
+import { useLoginIsLoading, useLoginError } from '../../model/selectors/getLoginState/getLoginState';
 
 interface LoginFormProps {
   className?: string;
@@ -23,8 +21,8 @@ interface LoginFormProps {
 const LoginForm: FC<LoginFormProps> = (props) => {
   const { onSuccess, } = props;
   const dispatch = useAppDispatch();
-  const error = useAppSelector(getLoginError);
-  const isLoading = useAppSelector(getLoginIsLoading);
+  const error = useLoginError();
+  const isLoading = useLoginIsLoading();
   const { t, } = useTranslation();
 
   const loginForm = useLoginForm();

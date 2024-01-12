@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useAppDispatch } from './useAppDispatch';
+import { useAppDispatch } from '../useAppDispatch/useAppDispatch';
 
 export const useAction = <
   Action extends AnyFunction,

@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { RoutePath } from '@/shared/config';
 import { MainIcon, AboutIcon, ProfileIcon, ArticleIcon } from '@/shared/assets';
-import { addOptionallyToArray, useAppSelector } from '@/shared/lib';
-import { getUserAuthData } from '@/entities/User';
+import { addOptionallyToArray } from '@/shared/lib';
+import { useUserAuthData } from '@/entities/User';
 import { type SidebarItemType } from './types/sidebarItem';
 
 interface GetLinkItemsArg {
@@ -34,7 +34,7 @@ const getLinkItems = (arg: GetLinkItemsArg): SidebarItemType[] => [
 ];
 
 export const useLinkItems = () => {
-  const user = useAppSelector(getUserAuthData);
+  const user = useUserAuthData();
   const isAuthorized = Boolean(user);
 
   return useMemo(() => (

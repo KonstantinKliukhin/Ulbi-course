@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import cls from './Navbar.module.scss';
-import { classNames, useAppSelector, useBoolState } from '@/shared/lib';
+import { classNames, useBoolState } from '@/shared/lib';
 import { Button, HStack } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from '@/features/AuthByUsername';
-import { getUserAuthData } from '@/entities/User';
+import { useUserAuthData } from '@/entities/User';
 import { NotificationsPopover } from '@/features/ViewNotifications';
 import { AvatarDropdown } from '@/features/ViewAvatarDropdown';
 
@@ -13,7 +13,7 @@ interface NavbarProps {
 }
 
 export const Navbar = memo<NavbarProps>(function Navbar (props) {
-  const userAuthData = useAppSelector(getUserAuthData);
+  const userAuthData = useUserAuthData();
   const isAuthenticated = Boolean(userAuthData);
   const loginModal = useBoolState();
   const { t, } = useTranslation();

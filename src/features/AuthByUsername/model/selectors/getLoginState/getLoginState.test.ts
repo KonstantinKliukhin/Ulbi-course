@@ -1,23 +1,36 @@
 import { type LoginSchema } from '../../types/loginSchema';
-import { getLoginState } from './getLoginState';
-import { initialState } from '../../slice/loginSlice';
+import { getLoginIsLoading, getLoginError } from './getLoginState';
 
 describe('getLoginState', () => {
-  test('should return login state', () => {
-    const loginState: LoginSchema = {
-      error: 'error',
-      isLoading: false,
-    };
-    const state: DeepPartial<StateSchema> = {
-      loginForm: loginState,
+  test('should return login loading state', () => {
+    const state: { loginForm: DeepPartial<LoginSchema> } = {
+      loginForm: {
+        isLoading: true,
+      },
     };
 
-    expect(getLoginState(state as StateSchema)).toEqual(loginState);
+    expect(getLoginIsLoading(state as StateSchema)).toEqual(true);
   });
 
   test('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {};
 
-    expect(getLoginState(state as StateSchema)).toEqual(initialState);
+    expect(getLoginIsLoading(state as StateSchema)).toEqual(false);
+  });
+
+  test('should return login error', () => {
+    const state: { loginForm: DeepPartial<LoginSchema> } = {
+      loginForm: {
+        error: 'error',
+      },
+    };
+
+    expect(getLoginError(state as StateSchema)).toEqual('error');
+  });
+
+  test('should work with empty state', () => {
+    const state: DeepPartial<StateSchema> = {};
+
+    expect(getLoginError(state as StateSchema)).toEqual(null);
   });
 });

@@ -1,11 +1,12 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { type PayloadAction } from '@reduxjs/toolkit';
 import { type UISchema } from '../types/UISchema';
+import { buildSlice } from '@/shared/lib';
 
 const initialState: UISchema = {
   scroll: {},
 };
 
-export const UISlice = createSlice({
+export const UISlice = buildSlice({
   name: 'UI',
   initialState,
   reducers: {
@@ -15,4 +16,8 @@ export const UISlice = createSlice({
   },
 });
 
-export const { actions: UIActions, reducer: UIReducer, } = UISlice;
+export const {
+  UIActions,
+  UIReducer,
+  useUIActions,
+} = UISlice;

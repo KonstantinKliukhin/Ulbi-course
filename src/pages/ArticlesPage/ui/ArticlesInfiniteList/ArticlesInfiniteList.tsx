@@ -3,24 +3,22 @@ import { type FC, useCallback } from 'react';
 import { ArticleList, ArticleView } from '@/entities/Article';
 import { DEFAULT_ARTICLES_LIMIT } from '../../model/constants';
 import {
-  useArticlesPageSavedItemIndex
-} from '../../model/hooks/useArticlesPageSavedItemIndex/useArticlesPageSavedItemIndex';
+  useFirstArticlesPageSavedItemIndex
+} from '../../model/hooks/useArticlesPageSavedItemIndex/useFirstArticlesPageSavedItemIndex';
 import { articlesPageActions } from '../../model/slices/articlesPageSlice';
 import { type ListRange } from 'react-virtuoso';
 import { LOCAL_STORAGE_ARTICLE_VIEW_KEY } from '@/shared/constants';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import {
-  getArticlesError, getArticlesHasMore,
-  getArticlesIsLoading,
-  getArticlesState
+  getArticlesState, useArticlesError, useArticlesHasMore, useArticlesIsLoading
 } from '../../model/selectors/getArticlesState/getArticlesState';
 
 export const ArticlesInfiniteList: FC = function ArticlesInfiniteList () {
-  const savedItemIndex = useArticlesPageSavedItemIndex();
+  const savedItemIndex = useFirstArticlesPageSavedItemIndex();
   const articles = useAppSelector(getArticlesState.selectAll);
-  const isLoading = useAppSelector(getArticlesIsLoading);
-  const error = useAppSelector(getArticlesError);
-  const hasMore = useAppSelector(getArticlesHasMore);
+  const isLoading = useArticlesIsLoading();
+  const error = useArticlesError();
+  const hasMore = useArticlesHasMore();
   const onScrollRangeChanged = useAction(
     articlesPageActions.setSavedItemIndex,
     useCallback((range: ListRange) => range.startIndex, [])

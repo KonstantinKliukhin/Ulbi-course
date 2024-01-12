@@ -1,9 +1,10 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { type PayloadAction } from '@reduxjs/toolkit';
 import { articlesAdapter } from '../adapters/articlesAdapter';
 import { type ArticlesPageSchema } from '../types/articlesPageSchema';
 import { ArticleSortField, ArticleType, ArticleView } from '@/entities/Article';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
 import { type SortOrder } from '@/shared/types';
+import { buildSlice } from '@/shared/lib';
 
 const BIG_ARTICLES_LIMIT = 4;
 const SMALL_ARTICLES_LIMIT = 20;
@@ -24,7 +25,7 @@ export const initialState: ArticlesPageSchema = articlesAdapter.getInitialState(
   _inited: false,
 });
 
-export const articlesPageSlice = createSlice({
+export const articlesPageSlice = buildSlice({
   name: 'articlesPage',
   initialState,
   reducers: {
@@ -85,4 +86,8 @@ export const articlesPageSlice = createSlice({
       }),
 });
 
-export const { actions: articlesPageActions, reducer: articlesPageReducer, } = articlesPageSlice;
+export const {
+  articlesPageActions,
+  articlesPageReducer,
+  useArticlesPageActions,
+} = articlesPageSlice;

@@ -1,4 +1,9 @@
-import { initialState } from '../../slice/loginSlice';
-import { type LoginSchema } from '../../types/loginSchema';
+import { buildSelector } from '@/shared/lib';
 
-export const getLoginState = (state: StateSchema): LoginSchema => state?.loginForm ?? initialState;
+export const [useLoginIsLoading, getLoginIsLoading,] = buildSelector(
+  (state) => state.loginForm?.isLoading ?? false
+);
+
+export const [useLoginError, getLoginError,] = buildSelector(
+  (state) => state.loginForm?.error ?? null
+);

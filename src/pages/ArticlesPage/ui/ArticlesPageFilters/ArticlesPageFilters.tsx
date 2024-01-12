@@ -1,9 +1,7 @@
 import { type ChangeEvent, type FC, useCallback } from 'react';
 import cls from './ArticlesPageFilters.module.scss';
 import {
-  classNames, useAction,
-  useActions,
-  useAppSelector, useDebounce
+  classNames, useAction, useDebounce
   , useLocalStorage
 } from '@/shared/lib';
 import {
@@ -11,13 +9,8 @@ import {
   type ArticleType,
   ArticleView
 } from '@/entities/Article';
-import { articlesPageActions } from '../../model/slices/articlesPageSlice';
-import {
-  getArticlesOrder,
-  getArticlesSearch,
-  getArticlesSort,
-  getArticlesType
-} from '../../model/selectors/getArticlesState/getArticlesState';
+import { useArticlesPageActions } from '../../model/slices/articlesPageSlice';
+import { useArticlesOrder, useArticlesSearch, useArticlesSort, useArticlesType } from '../../model/selectors/getArticlesState/getArticlesState';
 import { ArticleViewSelector } from '@/features/SelectArticleView';
 import { Card, HStack, Input } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
@@ -34,10 +27,10 @@ interface ArticlesPageFiltersProps {
 export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = (props) => {
   const { t, } = useTranslation();
   const [articlesView, setArticlesView,] = useLocalStorage(LOCAL_STORAGE_ARTICLE_VIEW_KEY, ArticleView.SMALL);
-  const articlesSort = useAppSelector(getArticlesSort);
-  const articlesOrder = useAppSelector(getArticlesOrder);
-  const articlesSearch = useAppSelector(getArticlesSearch);
-  const articlesType = useAppSelector(getArticlesType);
+  const articlesSort = useArticlesSort();
+  const articlesOrder = useArticlesOrder();
+  const articlesSearch = useArticlesSearch();
+  const articlesType = useArticlesType();
   const fetchArticles = useAction(
     fetchArticlesList,
     useCallback(() => ({ replace: true, }), [])
@@ -49,7 +42,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = (props) => {
     setSearch,
     setPage,
     setType,
-  } = useActions(articlesPageActions);
+  } = useArticlesPageActions();
 
   const onChangeOrder = useCallback(
     (order: SortOrder) => {

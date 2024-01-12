@@ -4,16 +4,11 @@ import { FormProvider, useFieldArray } from 'react-hook-form';
 import {
   findIndexById,
   useAction,
-  useAppSelector,
   useDragEnd,
   withLazySlices
 } from '@/shared/lib';
 import { useArticleForm } from '../../model/hooks/useArticleForm/useArticleForm';
-import {
-  getBlockFormMode,
-  getCurrentBlockIndex,
-  getEditingArticleBlock
-} from '../../model/selectors/getManageArticleState/getManageArticleState';
+import { useBlockFormMode, useCurrentBlockIndex, useEditingArticleBlock } from '../../model/selectors/getManageArticleState/getManageArticleState';
 import {
   manageArticleActions,
   manageArticleReducer
@@ -36,9 +31,9 @@ interface ManageArticleFormProps {
 const ManageArticleForm = memo<ManageArticleFormProps>(
   function ManageArticleForm (props) {
     const { onCancel, } = props;
-    const currentBlockIndex = useAppSelector(getCurrentBlockIndex);
-    const blockFormMode = useAppSelector(getBlockFormMode);
-    const editingBlock = useAppSelector(getEditingArticleBlock);
+    const currentBlockIndex = useCurrentBlockIndex();
+    const blockFormMode = useBlockFormMode();
+    const editingBlock = useEditingArticleBlock();
     const articleForm = useArticleForm(props.article);
     const { reset: resetArticleForm, } = articleForm;
     const isSubmitDisabled = !articleForm.formState.isValid || !articleForm.formState.isDirty;

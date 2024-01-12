@@ -1,7 +1,16 @@
 export { useLogout } from './model/hooks/useLogout/useLogout';
 
-export { getUserAuthData } from './model/selectors/getUserAuthData/getUserAuthData';
-export { getIsManagerUser, getIsAdminUser, getIsSimpleUser, getUserRoles } from './model/selectors/getUserRoles/getUserRoles';
+export { getUserAuthData, useUserAuthData } from './model/selectors/getUserAuthData/getUserAuthData';
+export {
+  getIsManagerUser,
+  useIsManagerUser,
+  useIsSimpleUser,
+  useUserRoles,
+  useIsAdminUser,
+  getIsAdminUser,
+  getIsSimpleUser,
+  getUserRoles
+} from './model/selectors/getUserRoles/getUserRoles';
 
 export { useInitUser } from './model/hooks/useInitUser/useInitUser';
 

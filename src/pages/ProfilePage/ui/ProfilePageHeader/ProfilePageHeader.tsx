@@ -1,31 +1,31 @@
 import { type FC, type MouseEvent, useCallback, useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from '@/shared/lib';
 import { Button, FormHeader } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
-import { getUserAuthData } from '@/entities/User';
+import { useUserAuthData } from '@/entities/User';
 import { useParams } from 'react-router-dom';
-import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
-import { profilePageActions } from '../../model/slice/profilePageSlice';
+import {
+  useProfileReadonly
+} from '../../model/selectors/getProfileReadonly/getProfileReadonly';
+import { useProfilePageActions } from '../../model/slice/profilePageSlice';
 import { EDITABLE_PROFILE_FORM_ID } from '@/features/EditableProfile';
 
 export const ProfilePageHeader: FC = () => {
   const { t: tProfile, } = useTranslation('profile');
   const { t: tGlobal, } = useTranslation();
   const params = useParams<{ id: string }>();
-  const profileReadonly = useAppSelector(getProfileReadonly);
-  const user = useAppSelector(getUserAuthData);
-  const dispatch = useAppDispatch();
+  const profileReadonly = useProfileReadonly();
+  const user = useUserAuthData();
   const isCurrentUserProfile = user?.id === params.id;
-
+  const { setReadonly, cancelEdit, } = useProfilePageActions();
   const onEdit = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    dispatch(profilePageActions.setReadonly(false));
-  }, [dispatch,]);
+    setReadonly(false);
+  }, [setReadonly,]);
 
   const onCancelEdit = useCallback(() => {
-    dispatch(profilePageActions.cancelEdit());
-  }, [dispatch,]);
+    cancelEdit();
+  }, [cancelEdit,]);
 
   const buttons = useMemo(() => {
     if (!isCurrentUserProfile) return <div />;

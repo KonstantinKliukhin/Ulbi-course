@@ -2,8 +2,7 @@ import React, { memo, useCallback } from 'react';
 import { RatingCard } from '@/entities/Rating';
 import { useTranslation } from 'react-i18next';
 import { useGetProfileRatingQuery, useRateProfileMutation } from '../../api/profileRatingApi';
-import { useAppSelector } from '@/shared/lib';
-import { getUserAuthData } from '@/entities/User';
+import { useUserAuthData } from '@/entities/User';
 
 interface ProfileRatingProps {
   className?: string;
@@ -12,7 +11,7 @@ interface ProfileRatingProps {
 
 const ProfileRating = memo<ProfileRatingProps>(function ProfileRating (props) {
   const { t, } = useTranslation('profile');
-  const user = useAppSelector(getUserAuthData);
+  const user = useUserAuthData();
   const profileRatingQueryData = useGetProfileRatingQuery(
     { profileId: props.profileId, userId: user?.id ?? '', },
     { skip: !user?.id, }

@@ -1,10 +1,9 @@
 import { type Article } from '@/entities/Article';
-import { getUserAuthData } from '@/entities/User';
-import { useAppSelector } from '@/shared/lib';
+import { useUserAuthData } from '@/entities/User';
 import { useMemo } from 'react';
 
 export const useGetCanEditArticle = (article?: Article) => {
-  const user = useAppSelector(getUserAuthData);
+  const user = useUserAuthData();
 
   return useMemo(() => {
     if (!article?.user.id || !user?.id) {

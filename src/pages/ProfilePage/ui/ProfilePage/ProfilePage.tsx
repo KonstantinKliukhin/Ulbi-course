@@ -1,6 +1,5 @@
 import { type FC, Suspense } from 'react';
 import {
-  useAppSelector,
   withLazySlices
 } from '@/shared/lib';
 
@@ -9,16 +8,18 @@ import { EditableProfile } from '@/features/EditableProfile';
 import { useParams } from 'react-router-dom';
 import { Loader, Page, Text, VStack } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
-import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
+import {
+  useProfileReadonly
+} from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { profilePageReducer } from '../../model/slice/profilePageSlice';
 import { ProfileRating } from '@/features/ProfileRating';
-import { getUserAuthData } from '@/entities/User';
+import { useUserAuthData } from '@/entities/User';
 
 const ProfilePage: FC = () => {
   const params = useParams<{ id: string }>();
   const { t, } = useTranslation('profile');
-  const readonly = useAppSelector(getProfileReadonly);
-  const user = useAppSelector(getUserAuthData);
+  const readonly = useProfileReadonly();
+  const user = useUserAuthData();
   const isCurrentUserProfile = params?.id === user?.id;
 
   if (!params.id) {

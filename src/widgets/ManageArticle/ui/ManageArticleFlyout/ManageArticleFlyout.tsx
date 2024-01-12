@@ -3,11 +3,10 @@ import { Drawer, Loader } from '@/shared/ui';
 import { ManageArticleForm } from '../ManageArticleForm/ManageArticleForm.async';
 import { type Article, useCreateArticleMutation, useUpdateArticleMutation } from '@/entities/Article';
 import { type FormMode } from '@/shared/types';
-import { useAppSelector } from '@/shared/lib';
 import { type ArticleFormType } from '../../model/types/articleForm';
 import { useArticleFormTitle } from './useArticleFormTitle';
 import { articleFormToDTO } from '../../lib/articleFormToDTO/articleFormToDTO';
-import { getUserAuthData } from '@/entities/User';
+import { useUserAuthData } from '@/entities/User';
 
 interface ManageArticleModalProps extends ComponentProps<typeof Drawer> {
   article?: Article;
@@ -19,7 +18,7 @@ export const ManageArticleFlyout = memo<ManageArticleModalProps>(
     const { article, onClose, ...flyoutProps } = props;
     const [updateArticle,] = useUpdateArticleMutation();
     const [createArticle,] = useCreateArticleMutation();
-    const user = useAppSelector(getUserAuthData);
+    const user = useUserAuthData();
 
     const onSubmit = useCallback(
       async (articleForm: ArticleFormType) => {

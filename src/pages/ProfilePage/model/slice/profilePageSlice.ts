@@ -1,11 +1,12 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { type PayloadAction } from '@reduxjs/toolkit';
 import { type ProfilePageSchema } from '../types/profilePageSchema';
+import { buildSlice } from '@/shared/lib';
 
 const initialState: ProfilePageSchema = {
   readonly: true,
 };
 
-export const profilePageSlice = createSlice({
+export const profilePageSlice = buildSlice({
   name: 'profilePage',
   initialState,
   reducers: {
@@ -18,5 +19,8 @@ export const profilePageSlice = createSlice({
   },
 });
 
-export const { actions: profilePageActions, } = profilePageSlice;
-export const profilePageReducer = profilePageSlice.reducer;
+export const {
+  profilePageActions,
+  profilePageReducer,
+  useProfilePageActions,
+} = profilePageSlice;

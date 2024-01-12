@@ -1,7 +1,12 @@
 import { memo } from 'react';
 import { DropDown } from '@/shared/ui';
-import { getIsAdminUser, getIsManagerUser, getUserAuthData, useLogout, UserInfo } from '@/entities/User';
-import { addOptionallyToArray, useAppSelector } from '@/shared/lib';
+import {
+  useIsAdminUser, useIsManagerUser,
+  useLogout,
+  UserInfo,
+  useUserAuthData
+} from '@/entities/User';
+import { addOptionallyToArray } from '@/shared/lib';
 import { RoutePath } from '@/shared/config';
 import { useTranslation } from 'react-i18next';
 
@@ -10,9 +15,9 @@ interface AvatarDropdownProps {
 }
 
 export const AvatarDropdown = memo<AvatarDropdownProps>(function AvatarDropdown (props) {
-  const isAdmin = useAppSelector(getIsAdminUser);
-  const isManager = useAppSelector(getIsManagerUser);
-  const userAuthData = useAppSelector(getUserAuthData);
+  const isAdmin = useIsAdminUser();
+  const isManager = useIsManagerUser();
+  const userAuthData = useUserAuthData();
   const { t, } = useTranslation();
   const logout = useLogout();
 

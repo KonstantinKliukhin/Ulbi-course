@@ -11,25 +11,18 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 export default function buildPlugins (
   options: BuildOptions
 ): webpack.Configuration['plugins'] {
+  const isProd = !options.isDev;
   const plugins = [
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({ template: options.paths.html, }),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash]:8.css',
-      chunkFilename: 'css/[name].[contenthash]:8.css',
-    }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(options.isDev),
       __API__: JSON.stringify(options.apiUrl),
       __PROJECT__: JSON.stringify(options.project),
     }),
-    new CopyPlugin({
-      patterns: [
-        { from: options.paths.locales, to: options.paths.buildLocales, },
-      ],
-    }),
   ];
 
+  // uncomment to check bundle size
   // plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: true, }));
 
   if (options.isDev) {
@@ -48,6 +41,18 @@ export default function buildPlugins (
         },
         mode: 'write-references',
       },
+    }));
+  }
+
+  if (isProd) {
+    plugins.push(new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash]:8.css',
+      chunkFilename: 'css/[name].[contenthash]:8.css',
+    }));
+    plugins.push(new CopyPlugin({
+      patterns: [
+        { from: options.paths.locales, to: options.paths.buildLocales, },
+      ],
     }));
   }
 

@@ -1,6 +1,7 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { type PayloadAction } from '@reduxjs/toolkit';
 import { type ManageArticleSchema } from '../types/manageArticleSchema';
 import { type ArticleBlock } from '@/entities/Article';
+import { buildSlice } from '@/shared/lib';
 
 const initialState: ManageArticleSchema = {
   blockFormMode: 'none',
@@ -8,7 +9,7 @@ const initialState: ManageArticleSchema = {
   editingArticleBlock: null,
 };
 
-export const manageArticleSlice = createSlice({
+export const manageArticleSlice = buildSlice({
   name: 'manageArticle',
   initialState,
   reducers: {
@@ -46,5 +47,9 @@ export const manageArticleSlice = createSlice({
   },
 });
 
-export const { actions: manageArticleActions, reducer: manageArticleReducer, } =
+export const {
+  manageArticleActions,
+  manageArticleReducer,
+  useManageArticleActions,
+} =
   manageArticleSlice;
