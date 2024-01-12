@@ -28,3 +28,4 @@ export { AsyncContainer } from './AsyncContainer/AsyncContainer';
 export { CustomPopover, DropDown, FormCustomListBox, CustomListBox } from './Popups';
 export { MobileDrawer } from './MobileDrawer';
 export { StarsRating } from './StarsRating';
+export { AppImage } from './AppImage/AppImage';

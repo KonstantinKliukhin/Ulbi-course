@@ -12,7 +12,7 @@ import {
   ArticleBlockType,
   type ArticleTextBlock
 } from '../../../model/types/article';
-import { Avatar, Button, Card, HStack, Icon, Text } from '@/shared/ui';
+import { Avatar, Button, Card, HStack, Icon, Text, AppImage, Skeleton } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
 import { EyeIcon } from '@/shared/assets';
 import { ArticleTextBlockComponent } from '../../blocks/ArticleTextBlockComponent/ArticleTextBlockComponent';
@@ -54,8 +54,9 @@ export const ArticleListItemBig: FC<ArticleListItemBigProps> =
         </HStack>
         <Text title={props.article.title} className={cls.title} />
         <Text text={props.article.type.join(', ')} textClassName={cls.types} />
-        <img
+        <AppImage
           src={props.article.img}
+          fallback={<Skeleton width="100%" height={250} />}
           className={cls.img}
           alt={props.article.title}
         />

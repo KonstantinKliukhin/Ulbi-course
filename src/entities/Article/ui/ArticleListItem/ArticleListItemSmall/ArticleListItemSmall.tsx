@@ -6,7 +6,7 @@ import {
 import cls from './ArticleListItemSmall.module.scss';
 import { classNames } from '@/shared/lib';
 import { type Article } from '../../../model/types/article';
-import { Card, Icon, Text } from '@/shared/ui';
+import { AppImage, Card, Icon, Skeleton, Text } from '@/shared/ui';
 import { EyeIcon } from '@/shared/assets';
 import { Link } from 'react-router-dom';
 import { RoutePath } from '@/shared/config';
@@ -38,8 +38,9 @@ export const ArticleListItemSmall = memo<ArticleListItemSmallProps>(
           hoverAnimations={cardHoverAnimations}
         >
           <div className={cls.imageWrapper}>
-            <img
+            <AppImage
               src={props.article.img}
+              fallback={<Skeleton width={200} height={200} />}
               alt={props.article.title}
               className={cls.img}
             />

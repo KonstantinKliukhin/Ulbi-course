@@ -2,14 +2,13 @@ import {
   type CSSProperties,
   type FC,
   type ImgHTMLAttributes,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState
+  useMemo
 } from 'react';
 import cls from './Avatar.module.scss';
 import { classNames } from '../../lib/ui/classNames/classNames';
 import { AvtarIcon } from '../../assets';
+import { AppImage } from '../AppImage/AppImage';
+import { Skeleton } from '../Skeleton/Skeleton';
 
 type ImageProps = Omit<
 ImgHTMLAttributes<HTMLImageElement>,
@@ -31,12 +30,10 @@ export const Avatar: FC<AvatarProps> = (props) => {
     alt,
     src,
     defaultAvatar = AvtarIcon,
-    ...inputProps
+    ...imageProps
   } = props;
 
-  const [avatarSrc, setAvatarSrc,] = useState<string>(src ?? defaultAvatar);
-
-  const style = useMemo<CSSProperties>(
+  const avatarStyle = useMemo<CSSProperties>(
     () => ({
       width: size,
       height: size,
@@ -44,25 +41,24 @@ export const Avatar: FC<AvatarProps> = (props) => {
     [size,]
   );
 
-  const onError = useCallback(() => {
-    setAvatarSrc(defaultAvatar);
-  }, [defaultAvatar,]);
-
-  useEffect(
-    function resetSrc () {
-      setAvatarSrc(src ?? defaultAvatar);
-    },
-    [src, defaultAvatar,]
-  );
+  const avatarClassList = classNames(cls.Avatar, {}, [props.className,]);
 
   return (
-    <img
-      {...inputProps}
-      src={avatarSrc}
+    <AppImage
+      {...imageProps}
+      src={src}
       alt={alt ?? 'Avatar'}
-      onError={onError}
-      style={style}
+      style={avatarStyle}
       className={classNames(cls.Avatar, {}, [props.className,])}
+      fallback={<Skeleton width={props.size} height={props.size} borderRadius="50%" />}
+      errorFallback={
+        <AppImage
+          src={defaultAvatar}
+          alt={alt ?? 'Avatar'}
+          style={avatarStyle}
+          className={avatarClassList}
+        />
+      }
     />
   );
 };
