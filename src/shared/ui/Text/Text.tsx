@@ -1,6 +1,7 @@
 import { type HTMLAttributes, type LabelHTMLAttributes, memo, type MouseEventHandler, type ReactNode } from 'react';
 import cls from './Text.module.scss';
 import { classNames } from '../../lib/ui/classNames/classNames';
+import { type TestProps } from '../../types/testProps';
 
 type TextTheme = 'primary' | 'error';
 
@@ -12,7 +13,7 @@ type HeaderTag = 'h1' | 'h2' | 'h3';
 
 type TextTags = 'p' | 'label';
 
-interface TextProps {
+interface TextProps extends TestProps {
   textTag?: TextTags;
   className?: string;
   titleClassName?: string;
@@ -25,7 +26,6 @@ interface TextProps {
   onClick?: MouseEventHandler<HTMLDivElement>;
   keepTextHeight?: boolean;
   keepTitleHeight?: boolean;
-  'data-testid'?: string;
   textProps?: HTMLAttributes<HTMLDivElement>;
   labelProps?: LabelHTMLAttributes<HTMLLabelElement>;
 }

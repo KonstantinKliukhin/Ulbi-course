@@ -6,22 +6,20 @@ import { http, HttpResponse } from 'msw';
 import { API_ROUTES } from '@/shared/api';
 import { mockedProfile, mockedUser } from '@/shared/mocks';
 import { RoutePath } from '@/shared/config';
-import { Route, Routes } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import { COMMON_API_ERRORS } from '@/shared/constants';
 
 const server = createTestServer();
 
-const ProfileRoute = (
-  <Routes>
-    <Route path={RoutePath.profile(':id')} element={<ProfilePage />} />
-  </Routes>
-);
-
-const renderCurrentUserProfile = () => componentRender(ProfileRoute, {
+const renderCurrentUserProfile = () => componentRender(<Outlet/>, {
   asyncReducers: { profilePage: profilePageReducer, },
   initialState: { user: { authData: mockedUser, }, },
   route: RoutePath.profile(1),
+  routeConfig: [{
+    path: RoutePath.profile(':id'),
+    element: <ProfilePage/>,
+  },],
 });
 
 describe('pages/ProfilePage', () => {
@@ -45,28 +43,25 @@ describe('pages/ProfilePage', () => {
     server.use(http.get(API_ROUTES.profile('1'), () => HttpResponse.json(mockedProfile)));
     renderCurrentUserProfile();
 
-    const loader = screen.getByTestId('ProfileCard.Loader');
-    await waitFor(() => { expect(loader).not.toBeInTheDocument(); });
-
-    const nameInput: HTMLInputElement = screen.getByTestId('ProfileCard.Firstname.Input.Value');
+    const nameInput: HTMLInputElement = await screen.findByTestId('ProfileCard.Firstname.Input.Value');
     expect(nameInput.value).toBe(mockedProfile.firstname);
 
-    const lastnameInput: HTMLInputElement = screen.getByTestId('ProfileCard.Lastname.Input.Value');
+    const lastnameInput: HTMLInputElement = await screen.findByTestId('ProfileCard.Lastname.Input.Value');
     expect(lastnameInput.value).toBe(mockedProfile.lastname);
 
-    const ageInput: HTMLInputElement = screen.getByTestId('ProfileCard.Age.Input.Value');
+    const ageInput: HTMLInputElement = await screen.findByTestId('ProfileCard.Age.Input.Value');
     expect(ageInput.value).toBe(String(mockedProfile.age));
 
-    const avatarInput: HTMLInputElement = screen.getByTestId('ProfileCard.Avatar.Input.Value');
+    const avatarInput: HTMLInputElement = await screen.findByTestId('ProfileCard.Avatar.Input.Value');
     expect(avatarInput.value).toBe(mockedProfile.avatar);
 
-    const usernameInput: HTMLInputElement = screen.getByTestId('ProfileCard.Username.Input.Value');
+    const usernameInput: HTMLInputElement = await screen.findByTestId('ProfileCard.Username.Input.Value');
     expect(usernameInput.value).toBe(mockedProfile.username);
 
-    const currencyInput = screen.getByTestId('ProfileCard.Currency.CustomListBox.Value');
+    const currencyInput = await screen.findByTestId('ProfileCard.Currency.CustomListBox.Value');
     expect(currencyInput).toHaveTextContent(mockedProfile.currency as string);
 
-    const countryInput = screen.getByTestId('ProfileCard.Country.CustomListBox.Value');
+    const countryInput = await screen.findByTestId('ProfileCard.Country.CustomListBox.Value');
     expect(countryInput).toHaveTextContent(mockedProfile.country as string);
   });
 
@@ -74,11 +69,8 @@ describe('pages/ProfilePage', () => {
     server.use(http.get(API_ROUTES.profile('1'), () => HttpResponse.json(mockedProfile)));
     renderCurrentUserProfile();
 
-    const loader = screen.getByTestId('ProfileCard.Loader');
-    await waitFor(() => { expect(loader).not.toBeInTheDocument(); });
-
-    const editButton = screen.getByTestId('ProfilePageHeader.EditButton');
-    await waitFor(() => { expect(editButton).toBeInTheDocument(); });
+    const editButton = await screen.findByTestId('ProfilePageHeader.EditButton');
+    expect(editButton).toBeInTheDocument();
 
     await userEvent.click(editButton);
 

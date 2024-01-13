@@ -11,7 +11,7 @@ module.exports = {
     'plugin:i18next/recommended',
     'plugin:storybook/recommended',
   ],
-  ignorePatterns: ['eslintrc.js', 'jsonServer/**/*', 'scripts/**/*', 'config/jest/jest.polyfills.ts',],
+  ignorePatterns: ['eslintrc.js', 'jsonServer/**/*', 'scripts/**/*', 'getCustomRouterConfig/jest/jest.polyfills.ts',],
   overrides: [
     {
       files: ['*.ts',],

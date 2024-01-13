@@ -1,10 +1,10 @@
 import { type FC } from 'react';
 import cls from './Loader.module.scss';
 import { classNames } from '../../lib/ui/classNames/classNames';
+import { type TestProps } from '../../types/testProps';
 
-interface Props {
+interface Props extends TestProps {
   centered?: boolean;
-  'data-testid'?: string;
 }
 
 export const Loader: FC<Props> = (props) => (

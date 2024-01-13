@@ -12,8 +12,6 @@ export {
   getUserRoles
 } from './model/selectors/getUserRoles/getUserRoles';
 
-export { useInitUser } from './model/hooks/useInitUser/useInitUser';
-
 export { userReducer, userActions } from './model/slice/userSlice';
 
 export type { User, UserSchema } from './model/types/user';

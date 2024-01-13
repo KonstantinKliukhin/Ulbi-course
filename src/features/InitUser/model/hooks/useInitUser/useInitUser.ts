@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { LOCAL_STORAGE_USER_KEY } from '@/shared/constants';
-import { useUserActions } from '../../slice/userSlice';
-import { type User } from '../../types/user';
+import { useUserActions } from '../../../../../entities/User/model/slice/userSlice';
+import { type User } from '../../../../../entities/User/model/types/user';
 import { parseJSON } from '@/shared/lib';
 
 export const useInitUser = () => {

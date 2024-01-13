@@ -2,37 +2,28 @@
 import '@/shared/config/i18n/i18n';
 import './styles/index.scss';
 import { type FC } from 'react';
-import { useInitUser } from '@/entities/User';
+import { Outlet } from 'react-router-dom';
+import { AppRouter } from './router';
+import { StoreProvider } from './providers/StoreProvider';
 import { ErrorBoundary } from './providers/ErrorBoundary';
 import { ThemeProvider } from './providers/ThemeProvider';
+import { UserIniter } from '@/features/InitUser';
 import { RootLayout } from './layout';
-import { Outlet, RouterProvider } from 'react-router-dom';
-import { StoreProvider } from './providers/StoreProvider';
-import { createAppRouter } from './router';
 
-const App: FC = () => {
-  useInitUser();
-
-  return (
-    <ErrorBoundary>
-      <ThemeProvider>
-        <div className="app">
-          <RootLayout>
-            <Outlet />
-          </RootLayout>
-        </div>
-      </ThemeProvider>
-    </ErrorBoundary>
-  );
-};
-
-const AppWithStore: FC = () => (
-  <StoreProvider>
-    <App />
-  </StoreProvider>
+export const App: FC = () => (
+  <AppRouter>
+    <StoreProvider>
+      <ErrorBoundary>
+        <ThemeProvider>
+          <UserIniter>
+            <div className="app">
+              <RootLayout>
+                <Outlet />
+              </RootLayout>
+            </div>
+          </UserIniter>
+        </ThemeProvider>
+      </ErrorBoundary>
+    </StoreProvider>
+  </AppRouter>
 );
-
-const AppRouter = createAppRouter(AppWithStore);
-const AppWithRouter = () => <RouterProvider router={AppRouter} />;
-
-export { AppWithRouter as App };

@@ -12,7 +12,7 @@ export const NotFoundPage: FC<NotFoundPageProps> = (props) => {
   const { t, } = useTranslation();
 
   return (
-    <Page className={classNames(cls.NotFoundPage, {}, [props.className,])}>
+    <Page className={classNames(cls.NotFoundPage, {}, [props.className,])} data-testid="NotFound">
       <VStack className={cls.wrapper} justify="center" align="center">
         <Text size="l" title={t('not_found_page')} />
       </VStack>

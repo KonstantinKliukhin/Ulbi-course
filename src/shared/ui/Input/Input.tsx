@@ -12,19 +12,19 @@ import { classNames } from '../../lib/ui/classNames/classNames';
 import { Text } from '../Text/Text';
 import { HStack } from '../Stack/HStack/HStack';
 import { useCombinedRefs } from '../../lib/utils/useCombinedRefs/useCombinedRefs';
+import { type TestProps } from '../../types/testProps';
 
 type HtmlInputProps = Omit<
 InputHTMLAttributes<HTMLInputElement>,
 'onChange' | 'value' | 'readOnly'
 >;
 
-interface InputProps extends HtmlInputProps {
+interface InputProps extends HtmlInputProps, TestProps {
   value?: string | number;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   readonly?: boolean;
   error?: string;
   label: string;
-  'data-testid'?: string;
 }
 
 const INPUT_FONT_WIDTH = 9.4;
