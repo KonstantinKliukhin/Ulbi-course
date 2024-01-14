@@ -44,7 +44,7 @@ export const Tabs = memo(function Tabs<T extends string> (props: TabsProps<T>) {
   };
 
   return (
-    <VStack yGap={4} className={classNames(cls.Tabs, {}, [props.className,])}>
+    <VStack yGap={4} align="start" className={classNames(cls.Tabs, {}, [props.className,])}>
       {props.label ? <Text text={props.label}/> : null}
       <HStack
         align="start"

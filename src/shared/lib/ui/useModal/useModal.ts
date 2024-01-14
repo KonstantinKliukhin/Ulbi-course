@@ -20,16 +20,19 @@ export const useModal = (arg: UseModalArg) => {
     (!arg.lazy || syntheticMounted) &&
     (!arg.removeContentWhenClosed || localOpen || closing || open);
 
-  const handleClose = useCallback((isClosedOutside?: boolean) => {
-    setClosing(true);
+  const handleClose = useCallback(
+    (options?: { isClosedOutside?: boolean }) => {
+      setClosing(true);
 
-    timerRef.current = setTimeout(() => {
-      timerRef.current = null;
-      setClosing(false);
-      if (!isClosedOutside) onClose();
-      setLocalOpen(false);
-    }, arg.animationDelay);
-  }, [onClose, arg.animationDelay,]);
+      timerRef.current = setTimeout(() => {
+        timerRef.current = null;
+        setClosing(false);
+        if (!options?.isClosedOutside) onClose();
+        setLocalOpen(false);
+      }, arg.animationDelay);
+    },
+    [onClose, arg.animationDelay,]
+  );
 
   useEffect(() => function clearTimer () {
     if (timerRef.current) {
@@ -41,7 +44,7 @@ export const useModal = (arg: UseModalArg) => {
     const isClosedOutside = !open && localOpen && !closing;
     const isOpenedOutside = open && !localOpen;
     if (isClosedOutside) {
-      handleClose(isClosedOutside);
+      handleClose({ isClosedOutside, });
     } else if (isOpenedOutside) {
       setLocalOpen(true);
     }

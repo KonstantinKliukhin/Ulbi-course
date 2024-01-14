@@ -1,7 +1,5 @@
 import { memo, type ReactNode } from 'react';
-import cls from './ArticleForm.module.scss';
-import { classNames } from '@/shared/lib';
-import { Button, FormHeader, FormInput } from '@/shared/ui';
+import { Button, FormHeader, FormInput, VStack } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
 import { FormArticleTypesTabs } from '@/features/SelectArticleType';
 
@@ -18,7 +16,7 @@ const ArticleForm = memo<ArticleFormProps>(function ArticleForm (props) {
   const { t, } = useTranslation('article');
 
   return (
-    <div className={classNames(cls.ArticleForm, {}, [props.className,])}>
+    <VStack align="stretch" yGap={32} className={props.className}>
       <FormHeader
         title={props.title}
         actions={
@@ -38,17 +36,14 @@ const ArticleForm = memo<ArticleFormProps>(function ArticleForm (props) {
       />
       <FormInput
         label={t('article_title_label')}
-        className={cls.input}
         name="title"
       />
       <FormInput
         label={t('article_subtitle_label')}
-        className={cls.input}
         name="subtitle"
       />
       <FormInput
         label={t('article_img_label')}
-        className={cls.input}
         name="img"
       />
       <FormArticleTypesTabs
@@ -58,7 +53,7 @@ const ArticleForm = memo<ArticleFormProps>(function ArticleForm (props) {
         excludeAll
       />
       {props.blocksChildren}
-    </div>
+    </VStack>
   );
 });
 
