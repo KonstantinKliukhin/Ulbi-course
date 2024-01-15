@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Button, FormCustomListBox, FormHeader } from '@/shared/ui';
+import { Button, FormCustomListBox, FormHeader, VStack } from '@/shared/ui';
 import { ArticleBlockFormPicker } from '../blockForms/ArticleBlockFormPicker/ArticleBlockFormPicker';
 import { useTranslation } from 'react-i18next';
 import {
@@ -45,16 +45,17 @@ export const ArticleBlockForm = memo<ArticleBlockFormProps>(
           }
         />
 
-        <FormCustomListBox
-          label={t('article_block_type_field_label')}
-          name={'type'}
-          options={articleTypesOptions}
-        />
-
-        <ArticleBlockFormPicker
-          blockType={props.blockType}
-          control={props.control}
-        />
+        <VStack yGap={32} align="stretch">
+          <FormCustomListBox
+            label={t('article_block_type_field_label')}
+            name={'type'}
+            options={articleTypesOptions}
+          />
+          <ArticleBlockFormPicker
+            blockType={props.blockType}
+            control={props.control}
+          />
+        </VStack>
       </>
     );
   }

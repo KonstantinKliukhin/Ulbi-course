@@ -2,7 +2,6 @@ import { memo, useCallback } from 'react';
 import cls from './ArticleTextBlockForm.module.scss';
 import {
   type AsyncLibrariesNames,
-  classNames,
   useDragEnd,
   withLibraries,
   type WithLibrariesProps
@@ -24,7 +23,6 @@ import type { PointerSensorOptions } from '@dnd-kit/core';
 import { NOT_DRAGGRABLE_PROPS } from '@/shared/constants';
 
 interface ArticleTextBlockFormProps extends WithLibrariesProps<typeof usedLibraries> {
-  className?: string;
   control: Control<ArticleBlock>;
 }
 
@@ -70,14 +68,11 @@ const ArticleTextBlockForm = memo<ArticleTextBlockFormProps>(
     }, [appendParagraph,]);
 
     return (
-      <div
-        className={classNames(cls.ArticleCodeBlockForm, {}, [props.className,])}
-      >
+      <>
         <FormInput
           label={t('article_block_title_field_label')}
           name={'title'}
         />
-
         <HStack
           justify="end"
           align="center"
@@ -126,7 +121,7 @@ const ArticleTextBlockForm = memo<ArticleTextBlockFormProps>(
             </dndKitSortable.SortableContext>
           </VStack>
         </CustomDndContext>
-      </div>
+      </>
     );
   }
 );
