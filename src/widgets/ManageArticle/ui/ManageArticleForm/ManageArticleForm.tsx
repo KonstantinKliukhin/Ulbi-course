@@ -134,6 +134,8 @@ const ManageArticleForm = memo<ManageArticleFormProps>(
 
     const blockFormTitle = useArticleBlockFormTitle(blockFormMode);
 
+    const isArticleBlockDrawerOpen = currentBlockIndex !== -1;
+
     return (
       <>
         <FormProvider {...articleForm}>
@@ -158,7 +160,7 @@ const ManageArticleForm = memo<ManageArticleFormProps>(
           </form>
         </FormProvider>
         <Drawer
-          open={currentBlockIndex !== -1}
+          open={isArticleBlockDrawerOpen}
           onClose={resetArticleBlockFormData}
           lazy
         >

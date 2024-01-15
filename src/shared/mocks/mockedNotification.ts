@@ -1,4 +1,3 @@
-// eslint-disable-next-line ulbi-eslint-plugin/layer-imports
 import type { Notification } from '@/entities/Notification';
 
 export const mockedNotification: Notification = {

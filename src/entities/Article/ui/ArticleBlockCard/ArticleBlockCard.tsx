@@ -7,7 +7,7 @@ import {
   useMemo
 } from 'react';
 import { Card, HStack, Text } from '@/shared/ui';
-import { type ArticleBlock } from '../../model/types/article';
+import { type ArticleBlock, ArticleBlockType } from '../../model/types/article';
 
 interface ArticleBlockCardProps
   extends Omit<ComponentProps<typeof Card>, 'children' | 'onClick'> {
@@ -23,10 +23,22 @@ export const ArticleBlockCard = memo<ArticleBlockCardProps>(
     const blockName = useMemo(() => {
       if (block.name) {
         return block.name;
-      } else if ('title' in block && block.title) {
+      } else if (block.title) {
         return block.title;
       } else {
-        return `${block.type}: ${block.id}`;
+        switch (block.type) {
+          case ArticleBlockType.TEXT:
+            return `${block.type}: ${block.paragraphs[0]?.text}`;
+
+          case ArticleBlockType.IMAGE:
+            return `${block.type}: ${block.src}`;
+
+          case ArticleBlockType.CODE:
+            return `${block.type}: ${block.code}`;
+
+          default:
+            return '' as never;
+        }
       }
     }, [block,]);
 
@@ -40,7 +52,7 @@ export const ArticleBlockCard = memo<ArticleBlockCardProps>(
     return (
       <Card {...cardProps} onClick={onCardClick}>
         <HStack justify="between" align="center">
-          <Text title={blockName} />
+          <Text title={blockName} ellipsis />
           {props.children ?? null}
         </HStack>
       </Card>

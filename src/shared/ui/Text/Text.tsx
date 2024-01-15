@@ -28,6 +28,7 @@ interface TextProps extends TestProps {
   keepTitleHeight?: boolean;
   textProps?: HTMLAttributes<HTMLDivElement>;
   labelProps?: LabelHTMLAttributes<HTMLLabelElement>;
+  ellipsis?: boolean;
 }
 
 const mapTextAlignClasses: Record<TextAlign, keyof typeof cls> = {
@@ -59,8 +60,7 @@ export const Text = memo<TextProps>(function Text (props) {
     theme = 'primary',
     align = 'left',
     size = 'm',
-    'data-testid': dataTestId
-    ,
+    'data-testid': dataTestId,
   } = props;
   const HeaderTag = mapSizeToHeadingTag[size];
 
@@ -93,6 +93,7 @@ export const Text = memo<TextProps>(function Text (props) {
           [cls.clickable]: props.onClick,
           [cls.keepTextHeight]: props.keepTextHeight,
           [cls.keepTitleHeight]: props.keepTextHeight,
+          [cls.ellipsis]: props.ellipsis,
         },
         [
           cls[mapTextThemeClasses[theme]],

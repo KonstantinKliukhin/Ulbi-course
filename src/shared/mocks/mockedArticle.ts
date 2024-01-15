@@ -1,4 +1,3 @@
-// eslint-disable-next-line ulbi-eslint-plugin/layer-imports
 import {
   type Article,
   ArticleBlockType,
@@ -8,7 +7,6 @@ import {
   ArticleType
 } from '@/entities/Article';
 import { mockedUser } from './mockedUser';
-// eslint-disable-next-line ulbi-eslint-plugin/layer-imports
 import type { ArticleFormType } from '@/widgets/ManageArticle';
 
 export const mockedArticle: Article = {

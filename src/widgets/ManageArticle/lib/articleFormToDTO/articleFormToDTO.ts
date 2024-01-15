@@ -10,9 +10,7 @@ interface ArticleFormToDTOArg {
 
 export const articleFormToDTO = (arg: ArticleFormToDTOArg): ArticleDTO => {
   const today = new Date();
-  const formattedDate = `${today.getDate()}.${
-    today.getMonth() + 1
-  }.${today.getFullYear()}`;
+  const formattedDate = `${today.getDate()}.${today.getMonth() + 1}.${today.getFullYear()}`;
 
   return omit(
     {

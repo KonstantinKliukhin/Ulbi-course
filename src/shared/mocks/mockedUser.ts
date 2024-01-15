@@ -1,4 +1,3 @@
-// eslint-disable-next-line ulbi-eslint-plugin/layer-imports
 import { type User, UserRole } from '@/entities/User';
 
 export const mockedUser: User = {

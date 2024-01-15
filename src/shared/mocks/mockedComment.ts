@@ -1,4 +1,3 @@
-// eslint-disable-next-line ulbi-eslint-plugin/layer-imports
 import { type Comment } from '@/entities/Comment';
 import { mockedUser } from './mockedUser';
 
