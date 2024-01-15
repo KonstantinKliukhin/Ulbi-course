@@ -41,6 +41,7 @@ export const ArticleListItemSmall = memo<ArticleListItemSmallProps>(
             <AppImage
               src={props.article.img}
               fallback={<Skeleton width={200} height={200} />}
+              errorFallback={<Skeleton width={200} height={200} />}
               alt={props.article.title}
               className={cls.img}
             />

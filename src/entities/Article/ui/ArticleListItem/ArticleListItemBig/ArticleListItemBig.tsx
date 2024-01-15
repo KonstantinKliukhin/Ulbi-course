@@ -57,6 +57,7 @@ export const ArticleListItemBig: FC<ArticleListItemBigProps> =
         <AppImage
           src={props.article.img}
           fallback={<Skeleton width="100%" height={250} />}
+          errorFallback={<Skeleton width="100%" height={250} />}
           className={cls.img}
           alt={props.article.title}
         />
