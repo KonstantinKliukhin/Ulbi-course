@@ -1,7 +1,7 @@
 import { type HTMLAttributes, type LabelHTMLAttributes, memo, type MouseEventHandler, type ReactNode } from 'react';
 import cls from './Text.module.scss';
 import { classNames } from '../../lib/ui/classNames/classNames';
-import { type TestProps } from '../../types/testProps';
+import type { TestProps } from '../../types/testProps';
 
 type TextTheme = 'primary' | 'error';
 
