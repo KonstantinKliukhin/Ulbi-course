@@ -31,7 +31,7 @@ jobs:
           # Shouldn't be set for real project
           autoAcceptChanges: "main"
 
-  checks:
+  lint-and-unit:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -61,3 +61,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+      - name: Output Deployed URL
+        run: echo "Deployed content is available at ${{ steps.checks.outputs.url }}"
