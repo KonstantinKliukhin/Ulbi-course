@@ -26,6 +26,15 @@ jobs:
           buildScriptName: "storybook:build"
           # Shouldn't be set for real project
           autoAcceptChanges: "main"
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: 'reports'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
 
   checks:
     runs-on: ubuntu-latest
