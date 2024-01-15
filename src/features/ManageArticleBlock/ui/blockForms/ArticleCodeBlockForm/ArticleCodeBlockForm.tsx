@@ -1,22 +1,23 @@
 import { memo } from 'react';
-import { FormTextArea } from '@/shared/ui';
+import { FormInput, FormTextArea } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
 
-interface ArticleCodeBlockFormProps {
-  className?: string;
-}
-
-const ArticleCodeBlockForm = memo<ArticleCodeBlockFormProps>(
-  function ArticleCodeBlockForm (props) {
+const ArticleCodeBlockForm = memo(
+  function ArticleCodeBlockForm () {
     const { t, } = useTranslation('article');
 
     return (
-      <div className={props.className}>
+      <>
+        <FormInput
+          label={t('article_block_title_field_label')}
+          name={'title'}
+        />
         <FormTextArea
+          resize="vertical"
           label={t('article_block_code_field_label')}
           name={'code'}
         />
-      </div>
+      </>
     );
   }
 );
