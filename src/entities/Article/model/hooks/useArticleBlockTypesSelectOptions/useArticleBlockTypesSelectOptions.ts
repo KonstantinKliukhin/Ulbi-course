@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
-import { ArticleBlockType } from '../../types/article';
 import { useTranslation } from 'react-i18next';
 import { type SelectOption } from '@/shared/ui';
 import { ARTICLE_BLOCK_TYPE_TRANSLATIONS } from '../../../constants/translations';
+import { ArticleBlockType } from '../../../constants/articleBlockType';
 
 type ArticleTypeOptions = Array<SelectOption<ArticleBlockType>>;
 

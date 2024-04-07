@@ -8,7 +8,7 @@ const ForbiddenPage: FC = () => {
   const { t, } = useTranslation('forbidden');
 
   return (
-    <Page>
+    <Page data-testid="Forbidden">
       <VStack align="center" justify="center" yGap={16}>
         <Text
           align="center"

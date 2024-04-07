@@ -4,7 +4,7 @@ import {
   type HTMLAttributeAnchorTarget,
   memo
 } from 'react';
-import { type Article, ArticleView } from '../../../model/types/article';
+import { type Article } from '../../../model/types/article';
 import cls from './VirtualizedArticlesList.module.scss';
 import {
   type GridScrollSeekPlaceholderProps, type ListRange,
@@ -13,6 +13,7 @@ import {
 import { classNames } from '@/shared/lib';
 import { ArticleListItem } from '../../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../../ArticleListItem/ArticleListItemSkeleton';
+import { ArticleView } from '../../../constants/articleView';
 
 interface VirtualizedArticlesListProps {
   className?: string;
@@ -36,6 +37,7 @@ export const VirtualizedArticlesList = memo(
 
       return (
         <VirtuosoGrid
+          data-testid="ArticlesList"
           customScrollParent={
             scrollElementRef &&
             'current' in scrollElementRef &&

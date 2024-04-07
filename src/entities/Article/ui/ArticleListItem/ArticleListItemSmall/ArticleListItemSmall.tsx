@@ -30,6 +30,7 @@ export const ArticleListItemSmall = memo<ArticleListItemSmallProps>(
         className={cls.wrapper}
         to={RoutePath.articleDetails(props.article.id)}
         target={props.cardLinkTarget}
+        data-testid="ArticleListItem"
       >
         <Card
           className={classNames(cls.ArticleListItemSmall, {}, [

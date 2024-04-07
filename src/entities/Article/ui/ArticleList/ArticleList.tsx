@@ -1,9 +1,10 @@
 import { forwardRef, type HTMLAttributeAnchorTarget, memo } from 'react';
-import { type Article, ArticleView } from '../../model/types/article';
+import { type Article } from '../../model/types/article';
 import { ArticlesNotFound } from './ArticlesNotFound';
 import { VirtualizedArticlesList } from './VirtualizedArticlesList/VirtualizedArticlesList';
 import { CommonArticlesList } from './CommonArticlesList/CommonArticlesList';
 import { type ListRange } from 'react-virtuoso';
+import { ArticleView } from '../../constants/articleView';
 
 interface ArticleListProps {
   articles: Article[];

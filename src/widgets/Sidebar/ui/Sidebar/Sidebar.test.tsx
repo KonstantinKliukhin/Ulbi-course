@@ -11,7 +11,7 @@ describe('Sidebar', () => {
   test('with translation', () => {
     componentRender(<Sidebar />);
 
-    const toggleBtn = screen.getByTestId('sidebar-toggle');
+    const toggleBtn = screen.getByTestId('sidebarToggle.Button');
     const sidebar = screen.getByTestId('sidebar');
     expect(sidebar).toBeInTheDocument();
     fireEvent.click(toggleBtn);

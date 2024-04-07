@@ -27,13 +27,13 @@ describe('pages/ProfilePage', () => {
     server.use(http.get(API_ROUTES.profile('1'), () => HttpResponse.json(mockedProfile)));
     renderCurrentUserProfile();
 
-    const editButton = screen.getByTestId('ProfilePageHeader.EditButton');
+    const editButton = screen.getByTestId('ProfilePageHeader.Edit.Button');
     await waitFor(() => { expect(editButton).toBeInTheDocument(); });
 
     await userEvent.click(editButton);
 
-    const saveButton = screen.getByTestId('ProfilePageHeader.SaveButton');
-    const cancelButton = screen.getByTestId('ProfilePageHeader.CancelButton');
+    const saveButton = screen.getByTestId('ProfilePageHeader.Save.Button');
+    const cancelButton = screen.getByTestId('ProfilePageHeader.Cancel.Button');
 
     expect(saveButton).toBeInTheDocument();
     expect(cancelButton).toBeInTheDocument();
@@ -69,7 +69,7 @@ describe('pages/ProfilePage', () => {
     server.use(http.get(API_ROUTES.profile('1'), () => HttpResponse.json(mockedProfile)));
     renderCurrentUserProfile();
 
-    const editButton = await screen.findByTestId('ProfilePageHeader.EditButton');
+    const editButton = await screen.findByTestId('ProfilePageHeader.Edit.Button');
     expect(editButton).toBeInTheDocument();
 
     await userEvent.click(editButton);
@@ -88,7 +88,7 @@ describe('pages/ProfilePage', () => {
     await userEvent.type(lastnameInput, 'lastname');
     expect(lastnameInput.value).toBe('lastname');
 
-    const cancelButton = screen.getByTestId('ProfilePageHeader.CancelButton');
+    const cancelButton = screen.getByTestId('ProfilePageHeader.Cancel.Button');
     expect(cancelButton).toBeInTheDocument();
     await userEvent.click(cancelButton);
 
@@ -107,12 +107,12 @@ describe('pages/ProfilePage', () => {
     const loader = screen.getByTestId('ProfileCard.Loader');
     await waitFor(() => { expect(loader).not.toBeInTheDocument(); });
 
-    const editButton = screen.getByTestId('ProfilePageHeader.EditButton');
+    const editButton = screen.getByTestId('ProfilePageHeader.Edit.Button');
     await waitFor(() => { expect(editButton).toBeInTheDocument(); });
 
     await userEvent.click(editButton);
 
-    const saveButton = screen.getByTestId('ProfilePageHeader.SaveButton');
+    const saveButton = screen.getByTestId('ProfilePageHeader.Save.Button');
     expect(saveButton).toBeInTheDocument();
     await userEvent.click(saveButton);
 
@@ -136,7 +136,7 @@ describe('pages/ProfilePage', () => {
     const loader = screen.getByTestId('ProfileCard.Loader');
     await waitFor(() => { expect(loader).not.toBeInTheDocument(); });
 
-    const editButton = screen.getByTestId('ProfilePageHeader.EditButton');
+    const editButton = screen.getByTestId('ProfilePageHeader.Edit.Button');
     await waitFor(() => { expect(editButton).toBeInTheDocument(); });
 
     await userEvent.click(editButton);
@@ -146,7 +146,7 @@ describe('pages/ProfilePage', () => {
     await userEvent.clear(nameInput);
     await userEvent.type(nameInput, 'TEST_TEST');
 
-    const saveButton = screen.getByTestId('ProfilePageHeader.SaveButton');
+    const saveButton = screen.getByTestId('ProfilePageHeader.Save.Button');
     expect(saveButton).toBeInTheDocument();
     await userEvent.click(saveButton);
 

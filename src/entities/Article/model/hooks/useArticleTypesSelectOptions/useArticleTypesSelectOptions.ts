@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useMemo } from 'react';
-import { ArticleType } from '../../types/article';
 import { type SelectOption } from '@/shared/ui';
 import { ARTICLE_TYPE_TRANSLATIONS } from '../../../constants/translations';
+import { ArticleType } from '../../../constants/articleType';
 
 type ArticleTypeOptions = Array<SelectOption<ArticleType>>;
 

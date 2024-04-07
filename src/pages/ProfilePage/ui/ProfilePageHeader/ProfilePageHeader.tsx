@@ -33,7 +33,7 @@ export const ProfilePageHeader: FC = () => {
     if (profileReadonly) {
       return (
         <Button
-          data-testid="ProfilePageHeader.EditButton"
+          data-testid="ProfilePageHeader.Edit"
           type="button"
           theme="outline"
           onClick={onEdit}
@@ -48,7 +48,7 @@ export const ProfilePageHeader: FC = () => {
             theme="outline"
             type="submit"
             form={EDITABLE_PROFILE_FORM_ID}
-            data-testid="ProfilePageHeader.SaveButton"
+            data-testid="ProfilePageHeader.Save"
           >
             {tGlobal('save')}
           </Button>
@@ -57,7 +57,7 @@ export const ProfilePageHeader: FC = () => {
             onClick={onCancelEdit}
             type="reset"
             form={EDITABLE_PROFILE_FORM_ID}
-            data-testid="ProfilePageHeader.CancelButton"
+            data-testid="ProfilePageHeader.Cancel"
           >
             {tGlobal('cancel')}
           </Button>

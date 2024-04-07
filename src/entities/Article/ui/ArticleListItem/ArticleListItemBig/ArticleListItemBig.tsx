@@ -9,7 +9,6 @@ import cls from './ArticleListItemBig.module.scss';
 import { classNames } from '@/shared/lib';
 import {
   type Article,
-  ArticleBlockType,
   type ArticleTextBlock
 } from '../../../model/types/article';
 import { Avatar, Button, Card, HStack, Icon, Text, AppImage, Skeleton } from '@/shared/ui';
@@ -18,6 +17,7 @@ import { EyeIcon } from '@/shared/assets';
 import { ArticleTextBlockComponent } from '../../blocks/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { Link } from 'react-router-dom';
 import { RoutePath } from '@/shared/config';
+import { ArticleBlockType } from '../../../constants/articleBlockType';
 
 interface ArticleListItemBigProps {
   className?: string;
@@ -45,6 +45,7 @@ export const ArticleListItemBig: FC<ArticleListItemBigProps> =
       <Card
         hoverAnimations={cardHoverAnimations}
         className={classNames(cls.ArticleListItemBig, {}, [props.className,])}
+        data-testid="ArticleListItem"
       >
         <Text text={props.article.createdAt} className={cls.date} />
         <HStack align="center" xGap={8}>

@@ -11,35 +11,11 @@ module.exports = {
     'plugin:i18next/recommended',
     'plugin:storybook/recommended',
   ],
-  ignorePatterns: ['eslintrc.js', 'jsonServer/**/*', 'scripts/**/*', 'getCustomRouterConfig/jest/jest.polyfills.ts',],
-  overrides: [
-    {
-      files: ['*.ts',],
-      parserOptions: {
-        project: './tsconfig.json',
-      },
-      rules: {
-        '@typescript-eslint/prefer-nullish-coalescing': 'off',
-      },
-    },
-    {
-      files: ['*.stories.tsx', '*.stories.ts',],
-      rules: {
-        'react-hooks/rules-of-hooks': 'off',
-        '@typescript-eslint/consistent-type-assertions': 'off',
-        'i18next/no-literal-string': 'off',
-      },
-    },
-    {
-      files: ['*.d.ts',],
-      parserOptions: {
-        project: './tsconfig.json',
-      },
-      rules: {
-        '@typescript-eslint/naming-convention': 'off',
-        '@typescript-eslint/consistent-type-imports': 'off',
-      },
-    },
+  ignorePatterns: [
+    'eslintrc.js',
+    'jsonServer/**/*',
+    'scripts/**/*',
+    'getCustomRouterConfig/jest/jest.polyfills.ts',
   ],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -50,7 +26,13 @@ module.exports = {
       version: 'detect',
     },
   },
-  plugins: ['react', 'i18next', 'react-hooks', 'ulbi-eslint-plugin', 'unused-imports',],
+  plugins: [
+    'react',
+    'i18next',
+    'react-hooks',
+    'ulbi-eslint-plugin',
+    'unused-imports',
+  ],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
@@ -65,19 +47,25 @@ module.exports = {
     'import/no-unresolved': 'off',
     'react/prop-types': 'off',
     'ulbi-eslint-plugin/path-checker': ['error', { alias: '@', },],
-    'ulbi-eslint-plugin/layer-imports': ['error', {
-      alias: '@',
-      ignoreFilesPatterns: [
-        '**/src/shared/config/storybook/**/*.(ts|tsx)',
-        '**/src/shared/config/tests/**/*.(ts|tsx)',
-        '**/src/shared/mocks/**/*.(ts|tsx)',
-      ],
-    },],
-    'ulbi-eslint-plugin/public-api-imports': ['error', {
-      alias: '@',
-      ignorePatterns: ['**/config/**/*',],
-      testFilesPatterns: ['**/*.test.(ts|tsx)', '**/*.stories.(ts|tsx)',],
-    },],
+    'ulbi-eslint-plugin/layer-imports': [
+      'error',
+      {
+        alias: '@',
+        ignoreFilesPatterns: [
+          '**/src/shared/config/storybook/**/*.(ts|tsx)',
+          '**/src/shared/config/tests/**/*.(ts|tsx)',
+          '**/src/shared/mocks/**/*.(ts|tsx)',
+        ],
+      },
+    ],
+    'ulbi-eslint-plugin/public-api-imports': [
+      'error',
+      {
+        alias: '@',
+        ignorePatterns: ['**/config/**/*', '**/cypress/**/*.ts', '**/src/shared/mocks/*.ts',],
+        testFilesPatterns: ['**/*.test.(ts|tsx)', '**/*.stories.(ts|tsx)',],
+      },
+    ],
     '@typescript-eslint/return-await': 'off',
     'padding-line-between-statements': [
       'error',
@@ -92,16 +80,19 @@ module.exports = {
         ignoreRegExpLiterals: true,
       },
     ],
-    '@typescript-eslint/member-delimiter-style': ['error', {
-      multiline: {
-        delimiter: 'semi',
-        requireLast: true,
+    '@typescript-eslint/member-delimiter-style': [
+      'error',
+      {
+        multiline: {
+          delimiter: 'semi',
+          requireLast: true,
+        },
+        singleline: {
+          delimiter: 'semi',
+          requireLast: false,
+        },
       },
-      singleline: {
-        delimiter: 'semi',
-        requireLast: false,
-      },
-    },],
+    ],
     'no-empty': [2,],
     'no-empty-function': [2, { allow: ['constructors',], },],
     'unused-imports/no-unused-imports': 'error',
@@ -137,4 +128,28 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ['*.stories.tsx', '*.stories.ts',],
+      rules: {
+        'react-hooks/rules-of-hooks': 'off',
+        '@typescript-eslint/consistent-type-assertions': 'off',
+        'i18next/no-literal-string': 'off',
+      },
+    },
+    {
+      files: ['*.d.ts',],
+      rules: {
+        '@typescript-eslint/naming-convention': 'off',
+        '@typescript-eslint/consistent-type-imports': 'off',
+      },
+    },
+    {
+      files: ['cypress/**/*.ts', 'cypress/**/*.js',],
+      rules: {
+        '@typescript-eslint/no-namespace': 'off',
+        '@typescript-eslint/method-signature-style': 'off',
+      },
+    },
+  ],
 };

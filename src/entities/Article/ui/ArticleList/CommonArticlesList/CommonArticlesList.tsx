@@ -1,10 +1,11 @@
 import { type HTMLAttributeAnchorTarget, memo } from 'react';
 import { ArticleListSkeleton } from './ArticleListSkeleton';
-import { type Article, ArticleView } from '../../../model/types/article';
+import { type Article } from '../../../model/types/article';
 import { ArticleListItem } from '../../ArticleListItem/ArticleListItem';
 import { Flex } from '@/shared/ui';
 import cls from './CommonArticlesList.module.scss';
 import { classNames } from '@/shared/lib';
+import { ArticleView } from '../../../constants/articleView';
 
 interface CommonArticlesListProps {
   className?: string;
@@ -27,6 +28,7 @@ export const CommonArticlesList = memo<CommonArticlesListProps>(
         yGap={isBig ? 32 : 16}
         className={classNames(cls.CommonArticlesList, {}, [props.className,])}
         align="start"
+        data-testid="ArticlesList"
       >
         {props.articles.map((article) => (
           <ArticleListItem

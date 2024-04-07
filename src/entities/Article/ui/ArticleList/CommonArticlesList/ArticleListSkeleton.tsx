@@ -1,6 +1,6 @@
 import { type FC } from 'react';
-import { type ArticleView } from '../../../model/types/article';
 import { ArticleListItemSkeleton } from '../../ArticleListItem/ArticleListItemSkeleton';
+import { type ArticleView } from '../../../constants/articleView';
 
 interface ArticleListSkeletonProps {
   view: ArticleView;

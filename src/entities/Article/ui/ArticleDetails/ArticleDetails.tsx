@@ -4,10 +4,11 @@ import { classNames } from '@/shared/lib';
 import { AsyncContainer, Avatar, HStack, Icon, Text } from '@/shared/ui';
 import { ArticleDetailsSkeleton } from '../ArticleDetails/ArticleDetailsSkeleton/ArticleDetailsSkeleton';
 import { EyeIcon, CalendarIcon } from '@/shared/assets';
-import { type Article, type ArticleBlock, ArticleBlockType } from '../../model/types/article';
+import { type Article, type ArticleBlock } from '../../model/types/article';
 import { ArticleCodeBlockComponent } from '../blocks/ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../blocks/ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../blocks/ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { ArticleBlockType } from '../../constants/articleBlockType';
 
 interface ArticleDetailsProps {
   className?: string;
@@ -47,17 +48,25 @@ export const ArticleDetails: FC<ArticleDetailsProps> = (props) => {
   }, []);
 
   return (
-    <div className={classNames(cls.ArticleDetails, {}, [props.className,])}>
+    <div
+      className={classNames(cls.ArticleDetails, {}, [props.className,])}
+      data-testid="ArticleDetails"
+    >
       <AsyncContainer isLoading={props.isLoading} error={props.error} loadingNode={<ArticleDetailsSkeleton/>}>
         <Avatar size={200} src={props.article?.img} className={cls.avatar} />
-        <Text size="l" title={props.article?.title} text={props.article?.subtitle} />
+        <Text
+          data-testid="ArticleDetails"
+          size="l"
+          title={props.article?.title}
+          text={props.article?.subtitle}
+        />
         <HStack align="start" xGap={16} className={cls.metaLine}>
           <Icon Svg={EyeIcon} />
-          <Text text={String(props.article?.views)} />
+          <Text data-testid="ArticleDetails.Views" text={String(props.article?.views)} />
         </HStack>
         <HStack align="start" xGap={16} className={cls.metaLine}>
           <Icon Svg={CalendarIcon} />
-          <Text text={props.article?.createdAt} />
+          <Text data-testid="ArticleDetails.Created" text={props.article?.createdAt} />
         </HStack>
         {props.article?.blocks.map(renderBlock)}
       </AsyncContainer>

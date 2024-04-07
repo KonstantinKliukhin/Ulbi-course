@@ -1,6 +1,7 @@
 import { type ButtonHTMLAttributes, memo } from 'react';
 import cls from './Button.module.scss';
 import { classNames } from '../../lib/ui/classNames/classNames';
+import type { TestProps } from '../../types/testProps';
 
 type ButtonTheme =
   | 'clear'
@@ -12,7 +13,7 @@ type ButtonTheme =
 
 type ButtonSize = 'sm' | 'm' | 'l' | 'xl' | 'content';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, TestProps {
   theme?: ButtonTheme;
   size?: ButtonSize;
   className?: string;
@@ -48,6 +49,7 @@ export const Button = memo<ButtonProps>(function Button (props) {
     rounded,
     size = 'm',
     disabled,
+    'data-testid': dataTestId,
     ...buttonProps
   } = props;
 
@@ -62,6 +64,7 @@ export const Button = memo<ButtonProps>(function Button (props) {
     <button
       {...buttonProps}
       type={buttonProps.type ?? 'button'}
+      data-testid={`${dataTestId}.Button`}
       className={classNames(cls.Button, classNameMods, [
         props.className,
         cls[mapButtonThemeClasses[theme]],

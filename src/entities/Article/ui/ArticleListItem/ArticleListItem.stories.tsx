@@ -1,8 +1,8 @@
 import { type ComponentProps } from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { ArticleListItem } from './ArticleListItem';
-import { ArticleView } from '../../model/types/article';
 import { mockedArticle } from '@/shared/mocks';
+import { ArticleView } from '../../constants/articleView';
 
 export default {
   title: 'entities/Article/ArticleListItem',

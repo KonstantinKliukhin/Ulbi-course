@@ -1,4 +1,5 @@
-import { type ArticleBlockType, type ArticleType } from './article';
+import { type ArticleBlockType } from '../../constants/articleBlockType';
+import { type ArticleType } from '../../constants/articleType';
 
 export interface ArticleTextBlockParagraphDTO {
   id: string;

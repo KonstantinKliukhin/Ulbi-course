@@ -1,5 +1,6 @@
-import { ArticleBlockType, ArticleType } from '../model/types/article';
 import { type TFunction } from 'i18next';
+import { ArticleBlockType } from './articleBlockType';
+import { ArticleType } from '../constants/articleType';
 
 export const ARTICLE_TYPE_TRANSLATIONS = {
   [ArticleType.ALL]: (t: TFunction<'article', undefined>) => t('article_type_all'),

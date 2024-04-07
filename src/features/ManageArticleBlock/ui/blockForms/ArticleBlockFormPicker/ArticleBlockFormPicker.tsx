@@ -8,7 +8,6 @@ import { ArticleBlockType } from '@/entities/Article';
 import { type ArticleBlockFormType } from '../../../model/types/articleBlockForm';
 
 interface ArticleBlockFormProps {
-  className?: string;
   blockType?: ArticleBlockType;
   control: Control<ArticleBlockFormType>;
 }
@@ -20,26 +19,19 @@ export const ArticleBlockFormPicker = memo<ArticleBlockFormProps>(function Artic
     case ArticleBlockType.CODE:
       return (
         <Suspense fallback={<Loader/>}>
-          <ArticleCodeBlockForm
-            className={props.className}
-          />
+          <ArticleCodeBlockForm />
         </Suspense>
       );
     case ArticleBlockType.IMAGE:
       return (
         <Suspense fallback={<Loader/>}>
-          <ArticleImageBlockForm
-            className={props.className}
-          />
+          <ArticleImageBlockForm/>
         </Suspense>
       );
     case ArticleBlockType.TEXT:
       return (
         <Suspense fallback={<Loader/>}>
-          <ArticleTextBlockForm
-            control={props.control}
-            className={props.className}
-          />
+          <ArticleTextBlockForm control={props.control}/>
         </Suspense>
       );
   }

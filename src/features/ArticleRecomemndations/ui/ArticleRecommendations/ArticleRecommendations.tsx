@@ -15,7 +15,9 @@ export const ArticleRecommendations: FC<ArticleRecommendationsProps> = (props) =
   const articleRecommendationsData = useGetArticleRecommendationsQuery({ limit: 4, });
 
   return (
-    <VStack role="region"
+    <VStack
+      data-testid="ArticleRecommendations"
+      role="region"
       yGap={16}
       align="start"
       className={props.className}

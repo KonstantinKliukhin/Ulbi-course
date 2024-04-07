@@ -23,7 +23,7 @@ const ArticlesPage: FC = () => {
 
   return (
     <>
-      <Page className={cls.page}>
+      <Page className={cls.page} data-testid="Articles">
         <ArticlesPageHeader />
         <ArticlesPageFilters />
         <ArticlesInfiniteList/>

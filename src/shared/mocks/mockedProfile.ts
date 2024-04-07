@@ -1,6 +1,6 @@
-import { type Profile } from '@/entities/Profile';
-import { Currency } from '@/entities/Currency';
-import { Country } from '@/entities/Country';
+import type { Profile } from '@/entities/Profile/model/types/profile';
+import { Currency } from '@/entities/Currency/model/constants/currency';
+import { Country } from '@/entities/Country/model/constants/country';
 
 export const mockedProfile: Profile = {
   username: 'Kostya',

@@ -1,7 +1,8 @@
 import { type FC, type HTMLAttributeAnchorTarget } from 'react';
-import { type Article, ArticleView } from '../../model/types/article';
+import { type Article } from '../../model/types/article';
 import { ArticleListItemBig } from './ArticleListItemBig/ArticleListItemBig';
 import { ArticleListItemSmall } from './ArticleListItemSmall/ArticleListItemSmall';
+import { ArticleView } from '../../constants/articleView';
 
 interface ArticleListItemProps {
   className?: string;

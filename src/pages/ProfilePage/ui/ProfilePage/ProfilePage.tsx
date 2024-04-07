@@ -27,7 +27,7 @@ const ProfilePage: FC = () => {
   }
 
   return (
-    <Page>
+    <Page data-testid="Profile">
       <ProfilePageHeader />
       <VStack align="stretch" yGap={32}>
         <EditableProfile profileId={params.id} readonly={readonly} />

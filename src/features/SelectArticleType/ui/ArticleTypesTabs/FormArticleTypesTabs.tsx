@@ -1,7 +1,8 @@
 import { type ComponentProps, memo } from 'react';
 import { ArticleTypesTabs } from './ArticleTypesTabs';
 import { Controller } from 'react-hook-form';
-import { type ArticleType } from '../../../../entities/Article/model/types/article';
+
+import { type ArticleType } from '@/entities/Article';
 
 interface FormArticleTypesTabsProps
   extends Omit<

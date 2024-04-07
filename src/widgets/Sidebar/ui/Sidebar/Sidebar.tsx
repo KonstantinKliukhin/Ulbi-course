@@ -26,7 +26,7 @@ export const Sidebar = memo(function Sidebar () {
       })}
     >
       <Button
-        data-testid="sidebar-toggle"
+        data-testid="sidebarToggle"
         onClick={collapsed.toggle}
         className={cls.collapseBtn}
         theme="backgroundInverted"

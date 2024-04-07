@@ -1,4 +1,4 @@
-import { type Rating } from '@/entities/Rating';
+import type { Rating } from '@/entities/Rating/model/types/rating';
 
 export const mockedArticleRatings: Rating[] = [
   {

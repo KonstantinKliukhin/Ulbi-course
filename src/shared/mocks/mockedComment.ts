@@ -1,4 +1,4 @@
-import { type Comment } from '@/entities/Comment';
+import type { Comment } from '@/entities/Comment/model/types/comment';
 import { mockedUser } from './mockedUser';
 
 export const mockedComment: Comment = {

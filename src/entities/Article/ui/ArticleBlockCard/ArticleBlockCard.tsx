@@ -7,7 +7,8 @@ import {
   useMemo
 } from 'react';
 import { Card, HStack, Text } from '@/shared/ui';
-import { type ArticleBlock, ArticleBlockType } from '../../model/types/article';
+import { type ArticleBlock } from '../../model/types/article';
+import { ArticleBlockType } from '../../constants/articleBlockType';
 
 interface ArticleBlockCardProps
   extends Omit<ComponentProps<typeof Card>, 'children' | 'onClick'> {

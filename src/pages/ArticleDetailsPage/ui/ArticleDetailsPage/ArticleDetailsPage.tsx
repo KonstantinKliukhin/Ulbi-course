@@ -24,7 +24,7 @@ const ArticleDetailsPage: FC = () => {
   return (
     <>
       <ArticleDetailsPageHeader article={articleDetailsData.data} />
-      <Page>
+      <Page data-testid="ArticleDetails">
         <VStack align="stretch" yGap={32}>
           <ArticleDetails
             article={articleDetailsData.data}

@@ -106,7 +106,7 @@ export const Text = memo<TextProps>(function Text (props) {
       {props.title
         ? (
           <HeaderTag
-            data-testid={`${dataTestId}.Header`}
+            data-testid={`${dataTestId}.Heading`}
             className={classNames(cls.title, {}, [props.titleClassName,])}
           >
             {props.title}

@@ -1,13 +1,13 @@
-import {
-  type Article,
-  ArticleBlockType,
-  type ArticleCodeBlock,
-  type ArticleImageBlock,
-  type ArticleTextBlock,
-  ArticleType
-} from '@/entities/Article';
+import { ArticleBlockType } from '@/entities/Article/constants/articleBlockType';
+import type {
+  Article,
+  ArticleCodeBlock,
+  ArticleImageBlock,
+  ArticleTextBlock
+} from '@/entities/Article/model/types/article';
+import { ArticleType } from '@/entities/Article/constants/articleType';
 import { mockedUser } from './mockedUser';
-import type { ArticleFormType } from '@/widgets/ManageArticle';
+import type { ArticleFormType } from '@/widgets/ManageArticle/model/types/articleForm';
 
 export const mockedArticle: Article = {
   id: '1',
@@ -17,6 +17,7 @@ export const mockedArticle: Article = {
   views: 12312,
   createdAt: '26.02.2022',
   user: mockedUser,
+  userId: mockedUser.id,
   type: [ArticleType.IT, ArticleType.SCIENCE, ArticleType.ECONOMICS,],
   blocks: [
     {
